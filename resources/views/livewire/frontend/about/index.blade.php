@@ -18,7 +18,7 @@
     <!-- Image -->
     <div class="mt-[-60px]">
         <div class="container">
-            <img src="assets/images/about_page_img.png" alt="image" class="w-full">
+            <img src="assets/images/about-top.jpg" alt="image" class="w-full rounded-md">
         </div>
     </div>
     <!-- /Image -->
@@ -64,7 +64,7 @@
                             aria-controls="profile"
                             aria-selected="true"
                         >
-                            About Job Board
+                            About Qudrat
                         </button>
                     </li>
                     <li class="me-2" role="presentation">

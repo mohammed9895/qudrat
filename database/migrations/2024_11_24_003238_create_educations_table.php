@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('education', function (Blueprint $table) {
+        Schema::create('educations', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(\App\Models\Profile::class)->constrained()->cascadeOnDelete();
             $table->string('school')->nullable();
             $table->string('degree')->nullable();
@@ -22,6 +21,7 @@ return new class extends Migration
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->boolean('graduated')->default(false);
+            $table->integer('sort')->nullable();
             $table->timestamps();
         });
     }

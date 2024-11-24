@@ -145,170 +145,170 @@
                             </div>
                         </div>
                     </div>
-                    <div class="pt-24">
-                        <div class="text-center mb-9">
-                            <h2 class="text-4xl sm:text-5xl font-semibold mb-3">Media Gallery</h2>
-                            <p>Bunch of media gallery at a time to see</p>
-                        </div>
-                        <div class="sm:columns-2 md:columns-3 gap-4">
-                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">
-                                <img src="assets/images/gallery_1.png" alt="image" class="w-full">
-                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">
-                                    <div class="h-full flex items-center justify-center">
-                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">
-                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">
-                                <img src="assets/images/gallery_2.png" alt="image" class="w-full">
-                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">
-                                    <div class="h-full flex items-center justify-center">
-                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">
-                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">
-                                <img src="assets/images/gallery_3.png" alt="image" class="w-full">
-                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">
-                                    <div class="h-full flex items-center justify-center">
-                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">
-                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">
-                                <img src="assets/images/gallery_4.png" alt="image" class="w-full">
-                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">
-                                    <div class="h-full flex items-center justify-center">
-                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">
-                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">
-                                <img src="assets/images/gallery_5.png" alt="image" class="w-full">
-                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">
-                                    <div class="h-full flex items-center justify-center">
-                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">
-                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">
-                                <img src="assets/images/gallery_6.png" alt="image" class="w-full">
-                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">
-                                    <div class="h-full flex items-center justify-center">
-                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">
-                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">
-                                <img src="assets/images/gallery_7.png" alt="image" class="w-full">
-                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">
-                                    <div class="h-full flex items-center justify-center">
-                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">
-                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">
-                                <img src="assets/images/gallery_8.png" alt="image" class="w-full">
-                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">
-                                    <div class="h-full flex items-center justify-center">
-                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">
-                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">
-                                <img src="assets/images/gallery_9.png" alt="image" class="w-full">
-                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">
-                                    <div class="h-full flex items-center justify-center">
-                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">
-                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">
-                                <img src="assets/images/gallery_10.png" alt="image" class="w-full">
-                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">
-                                    <div class="h-full flex items-center justify-center">
-                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">
-                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">
-                                <img src="assets/images/gallery_11.png" alt="image" class="w-full">
-                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">
-                                    <div class="h-full flex items-center justify-center">
-                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">
-                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">
-                                <img src="assets/images/gallery_12.png" alt="image" class="w-full">
-                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">
-                                    <div class="h-full flex items-center justify-center">
-                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">
-                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">
-                                <img src="assets/images/gallery_7.png" alt="image" class="w-full">
-                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">
-                                    <div class="h-full flex items-center justify-center">
-                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">
-                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>
-                                            </svg>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{{--                    <div class="pt-24">--}}
+{{--                        <div class="text-center mb-9">--}}
+{{--                            <h2 class="text-4xl sm:text-5xl font-semibold mb-3">Media Gallery</h2>--}}
+{{--                            <p>Bunch of media gallery at a time to see</p>--}}
+{{--                        </div>--}}
+{{--                        <div class="sm:columns-2 md:columns-3 gap-4">--}}
+{{--                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">--}}
+{{--                                <img src="assets/images/gallery_1.png" alt="image" class="w-full">--}}
+{{--                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">--}}
+{{--                                    <div class="h-full flex items-center justify-center">--}}
+{{--                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">--}}
+{{--                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>--}}
+{{--                                            </svg>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">--}}
+{{--                                <img src="assets/images/gallery_2.png" alt="image" class="w-full">--}}
+{{--                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">--}}
+{{--                                    <div class="h-full flex items-center justify-center">--}}
+{{--                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">--}}
+{{--                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>--}}
+{{--                                            </svg>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">--}}
+{{--                                <img src="assets/images/gallery_3.png" alt="image" class="w-full">--}}
+{{--                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">--}}
+{{--                                    <div class="h-full flex items-center justify-center">--}}
+{{--                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">--}}
+{{--                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>--}}
+{{--                                            </svg>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">--}}
+{{--                                <img src="assets/images/gallery_4.png" alt="image" class="w-full">--}}
+{{--                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">--}}
+{{--                                    <div class="h-full flex items-center justify-center">--}}
+{{--                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">--}}
+{{--                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>--}}
+{{--                                            </svg>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">--}}
+{{--                                <img src="assets/images/gallery_5.png" alt="image" class="w-full">--}}
+{{--                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">--}}
+{{--                                    <div class="h-full flex items-center justify-center">--}}
+{{--                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">--}}
+{{--                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>--}}
+{{--                                            </svg>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">--}}
+{{--                                <img src="assets/images/gallery_6.png" alt="image" class="w-full">--}}
+{{--                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">--}}
+{{--                                    <div class="h-full flex items-center justify-center">--}}
+{{--                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">--}}
+{{--                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>--}}
+{{--                                            </svg>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">--}}
+{{--                                <img src="assets/images/gallery_7.png" alt="image" class="w-full">--}}
+{{--                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">--}}
+{{--                                    <div class="h-full flex items-center justify-center">--}}
+{{--                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">--}}
+{{--                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>--}}
+{{--                                            </svg>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">--}}
+{{--                                <img src="assets/images/gallery_8.png" alt="image" class="w-full">--}}
+{{--                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">--}}
+{{--                                    <div class="h-full flex items-center justify-center">--}}
+{{--                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">--}}
+{{--                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>--}}
+{{--                                            </svg>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">--}}
+{{--                                <img src="assets/images/gallery_9.png" alt="image" class="w-full">--}}
+{{--                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">--}}
+{{--                                    <div class="h-full flex items-center justify-center">--}}
+{{--                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">--}}
+{{--                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>--}}
+{{--                                            </svg>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">--}}
+{{--                                <img src="assets/images/gallery_10.png" alt="image" class="w-full">--}}
+{{--                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">--}}
+{{--                                    <div class="h-full flex items-center justify-center">--}}
+{{--                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">--}}
+{{--                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>--}}
+{{--                                            </svg>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">--}}
+{{--                                <img src="assets/images/gallery_11.png" alt="image" class="w-full">--}}
+{{--                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">--}}
+{{--                                    <div class="h-full flex items-center justify-center">--}}
+{{--                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">--}}
+{{--                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>--}}
+{{--                                            </svg>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">--}}
+{{--                                <img src="assets/images/gallery_12.png" alt="image" class="w-full">--}}
+{{--                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">--}}
+{{--                                    <div class="h-full flex items-center justify-center">--}}
+{{--                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">--}}
+{{--                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>--}}
+{{--                                            </svg>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                            <div class="inline-block group relative rounded-2xl overflow-hidden mb-4 w-full">--}}
+{{--                                <img src="assets/images/gallery_7.png" alt="image" class="w-full">--}}
+{{--                                <div class="w-full absolute inset-0 opacity-0 group-hover:opacity-100 transition-all">--}}
+{{--                                    <div class="h-full flex items-center justify-center">--}}
+{{--                                        <a href="" class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">--}}
+{{--                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
+{{--                                                <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"/>--}}
+{{--                                            </svg>--}}
+{{--                                        </a>--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
                 </div>
             </div>
         </div>

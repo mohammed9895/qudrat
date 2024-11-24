@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(\App\Models\Profile::class)->constrained()->cascadeOnDelete();
             $table->string('company')->nullable();
             $table->string('position')->nullable();
@@ -21,6 +20,7 @@ return new class extends Migration
             $table->date('end_date')->nullable();
             $table->boolean('is_current')->default(false);
             $table->text('description')->nullable();
+            $table->integer('sort')->nullable();
             $table->timestamps();
         });
     }

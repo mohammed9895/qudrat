@@ -6,31 +6,37 @@ use App\Filament\Clusters\Profile;
 use App\Models\Country;
 use App\Models\Province;
 use App\Models\State;
+use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Pages\Page;
 
-class UpdateProfile extends Page
+class BasicInformation extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
-    protected static string $view = 'filament.clusters.profile.pages.update-profile';
+    protected static string $view = 'filament.clusters.profile.pages.basic-information';
 
     protected static ?string $cluster = Profile::class;
+
+    public \App\Models\Profile $profile;
 
     public ?array $data = [];
 
     public function mount(): void
     {
-        $this->form->fill();
+        $this->profile = \App\Models\Profile::where('user_id', auth()->id())->first();
+        $this->form->fill($this->profile->toArray());
     }
 
     public function form(Form $form): Form
@@ -38,6 +44,7 @@ class UpdateProfile extends Page
         return $form
             ->schema([
                Section::make('Basic Information')
+                   ->collapsible()
                 ->schema([
                     FileUpload::make('avatar')->avatar(),
                     TextInput::make('fullname'),
@@ -53,6 +60,7 @@ class UpdateProfile extends Page
                     FileUpload::make('video'),
                 ]),
                 Section::make('Location')
+                    ->collapsible()
                 ->schema([
                     Select::make('country_id')
                         ->label('Country')
@@ -79,34 +87,17 @@ class UpdateProfile extends Page
                         ->searchable(),
                     TextInput::make('address'),
                 ]),
-                Section::make('More About You')
-                    ->schema([
-                        TagsInput::make('categories'),
-                        TagsInput::make('skills'),
-                        TagsInput::make('interests'),
-                        TagsInput::make('languages'),
-                        TagsInput::make('tools'),
-                    ]),
-                Section::make('Social Media')
-                    ->schema([
-                        TextInput::make('website'),
-                        TextInput::make('social_facebook'),
-                        TextInput::make('social_x'),
-                        TextInput::make('social_linkedin'),
-                        TextInput::make('social_instagram'),
-                        TextInput::make('social_youtube'),
-                        TextInput::make('social_github'),
-                    ]),
             ])
-            ->statePath('data');
+            ->statePath('data')
+            ->model($this->profile);
     }
 
     public function create(): void
     {
-       \App\Models\Profile::updateOrCreate(
+       $profile = \App\Models\Profile::updateOrCreate(
             ['user_id' => auth()->id()],
-            $this->data
+           $this->form->getState()
         );
-
+        $this->form->model($profile)->saveRelationships();
     }
 }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Experience extends Model
+class Certificate extends Model
 {
     protected $guarded = [];
 
