@@ -14,11 +14,13 @@ use Filament\Pages\Page;
 
 class SocialMedia extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'hugeicons-share-08';
 
     protected static string $view = 'filament.clusters.profile.pages.social-media';
 
     protected static ?string $cluster = Profile::class;
+
+    protected static ?int $navigationSort = 8;
 
     public \App\Models\Profile $profile;
 

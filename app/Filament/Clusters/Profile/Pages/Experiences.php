@@ -16,11 +16,13 @@ use Filament\Pages\Page;
 
 class Experiences extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'hugeicons-new-job';
 
     protected static string $view = 'filament.clusters.profile.pages.experiences';
 
     protected static ?string $cluster = Profile::class;
+
+    protected static ?int $navigationSort = 3;
 
     public \App\Models\Profile $profile;
 
@@ -38,13 +40,6 @@ class Experiences extends Page
             ->schema([
                 Section::make('Experiences')
                     ->collapsible()
-                    ->headerActions([
-                        Action::make('reload')
-                            ->icon('heroicon-o-arrow-path')
-                            ->action(function () {
-                                dd('load');
-                            }),
-                    ])
                     ->schema([
                         Repeater::make('experiences')
                             ->collapsible()

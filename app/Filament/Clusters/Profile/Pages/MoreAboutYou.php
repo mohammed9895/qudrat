@@ -23,11 +23,13 @@ use Filament\Pages\Page;
 
 class MoreAboutYou extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'hugeicons-user-search-01';
 
     protected static string $view = 'filament.clusters.profile.pages.more-about-you';
 
     protected static ?string $cluster = Profile::class;
+
+    protected static ?int $navigationSort = 7;
 
     public \App\Models\Profile $profile;
 

@@ -23,7 +23,9 @@ use Filament\Pages\Page;
 
 class BasicInformation extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'hugeicons-user-account';
+
+    protected static ?int $navigationSort = 1;
 
     protected static string $view = 'filament.clusters.profile.pages.basic-information';
 

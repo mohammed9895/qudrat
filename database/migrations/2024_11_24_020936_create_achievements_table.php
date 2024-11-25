@@ -18,7 +18,8 @@ return new class extends Migration
             $table->text('description')->nullable(); // Description of the achievement
             $table->date('date'); // Date of the achievement
             $table->string('category')->nullable(); // Category of the achievement
-            $table->string('image')->nullable(); // Path to the achievement image or certificate
+            $table->string('achievement_file')->nullable(); // Path to the achievement image or certificate
+            $table->integer('sort')->default(0); // Sort order
             $table->timestamps();
         });
     }

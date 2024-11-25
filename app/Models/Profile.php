@@ -43,7 +43,7 @@ class Profile extends Model
         return $this->hasMany(Course::class);
     }
 
-    public function Certificates(): HasMany
+    public function certificates(): HasMany
     {
         return $this->hasMany(Certificate::class);
     }
