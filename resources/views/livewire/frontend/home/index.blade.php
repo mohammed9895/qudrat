@@ -18,9 +18,7 @@
                             <div class="flex items-center gap-2 absolute top-[4px] end-[6px]">
                                 <select class="bg-transparent hero_select !px-5 hidden sm:block">
                                     <option selected>Talents</option>
-                                    <option value="US">Talents 2</option>
-                                    <option value="US">Talents 2</option>
-                                    <option value="US">Talents 2</option>
+                                    <option >Export</option>
                                 </select>
                                 <button type="submit" class="w-[48px] h-[48px] bg-primary-2 rounded-full flex items-center justify-center">
                                     <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -393,7 +391,7 @@
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3">Getting Started is Easy
                         to Way <span class="text-primary-1">4 Step</span></h2>
                     <p class="text-b-color mb-10">This is the best platform where you can find your job very easily without any difficulty. It’s very simple and easy way where you can find your dream Job.</p>
-                    <a href="#" class="px-8 py-3 rounded-full text-head-color font-medium bg-primary-2 text-white inline-flex items-center gap-2">Post  a Job <span><svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <a href="#" class="px-8 py-3 rounded-full text-head-color font-medium bg-primary-2 text-white inline-flex items-center gap-2">Register Now <span><svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0.991646 9.27349C0.991646 9.27349 6.25866 4.77968 11.0089 0.726747M11.0089 0.726747C7.57736 3.65456 3.95259 0.688952 3.95259 0.688952M11.0089 0.726747C7.57736 3.65456 9.9353 7.70104 9.9353 7.70104" stroke="white" stroke-width="1.5"/>
                         </svg>
                         </span></a>
@@ -643,7 +641,7 @@
                                     </div>
                                     <div>
                                         <h6 class="text-primary-2 text-base font-semibold mb-0">Very Easy Process</h6>
-                                        <h4 class="text-2xl font-semibold">Direct Interview Call</h4>
+                                        <h4 class="text-2xl font-semibold">Direct Test for Talent</h4>
                                     </div>
                                 </div>
                                 <span class="inline-block w-[36px] h-[36px] bg-primary-1 bg-opacity-50 hover:bg-opacity-100 rounded-full flex items-center justify-center">
@@ -661,7 +659,7 @@
                                     </div>
                                     <div>
                                         <h6 class="text-primary-2 text-base font-semibold mb-0">Very Easy Process</h6>
-                                        <h4 class="text-2xl font-semibold">Direct Job Opportunity</h4>
+                                        <h4 class="text-2xl font-semibold">Direct Share You Profile</h4>
                                     </div>
                                 </div>
                                 <span class="inline-block w-[36px] h-[36px] bg-primary-1 bg-opacity-50 hover:bg-opacity-100 rounded-full flex items-center justify-center">
@@ -689,7 +687,7 @@
                     <img src="assets/images/map_img.png" alt="images" class="">
                 </div>
                 <div class="w-full lg:w-5/12">
-                    <h2 class="text-4xl sm:text-5xl font-semibold mb-3">Onboard Your <span class="text-primary-1">Freelancers</span> From 186 Countries</h2>
+                    <h2 class="text-4xl sm:text-5xl font-semibold mb-3">Onboard Your <span class="text-primary-1">Talents</span> From 186 Countries</h2>
                     <p class="text-b-color mb-8">Onboard your own talent pool to Quitey, invite them to projects, sign contracts and kick off the projects Employers can post job listings, access a pool of   interview tips.</p>
                     <ul class="flex flex-col gap-3 mb-7">
                         <li class="flex items-center gap-3">
@@ -820,7 +818,7 @@
                                 <circle cx="161.5" cy="161" r="161" fill="#EBF9F8"/>
                             </svg>
                         </span>
-                        <h5 class="text-[28px] font-semibold mb-3 group-hover:text-white">Post a Featured Job</h5>
+                        <h5 class="text-[28px] font-semibold mb-3 group-hover:text-white">Register Now</h5>
                         <p class="mb-6 group-hover:text-white">Our user-friendly tool simplifies the resume creation process, guiding you through each step. Whether you're a recent graduate experienced.</p>
                         <a href="#" class="px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">Create Resume</a>
                     </div>
