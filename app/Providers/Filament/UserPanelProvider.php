@@ -18,6 +18,7 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use JaOcero\FilaChat\FilaChatPlugin;
 
 class UserPanelProvider extends PanelProvider
 {
@@ -28,6 +29,7 @@ class UserPanelProvider extends PanelProvider
             ->id('user')
             ->path('user')
             ->login()
+            ->registration()
             ->colors([
                 'primary' => '#3cc7bc',
                 'gray' => Color::Slate,
@@ -58,6 +60,10 @@ class UserPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->viteTheme('resources/css/filament/user/theme.css')
+            ->plugins([
+                FilaChatPlugin::make()
             ]);
     }
 }
