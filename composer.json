@@ -7,9 +7,14 @@
     "license": "MIT",
     "require": {
         "php": "^8.2",
+        "afatmustafa/blade-hugeicons": "^0.0.3",
+        "codeat3/blade-coolicons": "^1.5",
+        "jaocero/filachat": "dev-main",
         "laravel/framework": "^11.22",
+        "laravel/reverb": "^1.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
+        "owenvoke/blade-fontawesome": "^2.7",
         "spatie/laravel-translatable": "^6.8"
     },
     "require-dev": {

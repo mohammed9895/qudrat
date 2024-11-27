@@ -3,15 +3,18 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Models\Contracts\HasAvatar;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use JaOcero\FilaChat\Traits\HasFilaChat;
 
-class User extends Authenticatable
+class User extends Authenticatable implements HasAvatar
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
+    use HasFilaChat;
 
     /**
      * The attributes that are mass assignable.
@@ -50,5 +53,12 @@ class User extends Authenticatable
     public function profile():HasOne
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function getFilamentAvatarUrl(): ?string
+    {
+        return optional($this->profile)->avatar
+            ? '/storage/' . $this->profile->avatar
+            : null;
     }
 }

@@ -7,9 +7,11 @@ use Filament\Pages\Page;
 
 class PrivacySettings extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'hugeicons-locked';
 
     protected static string $view = 'filament.clusters.profile.pages.privacy-settings';
 
     protected static ?string $cluster = Profile::class;
+
+    protected static ?int $navigationSort = 9;
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->date('issued_date'); // Date of issue
             $table->date('expiry_date')->nullable(); // Expiry date (if applicable)
             $table->string('certificate_file')->nullable(); // Path to uploaded certificate file (e.g., PDF, image)
+            $table->integer('sort')->default(0); // Sort order
             $table->timestamps();
         });
     }

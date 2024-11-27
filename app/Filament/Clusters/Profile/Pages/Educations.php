@@ -15,9 +15,11 @@ use Filament\Pages\Page;
 
 class Educations extends Page
 {
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'hugeicons-graduation-scroll';
 
     protected static string $view = 'filament.clusters.profile.pages.educations';
+    protected static ?int $navigationSort = 2;
+
 
     protected static ?string $cluster = Profile::class;
 
@@ -36,14 +38,6 @@ class Educations extends Page
         return $form
             ->schema([
                 Section::make('Educations')
-                    ->collapsible()
-                    ->headerActions([
-                        Action::make('reload')
-                            ->icon('heroicon-o-arrow-path')
-                            ->action(function () {
-                                dd('load');
-                            }),
-                    ])
                     ->schema([
                         Repeater::make('educations')
                             ->collapsible()
