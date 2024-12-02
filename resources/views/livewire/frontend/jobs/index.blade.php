@@ -55,10 +55,10 @@
                                         </svg>
                                     </span>
                                 <select class="bg-transparent hero_select !py-0 !px-8">
-                                    <option selected="">Dhaka, Bangladesh</option>
-                                    <option value="US">Dhaka, Bangladesh</option>
-                                    <option value="US">Dhaka, Bangladesh</option>
-                                    <option value="US">Dhaka, Bangladesh</option>
+                                    <option selected="">Muscat, Oman</option>
+                                    <option selected="">Muscat, Oman</option>
+                                    <option selected="">Muscat, Oman</option>
+                                    <option selected="">Muscat, Oman</option>
                                 </select>
                             </div>
                         </div>
@@ -339,7 +339,7 @@
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.5818 19.9995C12.7464 19.9995 9.62598 16.8791 9.62598 13.0437C9.62598 9.2082 12.7464 6.08789 16.5818 6.08789C20.4171 6.08789 23.5376 9.20837 23.5376 13.0437C23.5377 16.8791 20.4173 19.9995 16.5818 19.9995ZM16.5818 7.19083C13.3546 7.19083 10.7293 9.81633 10.7293 13.0435C10.7293 16.2707 13.3548 18.8961 16.5818 18.8961C19.8088 18.8961 22.4344 16.2706 22.4344 13.0435C22.4344 9.81632 19.8089 7.19083 16.5818 7.19083Z" fill="#070F2C"/>
                                                         </svg>
                                                     </span>
-                                                <p class="text-head-color text-[18px] font-semibold">$35k-$45k</p>
+                                                <p class="text-head-color text-[18px] font-semibold">OMR35k-OMR45k</p>
                                             </div>
                                             <a href="#" class="px-6 py-2 rounded-full border border-primary-2 text-sm text-head-color font-medium hover:bg-primary-2 hover:text-white">Apply Now</a>
                                         </div>
@@ -380,7 +380,7 @@
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.5818 19.9995C12.7464 19.9995 9.62598 16.8791 9.62598 13.0437C9.62598 9.2082 12.7464 6.08789 16.5818 6.08789C20.4171 6.08789 23.5376 9.20837 23.5376 13.0437C23.5377 16.8791 20.4173 19.9995 16.5818 19.9995ZM16.5818 7.19083C13.3546 7.19083 10.7293 9.81633 10.7293 13.0435C10.7293 16.2707 13.3548 18.8961 16.5818 18.8961C19.8088 18.8961 22.4344 16.2706 22.4344 13.0435C22.4344 9.81632 19.8089 7.19083 16.5818 7.19083Z" fill="#070F2C"/>
                                                         </svg>
                                                     </span>
-                                                <p class="text-head-color text-[18px] font-semibold">$35k-$45k</p>
+                                                <p class="text-head-color text-[18px] font-semibold">OMR35k-OMR45k</p>
                                             </div>
                                             <a href="#" class="px-6 py-2 rounded-full border border-primary-2 text-sm text-head-color font-medium hover:bg-primary-2 hover:text-white">Apply Now</a>
                                         </div>
@@ -421,7 +421,7 @@
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.5818 19.9995C12.7464 19.9995 9.62598 16.8791 9.62598 13.0437C9.62598 9.2082 12.7464 6.08789 16.5818 6.08789C20.4171 6.08789 23.5376 9.20837 23.5376 13.0437C23.5377 16.8791 20.4173 19.9995 16.5818 19.9995ZM16.5818 7.19083C13.3546 7.19083 10.7293 9.81633 10.7293 13.0435C10.7293 16.2707 13.3548 18.8961 16.5818 18.8961C19.8088 18.8961 22.4344 16.2706 22.4344 13.0435C22.4344 9.81632 19.8089 7.19083 16.5818 7.19083Z" fill="#070F2C"/>
                                                         </svg>
                                                     </span>
-                                                <p class="text-head-color text-[18px] font-semibold">$35k-$45k</p>
+                                                <p class="text-head-color text-[18px] font-semibold">OMR35k-OMR45k</p>
                                             </div>
                                             <a href="#" class="px-6 py-2 rounded-full border border-primary-2 text-sm text-head-color font-medium hover:bg-primary-2 hover:text-white">Apply Now</a>
                                         </div>
@@ -462,7 +462,7 @@
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.5818 19.9995C12.7464 19.9995 9.62598 16.8791 9.62598 13.0437C9.62598 9.2082 12.7464 6.08789 16.5818 6.08789C20.4171 6.08789 23.5376 9.20837 23.5376 13.0437C23.5377 16.8791 20.4173 19.9995 16.5818 19.9995ZM16.5818 7.19083C13.3546 7.19083 10.7293 9.81633 10.7293 13.0435C10.7293 16.2707 13.3548 18.8961 16.5818 18.8961C19.8088 18.8961 22.4344 16.2706 22.4344 13.0435C22.4344 9.81632 19.8089 7.19083 16.5818 7.19083Z" fill="#070F2C"/>
                                                         </svg>
                                                     </span>
-                                                <p class="text-head-color text-[18px] font-semibold">$35k-$45k</p>
+                                                <p class="text-head-color text-[18px] font-semibold">OMR35k-OMR45k</p>
                                             </div>
                                             <a href="#" class="px-6 py-2 rounded-full border border-primary-2 text-sm text-head-color font-medium hover:bg-primary-2 hover:text-white">Apply Now</a>
                                         </div>
@@ -503,7 +503,7 @@
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.5818 19.9995C12.7464 19.9995 9.62598 16.8791 9.62598 13.0437C9.62598 9.2082 12.7464 6.08789 16.5818 6.08789C20.4171 6.08789 23.5376 9.20837 23.5376 13.0437C23.5377 16.8791 20.4173 19.9995 16.5818 19.9995ZM16.5818 7.19083C13.3546 7.19083 10.7293 9.81633 10.7293 13.0435C10.7293 16.2707 13.3548 18.8961 16.5818 18.8961C19.8088 18.8961 22.4344 16.2706 22.4344 13.0435C22.4344 9.81632 19.8089 7.19083 16.5818 7.19083Z" fill="#070F2C"/>
                                                         </svg>
                                                     </span>
-                                                <p class="text-head-color text-[18px] font-semibold">$35k-$45k</p>
+                                                <p class="text-head-color text-[18px] font-semibold">OMR35k-OMR45k</p>
                                             </div>
                                             <a href="#" class="px-6 py-2 rounded-full border border-primary-2 text-sm text-head-color font-medium hover:bg-primary-2 hover:text-white">Apply Now</a>
                                         </div>
@@ -544,7 +544,7 @@
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.5818 19.9995C12.7464 19.9995 9.62598 16.8791 9.62598 13.0437C9.62598 9.2082 12.7464 6.08789 16.5818 6.08789C20.4171 6.08789 23.5376 9.20837 23.5376 13.0437C23.5377 16.8791 20.4173 19.9995 16.5818 19.9995ZM16.5818 7.19083C13.3546 7.19083 10.7293 9.81633 10.7293 13.0435C10.7293 16.2707 13.3548 18.8961 16.5818 18.8961C19.8088 18.8961 22.4344 16.2706 22.4344 13.0435C22.4344 9.81632 19.8089 7.19083 16.5818 7.19083Z" fill="#070F2C"/>
                                                         </svg>
                                                     </span>
-                                                <p class="text-head-color text-[18px] font-semibold">$35k-$45k</p>
+                                                <p class="text-head-color text-[18px] font-semibold">OMR35k-OMR45k</p>
                                             </div>
                                             <a href="#" class="px-6 py-2 rounded-full border border-primary-2 text-sm text-head-color font-medium hover:bg-primary-2 hover:text-white">Apply Now</a>
                                         </div>
@@ -585,7 +585,7 @@
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.5818 19.9995C12.7464 19.9995 9.62598 16.8791 9.62598 13.0437C9.62598 9.2082 12.7464 6.08789 16.5818 6.08789C20.4171 6.08789 23.5376 9.20837 23.5376 13.0437C23.5377 16.8791 20.4173 19.9995 16.5818 19.9995ZM16.5818 7.19083C13.3546 7.19083 10.7293 9.81633 10.7293 13.0435C10.7293 16.2707 13.3548 18.8961 16.5818 18.8961C19.8088 18.8961 22.4344 16.2706 22.4344 13.0435C22.4344 9.81632 19.8089 7.19083 16.5818 7.19083Z" fill="#070F2C"/>
                                                         </svg>
                                                     </span>
-                                                <p class="text-head-color text-[18px] font-semibold">$35k-$45k</p>
+                                                <p class="text-head-color text-[18px] font-semibold">OMR35k-OMR45k</p>
                                             </div>
                                             <a href="#" class="px-6 py-2 rounded-full border border-primary-2 text-sm text-head-color font-medium hover:bg-primary-2 hover:text-white">Apply Now</a>
                                         </div>
@@ -626,7 +626,7 @@
                                                             <path fill-rule="evenodd" clip-rule="evenodd" d="M16.5818 19.9995C12.7464 19.9995 9.62598 16.8791 9.62598 13.0437C9.62598 9.2082 12.7464 6.08789 16.5818 6.08789C20.4171 6.08789 23.5376 9.20837 23.5376 13.0437C23.5377 16.8791 20.4173 19.9995 16.5818 19.9995ZM16.5818 7.19083C13.3546 7.19083 10.7293 9.81633 10.7293 13.0435C10.7293 16.2707 13.3548 18.8961 16.5818 18.8961C19.8088 18.8961 22.4344 16.2706 22.4344 13.0435C22.4344 9.81632 19.8089 7.19083 16.5818 7.19083Z" fill="#070F2C"/>
                                                         </svg>
                                                     </span>
-                                                <p class="text-head-color text-[18px] font-semibold">$35k-$45k</p>
+                                                <p class="text-head-color text-[18px] font-semibold">OMR35k-OMR45k</p>
                                             </div>
                                             <a href="#" class="px-6 py-2 rounded-full border border-primary-2 text-sm text-head-color font-medium hover:bg-primary-2 hover:text-white">Apply Now</a>
                                         </div>

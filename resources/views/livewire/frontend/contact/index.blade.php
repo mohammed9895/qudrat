@@ -193,7 +193,9 @@
 
     <!-- Map -->
     <div class="mb-[-80px]">
-        <div class="mapswrapper"><iframe width="100%" height="550" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=New%20York&zoom=10&maptype=roadmap"></iframe><a href="https://www.lawod.com/squad-busters-tier-list/">Squad Busters Tier List</a><style>.mapswrapper{background:#fff;position:relative}.mapswrapper iframe{border:0;position:relative;z-index:2}.mapswrapper a{color:rgba(0,0,0,0);position:absolute;left:0;top:0;z-index:0}</style></div>
+        <div class="mapswrapper">
+            <iframe width="100%" height="550" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=New%20York&zoom=10&maptype=roadmap"></iframe>
+            <a href="https://www.lawod.com/squad-busters-tier-list/">Squad Busters Tier List</a><style>.mapswrapper{background:#fff;position:relative}.mapswrapper iframe{border:0;position:relative;z-index:2}.mapswrapper a{color:rgba(0,0,0,0);position:absolute;left:0;top:0;z-index:0}</style></div>
     </div>
     <!-- /Map -->
 
@@ -218,9 +220,8 @@
                                     </svg>
                                 </span>
                             <h5 class="text-[20px] font-bold mb-3 group-hover:text-white">Office Address</h5>
-                            <p class="mb-6 group-hover:text-white">Agency, Los  Angeles  NEW York <br>
-                                City -1216, USA.</p>
-                            <a href="#" class="text-head-color font-medium group-hover:text-white ">office@jobmaster.com</a>
+                            <p class="mb-6 group-hover:text-white">Bousher, Muscat, Oman</p>
+                            <a href="#" class="text-head-color font-medium group-hover:text-white ">office@qudrat.om</a>
                         </div>
                     </div>
                     <div class="w-full xl:w-4/12">
@@ -233,7 +234,7 @@
                             <h5 class="text-[20px] font-bold mb-3 group-hover:text-white">Sales & Marketing</h5>
                             <p class="mb-6 group-hover:text-white">Talk to us and see how we can work <br>
                                 together</p>
-                            <a href="#" class="text-head-color font-medium group-hover:text-white ">Sales@jobmaster.com</a>
+                            <a href="#" class="text-head-color font-medium group-hover:text-white ">Sales@qudrat.om</a>
                         </div>
                     </div>
                 </div>

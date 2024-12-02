@@ -540,7 +540,7 @@
                                     <circle cx="161.5" cy="161" r="161" fill="#EBF9F8"/>
                                 </svg>
                             </span>
-                        <h5 class="text-[28px] font-semibold mb-3 group-hover:text-white">Post a Featured Job</h5>
+                        <h5 class="text-[28px] font-semibold mb-3 group-hover:text-white">Register Today</h5>
                         <p class="mb-6 group-hover:text-white">Our user-friendly tool simplifies the resume creation process, guiding you through each step. Whether you're a recent graduate experienced.</p>
                         <a href="#" class="px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">Create Resume</a>
                     </div>
