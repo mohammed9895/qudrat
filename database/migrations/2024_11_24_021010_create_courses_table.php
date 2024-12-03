@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('certificate_file')->nullable(); // Optional file (certificate of completion)
             $table->text('description')->nullable(); // Additional details about the course
             $table->integer('sort')->default(0); // Sort order
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -1,27 +1,25 @@
 <?php
 
-namespace App\Filament\Clusters\Profile\Pages;
+namespace App\Filament\User\Clusters\Profile\Pages;
 
-use App\Filament\Clusters\Profile;
-use Filament\Forms\Components\Actions\Action;
+use App\Filament\User\Clusters\Profile;
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
 
-class Educations extends Page
+class Certificates extends Page
 {
-    protected static ?string $navigationIcon = 'hugeicons-graduation-scroll';
+    protected static ?string $navigationIcon = 'hugeicons-certificate-01';
 
-    protected static string $view = 'filament.clusters.profile.pages.educations';
-    protected static ?int $navigationSort = 2;
-
+    protected static string $view = 'filament.user.clusters.profile.pages.certificates';
 
     protected static ?string $cluster = Profile::class;
+
+    protected static ?int $navigationSort = 4;
 
     public \App\Models\Profile $profile;
 
@@ -37,23 +35,22 @@ class Educations extends Page
     {
         return $form
             ->schema([
-                Section::make('Educations')
+                Section::make('Certificates')
+                    ->collapsible()
                     ->schema([
-                        Repeater::make('educations')
+                        Repeater::make('certificates')
                             ->collapsible()
-                            ->relationship('educations')
+                            ->relationship('certificates')
                             ->reorderable()
                             ->orderColumn('sort')
                             ->schema([
-                                TextInput::make('school'),
-                                TextInput::make('degree'),
-                                TextInput::make('field_of_study'),
-                                TextInput::make('grade'),
-                                DatePicker::make('start_date')->native(false),
-                                DatePicker::make('end_date')->native(false),
-                                Toggle::make('graduated'),
+                                TextInput::make('title'),
+                                TextInput::make('organization'),
+                                DatePicker::make('issued_date')->native(false),
+                                DatePicker::make('expiry_date')->native(false),
+                                FileUpload::make('certificate_file'),
                             ])
-                            ->itemLabel(fn (array $state): ?string => $state['degree'] ?? null),
+                            ->itemLabel(fn (array $state): ?string => $state['title'] ?? null),
                     ]),
             ])
             ->statePath('data')

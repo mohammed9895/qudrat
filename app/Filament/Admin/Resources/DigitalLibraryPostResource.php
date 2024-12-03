@@ -20,7 +20,9 @@ class DigitalLibraryPostResource extends Resource
 
     protected static ?string $model = DigitalLibraryPost::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'hugeicons-profile';
+
+    protected static ?string $navigationGroup = 'Digital Library';
 
     public static function form(Form $form): Form
     {
@@ -34,6 +36,7 @@ class DigitalLibraryPostResource extends Resource
                 Forms\Components\TextInput::make('title')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('slug')
+                    ->disabled()
                     ->maxLength(255),
                 Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),

@@ -1,21 +1,17 @@
 <?php
 
-namespace App\Filament\Clusters\Profile\Pages;
+namespace App\Filament\User\Clusters\Profile\Pages;
 
-use App\Filament\Clusters\Profile;
+use App\Filament\User\Clusters\Profile;
 use App\Models\Country;
 use App\Models\Province;
 use App\Models\State;
-use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
-use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
@@ -27,7 +23,7 @@ class BasicInformation extends Page
 
     protected static ?int $navigationSort = 1;
 
-    protected static string $view = 'filament.clusters.profile.pages.basic-information';
+    protected static string $view = 'filament.user.clusters.profile.pages.basic-information';
 
     protected static ?string $cluster = Profile::class;
 

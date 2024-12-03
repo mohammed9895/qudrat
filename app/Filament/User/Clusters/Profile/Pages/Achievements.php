@@ -1,9 +1,8 @@
 <?php
 
-namespace App\Filament\Clusters\Profile\Pages;
+namespace App\Filament\User\Clusters\Profile\Pages;
 
-use App\Filament\Clusters\Profile;
-use Filament\Forms\Components\Actions\Action;
+use App\Filament\User\Clusters\Profile;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
@@ -17,7 +16,7 @@ class Achievements extends Page
 {
     protected static ?string $navigationIcon = 'hugeicons-checkmark-square-03';
 
-    protected static string $view = 'filament.clusters.profile.pages.achievements';
+    protected static string $view = 'filament.user.clusters.profile.pages.achievements';
 
     protected static ?string $cluster = Profile::class;
     protected static ?int $navigationSort = 5;

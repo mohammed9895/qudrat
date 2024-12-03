@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Clusters;
+namespace App\Filament\User\Clusters;
 
 use Filament\Clusters\Cluster;
 

@@ -1,28 +1,25 @@
 <?php
 
-namespace App\Filament\Clusters\Profile\Pages;
+namespace App\Filament\User\Clusters\Profile\Pages;
 
-use App\Filament\Clusters\Profile;
-use Filament\Forms\Components\Actions\Action;
+use App\Filament\User\Clusters\Profile;
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
 
-class Experiences extends Page
+class Educations extends Page
 {
-    protected static ?string $navigationIcon = 'hugeicons-new-job';
+    protected static ?string $navigationIcon = 'hugeicons-graduation-scroll';
 
-    protected static string $view = 'filament.clusters.profile.pages.experiences';
+    protected static string $view = 'filament.user.clusters.profile.pages.educations';
+    protected static ?int $navigationSort = 2;
+
 
     protected static ?string $cluster = Profile::class;
-
-    protected static ?int $navigationSort = 3;
 
     public \App\Models\Profile $profile;
 
@@ -38,23 +35,23 @@ class Experiences extends Page
     {
         return $form
             ->schema([
-                Section::make('Experiences')
-                    ->collapsible()
+                Section::make('Educations')
                     ->schema([
-                        Repeater::make('experiences')
+                        Repeater::make('educations')
                             ->collapsible()
-                            ->relationship('experiences')
+                            ->relationship('educations')
                             ->reorderable()
                             ->orderColumn('sort')
                             ->schema([
-                                TextInput::make('company'),
-                                TextInput::make('position'),
+                                TextInput::make('school'),
+                                TextInput::make('degree'),
+                                TextInput::make('field_of_study'),
+                                TextInput::make('grade'),
                                 DatePicker::make('start_date')->native(false),
                                 DatePicker::make('end_date')->native(false),
-                                Toggle::make('is_current'),
-                                MarkdownEditor::make('description'),
+                                Toggle::make('graduated'),
                             ])
-                            ->itemLabel(fn (array $state): ?string => $state['company'] ?? null),
+                            ->itemLabel(fn (array $state): ?string => $state['degree'] ?? null),
                     ]),
             ])
             ->statePath('data')

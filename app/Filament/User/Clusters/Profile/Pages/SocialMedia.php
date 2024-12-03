@@ -1,14 +1,10 @@
 <?php
 
-namespace App\Filament\Clusters\Profile\Pages;
+namespace App\Filament\User\Clusters\Profile\Pages;
 
-use App\Filament\Clusters\Profile;
-use Filament\Forms\Components\Actions\Action;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\Repeater;
+use App\Filament\User\Clusters\Profile;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
 
@@ -16,7 +12,7 @@ class SocialMedia extends Page
 {
     protected static ?string $navigationIcon = 'hugeicons-share-08';
 
-    protected static string $view = 'filament.clusters.profile.pages.social-media';
+    protected static string $view = 'filament.user.clusters.profile.pages.social-media';
 
     protected static ?string $cluster = Profile::class;
 

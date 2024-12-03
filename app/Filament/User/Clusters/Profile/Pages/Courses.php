@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Filament\Clusters\Profile\Pages;
+namespace App\Filament\User\Clusters\Profile\Pages;
 
-use App\Filament\Clusters\Profile;
-use Filament\Forms\Components\Actions\Action;
+use App\Filament\User\Clusters\Profile;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
 
@@ -18,7 +16,7 @@ class Courses extends Page
 {
     protected static ?string $navigationIcon = 'hugeicons-course';
 
-    protected static string $view = 'filament.clusters.profile.pages.courses';
+    protected static string $view = 'filament.user.clusters.profile.pages.courses';
 
     protected static ?int $navigationSort = 6;
 

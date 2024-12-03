@@ -1,28 +1,26 @@
 <?php
 
-namespace App\Filament\Clusters\Profile\Pages;
+namespace App\Filament\User\Clusters\Profile\Pages;
 
-use App\Filament\Clusters\Profile;
-use Filament\Forms\Components\Actions\Action;
+use App\Filament\User\Clusters\Profile;
 use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
 
-class Certificates extends Page
+class Experiences extends Page
 {
-    protected static ?string $navigationIcon = 'hugeicons-certificate-01';
+    protected static ?string $navigationIcon = 'hugeicons-new-job';
 
-    protected static string $view = 'filament.clusters.profile.pages.certificates';
+    protected static string $view = 'filament.user.clusters.profile.pages.experiences';
 
     protected static ?string $cluster = Profile::class;
 
-    protected static ?int $navigationSort = 4;
+    protected static ?int $navigationSort = 3;
 
     public \App\Models\Profile $profile;
 
@@ -38,22 +36,23 @@ class Certificates extends Page
     {
         return $form
             ->schema([
-                Section::make('Certificates')
+                Section::make('Experiences')
                     ->collapsible()
                     ->schema([
-                        Repeater::make('certificates')
+                        Repeater::make('experiences')
                             ->collapsible()
-                            ->relationship('certificates')
+                            ->relationship('experiences')
                             ->reorderable()
                             ->orderColumn('sort')
                             ->schema([
-                                TextInput::make('title'),
-                                TextInput::make('organization'),
-                                DatePicker::make('issued_date')->native(false),
-                                DatePicker::make('expiry_date')->native(false),
-                                FileUpload::make('certificate_file'),
+                                TextInput::make('company'),
+                                TextInput::make('position'),
+                                DatePicker::make('start_date')->native(false),
+                                DatePicker::make('end_date')->native(false),
+                                Toggle::make('is_current'),
+                                MarkdownEditor::make('description'),
                             ])
-                            ->itemLabel(fn (array $state): ?string => $state['title'] ?? null),
+                            ->itemLabel(fn (array $state): ?string => $state['company'] ?? null),
                     ]),
             ])
             ->statePath('data')

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('category')->nullable(); // Category of the achievement
             $table->string('achievement_file')->nullable(); // Path to the achievement image or certificate
             $table->integer('sort')->default(0); // Sort order
+            $table->softDeletes();
             $table->timestamps();
         });
     }

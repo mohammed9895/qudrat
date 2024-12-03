@@ -1,31 +1,18 @@
 <?php
 
-namespace App\Filament\Clusters\Profile\Pages;
+namespace App\Filament\User\Clusters\Profile\Pages;
 
-use App\Filament\Clusters\Profile;
-use App\Models\Country;
-use App\Models\Province;
-use App\Models\State;
-use Filament\Forms\Components\Actions\Action;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\MarkdownEditor;
-use Filament\Forms\Components\Repeater;
+use App\Filament\User\Clusters\Profile;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
-use Filament\Forms\Set;
 use Filament\Pages\Page;
 
 class MoreAboutYou extends Page
 {
     protected static ?string $navigationIcon = 'hugeicons-user-search-01';
 
-    protected static string $view = 'filament.clusters.profile.pages.more-about-you';
+    protected static string $view = 'filament.user.clusters.profile.pages.more-about-you';
 
     protected static ?string $cluster = Profile::class;
 

@@ -21,6 +21,7 @@ return new class extends Migration
             $table->boolean('is_current')->default(false);
             $table->text('description')->nullable();
             $table->integer('sort')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

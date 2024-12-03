@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Filament\Pages;
-
-use Filament\Pages\Page;
+namespace App\Filament\User\Pages;
 
 class Dashboard extends \Filament\Pages\Dashboard
 {

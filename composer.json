@@ -9,7 +9,7 @@
         "php": "^8.2",
         "afatmustafa/blade-hugeicons": "^0.0.3",
         "codeat3/blade-coolicons": "^1.5",
-        "filament/filament": "*",
+        "filament/filament": "^3.2",
         "filament/spatie-laravel-translatable-plugin": "^3.2",
         "jaocero/filachat": "dev-main",
         "laravel/framework": "^11.34",
@@ -77,12 +77,6 @@
             "php-http/discovery": true
         }
     },
-    "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "path",
-            "url": "filament/packages/*"
-        }
-    ],
+    "minimum-stability": "stable",
     "prefer-stable": true
 }

@@ -13,6 +13,7 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Resources\Concerns\Translatable;
+use Illuminate\Support\Str;
 
 class DigitalLibraryCategoryResource extends Resource
 {
@@ -20,25 +21,45 @@ class DigitalLibraryCategoryResource extends Resource
 
     protected static ?string $model = DigitalLibraryCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'hugeicons-sticky-note-02';
+
+    protected static ?string $navigationGroup = 'Digital Library';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('name')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('slug')
-                    ->required()
-                    ->maxLength(255),
-                Forms\Components\Textarea::make('description')
-                    ->columnSpanFull(),
-                Forms\Components\FileUpload::make('image')
-                    ->image(),
-                Forms\Components\TextInput::make('parent_id')
-                    ->numeric(),
-            ]);
+                Forms\Components\Group::make()->schema([
+                    Forms\Components\Section::make()
+                        ->schema([
+                            Forms\Components\TextInput::make('name')
+                                ->required()
+                                ->live(onBlur: true)
+                                ->afterStateUpdated(fn(Forms\Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('slug')
+                                ->disabled()
+                                ->dehydrated()
+                                ->required()
+                                ->maxLength(255)
+                                ->unique(DigitalLibraryCategory::class, 'slug', ignoreRecord: true),
+                            Forms\Components\RichEditor::make('description')
+                                ->columnSpanFull(),
+                        ])->columns(2),
+                    Forms\Components\Section::make()
+                    ->schema([
+                        Forms\Components\FileUpload::make('image')
+                            ->image(),
+                    ])
+                ])->columnSpan(2),
+                Forms\Components\Group::make()->schema([
+                    Forms\Components\Section::make()
+                        ->schema([
+                            Forms\Components\TextInput::make('parent_id')
+                                ->numeric(),
+                        ]),
+                    ])->columnSpan(1),
+            ])->columns(3);
     }
 
     public static function table(Table $table): Table
