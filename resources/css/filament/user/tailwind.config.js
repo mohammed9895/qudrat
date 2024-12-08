@@ -7,5 +7,6 @@ export default {
         './resources/views/filament/c:\-users\devmo\-herd\qudrat\app\-filament\-clusters\-profile\**/*.blade.php',
         './vendor/filament/**/*.blade.php',
         './vendor/jaocero/filachat/resources/views/**/**/*.blade.php',
+        './vendor/ralphjsmit/laravel-filament-onboard/resources/**/*.blade.php',
     ],
 }

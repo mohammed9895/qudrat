@@ -4,12 +4,8 @@
         <div class="container">
             <div class="flex items-center justify-between gap-4 flex-wrap md:flex-nowrap">
                 <div class="w-full md:w-6/12">
-                    <div class="flex items-center gap-3 mb-3">
-                        <a href="" class="text-head-color text-sm">Home</a>
-                        <span class="text-gray-3 text-sm">/</span>
-                        <span class="text-b-color text-sm">Profile</span>
-                    </div>
-                    <h2 class="text-4xl sm:text-5xl font-semibold mb-3">Profile</h2>
+                    <x-breadcrumbs />
+                    <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ $profile->fullname }}</h2>
                 </div>
                 <div class="w-6/12">
                 </div>
@@ -36,9 +32,9 @@
                                 </p>
                             </div>
                         </div>
-                        <img src="assets/images/mohammed.jpeg" width="120" alt="image" class="mb-5 rounded-full border-2">
-                        <h4 class="text-xl font-medium mb-1">Mohammad Hamad </h4>
-                        <p class="text-sm mb-5">Sr. UI Designer</p>
+                        <img src="/storage/{{ $profile->avatar }}" width="120" alt="image" class="mb-5 rounded-full border-2">
+                        <h4 class="text-xl font-medium mb-1">{{ $profile->fullname }}</h4>
+                        <p class="text-sm mb-5">{{ $profile->position }}</p>
                         <ul class="flex flex-col gap-3 mb-8">
                             <li class="flex items-center gap-2">
                                     <span>
@@ -47,7 +43,7 @@
                                             <path d="M10 10.833C11.3807 10.833 12.5 9.71372 12.5 8.33301C12.5 6.9523 11.3807 5.83301 10 5.83301C8.61929 5.83301 7.5 6.9523 7.5 8.33301C7.5 9.71372 8.61929 10.833 10 10.833Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </span>
-                                <p>Muscat, Oman</p>
+                                <p>{{ $profile->address }}</p>
                             </li>
                             <li class="flex items-center gap-2">
                                     <span>
@@ -56,7 +52,7 @@
                                             <path d="M18.3346 5L10.0013 10.8333L1.66797 5" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </span>
-                                <p>mohammed@example.com</p>
+                                <p><a href="mailto:{{ $profile->email }}">{{ $profile->email }}</a></p>
                             </li>
                             <li class="flex items-center gap-2">
                                     <span>
@@ -64,7 +60,7 @@
                                             <path d="M18.3332 14.1004V16.6004C18.3341 16.8325 18.2866 17.0622 18.1936 17.2749C18.1006 17.4875 17.9643 17.6784 17.7933 17.8353C17.6222 17.9922 17.4203 18.1116 17.2005 18.186C16.9806 18.2603 16.7477 18.288 16.5165 18.2671C13.9522 17.9884 11.489 17.1122 9.32486 15.7087C7.31139 14.4293 5.60431 12.7222 4.32486 10.7087C2.91651 8.53474 2.04007 6.05957 1.76653 3.48374C1.7457 3.2533 1.77309 3.02104 1.84695 2.80176C1.9208 2.58248 2.03951 2.38098 2.1955 2.21009C2.3515 2.0392 2.54137 1.90266 2.75302 1.80917C2.96468 1.71569 3.19348 1.66729 3.42486 1.66707H5.92486C6.32928 1.66309 6.72136 1.80631 7.028 2.07002C7.33464 2.33373 7.53493 2.69995 7.59153 3.10041C7.69705 3.90046 7.89274 4.68601 8.17486 5.44207C8.28698 5.74034 8.31125 6.0645 8.24478 6.37614C8.17832 6.68778 8.02392 6.97383 7.79986 7.20041L6.74153 8.25874C7.92783 10.345 9.65524 12.0724 11.7415 13.2587L12.7999 12.2004C13.0264 11.9764 13.3125 11.8219 13.6241 11.7555C13.9358 11.689 14.2599 11.7133 14.5582 11.8254C15.3143 12.1075 16.0998 12.3032 16.8999 12.4087C17.3047 12.4658 17.6744 12.6697 17.9386 12.9817C18.2029 13.2936 18.3433 13.6917 18.3332 14.1004Z" stroke="#344054" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                                         </svg>
                                     </span>
-                                <p>+968 9444915</p>
+                                <p><a href="tel:{{ $profile->phone }}">{{ $profile->phone }}</a></p>
                             </li>
                         </ul>
                         <a href="#" class="px-8 py-3 rounded-full text-head-color font-medium bg-primary-2 text-white inline-flex items-center gap-2 w-full justify-center">
@@ -75,70 +71,68 @@
                                 </span>
                             Download CV
                         </a>
-                        <div class="bg-primary-3 p-5 rounded-xl mt-8">
-                            <div class="flex items-center justify-center gap-4">
-                                <div class="w-6/12 text-center">
-                                    <h5 class="text-4xl font-semibold mb-1">137</h5>
-                                    <p>Total jobs</p>
-                                </div>
-                                <div class="w-6/12 text-center">
-                                    <h5 class="text-4xl font-semibold mb-1">1,146</h5>
-                                    <p>Total hours</p>
-                                </div>
-                            </div>
-                        </div>
+{{--                        <div class="bg-primary-3 p-5 rounded-xl mt-8">--}}
+{{--                            <div class="flex items-center justify-center gap-4">--}}
+{{--                                <div class="w-6/12 text-center">--}}
+{{--                                    <h5 class="text-4xl font-semibold mb-1">137</h5>--}}
+{{--                                    <p>Total jobs</p>--}}
+{{--                                </div>--}}
+{{--                                <div class="w-6/12 text-center">--}}
+{{--                                    <h5 class="text-4xl font-semibold mb-1">1,146</h5>--}}
+{{--                                    <p>Total hours</p>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
                     </div>
                     <div class="bg-white p-6 rounded-xl mt-5">
                         <h6 class="text-lg font-semibold mb-3">Skills</h6>
                         <div class="flex items-center gap-3 flex-wrap">
-                            <a href="" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">Designer</a>
-                            <a href="" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">Web Developer</a>
-                            <a href="" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">Software Engineer</a>
-                            <a href="" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">Landing page designer</a>
-                            <a href="" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">Figma Designer</a>
+                            @foreach($profile->skills as $skill)
+                                <a href="{{ route('social-window.index') }}" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $skill }}</a>
+                            @endforeach
                         </div>
                     </div>
                     <div class="bg-white p-6 rounded-xl mt-5">
                         <h6 class="text-lg font-semibold mb-3">Languages</h6>
                         <div class="flex items-center gap-3 flex-wrap">
-                            <a href="" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">Arabic</a>
-                            <a href="" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">English</a>
+                            @foreach($profile->languages as $language)
+                                <a href="{{ route('social-window.index') }}" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $language }}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl mt-5">
+                        <h6 class="text-lg font-semibold mb-3">Tools</h6>
+                        <div class="flex items-center gap-3 flex-wrap">
+                            @foreach($profile->tools as $tool)
+                                <a href="{{ route('social-window.index') }}" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $tool }}</a>
+                            @endforeach
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl mt-5">
+                        <h6 class="text-lg font-semibold mb-3">Interests</h6>
+                        <div class="flex items-center gap-3 flex-wrap">
+                            @foreach($profile->interested as $interest)
+                                <a href="{{ route('social-window.index') }}" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $interest }}</a>
+                            @endforeach
                         </div>
                     </div>
                 </div>
                 <div class="col-span-full xl:col-span-9">
                     <div class="bg-white p-7 rounded-2xl">
                         <h4 class="text-[28px] font-semibold mb-3">About me</h4>
-                        <p class="mb-5">Welcome to my world of clean, minimalistic design! With over three years of expertise in graphic and web design, I specializes in crafting seamless UI/UX experiences. Detail-oriented and dedicated, I don't stop until you're satisfied. Let's bring your vision to life, beautifully This project showcases a modern, user-friendly landing page design tailored for charities, nonprofit Organization, & donation platforms. The design focuses on creating an impactful and meaningful user experience while ensuring accessibility and responsiveness across devices.</p>
-                        <h6 class="text-base text-b-color font-bold">Key features of the design:</h6>
-                        <ul class="flex flex-col gap-1 mt-2">
-                            <li class="flex gap-2">
-                                <span class="w-[4px] h-[4px] bg-b-color shrink-0 rounded-full mt-2"></span>
-                                <p>Bold and Compassionate Visuals: A strong emphasis on emotional storytelling with high-quality imagery and a clean layout.</p>
-                            </li>
-                            <li class="flex gap-2">
-                                <span class="w-[4px] h-[4px] bg-b-color shrink-0 rounded-full mt-2"></span>
-                                <p>User-Centric Navigation: Easy access to donation buttons, programs, and volunteer opportunities.</p>
-                            </li>
-                        </ul>
+                       {!! $profile->bio !!}
                     </div>
                     <div class="inline-block relative rounded-2xl overflow-hidden w-full mt-7">
-                        <img src="assets/images/can_lg_img.png" alt="image" class="w-full">
-                        <div class="w-full absolute inset-0">
-                            <div class="h-full flex items-center justify-center">
-                                <a href="" class="inline-block w-[48px] h-[48px] bg-primary-2 rounded-full flex items-center justify-center">
-                                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M13.0163 6.26002C13.9709 6.81113 13.9709 8.1889 13.0163 8.74L2.81568 14.6294C1.86113 15.1805 0.667951 14.4916 0.667951 13.3894L0.667951 1.61066C0.667951 0.508444 1.86113 -0.180439 2.81568 0.370668L13.0163 6.26002Z" fill="white"></path>
-                                    </svg>
-                                </a>
-                            </div>
-                        </div>
+                        <video controls>
+                            <source src="/storage/{{ $profile->video }}">
+                        </video>
                     </div>
                     <div class="mt-7">
                         <h4 class="text-[28px] font-semibold mb-3">Educational Background</h4>
                         <div class="grid grid-cols-12 gap-4">
-                            <div class="col-span-full lg:col-span-4">
-                                <div class="bg-white p-7 rounded-xl h-full">
+                           @foreach($profile->educations as $education)
+                                <div class="col-span-full lg:col-span-4">
+                                    <div class="bg-white p-7 rounded-xl h-full">
                                         <span>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M19 10C16.995 9.36815 14.5882 9 12 9C9.41179 9 7.00499 9.36815 5 10V13.5C7.00499 12.8682 9.41179 12.5 12 12.5C14.5882 12.5 16.995 12.8682 19 13.5V10Z" stroke="#141B34" stroke-width="1.5" stroke-linejoin="round"/>
@@ -147,48 +141,20 @@
                                                 <path d="M16.5 16V17.3488C16.5 18.7695 15.8365 20.086 14.7522 20.8169L13.8522 21.4236C12.7121 22.1921 11.2879 22.1921 10.1478 21.4236L9.24782 20.8169C8.16348 20.086 7.5 18.7695 7.5 17.3488V16" stroke="#141B34" stroke-width="1.5" stroke-linecap="round"/>
                                                 <path d="M19 10L20.1257 9.4071C21.3888 8.57875 22.0203 8.16457 21.9995 7.57281C21.9787 6.98105 21.32 6.62104 20.0025 5.90101L15.2753 3.31756C13.6681 2.43919 12.8645 2 12 2C11.1355 2 10.3319 2.43919 8.72468 3.31756L3.99753 5.90101C2.68004 6.62104 2.02129 6.98105 2.0005 7.57281C1.9797 8.16457 2.61125 8.57875 3.87434 9.4071L5 10" stroke="#141B34" stroke-width="1.5" stroke-linecap="round"/>
                                             </svg>
-                                        </span>                                                <h6 class="text-lg font-semibold mt-4 mb-2">Master of Business Administration</h6>
-                                    <p class="text-sm">Govt. Commerce College Oman</p>
-                                    <p class="text-sm">2014-2015</p>
+                                        </span>                                                <h6 class="text-lg font-semibold mt-4 mb-2">{{ $education->degree }}</h6>
+                                        <p class="text-sm">Govt. Commerce College Oman</p>
+                                        <p class="text-sm">{{ \Carbon\Carbon::parse($education->start_date)->format('Y') }} - {{ \Carbon\Carbon::parse($education->end_date)->format('Y') }}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-span-full lg:col-span-4">
-                                <div class="bg-white p-7 rounded-xl h-full">
-                                        <span>
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M21.1609 9.92846C22.1928 9.54155 22.2858 7.69292 21.3685 5.79943C20.4512 3.90594 18.8711 2.68462 17.8391 3.07154M21.1609 9.92846C20.1289 10.3154 18.5488 9.09406 17.6315 7.20057C16.7142 5.30708 16.8072 3.45845 17.8391 3.07154M21.1609 9.92846L6.16089 18.9285C5.12895 19.3154 3.54878 18.0941 2.6315 16.2006C1.71421 14.3071 1.80716 12.4584 2.83911 12.0715L17.8391 3.07154" stroke="#141B34" stroke-width="1.5"/>
-                                                <path d="M15 13.6072C13.6383 13.0342 10.9233 10.9509 10.9574 7.20117M11.5 15.7012C10.3333 15.1444 7.9 13.0787 7.5 9.26966" stroke="#141B34" stroke-width="1.5"/>
-                                                <path d="M15.43 14C16.0276 15.1302 16.639 18.1124 14.5498 21L13.5632 19.584L11 20.8103C11 20.8103 12.8249 18.8868 11.9528 16" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-                                        </span>                                                  <h6 class="text-lg font-semibold mt-4 mb-2">Bachelor of Business <br>
-                                        studies </h6>
-                                    <p class="text-sm">Govt. Commerce College Oman</p>
-                                    <p class="text-sm">2014-2015</p>
-                                </div>
-                            </div>
-                            <div class="col-span-full lg:col-span-4">
-                                <div class="bg-white p-7 rounded-xl h-full">
-                                        <span>
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M19 10C16.995 9.36815 14.5882 9 12 9C9.41179 9 7.00499 9.36815 5 10V13.5C7.00499 12.8682 9.41179 12.5 12 12.5C14.5882 12.5 16.995 12.8682 19 13.5V10Z" stroke="#141B34" stroke-width="1.5" stroke-linejoin="round"/>
-                                                <path d="M19 13V15.0232C19 17.1542 17.9679 19.129 16.2812 20.2254L14.8812 21.1354C13.1078 22.2882 10.8922 22.2882 9.11882 21.1354L7.71883 20.2254C6.03208 19.129 5 17.1542 5 15.0232V13" stroke="#141B34" stroke-width="1.5" stroke-linecap="round"/>
-                                                <path d="M19 10L20.1257 9.4071C21.3888 8.57875 22.0203 8.16457 21.9995 7.57281C21.9787 6.98105 21.32 6.62104 20.0025 5.90101L15.2753 3.31756C13.6681 2.43919 12.8645 2 12 2C11.1355 2 10.3319 2.43919 8.72468 3.31756L3.99753 5.90101C2.68004 6.62104 2.02129 6.98105 2.0005 7.57281C1.9797 8.16457 2.61125 8.57875 3.87434 9.4071L5 10" stroke="#141B34" stroke-width="1.5" stroke-linecap="round"/>
-                                            </svg>
-                                        </span>
-                                    <h6 class="text-lg font-semibold mt-4 mb-2">AL-Zaber <br>
-                                        Institute</h6>
-                                    <p class="text-sm">Govt. Commerce College Oman</p>
-                                    <p class="text-sm">2014-2015</p>
-
-                                </div>
-                            </div>
+                           @endforeach
                         </div>
                     </div>
                     <div class="mt-7">
                         <h4 class="text-[28px] font-semibold mb-3">Work Experience</h4>
                         <div class="grid grid-cols-12 gap-4">
-                            <div class="col-span-full lg:col-span-6">
-                                <div class="bg-white p-7 rounded-xl h-full">
+                            @foreach($profile->experiences as $experience)
+                                <div class="col-span-full lg:col-span-6">
+                                    <div class="bg-white p-7 rounded-xl h-full">
                                         <span>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M11.0616 3.87181C11.6763 3.7094 12.3237 3.7094 12.9384 3.87181L13.3216 2.42157C12.4557 2.19281 11.5443 2.19281 10.6784 2.42157L11.0616 3.87181ZM16.927 7.06315C16.927 4.88128 15.4419 2.98176 13.3216 2.42157L12.9384 3.87181C14.4126 4.26128 15.427 5.57456 15.427 7.06315H16.927ZM8.57297 7.06315C8.57297 5.57455 9.58742 4.26128 11.0616 3.87181L10.6784 2.42157C8.55808 2.98176 7.07297 4.88127 7.07297 7.06315H8.57297ZM7.8414 7.50384L8.91496 7.29685L8.63098 5.82397L7.55742 6.03096L7.8414 7.50384ZM15.085 7.29685L16.1586 7.50384L16.4426 6.03096L15.369 5.82397L15.085 7.29685ZM19.8058 10.816L19.8988 11.1419L21.3412 10.7303L21.2482 10.4044L19.8058 10.816ZM4.10118 11.1419L4.19418 10.816L2.75176 10.4044L2.65877 10.7303L4.10118 11.1419ZM4.10471 16.1972C3.63385 14.5472 3.63087 12.79 4.10118 11.1419L2.65877 10.7303C2.11113 12.6493 2.1152 14.6917 2.66229 16.6088L4.10471 16.1972ZM19.8988 11.1419C20.3691 12.79 20.3662 14.5472 19.8953 16.1972L21.3377 16.6088C21.8848 14.6917 21.8889 12.6493 21.3412 10.7303L19.8988 11.1419ZM15.8509 19.8822C13.3077 20.3726 10.6923 20.3726 8.1491 19.8822L7.86512 21.3551C10.5959 21.8816 13.4041 21.8816 16.1349 21.3551L15.8509 19.8822ZM8.91496 7.29685C10.9524 6.90402 13.0477 6.90402 15.085 7.29685L15.369 5.82397C13.144 5.39498 10.856 5.39498 8.63098 5.82397L8.91496 7.29685ZM8.1491 19.8822C6.20493 19.5074 4.63939 18.0709 4.10471 16.1972L2.66229 16.6088C3.3533 19.0303 5.36966 20.874 7.86512 21.3551L8.1491 19.8822ZM16.1349 21.3551C18.6303 20.874 20.6467 19.0303 21.3377 16.6088L19.8953 16.1972C19.3606 18.0708 17.7951 19.5074 15.8509 19.8822L16.1349 21.3551ZM16.1586 7.50384C17.9164 7.84275 19.3239 9.12718 19.8058 10.816L21.2482 10.4044C20.6087 8.16326 18.747 6.47528 16.4426 6.03096L16.1586 7.50384ZM7.55742 6.03096C5.25297 6.47528 3.39132 8.16325 2.75176 10.4044L4.19418 10.816C4.67613 9.12717 6.08361 7.84275 7.8414 7.50384L7.55742 6.03096ZM3.38575 11.7917C8.93989 13.8462 15.0601 13.8462 20.6143 11.7917L20.0939 10.3849C14.8755 12.3151 9.12447 12.3151 3.90612 10.3849L3.38575 11.7917Z" fill="#363853"/>
@@ -196,32 +162,20 @@
                                                 <path d="M16 10.5V14" stroke="#363853" stroke-width="1.5" stroke-linecap="round"/>
                                             </svg>
                                         </span>
-                                    <h6 class="text-lg font-semibold mt-4 mb-2">UI/UX Designer at Firqah lab</h6>
-                                    <p class="text-sm">Muscat, Oman</p>
-                                    <p class="text-sm">2021-Present</p>
+                                        <h6 class="text-lg font-semibold mt-4 mb-2">{{ $experience->position }}</h6>
+                                        <p class="text-sm">{{ $experience->company }}</p>
+                                        <p class="text-sm">{{ \Carbon\Carbon::parse($education->start_date)->format('Y') }} - {{ $experience->is_current ? 'present' : \Carbon\Carbon::parse($education->end_date)->format('Y')}}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-span-full lg:col-span-6">
-                                <div class="bg-white p-7 rounded-xl h-full">
-                                        <span>
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M11.0616 3.87181C11.6763 3.7094 12.3237 3.7094 12.9384 3.87181L13.3216 2.42157C12.4557 2.19281 11.5443 2.19281 10.6784 2.42157L11.0616 3.87181ZM16.927 7.06315C16.927 4.88128 15.4419 2.98176 13.3216 2.42157L12.9384 3.87181C14.4126 4.26128 15.427 5.57456 15.427 7.06315H16.927ZM8.57297 7.06315C8.57297 5.57455 9.58742 4.26128 11.0616 3.87181L10.6784 2.42157C8.55808 2.98176 7.07297 4.88127 7.07297 7.06315H8.57297ZM7.8414 7.50384L8.91496 7.29685L8.63098 5.82397L7.55742 6.03096L7.8414 7.50384ZM15.085 7.29685L16.1586 7.50384L16.4426 6.03096L15.369 5.82397L15.085 7.29685ZM19.8058 10.816L19.8988 11.1419L21.3412 10.7303L21.2482 10.4044L19.8058 10.816ZM4.10118 11.1419L4.19418 10.816L2.75176 10.4044L2.65877 10.7303L4.10118 11.1419ZM4.10471 16.1972C3.63385 14.5472 3.63087 12.79 4.10118 11.1419L2.65877 10.7303C2.11113 12.6493 2.1152 14.6917 2.66229 16.6088L4.10471 16.1972ZM19.8988 11.1419C20.3691 12.79 20.3662 14.5472 19.8953 16.1972L21.3377 16.6088C21.8848 14.6917 21.8889 12.6493 21.3412 10.7303L19.8988 11.1419ZM15.8509 19.8822C13.3077 20.3726 10.6923 20.3726 8.1491 19.8822L7.86512 21.3551C10.5959 21.8816 13.4041 21.8816 16.1349 21.3551L15.8509 19.8822ZM8.91496 7.29685C10.9524 6.90402 13.0477 6.90402 15.085 7.29685L15.369 5.82397C13.144 5.39498 10.856 5.39498 8.63098 5.82397L8.91496 7.29685ZM8.1491 19.8822C6.20493 19.5074 4.63939 18.0709 4.10471 16.1972L2.66229 16.6088C3.3533 19.0303 5.36966 20.874 7.86512 21.3551L8.1491 19.8822ZM16.1349 21.3551C18.6303 20.874 20.6467 19.0303 21.3377 16.6088L19.8953 16.1972C19.3606 18.0708 17.7951 19.5074 15.8509 19.8822L16.1349 21.3551ZM16.1586 7.50384C17.9164 7.84275 19.3239 9.12718 19.8058 10.816L21.2482 10.4044C20.6087 8.16326 18.747 6.47528 16.4426 6.03096L16.1586 7.50384ZM7.55742 6.03096C5.25297 6.47528 3.39132 8.16325 2.75176 10.4044L4.19418 10.816C4.67613 9.12717 6.08361 7.84275 7.8414 7.50384L7.55742 6.03096ZM3.38575 11.7917C8.93989 13.8462 15.0601 13.8462 20.6143 11.7917L20.0939 10.3849C14.8755 12.3151 9.12447 12.3151 3.90612 10.3849L3.38575 11.7917Z" fill="#363853"/>
-                                                <path d="M8 10.5V14" stroke="#363853" stroke-width="1.5" stroke-linecap="round"/>
-                                                <path d="M16 10.5V14" stroke="#363853" stroke-width="1.5" stroke-linecap="round"/>
-                                            </svg>
-                                        </span>
-                                    <h6 class="text-lg font-semibold mt-4 mb-2">UI Designer at Potential</h6>
-                                    <p class="text-sm">Muscat, Oman</p>
-                                    <p class="text-sm">2016-2000</p>
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="mt-7">
                         <h4 class="text-[28px] font-semibold mb-3">Certification List</h4>
                         <div class="grid grid-cols-12 gap-4">
-                            <div class="col-span-full lg:col-span-4">
-                                <div class="bg-white p-7 rounded-xl h-full">
+                            @foreach($profile->certificates as $certificate)
+                                <div class="col-span-full lg:col-span-4">
+                                    <div class="bg-white p-7 rounded-xl h-full">
                                         <span>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M19 10C16.995 9.36815 14.5882 9 12 9C9.41179 9 7.00499 9.36815 5 10V13.5C7.00499 12.8682 9.41179 12.5 12 12.5C14.5882 12.5 16.995 12.8682 19 13.5V10Z" stroke="#141B34" stroke-width="1.5" stroke-linejoin="round"/>
@@ -230,61 +184,32 @@
                                                 <path d="M16.5 16V17.3488C16.5 18.7695 15.8365 20.086 14.7522 20.8169L13.8522 21.4236C12.7121 22.1921 11.2879 22.1921 10.1478 21.4236L9.24782 20.8169C8.16348 20.086 7.5 18.7695 7.5 17.3488V16" stroke="#141B34" stroke-width="1.5" stroke-linecap="round"/>
                                                 <path d="M19 10L20.1257 9.4071C21.3888 8.57875 22.0203 8.16457 21.9995 7.57281C21.9787 6.98105 21.32 6.62104 20.0025 5.90101L15.2753 3.31756C13.6681 2.43919 12.8645 2 12 2C11.1355 2 10.3319 2.43919 8.72468 3.31756L3.99753 5.90101C2.68004 6.62104 2.02129 6.98105 2.0005 7.57281C1.9797 8.16457 2.61125 8.57875 3.87434 9.4071L5 10" stroke="#141B34" stroke-width="1.5" stroke-linecap="round"/>
                                             </svg>
-                                        </span>                                                <h6 class="text-lg font-semibold mt-4 mb-2">UI/UX Design <br>
-                                        Course</h6>
-                                </div>
-                            </div>
-                            <div class="col-span-full lg:col-span-4">
-                                <div class="bg-white p-7 rounded-xl h-full">
-                                        <span>
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M21.1609 9.92846C22.1928 9.54155 22.2858 7.69292 21.3685 5.79943C20.4512 3.90594 18.8711 2.68462 17.8391 3.07154M21.1609 9.92846C20.1289 10.3154 18.5488 9.09406 17.6315 7.20057C16.7142 5.30708 16.8072 3.45845 17.8391 3.07154M21.1609 9.92846L6.16089 18.9285C5.12895 19.3154 3.54878 18.0941 2.6315 16.2006C1.71421 14.3071 1.80716 12.4584 2.83911 12.0715L17.8391 3.07154" stroke="#141B34" stroke-width="1.5"/>
-                                                <path d="M15 13.6072C13.6383 13.0342 10.9233 10.9509 10.9574 7.20117M11.5 15.7012C10.3333 15.1444 7.9 13.0787 7.5 9.26966" stroke="#141B34" stroke-width="1.5"/>
-                                                <path d="M15.43 14C16.0276 15.1302 16.639 18.1124 14.5498 21L13.5632 19.584L11 20.8103C11 20.8103 12.8249 18.8868 11.9528 16" stroke="#141B34" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                            </svg>
-                                        </span>                                                  <h6 class="text-lg font-semibold mt-4 mb-2">Master of Business <br> Administration</h6>
-                                </div>
-                            </div>
-                            <div class="col-span-full lg:col-span-4">
-                                <div class="bg-white p-7 rounded-xl h-full">
-                                        <span>
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M19 10C16.995 9.36815 14.5882 9 12 9C9.41179 9 7.00499 9.36815 5 10V13.5C7.00499 12.8682 9.41179 12.5 12 12.5C14.5882 12.5 16.995 12.8682 19 13.5V10Z" stroke="#141B34" stroke-width="1.5" stroke-linejoin="round"/>
-                                                <path d="M19 13V15.0232C19 17.1542 17.9679 19.129 16.2812 20.2254L14.8812 21.1354C13.1078 22.2882 10.8922 22.2882 9.11882 21.1354L7.71883 20.2254C6.03208 19.129 5 17.1542 5 15.0232V13" stroke="#141B34" stroke-width="1.5" stroke-linecap="round"/>
-                                                <path d="M19 10L20.1257 9.4071C21.3888 8.57875 22.0203 8.16457 21.9995 7.57281C21.9787 6.98105 21.32 6.62104 20.0025 5.90101L15.2753 3.31756C13.6681 2.43919 12.8645 2 12 2C11.1355 2 10.3319 2.43919 8.72468 3.31756L3.99753 5.90101C2.68004 6.62104 2.02129 6.98105 2.0005 7.57281C1.9797 8.16457 2.61125 8.57875 3.87434 9.4071L5 10" stroke="#141B34" stroke-width="1.5" stroke-linecap="round"/>
-                                            </svg>
                                         </span>
-                                    <h6 class="text-lg font-semibold mt-4 mb-2">Bachelor of Business <br>
-                                        studies </h6>
+                                        <h6 class="text-lg font-semibold mt-4 mb-2">{{ $certificate->title }}</h6>
+                                        @if($certificate->certificate_file)
+                                            <a href="/storage/{{ $certificate->certificate_file }}" class="text-primary-2 flex items-center space-x-2" target="_blank">@svg('hugeicons-file-01', 'size-5 mr-1')View Certificate</a>
+                                        @endif
+                                    </div>
                                 </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="mt-7">
-                        <h4 class="text-[28px] font-semibold mb-3">Achivement (New)</h4>
+                        <h4 class="text-[28px] font-semibold mb-3">Achievements</h4>
                         <div class="grid grid-cols-12 gap-4">
-                            <div class="col-span-full lg:col-span-6">
-                                <div class="bg-white p-7 rounded-xl h-full">
+                           @foreach($profile->achievements as $achievement)
+                                <div class="col-span-full lg:col-span-6">
+                                    <div class="bg-white p-7 rounded-xl h-full">
                                         <span>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M22.2391 4.93085C22.1969 4.8884 22.1467 4.85475 22.0914 4.83185C22.0361 4.80895 21.9768 4.79726 21.917 4.79745H19.7449C19.8757 3.85599 19.9408 2.90658 19.9399 1.95608C19.9399 1.83512 19.8918 1.71911 19.8063 1.63358C19.7207 1.54805 19.6047 1.5 19.4838 1.5H4.88926C4.7683 1.5 4.65229 1.54805 4.56676 1.63358C4.48123 1.71911 4.43318 1.83512 4.43318 1.95608C4.43243 2.90697 4.49777 3.85676 4.62872 4.79859H2.45608C2.33512 4.79859 2.21911 4.84664 2.13358 4.93217C2.04805 5.0177 2 5.13371 2 5.25467C2 6.75574 2.56155 8.21063 3.62421 9.46257C4.61504 10.6301 5.99753 11.5719 7.62744 12.1911C8.34976 13.0411 9.17127 13.6955 10.0675 14.1032C9.97796 16.8305 8.69182 18.8236 8.28192 19.392H7.90166C7.6295 19.392 7.36849 19.5001 7.17604 19.6925C6.9836 19.885 6.87548 20.146 6.87548 20.4181V21.7111C6.87548 21.9833 6.9836 22.2443 7.17604 22.4367C7.36849 22.6292 7.6295 22.7373 7.90166 22.7373H16.4725C16.7447 22.7373 17.0057 22.6292 17.1981 22.4367C17.3906 22.2443 17.4987 21.9833 17.4987 21.7111V20.4181C17.4987 20.146 17.3906 19.885 17.1981 19.6925C17.0057 19.5001 16.7447 19.392 16.4725 19.392H16.098C15.6858 18.7991 14.3996 16.745 14.3067 14.1026C15.2029 13.695 16.0244 13.0405 16.7467 12.1905C18.3766 11.5702 19.7591 10.629 20.75 9.462C21.8115 8.20778 22.373 6.75517 22.373 5.25467C22.3734 5.1945 22.3617 5.13487 22.3387 5.07927C22.3157 5.02367 22.2818 4.97321 22.2391 4.93085ZM2.93325 5.71075H4.77866C5.13497 7.59663 5.75467 9.30237 6.57675 10.7008C4.44401 9.51045 3.10998 7.70609 2.93325 5.71075ZM16.5865 20.4193V21.7123C16.5865 21.7425 16.5745 21.7715 16.5531 21.7929C16.5318 21.8143 16.5028 21.8263 16.4725 21.8263H7.90166C7.87142 21.8263 7.84242 21.8143 7.82104 21.7929C7.79965 21.7715 7.78764 21.7425 7.78764 21.7123V20.4181C7.78764 20.3879 7.79965 20.3589 7.82104 20.3375C7.84242 20.3161 7.87142 20.3041 7.90166 20.3041H16.4725C16.5028 20.3041 16.5318 20.3161 16.5531 20.3375C16.5745 20.3589 16.5865 20.3879 16.5865 20.4181V20.4193ZM9.3805 19.3931C10.3074 17.8903 10.8517 16.1832 10.9659 14.4213C11.7673 14.6277 12.608 14.6277 13.4094 14.4213C13.5525 16.6521 14.4356 18.4439 15.0102 19.3937L9.3805 19.3931ZM13.6802 13.378C12.7205 13.7563 11.6531 13.7563 10.6934 13.378C9.22372 12.8079 7.87943 11.3872 6.90855 9.37477C5.95762 7.40451 5.40976 4.94853 5.35104 2.41273H19.0231C18.9661 4.94853 18.4166 7.40451 17.4656 9.37477C16.4948 11.3866 15.151 12.8085 13.6802 13.378ZM17.7974 10.6985C18.6201 9.29838 19.2398 7.59378 19.5955 5.7079H21.4404C21.2636 7.70438 19.9302 9.50931 17.7974 10.7002V10.6985Z" fill="black" stroke="black" stroke-width="0.5"/>
                                             </svg>
                                         </span>
-                                    <h6 class="text-lg font-semibold mt-4 mb-2">UI/UX Designer at Firqah lab</h6>
-                                    <p class="text-sm">With a perfect blend of innovative design thinking, a user-centered approach, and a passion for excellence, Saiful has consistently.</p>
+                                        <h6 class="text-lg font-semibold mt-4 mb-2">{{ $achievement->title }}</h6>
+                                        <p class="text-sm">{{ $achievement->description }}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-span-full lg:col-span-6">
-                                <div class="bg-white p-7 rounded-xl h-full">
-                                        <span>
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M9.12115 17.983C9.12115 18.538 9.28572 19.0805 9.59404 19.5419C9.90236 20.0033 10.3406 20.363 10.8533 20.5754C11.366 20.7877 11.9302 20.8433 12.4745 20.735C13.0188 20.6268 13.5188 20.3595 13.9112 19.9671C14.3036 19.5747 14.5709 19.0747 14.6791 18.5304C14.7874 17.9861 14.7318 17.4219 14.5195 16.9092C14.3071 16.3965 13.9474 15.9583 13.486 15.6499C13.0246 15.3416 12.4821 15.1771 11.9271 15.1771C11.1831 15.1778 10.4699 15.4736 9.94381 15.9997C9.41775 16.5258 9.12189 17.239 9.12115 17.983ZM13.8465 17.983C13.8465 18.3628 13.7339 18.734 13.5229 19.0497C13.3119 19.3654 13.012 19.6115 12.6611 19.7568C12.3103 19.9021 11.9242 19.9401 11.5518 19.866C11.1793 19.7919 10.8372 19.609 10.5688 19.3404C10.3003 19.0718 10.1175 18.7297 10.0435 18.3572C9.96943 17.9848 10.0075 17.5987 10.1529 17.2479C10.2983 16.8971 10.5445 16.5973 10.8603 16.3864C11.1761 16.1755 11.5474 16.063 11.9271 16.0631C12.4361 16.0637 12.924 16.2662 13.2838 16.6261C13.6437 16.986 13.846 17.474 13.8465 17.983ZM18.826 1.62964C18.8573 1.56215 18.8711 1.48786 18.8662 1.41362C18.8613 1.33937 18.8377 1.26757 18.7977 1.20483C18.7577 1.14209 18.7025 1.09044 18.6373 1.05464C18.5721 1.01884 18.4989 1.00005 18.4245 1H14.8804C14.796 1.00006 14.7133 1.02422 14.6422 1.06964C14.5711 1.11506 14.5144 1.17986 14.4789 1.2564L11.9072 6.79409L9.38419 1.25916L9.37533 1.24255C9.37533 1.23757 9.37035 1.23258 9.36758 1.2276C9.36305 1.21903 9.35806 1.21071 9.35263 1.20268L9.34543 1.1916C9.33934 1.18274 9.33269 1.17444 9.32605 1.16558L9.31996 1.15838C9.31282 1.14969 9.30524 1.14137 9.29725 1.13346C9.29551 1.13116 9.29346 1.12911 9.29116 1.12737C9.28345 1.11937 9.27532 1.11179 9.26679 1.10466L9.25904 1.09857L9.23412 1.07974L9.22305 1.07254C9.21529 1.06756 9.20754 1.06258 9.19923 1.05815L9.18539 1.04984L9.16268 1.03932L9.14552 1.03212C9.13832 1.02887 9.13092 1.02609 9.12337 1.02381L9.10731 1.01772L9.08294 1.01163L9.06578 1.00775L9.03753 1.00388H9.02369H8.99102H5.43416C5.42438 1.00333 5.41458 1.00333 5.40481 1.00388H5.38985L5.36383 1.00775L5.345 1.01108L5.32562 1.01606L5.30125 1.02326L5.2863 1.02824L5.25916 1.03932H5.25529L5.24532 1.0443L5.2204 1.05704L5.20379 1.06701L5.18496 1.07974L5.16613 1.09359L5.15173 1.10522L5.1329 1.12238L5.12072 1.13457C5.11463 1.14066 5.10909 1.14675 5.10355 1.15339L5.09193 1.16724L5.07808 1.18551L5.06645 1.20268L5.05593 1.2204L5.0443 1.24089L5.03655 1.25695L5.02658 1.28021C5.02658 1.28574 5.0227 1.29128 5.02049 1.29627C5.01827 1.30125 5.01551 1.31233 5.01329 1.32063C5.01108 1.32894 5.00997 1.33282 5.00831 1.33891L5.00332 1.36161L5 1.38432C5 1.39041 5 1.39705 5 1.40314C5 1.40924 5 1.42197 5 1.43139C5 1.4408 5 1.43859 5 1.44246C5 1.44634 5 1.44246 5 1.44689C5 1.45132 5 1.46627 5 1.47624C5 1.48621 5 1.48621 5 1.49119C5 1.49618 5 1.50836 5.00388 1.51722C5.00775 1.52608 5.00388 1.52996 5.00775 1.53605C5.00889 1.54263 5.01056 1.54911 5.01274 1.55543C5.01436 1.5637 5.01658 1.57184 5.01938 1.5798C5.01938 1.58478 5.0227 1.58976 5.02492 1.59475C5.02713 1.59973 5.03156 1.61302 5.03544 1.62188V1.62576L9.65609 11.7775L9.41797 13.4764C8.41783 14.0335 7.6314 14.9074 7.18256 15.9605C6.73371 17.0137 6.64796 18.1862 6.93881 19.2935C7.22965 20.4007 7.88056 21.3798 8.78903 22.0764C9.69749 22.773 10.8119 23.1476 11.9567 23.1412C13.1015 23.1349 14.2116 22.7478 15.1122 22.0411C16.0129 21.3344 16.6528 20.3482 16.9313 19.2378C17.2098 18.1274 17.111 16.9559 16.6505 15.9078C16.1899 14.8597 15.3938 13.9946 14.3875 13.4487L14.1162 11.7747L18.826 1.62964ZM15.1628 1.88603H17.7301L13.3741 11.2685H10.8068L12.302 8.05115L15.1628 1.88603ZM10.1168 10.6511L6.12969 1.88603H8.70084L11.4176 7.85456L10.1168 10.6511ZM16.2 17.983C16.2 18.8282 15.9493 19.6545 15.4797 20.3573C15.0101 21.06 14.3427 21.6078 13.5618 21.9312C12.7809 22.2546 11.9216 22.3392 11.0926 22.1743C10.2637 22.0094 9.5022 21.6023 8.90457 21.0046C8.30695 20.4069 7.89998 19.6454 7.73516 18.8164C7.57033 17.9874 7.65503 17.1281 7.97856 16.3472C8.3021 15.5664 8.84992 14.899 9.55276 14.4295C10.2556 13.96 11.0819 13.7095 11.9271 13.7096C13.0601 13.7107 14.1463 14.1614 14.9474 14.9626C15.7485 15.7637 16.199 16.85 16.2 17.983ZM11.9271 12.8235C11.3989 12.823 10.8739 12.9041 10.3705 13.0639L10.4978 12.1546H13.28L13.4267 13.0456C12.9406 12.8977 12.4352 12.8228 11.9271 12.8235Z" fill="black" stroke="black" stroke-width="0.5"/>
-                                            </svg>
-                                        </span>
-                                    <h6 class="text-lg font-semibold mt-4 mb-2">Creative Designer</h6>
-                                    <p class="text-sm">With a perfect blend of innovative design thinking, a user-centered approach, and a passion for excellence, Saiful has consistently delivered.</p>
-                                </div>
-                            </div>
+                           @endforeach
                         </div>
                     </div>
                     <div class="mt-7">
@@ -292,7 +217,7 @@
                         <div class="py-4">
                             <div class="flex gap-4">
                                 <div class="shrink-0">
-                                    <img src="assets/images/review_1.png" alt="images" class="">
+                                    <img src="/assets/images/review_1.png" alt="images" class="">
                                 </div>
                                 <div class="w-full">
                                     <div class="w-full flex items-center justify-between gap-3 flex-wrap mb-3">
@@ -316,7 +241,7 @@
                         <div class="py-4 border-t">
                             <div class="flex gap-4">
                                 <div class="shrink-0">
-                                    <img src="assets/images/review_2.png" alt="images" class="">
+                                    <img src="/assets/images/review_2.png" alt="images" class="">
                                 </div>
                                 <div class="w-full">
                                     <div class="w-full flex items-center justify-between gap-3 flex-wrap mb-3">

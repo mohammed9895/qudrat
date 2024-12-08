@@ -25,6 +25,9 @@ class DigitalLibraryCategoryResource extends Resource
 
     protected static ?string $navigationGroup = 'Digital Library';
 
+    protected static ?int $navigationSort = 1;
+
+
     public static function form(Form $form): Form
     {
         return $form
@@ -55,8 +58,9 @@ class DigitalLibraryCategoryResource extends Resource
                 Forms\Components\Group::make()->schema([
                     Forms\Components\Section::make()
                         ->schema([
-                            Forms\Components\TextInput::make('parent_id')
-                                ->numeric(),
+                            Forms\Components\Toggle::make('status'),
+                            Forms\Components\Select::make('parent_id')
+                                ->relationship('parent', 'name'),
                         ]),
                     ])->columnSpan(1),
             ])->columns(3);

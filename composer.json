@@ -8,7 +8,9 @@
     "require": {
         "php": "^8.2",
         "afatmustafa/blade-hugeicons": "^0.0.3",
+        "bezhansalleh/filament-language-switch": "^3.1",
         "codeat3/blade-coolicons": "^1.5",
+        "cyrildewit/eloquent-viewable": "^7.0",
         "filament/filament": "^3.2",
         "filament/spatie-laravel-translatable-plugin": "^3.2",
         "jaocero/filachat": "dev-main",
@@ -17,7 +19,9 @@
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.5",
         "owenvoke/blade-fontawesome": "^2.7",
-        "spatie/laravel-translatable": "^6.8"
+        "ralphjsmit/laravel-filament-onboard": "^2.5",
+        "spatie/laravel-translatable": "^6.8",
+        "wireui/breadcrumbs": "^3.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -74,9 +78,16 @@
         "sort-packages": true,
         "allow-plugins": {
             "pestphp/pest-plugin": true,
-            "php-http/discovery": true
+            "php-http/discovery": true,
+            "ralphjsmit/packages": true
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://satis.ralphjsmit.com"
+        }
+    ]
 }

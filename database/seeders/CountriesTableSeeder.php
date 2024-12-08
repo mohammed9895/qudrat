@@ -2,23 +2,110 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class CountriesTableSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
+    public function run()
     {
         $countries = [
-            ['id' => 1, 'name' => 'Oman', 'code' => 'OM', 'created_at' => '2022-11-07 14:54:25', 'updated_at' => '2022-11-07 14:54:25'],
-            ['id' => 2, 'name' => 'Åland Islands', 'code' => 'AX', 'created_at' => '2022-11-07 14:54:25', 'updated_at' => '2022-11-07 14:54:25'],
-            ['id' => 3, 'name' => 'Albania', 'code' => 'AL', 'created_at' => '2022-11-07 14:54:25', 'updated_at' => '2022-11-07 14:54:25'],
-            ['id' => 4, 'name' => 'Algeria', 'code' => 'DZ', 'created_at' => '2022-11-07 14:54:25', 'updated_at' => '2022-11-07 14:54:25'],
+            ["en" => "Kazakhstan", "ar" => "كازاخستان", "code" => "KZ"],
+            ["en" => "Kenya", "ar" => "كينيا", "code" => "KE"],
+            ["en" => "Kiribati", "ar" => "كيريباتي", "code" => "KI"],
+            ["en" => "Kuwait", "ar" => "الكويت", "code" => "KW"],
+            ["en" => "Kyrgyzstan", "ar" => "قيرغيزستان", "code" => "KG"],
+            ["en" => "Laos", "ar" => "لاوس", "code" => "LA"],
+            ["en" => "Latvia", "ar" => "لاتفيا", "code" => "LV"],
+            ["en" => "Lebanon", "ar" => "لبنان", "code" => "LB"],
+            ["en" => "Lesotho", "ar" => "ليسوتو", "code" => "LS"],
+            ["en" => "Liberia", "ar" => "ليبيريا", "code" => "LR"],
+            ["en" => "Libya", "ar" => "ليبيا", "code" => "LY"],
+            ["en" => "Liechtenstein", "ar" => "ليختنشتاين", "code" => "LI"],
+            ["en" => "Lithuania", "ar" => "ليتوانيا", "code" => "LT"],
+            ["en" => "Luxembourg", "ar" => "لوكسمبورغ", "code" => "LU"],
+            ["en" => "Madagascar", "ar" => "مدغشقر", "code" => "MG"],
+            ["en" => "Malawi", "ar" => "مالاوي", "code" => "MW"],
+            ["en" => "Malaysia", "ar" => "ماليزيا", "code" => "MY"],
+            ["en" => "Maldives", "ar" => "المالديف", "code" => "MV"],
+            ["en" => "Mali", "ar" => "مالي", "code" => "ML"],
+            ["en" => "Malta", "ar" => "مالطا", "code" => "MT"],
+            ["en" => "Marshall Islands", "ar" => "جزر مارشال", "code" => "MH"],
+            ["en" => "Mauritania", "ar" => "موريتانيا", "code" => "MR"],
+            ["en" => "Mauritius", "ar" => "موريشيوس", "code" => "MU"],
+            ["en" => "Mexico", "ar" => "المكسيك", "code" => "MX"],
+            ["en" => "Micronesia", "ar" => "ميكرونيزيا", "code" => "FM"],
+            ["en" => "Moldova", "ar" => "مولدوفا", "code" => "MD"],
+            ["en" => "Monaco", "ar" => "موناكو", "code" => "MC"],
+            ["en" => "Mongolia", "ar" => "منغوليا", "code" => "MN"],
+            ["en" => "Montenegro", "ar" => "الجبل الأسود", "code" => "ME"],
+            ["en" => "Morocco", "ar" => "المغرب", "code" => "MA"],
+            ["en" => "Mozambique", "ar" => "موزمبيق", "code" => "MZ"],
+            ["en" => "Myanmar (Burma)", "ar" => "ميانمار", "code" => "MM"],
+            ["en" => "Namibia", "ar" => "ناميبيا", "code" => "NA"],
+            ["en" => "Nauru", "ar" => "ناورو", "code" => "NR"],
+            ["en" => "Nepal", "ar" => "نيبال", "code" => "NP"],
+            ["en" => "Netherlands", "ar" => "هولندا", "code" => "NL"],
+            ["en" => "New Zealand", "ar" => "نيوزيلندا", "code" => "NZ"],
+            ["en" => "Nicaragua", "ar" => "نيكاراغوا", "code" => "NI"],
+            ["en" => "Niger", "ar" => "النيجر", "code" => "NE"],
+            ["en" => "Nigeria", "ar" => "نيجيريا", "code" => "NG"],
+            ["en" => "North Korea", "ar" => "كوريا الشمالية", "code" => "KP"],
+            ["en" => "North Macedonia", "ar" => "مقدونيا الشمالية", "code"=> "MK"],
+            ["en" => "Norway", "ar" => "النرويج", "code"=> "NO"],
+            ["en" => "Oman", "ar" => "عمان", "code"=> "OM"],
+            ["en" => "Pakistan", "ar" => "باكستان", "code"=> "PK"],
+            ["en" => "Palau", "ar" => "بالاو", "code"=> "PW"],
+            ["en" => "Palestine", "ar" => "فلسطين", "code"=> "PS"],
+            ["en" => "Panama", "ar" => "بنما", "code"=> "PA"],
+            ["en" => "Papua New Guinea", "ar" => "بابوا غينيا الجديدة", "code"=> "PG"],
+            ["en" => "Paraguay", "ar" => "باراغواي", "code"=> "PY"],
+            ["en" => "Peru", "ar" => "بيرو", "code"=> "PE"],
+            ["en" => "Philippines", "ar" => "الفلبين", "code"=> "PH"],
+            ["en" => "Poland", "ar" => "بولندا", "code"=> "PL"],
+            ["en" => "Portugal", "ar" => "البرتغال", "code"=> "PT"],
+            ["en" => "Qatar", "ar" => "قطر", "code"=> "QA"],
+            ["en" => "Romania", "ar" => "رومانيا", "code"=> "RO"],
+            ["en" => "Russia", "ar" => "روسيا", "code"=> "RU"],
+            ["en" => "Rwanda", "ar" => "رواندا", "code"=> "RW"],
+            ["en" => "Saint Kitts and Nevis", "ar" => "سانت كيتس ونيفيس", "code"=> "KN"],
+            ["en" => "Saint Lucia", "ar" => "سانت لوسيا", "code"=> "LC"],
+            ["en" => "Saint Vincent and the Grenadines", "ar" => "سانت فنسنت وجزر غرينادين", "code"=> "VC"],
+            ["en" => "Samoa", "ar" => "ساموا", "code"=> "WS"],
+            ["en" => "San Marino", "ar" => "سان مارينو", "code"=> "SM"],
+            ["en" => "Sao Tome and Principe", "ar" => "ساو تومي وبرينسيب", "code"=> "ST"],
+            ["en" => "Saudi Arabia", "ar" => "المملكة العربية السعودية", "code"=> "SA"],
+            ["en" => "Senegal", "ar" => "السنغال", "code"=> "SN"],
+            ["en" => "Serbia", "ar" => "صربيا", "code"=> "RS"],
+            ["en" => "Seychelles", "ar" => "سيشيل", "code"=> "SC"],
+            ["en" => "Sierra Leone", "ar" => "سيراليون", "code"=> "SL"],
+            ["en" => "Singapore", "ar" => "سنغافورة", "code"=> "SG"],
+            ["en" => "Slovakia", "ar" => "سلوفاكيا", "code"=> "SK"],
+            ["en" => "Slovenia", "ar" => "سلوفينيا", "code"=> "SI"],
+            ["en" => "Solomon Islands", "ar" => "جزر سليمان", "code"=> "SB"],
+            ["en" => "Somalia", "ar" => "الصومال", "code"=> "SO"],
+            ["en" => "South Africa", "ar" => "جنوب أفريقيا", "code"=> "ZA"],
+            ["en" => "South Korea", "ar" => "كوريا الجنوبية", "code"=> "KR"],
+            ["en" => "South Sudan", "ar" => "جنوب السودان", "code"=> "SS"],
+            ["en" => "Spain", "ar" => "إسبانيا", "code"=> "ES"],
+            ["en" => "Sri Lanka", "ar" => "سريلانكا", "code"=> "LK"],
+            ["en" => "Sudan", "ar" => "السودان", "code"=> "SD"],
+            ["en" => "Suriname", "ar" => "سورينام", "code"=> "SR"],
+            ["en" => "Sweden", "ar" => "السويد", "code"=> "SE"],
+            ["en" => "Switzerland", "ar" => "سويسرا", "code"=> "CH"],
+            ["en" => "Syria", "ar" => "سوريا", "code"=> "SY"],
+            ["en" => "Taiwan", "ar" => "تايوان", "code"=> "TW"],
+            ["en" => "Tajikistan", "ar" => "طاجيكستان", "code"=> "TJ"],
+            ["en" => "Tanzania", "ar" => "تنزانيا", "code"=> "TZ"],
+            ["en" => "Thailand", "ar" => "تايلاند", "code"=> "TH"],
+            ["en" => "Timor-Leste", "ar" => "تيمور الشرقية", "code"=> "TL"],
         ];
 
-        DB::table('countries')->insert($countries);
+        foreach ($countries as $country) {
+            DB::table('countries')->insert([
+                'name' => json_encode(['en' => $country['en'], 'ar' => $country['ar']]),
+                'code' => $country['code'],
+            ]);
+        }
     }
 }

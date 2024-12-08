@@ -15,11 +15,13 @@ return new class extends Migration
             $table->id();
             $table->foreignId('author_id')->nullable()->constrained('users')->cascadeOnDelete();
             $table->foreignIdFor(\App\Models\DigitalLibraryCategory::class)->constrained('digital_library_categories')->cascadeOnDelete();
-            $table->string('title')->nullable();
+            $table->text('title')->nullable();
             $table->string('slug')->nullable();
             $table->text('description')->nullable();
+            $table->text('image')->nullable();
+            $table->text('file')->nullable();
             $table->boolean('is_featured')->nullable();
-            $table->string('status')->default(0)->nullable();
+            $table->integer('status')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

@@ -9,6 +9,7 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 
 class Certificates extends Page
@@ -64,5 +65,13 @@ class Certificates extends Page
             $this->form->getState()
         );
         $this->form->model($profile)->saveRelationships();
+
+        Notification::make('saved')
+            ->title('Saved')
+            ->body('Your profile has been saved.')
+            ->iconColor('success')
+            ->icon('heroicon-o-check-circle')
+            ->color('success')
+            ->send();
     }
 }

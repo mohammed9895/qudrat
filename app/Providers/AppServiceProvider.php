@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Support\Facades\Vite;
@@ -25,5 +26,10 @@ class AppServiceProvider extends ServiceProvider
         FilamentAsset::register([
             Js::make('app', Vite::asset('resources/js/app.js'))->module(),
         ]);
+
+        LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
+            $switch
+                ->locales(['ar','en']); // also accepts a closure
+        });
     }
 }

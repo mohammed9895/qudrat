@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
 
 class DigitalLibraryCategory extends Model
 {
 
+    use HasFactory;
     use HasTranslations;
     protected $fillable = ['name', 'slug', 'description', 'image', 'parent_id'];
 
@@ -23,7 +25,7 @@ class DigitalLibraryCategory extends Model
         return $this->belongsTo(DigitalLibraryCategory::class, 'parent_id');
     }
 
-    public function digitalLibraryPosts()
+    public function posts()
     {
         return $this->hasMany(DigitalLibraryPost::class);
     }

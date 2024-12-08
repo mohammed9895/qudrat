@@ -6,6 +6,7 @@ use App\Filament\User\Clusters\Profile;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 
 class MoreAboutYou extends Page
@@ -36,11 +37,21 @@ class MoreAboutYou extends Page
                 Section::make('More About You')
                     ->collapsible()
                     ->schema([
-                        TagsInput::make('categories'),
-                        TagsInput::make('skills'),
-                        TagsInput::make('interests'),
-                        TagsInput::make('languages'),
-                        TagsInput::make('tools'),
+                        TagsInput::make('categories')
+                            ->hint('Add categories that you are interested in and press enter')
+                            ->placeholder('add category'),
+                        TagsInput::make('skills')
+                            ->hint('Add skills that you have and press enter')
+                        ->placeholder('add skill'),
+                        TagsInput::make('interested')
+                            ->hint('Add what you are interested in and press enter')
+                        ->placeholder('add interested'),
+                        TagsInput::make('languages')
+                            ->hint('Add languages that you know and press enter')
+                        ->placeholder('add language'),
+                        TagsInput::make('tools')
+                            ->hint('Add tools that you use and press enter')
+                        ->placeholder('add tool'),
                     ]),
             ])
             ->statePath('data')
@@ -54,5 +65,12 @@ class MoreAboutYou extends Page
             $this->form->getState()
         );
         $this->form->model($profile)->saveRelationships();
+        Notification::make('saved')
+            ->title('Saved')
+            ->body('Your profile has been saved.')
+            ->iconColor('success')
+            ->icon('heroicon-o-check-circle')
+            ->color('success')
+            ->send();
     }
 }

@@ -9,12 +9,14 @@ use App\Models\State;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
+use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
+use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 
 class BasicInformation extends Page
@@ -47,7 +49,7 @@ class BasicInformation extends Page
                     FileUpload::make('avatar')->avatar(),
                     TextInput::make('fullname'),
                     TextInput::make('position'),
-                    MarkdownEditor::make('bio'),
+                    RichEditor::make('bio'),
                     TextInput::make('username')->prefix('https://qudrat.om/'),
                     TextInput::make('email'),
                     TextInput::make('phone'),
@@ -55,7 +57,7 @@ class BasicInformation extends Page
                         ->searchable()
                         ->options(['Male', 'Female']),
                     DatePicker::make('dob')->native(false),
-                    FileUpload::make('video'),
+                    FileUpload::make('video')->acceptedFileTypes(['video/mp4', 'video/mov']),
                 ]),
                 Section::make('Location')
                     ->collapsible()
@@ -97,5 +99,12 @@ class BasicInformation extends Page
            $this->form->getState()
         );
         $this->form->model($profile)->saveRelationships();
+        Notification::make('saved')
+            ->title('Saved')
+            ->body('Your profile has been saved.')
+            ->iconColor('success')
+            ->icon('heroicon-o-check-circle')
+            ->color('success')
+            ->send();
     }
 }

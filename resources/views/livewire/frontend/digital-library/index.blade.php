@@ -4,14 +4,8 @@
         <div class="container">
             <div class="flex items-center justify-between gap-4 flex-wrap md:flex-nowrap">
                 <div class="w-full md:w-6/12">
-                    <div class="flex items-center gap-3 mb-3">
-                        <a href="" class="text-head-color text-sm">Home</a>
-                        <span class="text-gray-3 text-sm">/</span>
-                        <a href="" class="text-head-color text-sm">Pages</a>
-                        <span class="text-gray-3 text-sm">/</span>
-                        <span class="text-b-color text-sm">Library Page</span>
-                    </div>
-                    <h2 class="text-4xl sm:text-5xl font-semibold mb-3">Digital Library Page</h2>
+                    <x-breadcrumbs />
+                    <h2 class="text-4xl sm:text-5xl font-semibold mb-3">Digital Library</h2>
                 </div>
                 <div class="w-6/12">
                     <div class="text-end">
@@ -26,151 +20,21 @@
     <!-- Card & Siderbar -->
     <div class="pt-24 pb-12">
         <div class="container">
-            <div class="grid grid-cols-12 gap-5">
-                <div class="col-span-full xl:col-span-3">
-                    <div class="bg-white p-6 rounded-xl">
-                        <div class="pb-5 border-b">
-                            <h6 class="text-lg font-semibold mb-3">Featured Resources</h6>
-                            <div class="flex items-center mb-4">
-                                <input id="default-checkbox" type="checkbox" value="" class="peer w-4 h-4 text-primary-2 bg-white border-gray-300 rounded focus:ring-transparent focus:ring-2">
-                                <label for="default-checkbox" class="ms-2 text-sm font-medium text-b-color peer-checked:text-primary-2">
-                                    Popular e-Books
-                                </label>
-                            </div>
-                            <div class="flex items-center mb-4">
-                                <input id="checked-checkbox" type="checkbox" value="" class="peer w-4 h-4 text-primary-2 bg-white border-gray-300 rounded focus:ring-primary-2 dark:focus:ring-transparent dark:ring-offset-gray-800 focus:ring-2" checked>
-                                <label for="checked-checkbox" class="ms-2 text-sm font-medium text-b-color  peer-checked:text-primary-2">
-                                    Articles
-                                </label>
-                            </div>
-                            <div class="flex items-center">
-                                <input id="checked-checkbox" type="checkbox" value="" class="peer w-4 h-4 text-primary-2 bg-white border-gray-300 rounded focus:ring-primary-2 dark:focus:ring-transparent dark:ring-offset-gray-800 focus:ring-2" checked>
-                                <label for="checked-checkbox" class="ms-2 text-sm font-medium text-b-color  peer-checked:text-primary-2">
-                                    Tutorials
-                                </label>
-                            </div>
-                        </div>
-                        <div class="pb-5 border-b mt-4">
-                            <h6 class="text-lg font-semibold mb-3">Categories</h6>
-                            <div class="flex items-center mb-4">
-                                <input id="default-checkbox" type="checkbox" value="" class="peer w-4 h-4 text-primary-2 bg-white border-gray-300 rounded focus:ring-transparent focus:ring-2">
-                                <label for="default-checkbox" class="ms-2 text-sm font-medium text-b-color peer-checked:text-primary-2">
-                                    Popular e-Books
-                                </label>
-                            </div>
-                            <div class="flex items-center mb-4">
-                                <input id="checked-checkbox" type="checkbox" value="" class="peer w-4 h-4 text-primary-2 bg-white border-gray-300 rounded focus:ring-primary-2 dark:focus:ring-transparent dark:ring-offset-gray-800 focus:ring-2" checked>
-                                <label for="checked-checkbox" class="ms-2 text-sm font-medium text-b-color  peer-checked:text-primary-2">
-                                    Articles
-                                </label>
-                            </div>
-                            <div class="flex items-center">
-                                <input id="checked-checkbox" type="checkbox" value="" class="peer w-4 h-4 text-primary-2 bg-white border-gray-300 rounded focus:ring-primary-2 dark:focus:ring-transparent dark:ring-offset-gray-800 focus:ring-2" checked>
-                                <label for="checked-checkbox" class="ms-2 text-sm font-medium text-b-color  peer-checked:text-primary-2">
-                                    Tutorials
-                                </label>
-                            </div>
-                        </div>
-                        <div class="pb-5 border-b mt-4">
-                            <h6 class="text-lg font-semibold mb-3">Categories</h6>
-                            <div class="flex items-center mb-4">
-                                <input id="default-checkbox" type="checkbox" value="" class="peer w-4 h-4 text-primary-2 bg-white border-gray-300 rounded focus:ring-transparent focus:ring-2">
-                                <label for="default-checkbox" class="ms-2 text-sm font-medium text-b-color peer-checked:text-primary-2">
-                                    Popular e-Books
-                                </label>
-                            </div>
-                            <div class="flex items-center mb-4">
-                                <input id="checked-checkbox" type="checkbox" value="" class="peer w-4 h-4 text-primary-2 bg-white border-gray-300 rounded focus:ring-primary-2 dark:focus:ring-transparent dark:ring-offset-gray-800 focus:ring-2" checked>
-                                <label for="checked-checkbox" class="ms-2 text-sm font-medium text-b-color  peer-checked:text-primary-2">
-                                    Articles
-                                </label>
-                            </div>
-                            <div class="flex items-center">
-                                <input id="checked-checkbox" type="checkbox" value="" class="peer w-4 h-4 text-primary-2 bg-white border-gray-300 rounded focus:ring-primary-2 dark:focus:ring-transparent dark:ring-offset-gray-800 focus:ring-2" checked>
-                                <label for="checked-checkbox" class="ms-2 text-sm font-medium text-b-color  peer-checked:text-primary-2">
-                                    Tutorials
-                                </label>
-                            </div>
-                        </div>
-                        <div class="pb-2 mt-4">
-                            <h6 class="text-lg font-semibold mb-3">Resource of the Week</h6>
-                            <div class="flex items-center mb-4">
-                                <input id="default-checkbox" type="checkbox" value="" class="peer w-4 h-4 text-primary-2 bg-white border-gray-300 rounded focus:ring-transparent focus:ring-2">
-                                <label for="default-checkbox" class="ms-2 text-sm font-medium text-b-color peer-checked:text-primary-2">
-                                    Popular e-Books
-                                </label>
-                            </div>
-                            <div class="flex items-center mb-4">
-                                <input id="checked-checkbox" type="checkbox" value="" class="peer w-4 h-4 text-primary-2 bg-white border-gray-300 rounded focus:ring-primary-2 dark:focus:ring-transparent dark:ring-offset-gray-800 focus:ring-2" checked>
-                                <label for="checked-checkbox" class="ms-2 text-sm font-medium text-b-color  peer-checked:text-primary-2">
-                                    Articles
-                                </label>
-                            </div>
-                            <div class="flex items-center">
-                                <input id="checked-checkbox" type="checkbox" value="" class="peer w-4 h-4 text-primary-2 bg-white border-gray-300 rounded focus:ring-primary-2 dark:focus:ring-transparent dark:ring-offset-gray-800 focus:ring-2" checked>
-                                <label for="checked-checkbox" class="ms-2 text-sm font-medium text-b-color  peer-checked:text-primary-2">
-                                    Tutorials
-                                </label>
-                            </div>
+            <div class="text-center mb-9">
+                <h2 class="text-4xl sm:text-5xl font-semibold mb-3">Featured Resources</h2>
+                <p>The best featured Popular e-books, articles, and videos</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+                @foreach($categories as $category)
+                    <div class="">
+                        <div class="bg-white p-5 rounded-xl shadow-default">
+                            <img src="storage/{{ $category->image }}" onerror="{{ asset('assets/images/unset.jpg') }}" alt="images" class="w-full mb-4 rounded-md">
+                            <a href="" class="inline-block text-2xl font-medium mb-3 hover:text-primary-1">{{ $category->name }}</a>
+                            <p class="mb-4">{{ $category->description }}</p>
+                            <a href="{{ route('digital-library.category', $category) }}" class="inline-block px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">View {{ $category->posts_count }} Resource</a>
                         </div>
                     </div>
-                </div>
-                <div class="col-span-full xl:col-span-9">
-                    <div class="text-center mb-9">
-                        <h2 class="text-4xl sm:text-5xl font-semibold mb-3">Featured Resources</h2>
-                        <p>The best featured Popular e-books, articles, and videos</p>
-                    </div>
-                    <div class="grid grid-cols-12 gap-5">
-                        <div class="col-span-full md:col-span-6 lg:col-span-4">
-                            <div class="bg-white p-5 rounded-xl shadow-default">
-                                <img src="assets/images/blog_1.png" alt="images" class="w-full mb-4">
-                                <p class="mb-4">June 29, 2024  -  6 min read</p>
-                                <a href="" class="inline-block text-2xl font-medium mb-6 hover:text-primary-1">How to Build a Professional Resume That Stands Out</a>
-                                <a href="#" class="inline-block px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">View Resource</a>
-                            </div>
-                        </div>
-                        <div class="col-span-full md:col-span-6 lg:col-span-4">
-                            <div class="bg-white p-5 rounded-xl shadow-default">
-                                <img src="assets/images/blog_2.png" alt="images" class="w-full mb-4">
-                                <p class="mb-4">June 29, 2024  -  6 min read</p>
-                                <a href="" class="inline-block text-2xl font-medium mb-6 hover:text-primary-1">How to Build a Professional Resume That Stands Out</a>
-                                <a href="#" class="inline-block px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">View Resource</a>
-                            </div>
-                        </div>
-                        <div class="col-span-full md:col-span-6 lg:col-span-4">
-                            <div class="bg-white p-5 rounded-xl shadow-default">
-                                <img src="assets/images/blog_3.png" alt="images" class="w-full mb-4">
-                                <p class="mb-4">June 29, 2024  -  6 min read</p>
-                                <a href="" class="inline-block text-2xl font-medium mb-6 hover:text-primary-1">How to Build a Professional Resume That Stands Out</a>
-                                <a href="#" class="inline-block px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">View Resource</a>
-                            </div>
-                        </div>
-                        <div class="col-span-full md:col-span-6 lg:col-span-4">
-                            <div class="bg-white p-5 rounded-xl shadow-default">
-                                <img src="assets/images/blog_4.png" alt="images" class="w-full mb-4">
-                                <p class="mb-4">June 29, 2024  -  6 min read</p>
-                                <a href="" class="inline-block text-2xl font-medium mb-6 hover:text-primary-1">How to Build a Professional Resume That Stands Out</a>
-                                <a href="#" class="inline-block px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">View Resource</a>
-                            </div>
-                        </div>
-                        <div class="col-span-full md:col-span-6 lg:col-span-4">
-                            <div class="bg-white p-5 rounded-xl shadow-default">
-                                <img src="assets/images/blog_5.png" alt="images" class="w-full mb-4">
-                                <p class="mb-4">June 29, 2024  -  6 min read</p>
-                                <a href="" class="inline-block text-2xl font-medium mb-6 hover:text-primary-1">How to Build a Professional Resume That Stands Out</a>
-                                <a href="#" class="inline-block px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">View Resource</a>
-                            </div>
-                        </div>
-                        <div class="col-span-full md:col-span-6 lg:col-span-4">
-                            <div class="bg-white p-5 rounded-xl shadow-default">
-                                <img src="assets/images/blog_6.png" alt="images" class="w-full mb-4">
-                                <p class="mb-4">June 29, 2024  -  6 min read</p>
-                                <a href="" class="inline-block text-2xl font-medium mb-6 hover:text-primary-1">How to Build a Professional Resume That Stands Out</a>
-                                <a href="#" class="inline-block px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">View Resource</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>

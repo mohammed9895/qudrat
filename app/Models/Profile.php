@@ -2,12 +2,16 @@
 
 namespace App\Models;
 
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Profile extends Model
+class Profile extends Model implements Viewable
 {
+    use InteractsWithViews;
+
     protected $guarded = [];
 
     protected $casts = [
@@ -15,7 +19,7 @@ class Profile extends Model
         'skills' => 'array',
         'languages' => 'array',
         'tools' => 'array',
-        'interests' => 'array',
+        'interested' => 'array',
     ];
 
     public function user():BelongsTo

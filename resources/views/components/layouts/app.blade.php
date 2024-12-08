@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}">
 
-{{--        @vite('resources/css/app.css')--}}
+        @vite('resources/css/app.css')
     </head>
     <body>
     <x-partials.nav />

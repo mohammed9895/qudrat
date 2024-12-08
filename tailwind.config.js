@@ -9,6 +9,9 @@ export default {
         './resources/**/*.js',
         './resources/**/*.vue',
         './vendor/jaocero/filachat/resources/views/**/**/*.blade.php',
+        './vendor/wireui/breadcrumbs/src/Components/**/*.php',
+        './vendor/wireui/breadcrumbs/src/views/**/*.blade.php',
+        './vendor/ralphjsmit/laravel-filament-onboard/resources/**/*.blade.php',
     ],
     theme: {
         extend: {
