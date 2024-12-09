@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.filter_price .tow_bar_block,
+.filter_age .tow_bar_block,
+.filter_radius .tow_bar_block {
+    position: relative;
+    background: #ECECEC;
+    height: 5px;
+    border-radius: 5px;
+}
+.filter_price .tow_bar_block .progress,
+.filter_age .tow_bar_block .progress,
+.filter_radius .tow_bar_block .progress {
+    position: absolute;
+    height: 5px;
+    background: #000;
+    left: 1px;
+    right: 1px;
+}
+.filter_price .range_input,
+.filter_age .range_input,
+.filter_radius .range_input {
+    position: relative;
+}
+.filter_price .range_input .input,
+.filter_age .range_input .input,
+.filter_radius .range_input .input {
+    position: absolute;
+    top: -5px;
+    height: 5px;
+    width: 100%;
+    background: none;
+    outline: none;
+    border: none;
+    pointer-events: none;
+    appearance: none;
+}
+.filter_price .range_input .input::-webkit-slider-thumb,
+.filter_age .range_input .input::-webkit-slider-thumb,
+.filter_radius .range_input .input::-webkit-slider-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    outline: none;
+    pointer-events: auto;
+    -webkit-appearance: none;
+    background: #000;
+}

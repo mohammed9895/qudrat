@@ -25,7 +25,7 @@ class MediaCenterPostResource extends Resource
 
     protected static ?string $model = MediaCenterPost::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'hugeicons-file-01';
 
     protected static ?string $navigationGroup = 'Media Center';
 

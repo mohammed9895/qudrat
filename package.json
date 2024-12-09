@@ -21,6 +21,7 @@
     },
     "dependencies": {
         "alpinejs": "^3.14.3",
-        "echo": "^0.1.9"
+        "echo": "^0.1.9",
+        "swiper": "^11.1.15"
     }
 }

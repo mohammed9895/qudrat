@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('profile_reviews', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+        Schema::table('works', function (Blueprint $table) {
+            $table->string('cover')->nullable()->after('images');
         });
     }
 
@@ -22,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('profile_reviews');
+        Schema::table('works', function (Blueprint $table) {
+            //
+        });
     }
 };

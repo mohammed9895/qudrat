@@ -34,4 +34,10 @@ class MediaCenterPost extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getThumbnailImage()
+    {
+        $isUrl = str_contains($this->image, 'http');
+        return $isUrl ? $this->image : \Storage::disk('public')->url($this->image);
+    }
 }

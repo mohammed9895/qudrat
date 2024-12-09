@@ -28,7 +28,7 @@
                 @foreach($categories as $category)
                     <div class="">
                         <div class="bg-white p-5 rounded-xl shadow-default">
-                            <img src="storage/{{ $category->image }}" onerror="{{ asset('assets/images/unset.jpg') }}" alt="images" class="w-full mb-4 rounded-md">
+                            <img src="{{ $category->getThumbnailImage() }}" onerror="{{ asset('assets/images/unset.jpg') }}" alt="images" class="w-full mb-4 rounded-md">
                             <a href="" class="inline-block text-2xl font-medium mb-3 hover:text-primary-1">{{ $category->name }}</a>
                             <p class="mb-4">{{ $category->description }}</p>
                             <a href="{{ route('digital-library.category', $category) }}" class="inline-block px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">View {{ $category->posts_count }} Resource</a>

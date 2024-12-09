@@ -28,7 +28,7 @@
                                         </svg>
                                     </span>
                                 <p class="text-white text-sm">
-                                    <span class="font-semibold">4.9</span>(482)
+                                    <span class="font-semibold">{{ $profile->rating() }}</span> ({{ $profile->ratings->count() }})
                                 </p>
                             </div>
                         </div>
@@ -71,18 +71,18 @@
                                 </span>
                             Download CV
                         </a>
-{{--                        <div class="bg-primary-3 p-5 rounded-xl mt-8">--}}
-{{--                            <div class="flex items-center justify-center gap-4">--}}
-{{--                                <div class="w-6/12 text-center">--}}
-{{--                                    <h5 class="text-4xl font-semibold mb-1">137</h5>--}}
-{{--                                    <p>Total jobs</p>--}}
-{{--                                </div>--}}
-{{--                                <div class="w-6/12 text-center">--}}
-{{--                                    <h5 class="text-4xl font-semibold mb-1">1,146</h5>--}}
-{{--                                    <p>Total hours</p>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
+                        <div class="bg-primary-3 p-5 rounded-xl mt-8">
+                            <div class="flex items-center justify-center gap-4">
+                                <div class="w-6/12 text-center">
+                                    <h5 class="text-4xl font-semibold mb-1">{{ $profile->views->count() }}</h5>
+                                    <p>Profile Views</p>
+                                </div>
+                                <div class="w-6/12 text-center">
+                                    <h5 class="text-4xl font-semibold mb-1">{{ $profile->works()->count() }}</h5>
+                                    <p>Total Projects</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="bg-white p-6 rounded-xl mt-5">
                         <h6 class="text-lg font-semibold mb-3">Skills</h6>
@@ -114,6 +114,54 @@
                             @foreach($profile->interested as $interest)
                                 <a href="{{ route('social-window.index') }}" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $interest }}</a>
                             @endforeach
+                        </div>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl mt-5">
+                        <h6 class="text-lg font-semibold mb-3">Social</h6>
+                        <div class="flex items-center gap-3 flex-wrap">
+                            @if($profile->website)
+                                <a href="{{ $profile->website }}" class="px-8 py-3 mt-2 rounded-full text-white font-medium bg-primary-2 inline-flex items-center gap-2 w-full justify-center">
+                                    <span><x-hugeicons-global class="size-6" /></span>
+                                    View Website
+                                </a>
+                            @endif
+                            <div class="flex justify-start items-center space-x-2">
+                                @if($profile->social_facebook)
+                                    <a href="{{ $profile->social_facebook }}" class="w-10 h-10 rounded-full text-[#2e3192] font-medium border-2 border-primary-2 inline-flex items-center justify-center hover:bg-primary-2 hover:text-white">
+                                        <span><x-fab-facebook-f  class="size-5" /></span>
+                                    </a>
+                                @endif
+                                @if($profile->social_instagram)
+                                    <a href="{{ $profile->social_instagram }}" class="w-10 h-10 rounded-full text-[#2e3192] font-medium border-2 border-primary-2 inline-flex items-center justify-center hover:bg-primary-2 hover:text-white">
+                                        <span><x-fab-instagram class="size-5" /></span>
+                                    </a>
+                                @endif
+                                    @if($profile->social_x)
+                                        <a href="{{ $profile->social_x }}" class="w-10 h-10 rounded-full text-[#2e3192] font-medium border-2 border-primary-2 inline-flex items-center justify-center hover:bg-primary-2 hover:text-white">
+                                            <span><x-fab-x-twitter class="size-5" /></span>
+                                        </a>
+                                    @endif
+                                    @if($profile->social_linkedin)
+                                        <a href="{{ $profile->social_instagram }}" class="w-10 h-10 rounded-full text-[#2e3192] font-medium border-2 border-primary-2 inline-flex items-center justify-center hover:bg-primary-2 hover:text-white">
+                                            <span><x-fab-linkedin-in class="size-5" /></span>
+                                        </a>
+                                    @endif
+                                    @if($profile->social_pinterest)
+                                        <a href="{{ $profile->social_pinterest }}" class="w-10 h-10 rounded-full text-[#2e3192] font-medium border-2 border-primary-2 inline-flex items-center justify-center hover:bg-primary-2 hover:text-white">
+                                            <span><x-fab-pinterest class="size-5" /></span>
+                                        </a>
+                                    @endif
+                                    @if($profile->social_stackoverflow)
+                                        <a href="{{ $profile->social_stackoverflow }}" class="w-10 h-10 rounded-full text-[#2e3192] font-medium border-2 border-primary-2 inline-flex items-center justify-center hover:bg-primary-2 hover:text-white">
+                                            <span><x-fab-stack-overflow class="size-5" /></span>
+                                        </a>
+                                    @endif
+                                    @if($profile->social_whatsapp)
+                                        <a href="https://wa.me/{{ $profile->social_whatsapp }}" class="w-10 h-10 rounded-full text-[#2e3192] font-medium border-2 border-primary-2 inline-flex items-center justify-center hover:bg-primary-2 hover:text-white">
+                                            <span><x-fab-whatsapp class="size-5" /></span>
+                                        </a>
+                                    @endif
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -214,58 +262,87 @@
                     </div>
                     <div class="mt-7">
                         <h4 class="text-[28px] font-semibold mb-3">Reviews</h4>
-                        <div class="py-4">
-                            <div class="flex gap-4">
-                                <div class="shrink-0">
-                                    <img src="/assets/images/review_1.png" alt="images" class="">
+
+                        <div class="w-full mb-5">
+                            <form wire:submit="rate">
+                                <!-- Rating -->
+                                <div class="flex flex-row-reverse justify-end items-center mb-3">
+                                    <input id="hs-ratings-readonly-5" type="radio" class="peer -ms-5 size-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0" name="hs-ratings-readonly" wire:model="rating" value="5">
+                                    <label for="hs-ratings-readonly-5" class="peer-checked:text-yellow-400 text-gray-300 pointer-events-none ">
+                                        <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                        </svg>
+                                    </label>
+                                    <input id="hs-ratings-readonly-4" type="radio" class="peer -ms-5 size-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0" name="hs-ratings-readonly" wire:model="rating" value="4">
+                                    <label for="hs-ratings-readonly-4" class="peer-checked:text-yellow-400 text-gray-300 pointer-events-none ">
+                                        <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                        </svg>
+                                    </label>
+                                    <input id="hs-ratings-readonly-3" type="radio" class="peer -ms-5 size-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0" name="hs-ratings-readonly" wire:model="rating" value="3">
+                                    <label for="hs-ratings-readonly-3" class="peer-checked:text-yellow-400 text-gray-300 pointer-events-none ">
+                                        <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                        </svg>
+                                    </label>
+                                    <input id="hs-ratings-readonly-2" type="radio" class="peer -ms-5 size-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0" name="hs-ratings-readonly" wire:model="rating" value="2">
+                                    <label for="hs-ratings-readonly-2" class="peer-checked:text-yellow-400 text-gray-300 pointer-events-none ">
+                                        <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                        </svg>
+                                    </label>
+                                    <input id="hs-ratings-readonly-1" type="radio" class="peer -ms-5 size-5 bg-transparent border-0 text-transparent cursor-pointer appearance-none checked:bg-none focus:bg-none focus:ring-0 focus:ring-offset-0" name="hs-ratings-readonly" wire:model="rating" value="1">
+                                    <label for="hs-ratings-readonly-1" class="peer-checked:text-yellow-400 text-gray-300 pointer-events-none ">
+                                        <svg class="shrink-0 size-5" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                                        </svg>
+                                    </label>
                                 </div>
-                                <div class="w-full">
-                                    <div class="w-full flex items-center justify-between gap-3 flex-wrap mb-3">
-                                        <div>
-                                            <h6 class="text-[18px] font-semibold mb-0">Randy  Melton
-                                            </h6>
-                                            <p class="text-primary-2 font-serif font-bold text-sm">05.03.2021 [11.00am]</p>
+                                <!-- End Rating -->
+
+                                <div class="space-y-3">
+                                    <textarea class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-[#3cc7bc] focus:ring-[#3cc7bc] disabled:opacity-50 disabled:pointer-events-none" rows="3" placeholder="Write your review" wire:model="comment"></textarea>
+                                </div>
+
+                                <button class="bg-primary-1 text-white py-3 px-6 rounded-lg text-sm mt-2">Submit</button>
+                            </form>
+                        </div>
+
+
+
+                           @foreach($profile->ratings()->orderByDesc('created_at')->get() as $rating)
+                                @if($loop->index == 0)
+                                    <div class="py-4">
+                                @endif
+                                <div class="py-4 border-t">
+                                    <div class="flex gap-4">
+                                        <div class="shrink-0">
+                                            <img src="/storage/{{ $rating->user->profile->avatar }}" alt="images" class="size-16 rounded-full">
                                         </div>
-                                        <div class="flex items-center gap-[2px] mb-3">
-                                            <span class="text-warning"><i class="las la-star"></i></span>
-                                            <span class="text-warning"><i class="las la-star"></i></span>
-                                            <span class="text-warning"><i class="las la-star"></i></span>
-                                            <span class="text-warning"><i class="las la-star"></i></span>
-                                            <span class="text-secondary-1"><i class="las la-star"></i></span>
+                                        <div class="w-full">
+                                            <div class="w-full flex items-center justify-between gap-3 flex-wrap mb-3">
+                                                <div>
+                                                    <h6 class="text-[18px] font-semibold mb-0">{{ $rating->user->profile->fullname }}</h6>
+                                                    <p class="text-primary-2 text-sm">{{ \Carbon\Carbon::parse($rating->created_at)->format('Y-m-d h:i') }}</p>
+                                                </div>
+                                                <div class="flex items-center gap-[2px] mb-3">
+                                                    <span class="{{ $rating->rating >= 1 ? 'text-warning' : 'text-secondary-1' }}"><i class="las la-star"></i></span>
+                                                    <span class="{{ $rating->rating >= 2 ? 'text-warning' : 'text-secondary-1' }}"><i class="las la-star"></i></span>
+                                                    <span class="{{ $rating->rating >= 3 ? 'text-warning' : 'text-secondary-1' }}"><i class="las la-star"></i></span>
+                                                    <span class="{{ $rating->rating >= 4 ? 'text-warning' : 'text-secondary-1' }}"><i class="las la-star"></i></span>
+                                                    <span class="{{ $rating->rating >= 5 ? 'text-warning' : 'text-secondary-1' }}"><i class="las la-star"></i></span>
+                                                </div>
+                                            </div>
+                                            <p>{{ $rating->comment }}</p>
                                         </div>
                                     </div>
-                                    <p>Universal Design for Learning is a powerful framework to operationalize the right to education, supporting educators in maximizing desirable challenges</p>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="py-4 border-t">
-                            <div class="flex gap-4">
-                                <div class="shrink-0">
-                                    <img src="/assets/images/review_2.png" alt="images" class="">
-                                </div>
-                                <div class="w-full">
-                                    <div class="w-full flex items-center justify-between gap-3 flex-wrap mb-3">
-                                        <div>
-                                            <h6 class="text-[18px] font-semibold mb-0">Randy  Melton
-                                            </h6>
-                                            <p class="text-primary-2 font-serif font-bold text-sm">05.03.2021 [11.00am]</p>
-                                        </div>
-                                        <div class="flex items-center gap-[2px] mb-3">
-                                            <span class="text-warning"><i class="las la-star"></i></span>
-                                            <span class="text-warning"><i class="las la-star"></i></span>
-                                            <span class="text-warning"><i class="las la-star"></i></span>
-                                            <span class="text-warning"><i class="las la-star"></i></span>
-                                            <span class="text-secondary-1"><i class="las la-star"></i></span>
-                                        </div>
-                                    </div>
-                                    <p>Universal Design for Learning is a powerful framework to operationalize the right to education, supporting educators in maximizing desirable challenges</p>
-                                </div>
-                            </div>
-                        </div>
+                           @endforeach
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <!-- /Sidebar & Content -->
 </div>

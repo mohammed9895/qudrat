@@ -17,7 +17,10 @@ class MediaCenterCommentFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'media_center_post_id' => \App\Models\MediaCenterPost::factory(),
+            'user_id' => \App\Models\User::factory(),
+            'content' => $this->faker->paragraph,
+            'status' => $this->faker->randomElement([0, 1]),
         ];
     }
 }

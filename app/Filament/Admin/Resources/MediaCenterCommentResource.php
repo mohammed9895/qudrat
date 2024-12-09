@@ -21,7 +21,7 @@ class MediaCenterCommentResource extends Resource
 {
     protected static ?string $model = MediaCenterComment::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'hugeicons-comment-02';
 
     protected static ?string $navigationGroup = 'Media Center';
 

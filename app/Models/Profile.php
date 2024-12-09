@@ -7,6 +7,7 @@ use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Foundation\Mix;
 
 class Profile extends Model implements Viewable
 {
@@ -50,5 +51,20 @@ class Profile extends Model implements Viewable
     public function certificates(): HasMany
     {
         return $this->hasMany(Certificate::class);
+    }
+
+    public function ratings(): HasMany
+    {
+        return $this->hasMany(ProfileRating::class);
+    }
+
+    public function rating()
+    {
+        return $this->ratings->avg('rating');
+    }
+
+    public function works(): HasMany
+    {
+        return $this->hasMany(Work::class);
     }
 }

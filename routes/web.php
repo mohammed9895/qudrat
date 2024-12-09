@@ -19,3 +19,7 @@ Route::get('/digital-library/{category:slug}/{post:slug}', \App\Livewire\Fronten
 
 
 Route::get('/media-center/{post:slug}', \App\Livewire\Frontend\MediaCenter\Post::class)->name('media-center.post');
+
+
+Route::get('/work', \App\Livewire\Frontend\Work\Index::class)->name('works.index');
+Route::get('/work/{work:slug}', \App\Livewire\Frontend\Work\Show::class)->name('works.show');

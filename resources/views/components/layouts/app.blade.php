@@ -18,7 +18,12 @@
         <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}">
 
-        @vite('resources/css/app.css')
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+
+        @vite('resources/css/app.css', 'resources/js/app.js')
     </head>
     <body>
     <x-partials.nav />
@@ -30,5 +35,39 @@
         <script src="{{ asset('assets/js/plugins.min.js') }}"></script>
         <script src="{{ asset('assets/js/flowbite.min.js') }}"></script>
         <script src="{{ asset('assets/js/app.min.js') }}"></script>
+        <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script>
+        // Age range
+        $(document).ready(function (){
+            const rangeInput = $('.filter_age .range_input .input')
+            const progress = $('.filter_age .tow_bar_block .progress')
+            const minAge = $('.filter_age .age_min')
+            const maxAge = $('.filter_age .age_max')
+            let ageGap = 5
+
+            rangeInput.on('input', function () {
+                let minValue = parseInt(rangeInput.eq(0).val())
+                let maxValue = parseInt(rangeInput.eq(1).val())
+
+                if (maxValue - minValue <= ageGap) {
+                    if ($(this).hasClass('range_min')) {
+                        rangeInput.eq(0).val(maxValue - ageGap)
+                        minValue = maxValue - ageGap
+                    } else {
+                        rangeInput.eq(1).val(minValue + ageGap)
+                        maxValue = minValue + ageGap
+                    }
+                } else {
+                    progress.css({
+                        'left': (minValue / rangeInput.eq(0).attr('max')) * 100 + "%",
+                        'right': 100 - (maxValue / rangeInput.eq(1).attr('max')) * 100 + "%"
+                    });
+                }
+
+                minAge.text(minValue)
+                maxAge.text(maxValue)
+            });
+        });
+    </script>
     </body>
 </html>

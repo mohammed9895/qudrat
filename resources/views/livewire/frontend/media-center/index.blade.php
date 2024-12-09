@@ -25,7 +25,7 @@
                 @foreach($posts as $post)
                     <div class="">
                         <div class="bg-white p-5 rounded-xl shadow-default">
-                            <img src="{{ $post->image ? '/storage/' . $post->image : '/assets/images/unset.jpg' }}" alt="images" class="w-full mb-4 rounded-md">
+                            <img src="{{ $post->getThumbnailImage() }}" alt="images" class="w-full mb-4 rounded-md">
                             <a href="" class="inline-block text-2xl font-medium mb-3 hover:text-primary-1">{{ $post->title }}</a>
                             <p class="mb-4">{{ substr($post->content, 0, 100) }} ...</p>
                             <a href="{{ route('media-center.post', [$post]) }}" class="inline-block px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">View Resource</a>

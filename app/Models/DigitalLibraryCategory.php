@@ -29,4 +29,10 @@ class DigitalLibraryCategory extends Model
     {
         return $this->hasMany(DigitalLibraryPost::class);
     }
+
+    public function getThumbnailImage()
+    {
+        $isUrl = str_contains($this->image, 'http');
+        return $isUrl ? $this->image : \Storage::disk('public')->url($this->image);
+    }
 }

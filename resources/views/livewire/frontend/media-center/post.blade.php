@@ -15,7 +15,7 @@
     <!-- Card & Siderbar -->
     <div class="pt-24 pb-12">
         <div class="container bg-white px-5 py-5 rounded-lg">
-            <div class="w-full h-[400px] rounded-lg mb-5" style="background: url('{{  $post->image ? '/storage/' . $post->image : '/assets/images/unset.jpg' }}'); background-size: cover;"></div>
+            <div class="w-full h-[400px] rounded-lg mb-5" style="background: url('{{ $post->getThumbnailImage() }}'); background-size: cover;"></div>
             <h1 class="text-2xl text-gray-900 font-bold mb-5">{{ $post->title }}</h1>
             <div class="flex justify-start items-center space-x-3 mb-5">
                 <div class="flex items-center">
