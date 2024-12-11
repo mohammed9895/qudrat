@@ -20,7 +20,7 @@ class ProfileRatingFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'profile_id' => 1,
+            'profile_id' =>Profile::factory(),
             'rating' => $this->faker->numberBetween(1, 5),
             'comment' => $this->faker->sentence,
             'status' => 1,

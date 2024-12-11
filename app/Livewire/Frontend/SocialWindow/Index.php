@@ -29,7 +29,7 @@ class Index extends Component
     public function profiles()
     {
         return Profile::query()
-            ->where('is_active', Status::Active)
+            ->where('status', Status::Active)
             ->where('public_profile', true)
             ->where('fullname', 'like', "%{$this->search}%")
             ->get();

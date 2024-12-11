@@ -67,4 +67,9 @@ class User extends Authenticatable implements HasAvatar
     {
         return $this->hasMany(ProfileRating::class);
     }
+
+    public  function entityCertificatePreset(): HasMany
+    {
+        return $this->hasMany(EntityCertificatePreset::class);
+    }
 }

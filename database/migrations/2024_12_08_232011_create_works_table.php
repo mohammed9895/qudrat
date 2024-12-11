@@ -19,8 +19,10 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->text('description');
             $table->text('images')->nullable();
+            $table->string('cover')->nullable();
             $table->text('videos')->nullable();
             $table->text('attachments')->nullable();
+            $table->text('attachment_file_names')->nullable();
             $table->string('link')->nullable();
             $table->integer('status')->default(1);
             $table->softDeletes();

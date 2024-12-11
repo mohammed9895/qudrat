@@ -17,4 +17,9 @@ class Province extends Model
     {
         return $this->hasMany(State::class);
     }
+
+    public function profile(): \Illuminate\Database\Eloquent\Relations\HasOne
+    {
+        return $this->hasOne(Profile::class);
+    }
 }

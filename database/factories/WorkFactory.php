@@ -17,7 +17,15 @@ class WorkFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'work_category_id' => \App\Models\WorkCategory::factory(),
+            'profile_id' => \App\Models\Profile::factory(),
+            'title' => $this->faker->sentence,
+            'slug' => $this->faker->unique()->slug,
+            'description' => $this->faker->paragraph,
+            'images' => json_encode([$this->faker->imageUrl(), $this->faker->imageUrl(), $this->faker->imageUrl()]),
+            'attachments' => json_encode([$this->faker->imageUrl(), $this->faker->imageUrl(), $this->faker->imageUrl()]),
+            'link' => $this->faker->url,
+            'status' => 1,
         ];
     }
 }

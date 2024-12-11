@@ -17,6 +17,21 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->string('link')->nullable();
             $table->string('image')->nullable();
+            $table->softDeletes();
+            $table->timestamps();
+        });
+
+        Schema::create('profile_tool', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('tool_id')->constrained()->onDelete('cascade');
+            $table->foreignId('profile_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
+        });
+
+        Schema::create('tool_work', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('tool_id')->constrained()->onDelete('cascade');
+            $table->foreignId('work_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }

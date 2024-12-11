@@ -82,7 +82,7 @@ class ProfileResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('social_whatsapp')
                     ->maxLength(255),
-                Forms\Components\Toggle::make('is_active')
+                Forms\Components\Toggle::make('status')
                     ->required(),
             ]);
     }

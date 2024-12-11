@@ -22,6 +22,7 @@ return new class extends Migration
             $table->date('end_date')->nullable();
             $table->boolean('graduated')->default(false);
             $table->integer('sort')->nullable();
+            $table->morphs('addable');
             $table->softDeletes();
             $table->timestamps();
         });

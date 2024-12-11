@@ -10,7 +10,7 @@ class Index extends Component
 {
     public function render()
     {
-        $talents = Profile::where('is_active', Status::Active)
+        $talents = Profile::where('status', Status::Active)
             ->where('public_profile', true)
             ->latest()
             ->limit(6)

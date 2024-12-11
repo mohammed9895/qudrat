@@ -11,9 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('works', function (Blueprint $table) {
-            $table->text('attachment_file_names')->after('attachments')->nullable();
-            $table->text('tools')->after('link')->nullable();
+        Schema::create('nationalities', function (Blueprint $table) {
+            $table->id();
+            $table->text('name');
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 
@@ -22,8 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('works', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('nationalities');
     }
 };

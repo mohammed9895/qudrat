@@ -2,12 +2,24 @@
 
 namespace Database\Seeders;
 
+use App\Models\Category;
 use App\Models\DigitalLibraryCategory;
 use App\Models\DigitalLibraryPost;
 use App\Models\DigitalLibraryPostComment;
 use App\Models\DigitalLibraryTag;
+use App\Models\Interest;
+use App\Models\Langauge;
+use App\Models\MediaCenterComment;
+use App\Models\MediaCenterPost;
+use App\Models\Profile;
+use App\Models\ProfileRating;
+use App\Models\Skill;
+use App\Models\Tool;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Work;
+use App\Models\WorkCategory;
+use App\Models\WorkTag;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -24,14 +36,47 @@ class DatabaseSeeder extends Seeder
             'email' => 'toshiba9895@gmail.com',
         ]);
 
-        DigitalLibraryCategory::factory(20)->create();
+        $this->call(CountriesTableSeeder::class);
 
-        DigitalLibraryPost::factory(20)->create();
+        $this->call(ProvinceSeeder::class);
 
-        DigitalLibraryTag::factory(20)->create();
+        $this->call(StateSeeder::class);
 
-        DigitalLibraryPostComment::factory(20)->create();
+        $this->call(EducationTypeSeeder::class);
 
-//        $this->call(CountriesTableSeeder::class);
+        $this->call(EmployeeTypeSeeder::class);
+
+        $this->call(LanguageSeeder::class);
+
+        Category::factory(50)->create();
+
+        DigitalLibraryCategory::factory(50)->create();
+
+        DigitalLibraryPost::factory(50)->create();
+
+        DigitalLibraryTag::factory(50)->create();
+
+        DigitalLibraryPostComment::factory(50)->create();
+
+        Interest::factory(50)->create();
+
+        MediaCenterPost::factory(50)->create();
+
+        MediaCenterComment::factory(50)->create();
+
+        Profile::factory(50)->create();
+
+        ProfileRating::factory(50)->create();
+
+        Skill::factory(50)->create();
+
+        Tool::factory(50)->create();
+
+        Work::factory(50)->create();
+
+        WorkCategory::factory(50)->create();
+
+        WorkTag::factory(50)->create();
+
     }
 }

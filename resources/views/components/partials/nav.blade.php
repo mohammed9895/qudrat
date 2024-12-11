@@ -40,11 +40,11 @@
                 </ul>
             </div>
             <div class="nav_btn flex items-center hidden lg:flex">
-                <a href="#" class="px-8 py-3 rounded-full border border-primary-2 text-head-color font-medium hover:bg-primary-2 hover:text-white">Join as Talent</a>
-                <svg width="50" height="51" viewBox="0 0 50 51" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect y="0.276367" width="50" height="50" rx="25" fill="#2E3192"/>
-                    <path d="M18.2185 32.3351C18.2185 32.3351 24.7534 25.8 32.2269 18.3265M32.2269 18.3265C26.8281 23.7253 20.3156 19.2059 20.3156 19.2059M32.2269 18.3265C26.8281 23.7253 31.3475 30.2378 31.3475 30.2378" stroke="white" stroke-width="1.42857"/>
-                </svg>
+                <a href="{{ route('filament.user.auth.register') }}" class="px-8 py-3 rounded-full border border-primary-2 text-head-color font-medium hover:bg-primary-2 hover:text-white">Register</a>
+                <a href="{{ route('filament.user.auth.login') }}" class="px-8 py-3 rounded-full border bg-primary-2 text-head-color font-medium hover:bg-primary-1 text-white flex items-center justify-center">
+                    Login
+                    <img src="{{ asset('assets/images/arrow-right.svg') }}" class="ml-2" alt="">
+                </a>
             </div>
         </div>
     </div>

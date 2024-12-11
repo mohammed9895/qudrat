@@ -31,7 +31,9 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('digital_library_tags');
         Schema::dropIfExists('digital_library_post_tags');
+        Schema::enableForeignKeyConstraints();
     }
 };

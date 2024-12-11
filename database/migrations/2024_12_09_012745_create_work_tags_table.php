@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('work_tags', function (Blueprint $table) {
             $table->id();
             $table->text('name');
+            $table->softDeletes();
             $table->timestamps();
         });
 
@@ -30,7 +31,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('work_tags');
+        Schema::disableForeignKeyConstraints();
         Schema::dropIfExists('work_work_tag');
+        Schema::enableForeignKeyConstraints();
     }
 };

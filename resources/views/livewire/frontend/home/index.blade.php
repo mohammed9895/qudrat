@@ -165,11 +165,13 @@
                                         </div>
                                         <h4 class="text-xl font-medium mb-2">{{ $talent->fullname }}</h4>
                                         <p class="text-sm mb-4">{{ $talent->position }}</p>
-                                        <div class="flex items-center gap-1 flex-wrap mb-4">
-                                            @foreach($talent->skills as $skill)
-                                                <span class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $skill }}</span>
-                                            @endforeach
-                                        </div>
+                                        @if($talent->skills)
+                                            <div class="flex items-center gap-1 flex-wrap mb-4">
+                                                @foreach($talent->skills as $skill)
+                                                    <span class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $skill }}</span>
+                                                @endforeach
+                                            </div>
+                                        @endif
                                         <p class="mb-6">{{ substr($talent->bio, 0 ,100) }}</p>
                                         <a href="{{ route('profile.index', $talent) }}" class="inline-block px-8 py-3 rounded-full border border-primary-1 text-head-color font-medium hover:bg-primary-1 hover:text-white">View Profile</a>
                                     </div>
