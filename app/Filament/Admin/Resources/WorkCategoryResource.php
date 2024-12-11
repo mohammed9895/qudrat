@@ -21,7 +21,9 @@ class WorkCategoryResource extends Resource
 
     protected static ?string $model = WorkCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'hugeicons-sticky-note-02';
+
+    protected static ?string $navigationGroup = 'Works';
 
     public static function form(Form $form): Form
     {
@@ -55,7 +57,7 @@ class WorkCategoryResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('status')
-                    ->numeric()
+                    ->badge()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('deleted_at')
                     ->dateTime()

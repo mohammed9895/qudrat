@@ -48,7 +48,9 @@ class Courses extends Page
                         ->schema([
                             TextInput::make('title'),
                             TextInput::make('organization'),
-                            DatePicker::make('start_date')->native(false),
+                            DatePicker::make('start_date')
+                                ->maxDate(now()->format('Y-m-d'))
+                                ->native(false),
                             DatePicker::make('end_date')->native(false),
                             FileUpload::make('certificate_file'),
                             MarkdownEditor::make('description'),

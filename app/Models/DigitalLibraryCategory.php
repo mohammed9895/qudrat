@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
 class DigitalLibraryCategory extends Model
@@ -11,6 +12,7 @@ class DigitalLibraryCategory extends Model
 
     use HasFactory;
     use HasTranslations;
+    use SoftDeletes;
     protected $fillable = ['name', 'slug', 'description', 'image', 'parent_id'];
 
     public $translatable = ['name', 'description', 'image'];

@@ -39,7 +39,6 @@ class WorkResource extends Resource
                             ->required()
                             ->maxLength(255),
                         Forms\Components\Select::make('work_category_id')
-                            ->preload()
                             ->relationship('workCategory', 'name')
                             ->searchable(),
                         Forms\Components\TextInput::make('link')

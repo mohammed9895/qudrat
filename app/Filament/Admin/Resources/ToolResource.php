@@ -22,7 +22,7 @@ class ToolResource extends Resource
 
     protected static ?string $navigationIcon = 'hugeicons-wrench-01';
 
-    protected static ?string $navigationGroup = 'Setting';
+    protected static ?string $navigationGroup = 'Settings';
 
     protected static ?int $navigationSort = 100;
 

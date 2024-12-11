@@ -27,8 +27,7 @@ return new class extends Migration
             $table->date('dob')->nullable();
             $table->string('video')->nullable();
             $table->string('cv')->nullable();
-            $table->integer('experience')->nullable();
-
+            $table->foreignIdFor(\App\Models\ExperienceLevel::class)->nullable()->constrained()->nullOnDelete();
 
             $table->foreignIdFor(\App\Models\Country::class)->nullable()->constrained()->nullOnDelete();
             $table->foreignIdFor(\App\Models\Nationality::class)->nullable()->constrained()->nullOnDelete();

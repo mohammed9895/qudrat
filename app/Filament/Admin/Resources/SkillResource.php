@@ -22,7 +22,7 @@ class SkillResource extends Resource
 
     protected static ?string $navigationIcon = 'hugeicons-user-star-02';
 
-    protected static ?string $navigationGroup = 'Setting';
+    protected static ?string $navigationGroup = 'Settings';
 
     protected static ?int $navigationSort = 100;
 

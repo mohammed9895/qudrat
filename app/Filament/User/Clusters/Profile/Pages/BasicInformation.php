@@ -49,6 +49,11 @@ class BasicInformation extends Page
                     FileUpload::make('avatar')->avatar(),
                     TextInput::make('fullname'),
                     TextInput::make('position'),
+                    Select::make('experience_level_id')
+                        ->preload()
+                        ->label('Experience Level')
+                        ->searchable()
+                        ->relationship('experienceLevel', 'name'),
                     RichEditor::make('bio'),
                     TextInput::make('username')->prefix('https://qudrat.om/'),
                     TextInput::make('email'),
@@ -67,6 +72,11 @@ class BasicInformation extends Page
                         ->required()
                         ->options(Country::all()->pluck('name', 'id'))
                         ->searchable(),
+                    Select::make('nationality_id')
+                        ->label(__('Nationality'))
+                        ->searchable()
+                        ->relationship('nationality', 'name')
+                        ->required(),
                     Select::make('province_id')
                         ->label(__('Province'))
                         ->required()

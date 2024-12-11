@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('educations', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Profile::class)->constrained()->cascadeOnDelete();
-            $table->string('school')->nullable();
-            $table->string('degree')->nullable();
-            $table->string('field_of_study')->nullable();
+            $table->foreignIdFor(\App\Models\School::class)->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\EducationType::class)->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\FieldOfStudy::class)->nullable()->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\FieldOfStudy::class, 'field_of_study_child_id')->nullable()->constrained()->cascadeOnDelete();
             $table->string('grade')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();

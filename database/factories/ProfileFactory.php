@@ -30,7 +30,7 @@ class ProfileFactory extends Factory
             'dob' => $this->faker->date(),
             'cv' => $this->faker->url,
             'video' => $this->faker->url,
-            'experience' => rand(1, 10),
+            'experience_level_id' => rand(1, 10),
             'address' => $this->faker->address,
             'status' => 1,
         ];

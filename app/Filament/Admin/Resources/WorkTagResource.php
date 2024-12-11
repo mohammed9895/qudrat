@@ -20,7 +20,9 @@ class WorkTagResource extends Resource
 
     protected static ?string $model = WorkTag::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'hugeicons-tags';
+
+    protected static ?string $navigationGroup = 'Works';
 
     public static function form(Form $form): Form
     {

@@ -19,6 +19,20 @@ return new class extends Migration
             $table->softDeletes();
             $table->timestamps();
         });
+
+        Schema::create('profile_skill', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('profile_id')->constrained()->onDelete('cascade');
+            $table->foreignId('skill_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
+        });
+
+        Schema::create('skill_work', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('skill_id')->constrained()->onDelete('cascade');
+            $table->foreignId('work_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
+        });
     }
 
     /**

@@ -17,7 +17,9 @@ class ProfileResource extends Resource
 {
     protected static ?string $model = Profile::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'hugeicons-profile-02';
+
+    protected static ?string $navigationGroup = 'Profiles';
 
     public static function form(Form $form): Form
     {

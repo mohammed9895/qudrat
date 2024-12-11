@@ -48,7 +48,9 @@ class Achievements extends Page
                             ->schema([
                                 TextInput::make('title'),
                                 MarkdownEditor::make('description'),
-                                DatePicker::make('date')->native(false),
+                                DatePicker::make('date')
+                                    ->maxDate(now()->format('Y-m-d'))
+                                    ->native(false),
                                 TextInput::make('category'),
                                 FileUpload::make('achievement_file'),
                             ])

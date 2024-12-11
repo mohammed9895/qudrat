@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Work extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $guarded = [];
 
@@ -24,13 +26,8 @@ class Work extends Model
     protected static function booted()
     {
         static::creating(function($model) {
-            $model->profile_id = auth()->user()->profile->id;
+            $model->profile_id = auth()->user()->profile->id ?? Profile::factory()->create()->id;
         });
-    }
-
-    public function workCategory(): BelongsTo
-    {
-        return $this->belongsTo(WorkCategory::class);
     }
 
     public function profile(): BelongsTo
@@ -38,8 +35,18 @@ class Work extends Model
         return $this->belongsTo(Profile::class);
     }
 
+    public function workCategory(): BelongsTo
+    {
+        return $this->belongsTo(WorkCategory::class);
+    }
+
     public function workTags(): BelongsToMany
     {
         return $this->belongsToMany(WorkTag::class);
+    }
+
+    public function skills(): BelongsToMany
+    {
+        return $this->belongsToMany(Skill::class);
     }
 }

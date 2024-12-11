@@ -7,13 +7,16 @@ use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Mix;
 
 class Profile extends Model implements Viewable
 {
     use InteractsWithViews;
     use HasFactory;
+    use SoftDeletes;
 
     protected $guarded = [];
 
@@ -60,9 +63,14 @@ class Profile extends Model implements Viewable
         return $this->belongsTo(EmploymentType::class);
     }
 
+    public function experienceLevel(): BelongsTo
+    {
+        return $this->belongsTo(ExperienceLevel::class);
+    }
+
     public function category(): BelongsTo
     {
-        return $this->belongsTo(ProfileCategory::class, 'profile_category_id');
+        return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function experiences(): HasMany
@@ -105,20 +113,34 @@ class Profile extends Model implements Viewable
         return $this->hasMany(Work::class);
     }
 
-    public function tools(): HasMany
+    public function tools(): BelongsToMany
     {
-        return $this->hasMany(Tool::class);
+        return $this->belongsToMany(Tool::class);
     }
 
-    public function languages(): HasMany
+    public function languages(): BelongsToMany
     {
-        return $this->hasMany(Language::class);
+        return $this->belongsToMany(Language::class);
     }
 
-
-    public function interests(): HasMany
+    public function interests(): BelongsToMany
     {
-        return $this->hasMany(Interest::class);
+        return $this->belongsToMany(Interest::class);
+    }
+
+    public function nationality(): BelongsTo
+    {
+        return $this->belongsTo(Nationality::class);
+    }
+
+    public function categories(): BelongsToMany
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
+    public function skills(): BelongsToMany
+    {
+        return $this->belongsToMany(Skill::class);
     }
 
 }

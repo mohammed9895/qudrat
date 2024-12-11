@@ -4,6 +4,7 @@ namespace App\Filament\User\Clusters\Profile\Pages;
 
 use App\Filament\User\Clusters\Profile;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TagsInput;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
@@ -37,21 +38,37 @@ class MoreAboutYou extends Page
                 Section::make('More About You')
                     ->collapsible()
                     ->schema([
-                        TagsInput::make('categories')
+                        Select::make('categories')
+                            ->preload()
                             ->hint('Add categories that you are interested in and press enter')
-                            ->placeholder('add category'),
-                        TagsInput::make('skills')
-                            ->hint('Add skills that you have and press enter')
-                        ->placeholder('add skill'),
-                        TagsInput::make('interested')
+                            ->searchable()
+                            ->multiple()
+                            ->relationship('categories', 'name'),
+                        Select::make('skills')
+                            ->preload()
+                            ->multiple()
+                            ->relationship('skills', 'name')
+                            ->searchable()
+                            ->hint('Add skills that you have and press enter'),
+                        Select::make('interests')
+                            ->preload()
+                            ->multiple()
+                            ->relationship('interests', 'name')
                             ->hint('Add what you are interested in and press enter')
-                        ->placeholder('add interested'),
-                        TagsInput::make('languages')
+                            ->searchable(),
+                        Select::make('languages')
+                            ->preload()
+                            ->multiple()
+                            ->relationship('languages', 'name')
                             ->hint('Add languages that you know and press enter')
-                        ->placeholder('add language'),
-                        TagsInput::make('tools')
-                            ->hint('Add tools that you use and press enter')
-                        ->placeholder('add tool'),
+                            ->searchable(),
+                        Select::make('tools')
+                            ->preload()
+                            ->multiple()
+                            ->relationship('tools', 'name')
+                            ->searchable()
+                            ->placeholder('select a tool')
+                            ->hint('Add tools that you use and press enter'),
                     ]),
             ])
             ->statePath('data')

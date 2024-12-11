@@ -48,7 +48,9 @@ class Experiences extends Page
                             ->schema([
                                 TextInput::make('company'),
                                 TextInput::make('position'),
-                                DatePicker::make('start_date')->native(false),
+                                DatePicker::make('start_date')
+                                    ->maxDate(now()->format('Y-m-d'))
+                                    ->native(false),
                                 DatePicker::make('end_date')->native(false),
                                 Toggle::make('is_current'),
                                 MarkdownEditor::make('description'),

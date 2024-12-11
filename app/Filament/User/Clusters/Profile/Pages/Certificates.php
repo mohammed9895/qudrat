@@ -47,7 +47,9 @@ class Certificates extends Page
                             ->schema([
                                 TextInput::make('title'),
                                 TextInput::make('organization'),
-                                DatePicker::make('issued_date')->native(false),
+                                DatePicker::make('issued_date')
+                                    ->maxDate(now()->format('Y-m-d'))
+                                    ->native(false),
                                 DatePicker::make('expiry_date')->native(false),
                                 FileUpload::make('certificate_file'),
                             ])

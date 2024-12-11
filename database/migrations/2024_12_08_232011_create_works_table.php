@@ -20,7 +20,7 @@ return new class extends Migration
             $table->text('description');
             $table->text('images')->nullable();
             $table->string('cover')->nullable();
-            $table->text('videos')->nullable();
+            $table->text('video')->nullable();
             $table->text('attachments')->nullable();
             $table->text('attachment_file_names')->nullable();
             $table->string('link')->nullable();

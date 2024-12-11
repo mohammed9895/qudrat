@@ -7,12 +7,14 @@ use App\Models\DigitalLibraryCategory;
 use App\Models\DigitalLibraryPost;
 use App\Models\DigitalLibraryPostComment;
 use App\Models\DigitalLibraryTag;
+use App\Models\FieldOfStudy;
 use App\Models\Interest;
-use App\Models\Langauge;
+use App\Models\Language;
 use App\Models\MediaCenterComment;
 use App\Models\MediaCenterPost;
 use App\Models\Profile;
 use App\Models\ProfileRating;
+use App\Models\School;
 use App\Models\Skill;
 use App\Models\Tool;
 use App\Models\User;
@@ -48,7 +50,15 @@ class DatabaseSeeder extends Seeder
 
         $this->call(LanguageSeeder::class);
 
+        $this->call(DisabilitySeeder::class);
+
+        $this->call(ExperienceLevelSeeder::class);
+
+        $this->call(NationalitySeeder::class);
+
         Category::factory(50)->create();
+
+        School::factory(50)->create();
 
         DigitalLibraryCategory::factory(50)->create();
 
@@ -77,6 +87,13 @@ class DatabaseSeeder extends Seeder
         WorkCategory::factory(50)->create();
 
         WorkTag::factory(50)->create();
+
+        FieldOfStudy::factory(50)->create();
+
+        Interest::factory(50)->create();
+
+
+        $this->call(ProfileSeeder::class);
 
     }
 }

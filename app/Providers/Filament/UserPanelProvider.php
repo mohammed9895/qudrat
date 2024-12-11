@@ -101,7 +101,9 @@ class UserPanelProvider extends PanelProvider
                                             ->searchable()
                                             ->options(['Male', 'Female']),
                                         DatePicker::make('dob')->native(false),
-                                        FileUpload::make('video')->columnSpanFull(),
+                                        FileUpload::make('video')
+                                            ->hint('Upload a video about your attachments.')
+                                            ->columnSpanFull(),
                                     ])->columns(2),
                                 WizardStep::make("Location")
                                     ->statePath('step_2') // It is recommended to keep the form data in a separate array key for each step.
