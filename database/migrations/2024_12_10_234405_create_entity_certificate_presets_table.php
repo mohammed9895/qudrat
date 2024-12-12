@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('entity_certificate_presets', function (Blueprint $table) {
             $table->id();
+            $table->foreignIdFor(\App\Models\Entity::class)->constrained()->cascadeOnDelete();
             $table->text('name');
             $table->text('description')->nullable();
             $table->text('file')->nullable();

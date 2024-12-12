@@ -28,6 +28,12 @@ class Profile extends Model implements Viewable
         'interested' => 'array',
     ];
 
+    public function getThumbnailImage()
+    {
+        $isUrl = str_contains($this->avatar, 'http');
+        return $isUrl ? asset('assets/images/unset.jpg') : \Storage::disk('public')->url($this->avatar);
+    }
+
     public function user():BelongsTo
     {
         return $this->belongsTo(User::class);
@@ -68,9 +74,9 @@ class Profile extends Model implements Viewable
         return $this->belongsTo(ExperienceLevel::class);
     }
 
-    public function category(): BelongsTo
+    public function category(): BelongsToMany
     {
-        return $this->belongsTo(Category::class, 'category_id');
+        return $this->belongsToMany(Category::class, 'category_id');
     }
 
     public function experiences(): HasMany

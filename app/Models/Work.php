@@ -49,4 +49,9 @@ class Work extends Model
     {
         return $this->belongsToMany(Skill::class);
     }
+
+    public function tools(): BelongsToMany
+    {
+        return $this->belongsToMany(Tool::class);
+    }
 }

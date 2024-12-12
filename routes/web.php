@@ -23,3 +23,12 @@ Route::get('/media-center/{post:slug}', \App\Livewire\Frontend\MediaCenter\Post:
 
 Route::get('/work', \App\Livewire\Frontend\Work\Index::class)->name('works.index');
 Route::get('/work/{work:slug}', \App\Livewire\Frontend\Work\Show::class)->name('works.show');
+Route::get('/work/category/{category:slug}', \App\Livewire\Frontend\Work\Category::class)->name('works.category');
+Route::get('/work/tag/{tag}', \App\Livewire\Frontend\Work\Tag::class)->name('works.tag');
+Route::get('/work/skill/{skill}', \App\Livewire\Frontend\Work\Skill::class)->name('works.skill');
+Route::get('/work/tool/{tool}', \App\Livewire\Frontend\Work\Tool::class)->name('works.tool');
+
+
+Route::get('/social-window/{category:slug}', \App\Livewire\Frontend\SocialWindow\Category::class)->name('social-window.category');
+Route::get('/social-window/{tool}', \App\Livewire\Frontend\SocialWindow\Skill::class)->name('social-window.skill');
+Route::get('/social-window/{skill}', \App\Livewire\Frontend\SocialWindow\Tool::class)->name('social-window.tool');

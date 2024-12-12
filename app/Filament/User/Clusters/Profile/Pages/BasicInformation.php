@@ -6,6 +6,7 @@ use App\Filament\User\Clusters\Profile;
 use App\Models\Country;
 use App\Models\Province;
 use App\Models\State;
+use Filament\Actions\Action;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
@@ -116,5 +117,16 @@ class BasicInformation extends Page
             ->icon('heroicon-o-check-circle')
             ->color('success')
             ->send();
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Action::make('visit-profile')
+                ->label('Visit Profile')
+                ->icon('hugeicons-link-forward')
+                ->url(route('profile.index', ['profile' => $this->profile]))
+                ->openUrlInNewTab(),
+        ];
     }
 }

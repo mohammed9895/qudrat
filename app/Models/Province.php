@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
 
@@ -20,8 +22,13 @@ class Province extends Model
         return $this->hasMany(State::class);
     }
 
-    public function profile(): \Illuminate\Database\Eloquent\Relations\HasOne
+    public function profile(): HasOne
     {
         return $this->hasOne(Profile::class);
+    }
+
+    public function jobApplications(): HasMany
+    {
+        return $this->hasMany(JobApplication::class);
     }
 }

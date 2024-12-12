@@ -130,7 +130,7 @@
                     </ul>
                 </div>
                 <div class="nav_btn flex items-center hidden lg:flex">
-                    <a href="#" class="px-8 py-3 rounded-full border border-primary-1 text-head-color font-medium hover:bg-primary-1 hover:text-white">View all talent</a>
+                    <a href="{{ route('social-window.index') }}" class="px-8 py-3 rounded-full border border-primary-1 text-head-color font-medium hover:bg-primary-1 hover:text-white">View all talent</a>
                     <span class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M0.718519 15.3351C0.718519 15.3351 7.25344 8.79999 14.7269 1.32652M14.7269 1.32652C9.32811 6.72532 2.8156 2.20588 2.8156 2.20588M14.7269 1.32652C9.32811 6.72532 13.8475 13.2378 13.8475 13.2378" stroke="white" stroke-width="1.42857"/>
@@ -155,12 +155,12 @@
                                                 </svg>
                                             </span>
                                                 <p class="text-white text-sm">
-                                                    <span class="font-semibold">4.9</span>(482)
+                                                    <span class="font-semibold">{{ $talent->rating() ?? 0 }}</span> ({{ $talent->ratings->count() }})
                                                 </p>
                                             </div>
                                         </div>
                                         <div class="relative inline-block mb-4">
-                                            <div class="size-24 rounded-full" style="background: url('/storage/{{ $talent->avatar }}'); background-size: cover;"></div>
+                                            <div class="size-24 rounded-full" style="background: url({{ $talent->getThumbnailImage() }}); background-size: cover; background-position: center center;"></div>
                                             <div class="bg-success w-3 h-3 rounded-full border-2 border-white absolute end-[10px] bottom-[5px]"></div>
                                         </div>
                                         <h4 class="text-xl font-medium mb-2">{{ $talent->fullname }}</h4>

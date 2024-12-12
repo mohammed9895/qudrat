@@ -22,4 +22,9 @@ class EducationType extends Model
     {
         return $this->hasMany(Profile::class);
     }
+
+    public function jobApplications(): HasMany
+    {
+        return $this->hasMany(JobApplication::class);
+    }
 }

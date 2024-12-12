@@ -77,31 +77,55 @@
                             Visit Profile
                         </a>
                        @if($work->link)
-                            <a href="{{ $work->link }}" class="px-8 py-3 mt-2 rounded-full text-[#2e3192] font-medium border-2 border-primary-2 text-white inline-flex items-center gap-2 w-full justify-center">
+                            <a target="_blank" href="{{ $work->link }}" class="px-8 py-3 mt-2 rounded-full text-[#2e3192] font-medium border-2 border-primary-2  inline-flex items-center gap-2 w-full justify-center">
                                 <span><x-hugeicons-link-04 class="size-6" /></span>
                                 View Project
                             </a>
                        @endif
                     </div>
-                    <div class="bg-white p-6 rounded-xl mt-5">
-                        <h6 class="text-lg font-semibold mb-3">Attachments</h6>
-                        <div class="flex items-center gap-3 flex-wrap">
-                            @foreach($work->attachment_file_names as $attachment => $name)
-                                <a wire:click="$dispatch('download-attachment', $attachment)" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer flex items-center justify-center space-x-2">
-                                    <x-hugeicons-download-01 />
-                                    <span>{{ $name }}</span>
-                                </a>
-                            @endforeach
+                   @if($work->attachment_file_names != null)
+                        <div class="bg-white p-6 rounded-xl mt-5">
+                            <h6 class="text-lg font-semibold mb-3">Attachments</h6>
+                            <div class="flex items-center gap-3 flex-wrap">
+                                @foreach($work->attachment_file_names as $attachment => $name)
+                                    <a wire:click="$dispatch('download-attachment', $attachment)" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer flex items-center justify-center space-x-2">
+                                        <x-heroicon-s-arrow-down-tray />
+                                        <span>{{ $name }}</span>
+                                    </a>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
-                    <div class="bg-white p-6 rounded-xl mt-5">
-                        <h6 class="text-lg font-semibold mb-3">Tags</h6>
-                        <div class="flex items-center gap-3 flex-wrap">
-                            @foreach($work->workTags as $tag)
-                                <a href="{{ route('social-window.index') }}" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $tag->name }}</a>
-                            @endforeach
+                   @endif
+                    @if($work->skills->count() > 0)
+                        <div class="bg-white p-6 rounded-xl mt-5">
+                            <h6 class="text-lg font-semibold mb-3">Skills</h6>
+                            <div class="flex items-center gap-3 flex-wrap">
+                                @foreach($work->skills as $skill)
+                                    <a href="{{ route('works.skill', $skill) }}" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $skill->name }}</a>
+                                @endforeach
+                            </div>
                         </div>
-                    </div>
+                    @endif
+                    @if($work->workTags->count() > 0)
+                        <div class="bg-white p-6 rounded-xl mt-5">
+                            <h6 class="text-lg font-semibold mb-3">Tags</h6>
+                            <div class="flex items-center gap-3 flex-wrap">
+                                @foreach($work->workTags as $tag)
+                                    <a href="{{ route('works.tag', $tag) }}" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $tag->name }}</a>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
+                    @if($work->workTags->count() > 0)
+                        <div class="bg-white p-6 rounded-xl mt-5">
+                            <h6 class="text-lg font-semibold mb-3">Tools</h6>
+                            <div class="flex items-center gap-3 flex-wrap">
+                                @foreach($work->tools as $tool)
+                                    <a href="{{ route('works.tool', $tool) }}" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $tool->name }}</a>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
                 </div>
                 <div class="col-span-full xl:col-span-9">
                     <div class="bg-white p-6 rounded-xl">
@@ -110,13 +134,15 @@
                                 <button class="custom-button-prev size-12 rounded-full -border lg:left-6 left-4 absolute z-50 top-1/2 bg-white flex items-center justify-center">
                                     @svg('hugeicons-arrow-left-04', 'size-8')
                                 </button>
-                                <div class="swiper-wrapper">
-                                    @foreach($work->images as $image)
-                                        <div class="swiper-slide">
-                                            <img src="/storage/{{ $image }}" alt="blog/1" class="w-full h-full object-cover" />
-                                        </div>
-                                    @endforeach
-                                </div>
+                                @if($work->images != null)
+                                    <div class="swiper-wrapper">
+                                        @foreach($work->images as $image)
+                                            <div class="swiper-slide">
+                                                <img src="/storage/{{ $image }}" alt="blog/1" class="w-full h-full object-cover" />
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                @endif
                                 <button class="custom-button-next size-12 bg-white rounded-full absolute z-50 top-1/2 -border lg:right-6 right-4 flex items-center justify-center">
                                     @svg('hugeicons-arrow-right-04', 'size-8')
                                 </button>
@@ -134,11 +160,11 @@
                         <div class="mt-6">
                             <h3 class="text-2xl font-semibold mb-3">Description</h3>
                            <div class="leading-loose mb-3">{!!  $work->description  !!}</div>
-                            @if($work->videos)
+                            @if($work->video)
                                 <h3 class="text-2xl font-semibold mb-3">Video</h3>
                                 <div class="relative">
                                     <video controls class="rounded-lg">
-                                        <source src="/storage/{{ $work->videos }}" >
+                                        <source src="/storage/{{ $work->video }}" >
                                     </video>
                                 </div>
                             @endif

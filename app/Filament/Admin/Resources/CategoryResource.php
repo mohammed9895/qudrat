@@ -7,6 +7,7 @@ use App\Filament\Admin\Resources\CategoryResource\RelationManagers;
 use App\Models\Category;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -15,6 +16,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CategoryResource extends Resource
 {
+    use Translatable;
+
     protected static ?string $model = Category::class;
 
     protected static ?string $navigationIcon = 'hugeicons-sticky-note-02';
@@ -25,21 +28,21 @@ class CategoryResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\Textarea::make('name')
+                Forms\Components\TextInput::make('name')
                     ->required()
-                    ->columnSpanFull(),
+                    ->columnSpanFull()
+                    ->live(true)
+                ->afterStateUpdated(fn(Forms\Set $set, $state) => $set('slug', \Str::slug($state))),
                 Forms\Components\TextInput::make('slug')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Textarea::make('description')
+                Forms\Components\RichEditor::make('description')
                     ->columnSpanFull(),
                 Forms\Components\FileUpload::make('image')
                     ->image(),
-                Forms\Components\TextInput::make('parent_id')
-                    ->numeric(),
-                Forms\Components\TextInput::make('status')
-                    ->required()
-                    ->numeric()
+                Forms\Components\Select::make('parent_id')
+                    ->relationship('parent', 'name'),
+                Forms\Components\Toggle::make('status')
                     ->default(1),
             ]);
     }

@@ -30,6 +30,7 @@ class Courses extends Page
     public function mount(): void
     {
         $this->profile = \App\Models\Profile::where('user_id', auth()->id())->first();
+
         $this->form->fill($this->profile->toArray());
     }
 

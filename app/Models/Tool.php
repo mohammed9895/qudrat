@@ -23,4 +23,9 @@ class Tool extends Model
         return $this->belongsToMany(Profile::class);
     }
 
+    public function works(): BelongsToMany
+    {
+        return $this->belongsToMany(Work::class);
+    }
+
 }

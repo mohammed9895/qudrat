@@ -39,6 +39,7 @@ class User extends Authenticatable implements HasAvatar
         'remember_token',
     ];
 
+
     /**
      * Get the attributes that should be cast.
      *
@@ -57,6 +58,11 @@ class User extends Authenticatable implements HasAvatar
         return $this->hasOne(Profile::class);
     }
 
+    public function entity(): HasOne
+    {
+        return $this->hasOne(Entity::class, 'user_id');
+    }
+
     public function getFilamentAvatarUrl(): ?string
     {
         return optional($this->profile)->avatar
@@ -67,10 +73,5 @@ class User extends Authenticatable implements HasAvatar
     public function rating(): HasMany
     {
         return $this->hasMany(ProfileRating::class);
-    }
-
-    public  function entityCertificatePreset(): HasMany
-    {
-        return $this->hasMany(EntityCertificatePreset::class);
     }
 }

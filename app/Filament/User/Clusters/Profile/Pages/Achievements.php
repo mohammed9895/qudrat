@@ -51,7 +51,6 @@ class Achievements extends Page
                                 DatePicker::make('date')
                                     ->maxDate(now()->format('Y-m-d'))
                                     ->native(false),
-                                TextInput::make('category'),
                                 FileUpload::make('achievement_file'),
                             ])
                             ->itemLabel(fn (array $state): ?string => $state['title'] ?? null),

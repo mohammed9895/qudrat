@@ -49,9 +49,20 @@ class WorkResource extends Resource
                             ->required()
                             ->columnSpanFull(),
                         Forms\Components\Select::make('workTags')
+                            ->preload()
                             ->multiple()
                             ->relationship('workTags', 'name')
-                        ->columnSpanFull(),
+                            ->columnSpanFull(),
+                        Forms\Components\Select::make('skills')
+                            ->preload()
+                            ->multiple()
+                            ->searchable()
+                            ->relationship('skills', 'name'),
+                        Forms\Components\Select::make('tools')
+                            ->preload()
+                            ->multiple()
+                            ->searchable()
+                            ->relationship('tools', 'name'),
                         Forms\Components\Toggle::make('status'),
                     ])->columns(2),
                 Section::make()
@@ -61,7 +72,7 @@ class WorkResource extends Resource
                         Forms\Components\FileUpload::make('images')
                             ->multiple()
                             ->columnSpanFull(),
-                        Forms\Components\FileUpload::make('videos')
+                        Forms\Components\FileUpload::make('video')
                             ->columnSpanFull(),
                         Forms\Components\FileUpload::make('attachments')
                             ->multiple()

@@ -47,7 +47,7 @@ class WorkResource extends Resource
                     ->columnSpanFull(),
                 Forms\Components\TextInput::make('cover')
                     ->maxLength(255),
-                Forms\Components\Textarea::make('videos')
+                Forms\Components\Textarea::make('video')
                     ->columnSpanFull(),
                 Forms\Components\Textarea::make('attachments')
                     ->columnSpanFull(),
