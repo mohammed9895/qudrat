@@ -32,7 +32,7 @@
                                 </p>
                             </div>
                         </div>
-                        <img src="/storage/{{ $profile->avatar }}" width="120" alt="image" class="mb-5 rounded-full border-2">
+                        <img src="{{ $profile->getThumbnailImage() }}" width="120" height="120" alt="image" class="mb-5 rounded-full border-2">
                         <h4 class="text-xl font-medium mb-1">{{ $profile->fullname }}</h4>
                         <p class="text-sm mb-5">{{ $profile->position }}</p>
                         <ul class="flex flex-col gap-3 mb-8">
