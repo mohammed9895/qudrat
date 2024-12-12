@@ -27,6 +27,8 @@ class AppServiceProvider extends ServiceProvider
             Js::make('app', Vite::asset('resources/js/app.js'))->module(),
         ]);
 
+        Vite::useBuildDirectory('/public/build');
+
         LanguageSwitch::configureUsing(function (LanguageSwitch $switch) {
             $switch
                 ->locales(['ar','en']); // also accepts a closure
