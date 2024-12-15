@@ -37,6 +37,7 @@
                         <div class="flex items-center gap-1 flex-wrap mb-4">
                             @foreach($work->skills as $skill)
                                 <a href="{{ route('works.skill', $skill) }}" class="px-3 py-1 inline-flex border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $skill->name }}</a>
+                                >
                             @endforeach
                         </div>
                     @endif

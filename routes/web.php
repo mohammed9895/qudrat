@@ -33,3 +33,8 @@ Route::get('/social-window/experts', \App\Livewire\Frontend\SocialWindow\Experts
 Route::get('/social-window/{category:slug}', \App\Livewire\Frontend\SocialWindow\Category::class)->name('social-window.category');
 Route::get('/social-window/{tool}', \App\Livewire\Frontend\SocialWindow\Skill::class)->name('social-window.skill');
 Route::get('/social-window/{skill}', \App\Livewire\Frontend\SocialWindow\Tool::class)->name('social-window.tool');
+
+
+Route::get('/cv', function () {
+    return view('cv-templates.template-1.index', ['profile' => auth()->user()->profile]);
+})->name('cv.index');

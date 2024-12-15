@@ -28,6 +28,7 @@ class Profile extends Model implements Viewable
         'interested' => 'array',
     ];
 
+
     public function getThumbnailImage()
     {
         $isUrl = str_contains($this->avatar, 'http');
@@ -146,7 +147,7 @@ class Profile extends Model implements Viewable
 
     public function skills(): BelongsToMany
     {
-        return $this->belongsToMany(Skill::class);
+        return $this->belongsToMany(Skill::class, 'profile_skill', 'profile_id', 'skill_id');
     }
 
 }

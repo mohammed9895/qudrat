@@ -1,8 +1,8 @@
 <x-filament-panels::page>
-    <form wire:submit="create">
+    <form wire:submit="generate">
         {{ $this->form }}
         <x-filament::button type="submit" class="mt-3">
-            Create
+            Generate CV
         </x-filament::button>
     </form>
 

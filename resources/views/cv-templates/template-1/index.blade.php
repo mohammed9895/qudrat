@@ -1,180 +1,222 @@
 <!DOCTYPE html>
-<html lang="en-US">
-  <head>
+<html lang="ko">
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Right Resume</title>
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="crossorigin"/>
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"/>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap" media="print" onload="this.media='all'"/>
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&amp;family=Roboto:wght@300;400;500;700&amp;display=swap"/>
-    </noscript>
-    <link href="css/font-awesome/css/all.min.css?ver=1.2.0" rel="stylesheet">
-    <link href="css/bootstrap.min.css?ver=1.2.0" rel="stylesheet">
-    <link href="css/main.css?ver=1.2.0" rel="stylesheet">
-    <noscript>
-      <style type="text/css">
-        [data-aos] {
-            opacity: 1 !important;
-            transform: translate(0) scale(1) !important;
-        }
-      </style>
-    </noscript>
-  </head>
-  <body id="top">
-    <div class="page-content">
-      <div class="">
-<div class="cover shadow-lg bg-white">
-  <div class="cover-bg p-3 p-lg-4 text-white">
-    <div class="rowd d-flex align-items-center">
-      <div class="col-lg-2 col-md-5">
-        <div class="avatar hover-effect bg-white shadow-sm p-1"><img src="images/avatar.jpg" width="200" height="200"/></div>
-      </div>
-      <div class="col-lg-4 col-md-7 text-center text-md-start">
-        <h2 class="h1 mt-2" data-aos="fade-left" data-aos-delay="0">Joyce Harrison</h2>
-        <p data-aos="fade-left" data-aos-delay="100">Graphic Designer & Web Developer</p>
-      </div>
-    </div>
-  </div>
-  <div class="about-section pt-4 px-3 px-lg-4 mt-1">
-    <div class="row">
-      <div class="col-md-6">
-        <h2 class="h3 mb-3">About Me</h2>
-        <p>Hello! I’m Joyce Harrison. I am passionate about UI/UX design and Web Design. I am a skilled Front-end Developer and master of Graphic Design tools such as Photoshop and Sketch.</p>
-      </div>
-      <div class="col-md-5 offset-md-1">
-        <div class="row mt-2">
-          <div class="col-sm-4">
-            <div class="pb-1">Age</div>
-          </div>
-          <div class="col-sm-8">
-            <div class="pb-1 text-secondary">28</div>
-          </div>
-          <div class="col-sm-4">
-            <div class="pb-1">Email</div>
-          </div>
-          <div class="col-sm-8">
-            <div class="pb-1 text-secondary">Joyce@company.com</div>
-          </div>
-          <div class="col-sm-4">
-            <div class="pb-1">Phone</div>
-          </div>
-          <div class="col-sm-8">
-            <div class="pb-1 text-secondary">+0718-111-0011</div>
-          </div>
-          <div class="col-sm-4">
-            <div class="pb-1">Address</div>
-          </div>
-          <div class="col-sm-8">
-            <div class="pb-1 text-secondary">140, City Center, New York, U.S.A</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr class="d-print-none"/>
-  <div class="skills-section px-3 px-lg-4">
-    <h2 class="h3 mb-3">Professional Skills</h2>
-    <div class="row">
-      <div class="col-md-6">
-        <div class="mb-2"><span>HTML</span>
-          <div class="progress my-1">
-            <div class="progress-bar bg-primary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="100" data-aos-anchor=".skills-section" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-        <div class="mb-2"><span>CSS</span>
-          <div class="progress my-1">
-            <div class="progress-bar bg-primary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="200" data-aos-anchor=".skills-section" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-        <div class="mb-2"><span>JavaScript</span>
-          <div class="progress my-1">
-            <div class="progress-bar bg-primary" role="progressbar" data-aos="zoom-in-right" data-aos-delay="300" data-aos-anchor=".skills-section" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-6">
-        <div class="mb-2"><span>Adobe Photoshop</span>
-          <div class="progress my-1">
-            <div class="progress-bar bg-success" role="progressbar" data-aos="zoom-in-right" data-aos-delay="400" data-aos-anchor=".skills-section" style="width: 80%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-        <div class="mb-2"><span>Sketch</span>
-          <div class="progress my-1">
-            <div class="progress-bar bg-success" role="progressbar" data-aos="zoom-in-right" data-aos-delay="500" data-aos-anchor=".skills-section" style="width: 85%" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-        <div class="mb-2"><span>Adobe XD</span>
-          <div class="progress my-1">
-            <div class="progress-bar bg-success" role="progressbar" data-aos="zoom-in-right" data-aos-delay="600" data-aos-anchor=".skills-section" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr class="d-print-none"/>
-  <div class="work-experience-section px-3 px-lg-4">
-    <h2 class="h3 mb-4">Work Experience</h2>
-    <div class="timeline">
-      <div class="timeline-card timeline-card-primary card shadow-sm">
-        <div class="card-body">
-          <div class="h5 mb-1">Frontend Developer <span class="text-muted h6">at Creative Agency</span></div>
-          <div class="text-muted text-small mb-2">May, 2015 - Present</div>
-          <div>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.</div>
-        </div>
-      </div>
-      <div class="timeline-card timeline-card-primary card shadow-sm">
-        <div class="card-body">
-          <div class="h5 mb-1">Graphic Designer <span class="text-muted h6">at Design Studio</span></div>
-          <div class="text-muted text-small mb-2">June, 2013 - May, 2015</div>
-          <div>Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</div>
-        </div>
-      </div>
-      <div class="timeline-card timeline-card-primary card shadow-sm">
-        <div class="card-body">
-          <div class="h5 mb-1">Junior Web Developer <span class="text-muted h6">at Indie Studio</span></div>
-          <div class="text-muted text-small mb-2">Jan, 2011 - May, 2013</div>
-          <div>User generated content in real-time will have multiple touchpoints for offshoring. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <hr class="d-print-none"/>
-  <div class="page-break"></div>
-  <div class="education-section px-3 px-lg-4 pb-4">
-    <h2 class="h3 mb-4">Education</h2>
-    <div class="timeline">
-      <div class="timeline-card timeline-card-success card shadow-sm">
-        <div class="card-body">
-          <div class="h5 mb-1">Masters in Information Technology <span class="text-muted h6">from International University</span></div>
-          <div class="text-muted text-small mb-2">2011 - 2013</div>
-          <div>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition.</div>
-        </div>
-      </div>
-      <div class="timeline-card timeline-card-success card shadow-sm">
-        <div class="card-body">
-          <div class="h5 mb-1">Bachelor of Computer Science <span class="text-muted h6">from Regional College</span></div>
-          <div class="text-muted text-small mb-2">2007 - 2011</div>
-          <div>Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</div>
-        </div>
-      </div>
-      <div class="timeline-card timeline-card-success card shadow-sm">
-        <div class="card-body">
-          <div class="h5 mb-1">Science and Mathematics <span class="text-muted h6">from Mt. High Scool</span></div>
-          <div class="text-muted text-small mb-2">1995 - 2007</div>
-          <div>User generated content in real-time will have multiple touchpoints for offshoring. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-    </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dahye's CV</title>
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+</head>
 
-    <script src="scripts/bootstrap.bundle.min.js?ver=1.2.0"></script>
-    <script src="scripts/aos.js?ver=1.2.0"></script>
-    <script src="scripts/main.js?ver=1.2.0"></script>
-  </body>
+<body class="flex justify-center content-center">
+<!-- outer container -->
+<div class="border border-gray-300 rounded-sm shadow-lg py-10 px-10 mt-10 mb-10">
+    <!-- header (profile) -->
+    <header>
+        <!-- social icons-->
+        <ul class="flex flex-wrap justify-end gap-2">
+            <!-- linkedin -->
+            @if($profile->social_linkedin)
+                <li>
+                    <a href="{{ $profile->social_linkedin }}"
+                       class="bg-blue-600 p-2 font-semibold text-white inline-flex items-center space-x-2 rounded"
+                       target=”_blank”>
+                        <svg class="w-5 h-5 fill-current" role="img" viewBox="0 0 256 256"
+                             xmlns="http://www.w3.org/2000/svg">
+                            <g>
+                                <path
+                                    d="M218.123122,218.127392 L180.191928,218.127392 L180.191928,158.724263 C180.191928,144.559023 179.939053,126.323993 160.463756,126.323993 C140.707926,126.323993 137.685284,141.757585 137.685284,157.692986 L137.685284,218.123441 L99.7540894,218.123441 L99.7540894,95.9665207 L136.168036,95.9665207 L136.168036,112.660562 L136.677736,112.660562 C144.102746,99.9650027 157.908637,92.3824528 172.605689,92.9280076 C211.050535,92.9280076 218.138927,118.216023 218.138927,151.114151 L218.123122,218.127392 Z M56.9550587,79.2685282 C44.7981969,79.2707099 34.9413443,69.4171797 34.9391618,57.260052 C34.93698,45.1029244 44.7902948,35.2458562 56.9471566,35.2436736 C69.1040185,35.2414916 78.9608713,45.0950217 78.963054,57.2521493 C78.9641017,63.090208 76.6459976,68.6895714 72.5186979,72.8184433 C68.3913982,76.9473153 62.7929898,79.26748 56.9550587,79.2685282 M75.9206558,218.127392 L37.94995,218.127392 L37.94995,95.9665207 L75.9206558,95.9665207 L75.9206558,218.127392 Z M237.033403,0.0182577091 L18.8895249,0.0182577091 C8.57959469,-0.0980923971 0.124827038,8.16056231 -0.001,18.4706066 L-0.001,237.524091 C0.120519052,247.839103 8.57460631,256.105934 18.8895249,255.9977 L237.033403,255.9977 C247.368728,256.125818 255.855922,247.859464 255.999,237.524091 L255.999,18.4548016 C255.851624,8.12438979 247.363742,-0.133792868 237.033403,0.000790807055">
+                                </path>
+                            </g>
+                        </svg>
+                    </a>
+                </li>
+            @endif
+            @if($profile->social_github)
+                <li>
+                    <!-- github -->
+                    <a href="{{ $profile->social_github }}"
+                       class="bg-gray-700 p-2 font-medium text-white inline-flex items-center space-x-2 rounded"
+                       target=”_blank”>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                             aria-hidden="true" role="img" class="w-5" preserveAspectRatio="xMidYMid meet"
+                             viewBox="0 0 24 24">
+                            <g fill="none">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385c.6.105.825-.255.825-.57c0-.285-.015-1.23-.015-2.235c-3.015.555-3.795-.735-4.035-1.41c-.135-.345-.72-1.41-1.23-1.695c-.42-.225-1.02-.78-.015-.795c.945-.015 1.62.87 1.845 1.23c1.08 1.815 2.805 1.305 3.495.99c.105-.78.42-1.305.765-1.605c-2.67-.3-5.46-1.335-5.46-5.925c0-1.305.465-2.385 1.23-3.225c-.12-.3-.54-1.53.12-3.18c0 0 1.005-.315 3.3 1.23c.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23c.66 1.65.24 2.88.12 3.18c.765.84 1.23 1.905 1.23 3.225c0 4.605-2.805 5.625-5.475 5.925c.435.375.81 1.095.81 2.22c0 1.605-.015 2.895-.015 3.3c0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"
+                                      fill="currentColor" />
+                            </g>
+                        </svg>
+                    </a>
+                </li>
+            @endif
+            @if($profile->website)
+                <li>
+                    <!-- tech blog -->
+                    <a href="{{ $profile->website }}"
+                       class="bg-black p-2 font-medium text-white inline-flex items-center space-x-2 rounded"
+                       target=”_blank”>
+                        <svg class="w-5 h-5" role="img" aria-hidden="true" preserveAspectRatio="xMidYMid meet"
+                             viewBox="0 32 447.99999999999994 448" xmlns="http://www.w3.org/2000/svg" width="2500"
+                             height="2321">
+                            <g fill="none">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                      d="M120.12 208.29c-3.88-2.9-7.77-4.35-11.65-4.35H91.03v104.47h17.45c3.88 0 7.77-1.45 11.65-4.35s5.82-7.25 5.82-13.06v-69.65c-.01-5.8-1.96-10.16-5.83-13.06zM404.1 32H43.9C19.7 32 .06 51.59 0 75.8v360.4C.06 460.41 19.7 480 43.9 480h360.2c24.21 0 43.84-19.59 43.9-43.8V75.8c-.06-24.21-19.7-43.8-43.9-43.8zM154.2 291.19c0 18.81-11.61 47.31-48.36 47.25h-46.4V172.98h47.38c35.44 0 47.36 28.46 47.37 47.28zm100.68-88.66H201.6v38.42h32.57v29.57H201.6v38.41h53.29v29.57h-62.18c-11.16.29-20.44-8.53-20.72-19.69V193.7c-.27-11.15 8.56-20.41 19.71-20.69h63.19zm103.64 115.29c-13.2 30.75-36.85 24.63-47.44 0l-38.53-144.8h32.57l29.71 113.72 29.57-113.72h32.58z"
+                                      fill="currentColor" />
+                            </g>
+                        </svg>
+                    </a>
+                </li>
+            @endif
+        </ul>
+        <div class="flex justify-between items-center">
+            <div>
+                    <img src="/storage/{{ $profile->avatar }}" class="rounded-full h-52 w-52" alt="">
+            </div>
+            <div class="grid justify-items-end">
+                <h1 class="text-7xl font-extrabold">{{ $profile->fullname }}</h1>
+                <p class="text-xl mt-5">{{ $profile->position }}</p>
+            </div>
+        </div>
+    </header>
+    <!-- detailed info -->
+    <main class="flex gap-x-10 mt-10">
+        <div class="w-2/6">
+            <!-- contact details -->
+            <strong class="text-xl font-medium">Contact Details</strong>
+            <ul class="mt-2 mb-10">
+                <li class="px-2 mt-1"><strong class="mr-1">Phone </strong>
+                    <a href="tel:+821023456789" class="block">{{ $profile->phone }}</a>
+                </li>
+                <li class="px-2 mt-1"><strong class="mr-1">E-mail </strong>
+                    <a href="mailto:" class="block">{{ $profile->email }}</a>
+                </li>
+                <li class="px-2 mt-1"><strong class="mr-1">Location</strong><span class="block">{{ $profile->address }}</span></li>
+            </ul>
+
+
+            <!-- categories -->
+            @if($profile->skills()->count() > 0)
+                <strong class="text-xl font-medium">Categories</strong>
+                <ul class="mt-2 mb-10">
+                    @foreach($profile->categories()->get() as $category)
+                        <li class="px-2 mt-1">{{ $category->name }}</li>
+                    @endforeach
+                </ul>
+            @endif
+            <!-- skills -->
+            @if($profile->skills()->count() > 0)
+                <strong class="text-xl font-medium">Skills</strong>
+                <ul class="mt-2 mb-10">
+                    @foreach($profile->skills()->get() as $skill)
+                        <li class="px-2 mt-1">{{ $skill->name }}</li>
+                    @endforeach
+                </ul>
+            @endif
+            <!-- languages -->
+            @if($profile->languages()->count() > 0)
+                <strong class="text-xl font-medium">Languages</strong>
+                <ul class="mt-2 mb-10">
+                    @foreach($profile->languages()->get() as $language)
+                        <li class="px-2 mt-1">{{ $language->name }}</li>
+                    @endforeach
+                </ul>
+            @endif
+            <!-- Tools -->
+            @if($profile->languages()->count() > 0)
+                <strong class="text-xl font-medium">Tools</strong>
+                <ul class="mt-2 mb-10">
+                    @foreach($profile->tools()->get() as $tool)
+                        <li class="px-2 mt-1">{{ $tool->name }}</li>
+                    @endforeach
+                </ul>
+            @endif
+            <!-- Tools -->
+            @if($profile->interests()->count() > 0)
+                <strong class="text-xl font-medium">Interests</strong>
+                <ul class="mt-2 mb-10">
+                    @foreach($profile->interests()->get() as $interest)
+                        <li class="px-2 mt-1">{{ $interest->name }}</li>
+                    @endforeach
+                </ul>
+            @endif
+        </div>
+        <!-- info -->
+        <div class="w-4/6">
+            <section>
+                <!-- about me -->
+                <h2 class="text-2xl pb-1 border-b font-semibold">About</h2>
+                <p class="mt-4 text-xs">{{ $profile->bio }}</p>
+
+            </section>
+            <!-- education -->
+            @if($profile->educations()->count() > 0)
+                <section>
+                    <h2 class="text-2xl mt-6 pb-1 border-b font-semibold">Education</h2>
+                    <ul class="mt-2">
+                        @foreach($profile->educations()->get() as $education)
+                            <li class="pt-2">
+                                <p class="flex justify-between text-sm"><strong class="text-base">{{ $education->school->name }}</strong>{{ \Carbon\Carbon::create($education->start_date)->format('Y') }}-{{ \Carbon\Carbon::create($education->end_date)->format('Y') }}</p>
+                                <p class="flex justify-between text-sm">{{ $education->fieldOfStudy->name }} - {{ $education->subFieldOfStudy->name ?? '' }}<small>GPA {{ $education->grade }}</small></p>
+                            </li>
+                        @endforeach
+                    </ul>
+                </section>
+            @endif
+            @if($profile->experiences()->count() > 0)
+                <section>
+                    <!-- work experiences -->
+                    <h2 class="text-2xl mt-6 pb-1 border-b font-semibold">Work Experiences</h2>
+                    <ul class="mt-2">
+                        @foreach($profile->experiences as $experience)
+                            <li class="pt-2">
+                                <p class="flex justify-between text-sm"><strong class="text-base">{{ $experience->company }}</strong>{{ \Carbon\Carbon::create($education->start_date)->format('Y') }}-{{ \Carbon\Carbon::create($education->end_date)->format('Y') }}</p>
+                                <p class="flex justify-between text-base">{{ $experience->position }}<small></small></p>
+                                <p class="text-justify text-xs">
+                                    {{ $experience->description }}
+                                </p>
+                            </li>
+                        @endforeach
+                    </ul>
+                </section>
+            @endif
+            @if($profile->works()->count() > 0)
+                <section>
+                    <!-- projects -->
+                    <h2 class="text-2xl mt-6 pb-1 border-b font-semibold">Projects</h2>
+                    <ul class="mt-1">
+                       @foreach($profile->works as $work)
+                            <li class="py-2">
+                                <div class="flex justify-between my-1">
+                                    <strong>{{ $work->title }} - {{ $work->workCategory->name }}</strong>
+                                    <p class="flex">
+                                        @foreach($work->tools as $tool)
+                                            <span class="bg-gray-200 text-gray-600 px-2 py-1 mr-1 text-xs rounded">{{ $tool->name }}</span>
+                                        @endforeach
+                                </div>
+                                <ul class="flex mb-2">
+                                    @foreach($work->skills as $skill)
+                                        <li class="bg-gray-200 text-gray-600 px-2 py-1 mr-1 text-xs rounded">{{ $skill->name }}</li>
+                                    @endforeach
+                                </ul>
+                                <p class="text-xs">{!! html_entity_decode($work->description) !!}</p>
+                            </li>
+                       @endforeach
+                    </ul>
+                </section>
+            @endif
+        </div>
+    </main>
+    <!-- short lines to introduce myself -->
+    <footer class="mt-6">
+        <p class="bg-gray-600 text-white text-center text-xs pt-2">The best way to predict the future is to
+            create it. <small>- AbrahamLincoln</small>
+        </p>
+        <p class="bg-gray-600 text-white text-center text-sm pb-2">I am creating my future by learning new things
+            and
+            making small progresses everyday.</p>
+    </footer>
+</div>
+</body>
+
 </html>

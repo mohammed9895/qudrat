@@ -88,7 +88,7 @@
                         <div class="bg-white p-6 rounded-xl mt-5">
                             <h6 class="text-lg font-semibold mb-3">Skills</h6>
                             <div class="flex items-center gap-3 flex-wrap">
-                                @foreach($profile->skills as $skill)
+                                @foreach($profile->skills()->get() as $skill)
                                     <a href="{{ route('social-window.index') }}" class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $skill }}</a>
                                 @endforeach
                             </div>

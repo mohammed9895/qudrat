@@ -131,8 +131,8 @@
                                         <p class="text-sm mb-4">{{ $talent->position }}</p>
                                         @if($talent->skills()->count() > 0)
                                             <div class="flex items-center gap-1 flex-wrap mb-4">
-                                                @foreach($talent->skills as $skill)
-                                                    <span class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $skill }}</span>
+                                                @foreach($talent->skills()->get() as $skill)
+                                                    <span class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $skill->name }}</span>
                                                 @endforeach
                                             </div>
                                         @endif
