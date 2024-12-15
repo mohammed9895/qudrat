@@ -11,6 +11,14 @@ class Experience extends Model
 
     protected $guarded = [];
 
+    protected static function booted()
+    {
+        static::creating(function($model) {
+            $model->addable_type = User::class;
+            $model->addable_id = auth()->id() ?? null;
+        });
+    }
+
     public function profile()
     {
         return $this->belongsTo(Profile::class);

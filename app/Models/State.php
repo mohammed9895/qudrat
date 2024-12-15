@@ -13,7 +13,7 @@ class State extends Model
     use HasTranslations;
     use SoftDeletes;
 
-    public $translatable = ['name'];
+    public array $translatable = ['name'];
 
     protected $guarded = [];
 

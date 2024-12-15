@@ -13,6 +13,7 @@
         "cyrildewit/eloquent-viewable": "^7.0",
         "filament/filament": "^3.2",
         "filament/spatie-laravel-translatable-plugin": "^3.2",
+        "ibrahimbougaoua/radiobuttonimage": "^1.1",
         "jaocero/filachat": "dev-main",
         "laravel/framework": "^11.34",
         "laravel/reverb": "^1.0",
@@ -24,6 +25,7 @@
         "wireui/breadcrumbs": "^3.1"
     },
     "require-dev": {
+        "aaronfrancis/solo": "^0.2.2",
         "fakerphp/faker": "^1.23",
         "laravel/pail": "^1.1",
         "laravel/pint": "^1.13",

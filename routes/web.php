@@ -29,6 +29,7 @@ Route::get('/work/skill/{skill}', \App\Livewire\Frontend\Work\Skill::class)->nam
 Route::get('/work/tool/{tool}', \App\Livewire\Frontend\Work\Tool::class)->name('works.tool');
 
 
+Route::get('/social-window/experts', \App\Livewire\Frontend\SocialWindow\Experts::class)->name('social-window.experts');
 Route::get('/social-window/{category:slug}', \App\Livewire\Frontend\SocialWindow\Category::class)->name('social-window.category');
 Route::get('/social-window/{tool}', \App\Livewire\Frontend\SocialWindow\Skill::class)->name('social-window.skill');
 Route::get('/social-window/{skill}', \App\Livewire\Frontend\SocialWindow\Tool::class)->name('social-window.tool');

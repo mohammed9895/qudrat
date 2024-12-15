@@ -25,9 +25,9 @@ class Category extends Model
         'status' => Status::class,
     ];
 
-    public function profiles(): HasMany
+    public function profiles(): BelongsToMany
     {
-        return $this->hasMany(Profile::class);
+        return $this->belongsToMany(Profile::class);
     }
 
     public function profilesCategories(): BelongsToMany

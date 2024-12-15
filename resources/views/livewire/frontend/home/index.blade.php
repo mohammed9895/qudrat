@@ -173,7 +173,7 @@
                                             </div>
                                         @endif
                                         <p class="mb-6">{{ substr($talent->bio, 0 ,100) }}</p>
-                                        <a href="{{ route('profile.index', $talent) }}" class="inline-block px-8 py-3 rounded-full border border-primary-1 text-head-color font-medium hover:bg-primary-1 hover:text-white">View Profile</a>
+                                        <a href="{{ route('profile.index', $talent->username) }}" class="inline-block px-8 py-3 rounded-full border border-primary-1 text-head-color font-medium hover:bg-primary-1 hover:text-white">View Profile</a>
                                     </div>
                                 </div>
                             @endforeach
