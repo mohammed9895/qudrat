@@ -2,9 +2,9 @@
 
 namespace App\Providers\Filament;
 
-use App\Filament\User\Clusters\Profile\Pages\Educations;
 use App\Filament\User\Pages\Dashboard;
 use App\Models\Country;
+use App\Models\Profile;
 use App\Models\Province;
 use App\Models\State;
 use Filament\Forms\Components\DatePicker;
@@ -12,6 +12,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Wizard\Step as WizardStep;
 use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Http\Middleware\Authenticate;
@@ -30,10 +31,10 @@ use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use JaOcero\FilaChat\FilaChatPlugin;
 use RalphJSmit\Filament\Onboard\FilamentOnboard;
+use RalphJSmit\Filament\Onboard\Http\Livewire\Wizard;
 use RalphJSmit\Filament\Onboard\Http\Middleware\OnboardMiddleware;
 use RalphJSmit\Filament\Onboard\Step;
 use RalphJSmit\Filament\Onboard\Track;
-use Filament\Forms\Components\Wizard\Step as WizardStep;
 
 class UserPanelProvider extends PanelProvider
 {
@@ -82,12 +83,12 @@ class UserPanelProvider extends PanelProvider
                 FilaChatPlugin::make(),
                 FilamentOnboard::make()
                     ->addTrack(fn () => Track::make([
-                        Step::make(name: fn () => 'Hello ' . auth()->user()->name, identifier: 'Welcome to the onboarding process.')
+                        Step::make(name: fn () => 'Hello '.auth()->user()->name, identifier: 'Welcome to the onboarding process.')
                             ->description('Let\'s get started by filling in your basic information. and then you can complate your profile.')
-                            ->completeIf(fn() => auth()->user()->profile()->exists())
+                            ->completeIf(fn () => auth()->user()->profile()->exists())
                             ->cardWidth('3xl')
                             ->wizard([
-                                WizardStep::make("Basic Information")
+                                WizardStep::make('Basic Information')
                                     ->statePath('step_1') // It is recommended to keep the form data in a separate array key for each step.
                                     ->schema([
                                         FileUpload::make('avatar')->avatar()->columnSpanFull(),
@@ -105,7 +106,7 @@ class UserPanelProvider extends PanelProvider
                                             ->hint('Upload a video about your attachments.')
                                             ->columnSpanFull(),
                                     ])->columns(2),
-                                WizardStep::make("Location")
+                                WizardStep::make('Location')
                                     ->statePath('step_2') // It is recommended to keep the form data in a separate array key for each step.
                                     ->schema([
                                         Select::make('country_id')
@@ -117,23 +118,24 @@ class UserPanelProvider extends PanelProvider
                                             ->options(Province::all()->pluck('name', 'id'))
                                             ->searchable()
                                             ->reactive()
-                                            ->afterStateUpdated(fn(Set $set) => $set('state_id', null)),
+                                            ->afterStateUpdated(fn (Set $set) => $set('state_id', null)),
                                         Select::make('state_id')
                                             ->label(__('State'))
                                             ->options(function (Get $get) {
                                                 $province = Province::find($get('province_id'));
-                                                if (!$province) {
+                                                if (! $province) {
                                                     return State::all()->pluck('name', 'id');
                                                 }
+
                                                 return $province->states->pluck('name', 'id');
                                             })
                                             ->searchable(),
                                         TextInput::make('address'),
                                     ])->columns(2),
                             ])
-                            ->wizardSubmitFormUsing(function(array $state, \RalphJSmit\Filament\Onboard\Http\Livewire\Wizard $livewire) {
+                            ->wizardSubmitFormUsing(function (array $state, Wizard $livewire) {
                                 // Save the data to the database.
-                                $profile = \App\Models\Profile::updateOrCreate(
+                                $profile = Profile::updateOrCreate(
                                     ['user_id' => auth()->id()],
                                     array_merge($state['step_1'], $state['step_2'])
                                 );
@@ -145,27 +147,27 @@ class UserPanelProvider extends PanelProvider
                             ->description('Add your education information.')
                             ->icon('hugeicons-graduation-scroll')
                             ->url(route('filament.user.profile.pages.educations'))
-                            ->completeIf(fn() => auth()->user()->profile->educations()->count() > 0),
+                            ->completeIf(fn () => auth()->user()->profile->educations()->count() > 0),
                         Step::make(name: 'Add Experience', identifier: 'widget::connect-experiences')
                             ->description('Add your experiences information.')
                             ->icon('hugeicons-new-job')
                             ->url(route('filament.user.profile.pages.experiences'))
-                            ->completeIf(fn() => auth()->user()->profile->experiences()->count() > 0),
+                            ->completeIf(fn () => auth()->user()->profile->experiences()->count() > 0),
                         Step::make('Add Certificates', 'widget::add-certificates')
                             ->description('Add your certificates information.')
                             ->icon('hugeicons-certificate-01')
                             ->url(route('filament.user.profile.pages.certificates'))
-                            ->completeIf(fn() => auth()->user()->profile->certificates()->count() > 0),
+                            ->completeIf(fn () => auth()->user()->profile->certificates()->count() > 0),
                         Step::make('Add Achievements', 'widget::add-achievements')
                             ->description('Add your achievements information.')
                             ->icon('hugeicons-checkmark-square-03')
                             ->url(route('filament.user.profile.pages.achievements'))
-                            ->completeIf(fn() => auth()->user()->profile->achievements()->count() > 0),
+                            ->completeIf(fn () => auth()->user()->profile->achievements()->count() > 0),
                         Step::make('Add Courses', 'widget::add-courses')
                             ->description('Add your courses information.')
                             ->icon('hugeicons-course')
                             ->url(route('filament.user.profile.pages.courses'))
-                            ->completeIf(fn() => auth()->user()->profile->courses()->count() > 0),
+                            ->completeIf(fn () => auth()->user()->profile->courses()->count() > 0),
                         Step::make('More About You', 'widget::add-more-about-you')
                             ->description('Add more information about you.')
                             ->icon('hugeicons-user-search-01')
@@ -173,8 +175,7 @@ class UserPanelProvider extends PanelProvider
                             ->completeIf(function () {
                                 if (auth()->user()->profile->skills || auth()->user()->profile->languages || auth()->user()->profile->interested || auth()->user()->profile->tools || auth()->user()->profile->categories) {
                                     return true;
-                                }
-                                else {
+                                } else {
                                     return false;
                                 }
                             }),
@@ -182,13 +183,13 @@ class UserPanelProvider extends PanelProvider
                             ->description('Add you social media links.')
                             ->icon('hugeicons-share-08')
                             ->url(route('filament.user.profile.pages.more-about-you'))
-                            ->completeIf(fn() => auth()->user()->profile->achievements()->count() > 0),
+                            ->completeIf(fn () => auth()->user()->profile->achievements()->count() > 0),
                         Step::make('Your Privacy', 'widget::add-privacy')
                             ->description('Choose where you want to be public or no.')
                             ->icon('hugeicons-locked')
                             ->url(route('filament.user.profile.pages.more-about-you'))
-                            ->completeIf(fn() => auth()->user()->profile->achievements()->count() > 0),
-                ])->sequential(false)),
+                            ->completeIf(fn () => auth()->user()->profile->achievements()->count() > 0),
+                    ])->sequential(false)),
             ]);
     }
 }

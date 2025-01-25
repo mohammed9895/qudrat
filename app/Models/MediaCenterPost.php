@@ -40,6 +40,7 @@ class MediaCenterPost extends Model
     public function getThumbnailImage()
     {
         $isUrl = str_contains($this->image, 'http');
+
         return $isUrl ? asset('assets/images/unset.jpg') : \Storage::disk('public')->url($this->image);
     }
 }
