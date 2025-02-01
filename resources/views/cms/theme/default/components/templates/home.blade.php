@@ -14,21 +14,103 @@
 
 
     <div
-        class=" mt-32 py-48 container flex flex-col items-center justify-center"
-        style="background: url(/storage/{{ $page->data['hero_image'] }}); background-size: contain; background-position: center center; background-repeat: no-repeat;">
-        <h1 class="prose prose-strong:text-primary-1 text-white text-5xl text-center leading-3">{!! $page->data['main_title'] !!}</h1>
-        <form action="" class="mt-14 w-3/4 md:w-1/2 relative">
-            <input type="text" class="w-full border-none px-5 py-4 rounded-full"
-                   placeholder="{{ __('ابحث عن موهبه او قدرة او خبير ...') }}">
-            <button type="submit"
-                    class="absolute w-10 h-10 flex items-center justify-center rounded-full left-2 top-2 bg-primary-2 text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                     stroke="currentColor" class="size-6">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                          d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
-                </svg>
-            </button>
-        </form>
+        class=" mt-32 py-48 container flex flex-col items-center justify-center relative overflow-hidden bg-brand-blue rounded-lg">
+        <div class="w-full h-full absolute top-0 invert z-10" style="background-image: url('https://yc.om/images/rouneded-lg.webp'); background-position: top center;
+    background-repeat: no-repeat;
+    background-size: 102% auto;" bis_skin_checked="1"></div>
+        <div class="z-30 flex flex-col w-full items-center justify-center">
+            <h1 class="prose prose-strong:text-brand-yellow text-white text-5xl text-center leading-3">{!! $page->data['main_title'] !!}</h1>
+            <form action="" class="mt-14 w-3/4 md:w-1/2 relative">
+                <input type="text" class="w-full border-none px-5 py-4 rounded-full"
+                       placeholder="{{ __('general.hero.hero-search') }}">
+                <button type="submit"
+                        class="absolute w-10 h-10 flex items-center justify-center rounded-full right-2 rtl:right-auto rtl:left-2 top-2 bg-brand-blue text-white">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                         stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
+                    </svg>
+                </button>
+            </form>
+        </div>
+        <div class="absolute left-60 top-4 z-30" bis_skin_checked="1">
+            <div class="bg-brand-green shadow-2xl rounded-lg relative px-5 pt-10 "
+                 bis_skin_checked="1">
+                <div class="p-3 text-white absolute bottom-1 left-1 rtl:left-auto rtl:right-1 z-10"
+                     bis_skin_checked="1">
+                    <h3 class="font-bold text-md text-white">عبدالعزيز الريامي</h3>
+                    <h4 class="text-white">مسوق</h4>
+                </div>
+                <div class="flex justify-center" bis_skin_checked="1">
+                    <img src="https://yc.om/images/aziz.png" class="w-32 " alt="">
+                </div>
+            </div>
+        </div>
+        <div class="absolute left-10 top-32 z-30" bis_skin_checked="1">
+            <div class="bg-brand-yellow shadow-lg rounded-lg relative px-5 pt-10 "
+                 bis_skin_checked="1">
+                <div class="p-3 text-white absolute bottom-1 left-1 rtl:left-auto rtl:right-1 z-10"
+                     bis_skin_checked="1">
+                    <h3 class="font-bold text-md text-white">صفاء النبهاني</h3>
+                    <h4 class="text-white">مهندسة معمارية</h4>
+                </div>
+                <div class="flex justify-center" bis_skin_checked="1">
+                    <img src="https://yc.om/images/safa.png" class="w-32 " alt="">
+                </div>
+            </div>
+        </div>
+        <div class="absolute left-32 bottom-10 z-30" bis_skin_checked="1">
+            <div class="bg-brand-red shadow-lg rounded-lg relative px-5 pt-10 "
+                 bis_skin_checked="1">
+                <div class="p-3 text-white absolute bottom-1 left-1 rtl:left-auto rtl:right-1 z-10"
+                     bis_skin_checked="1">
+                    <h3 class="font-bold text-md text-white">مريم الكندي</h3>
+                    <h4 class="text-white">مهندسة معمارية</h4>
+                </div>
+                <div class="flex justify-center" bis_skin_checked="1">
+                    <img src="https://yc.om/images/maryam.png" class="w-32 " alt="">
+                </div>
+            </div>
+        </div>
+        <div class="absolute right-60 top-4 z-30" bis_skin_checked="1">
+            <div class="bg-brand-yellow shadow-lg rounded-lg relative px-5 pt-10 "
+                 bis_skin_checked="1">
+                <div class="p-3 text-white absolute bottom-1 left-1 rtl:left-auto rtl:right-1 z-10"
+                     bis_skin_checked="1">
+                    <h3 class="font-bold text-md text-white">مريم الكندي</h3>
+                    <h4 class="text-white">مهندسة معمارية</h4>
+                </div>
+                <div class="flex justify-center" bis_skin_checked="1">
+                    <img src="https://yc.om/images/audi.png" class="w-32 " alt="">
+                </div>
+            </div>
+        </div>
+        <div class="absolute right-10 top-32 z-30" bis_skin_checked="1">
+            <div class="bg-brand-green shadow-lg rounded-lg relative px-5 pt-10 "
+                 bis_skin_checked="1">
+                <div class="p-3 text-white absolute bottom-1 left-1 rtl:left-auto rtl:right-1 z-10"
+                     bis_skin_checked="1">
+                    <h3 class="font-bold text-md text-white">وجدان الفارسي</h3>
+                    <h4 class="text-white">مهندسة معمارية</h4>
+                </div>
+                <div class="flex justify-center" bis_skin_checked="1">
+                    <img src="https://yc.om/images/wijdan.png" class="w-32 " alt="">
+                </div>
+            </div>
+        </div>
+        <div class="absolute right-32 bottom-10 z-30" bis_skin_checked="1">
+            <div class="bg-brand-gray shadow-lg rounded-lg relative px-5 pt-10 "
+                 bis_skin_checked="1">
+                <div class="p-3 text-white absolute bottom-1 left-1 rtl:left-auto rtl:right-1 z-10"
+                     bis_skin_checked="1">
+                    <h3 class="font-bold text-md text-white">وجدان الفارسي</h3>
+                    <h4 class="text-white">مهندسة معمارية</h4>
+                </div>
+                <div class="flex justify-center" bis_skin_checked="1">
+                    <img src="https://yc.om/images/bushra.png" class="w-32 " alt="">
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -56,7 +138,7 @@
     {{--                                    <option>Export</option>--}}
     {{--                                </select>--}}
     {{--                                <button type="submit"--}}
-    {{--                                        class="w-[48px] h-[48px] bg-primary-2 rounded-full flex items-center justify-center">--}}
+    {{--                                        class="w-[48px] h-[48px] bg-brand-blue rounded-full flex items-center justify-center">--}}
     {{--                                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none"--}}
     {{--                                         xmlns="http://www.w3.org/2000/svg">--}}
     {{--                                        <path--}}
@@ -109,17 +191,33 @@
     <div class="bg-white py-24">
         <div class="container">
             <div class="flex items-center justify-between gap-4 flex-wrap lg:flex-nowrap">
-                <div class="w-full lg:w-6/12">
+                <div class="w-full lg:w-6/12 relative">
                     <img src="/storage/{{ $page->data['about_image'] }}" alt="images" class="">
+                    <img src="{{ asset('assets/images/red-shape.svg') }}"
+                         class="w-20 absolute top-32 -right-10"
+                         alt="">
+
+                    <img src="{{ asset('assets/images/yellow-shape.svg') }}"
+                         class="w-20 absolute -top-10 left-2 rotate-120 "
+                         alt="">
+
+                    <img src="{{ asset('assets/images/green-shape.svg') }}"
+                         class="w-20 absolute bottom-64 left-2 rotate-45 "
+                         alt="">
+
+                    <img src="{{ asset('assets/images/gray-shape.svg') }}"
+                         class="w-10 absolute -bottom-10 left-3/4 rotate-45"
+                         alt="">
                 </div>
                 <div class="w-full lg:w-6/12 xl:w-5/12">
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ $page->data['about_title'] }}</h2>
                     <p class="text-b-color mb-10">{{ $page->data['about_description'] }}</p>
                     <div class="flex flex-col gap-8">
                         @foreach($page->data['about_items'] as $item)
-                            <div class="flex gap-5">
-                                <div class="shrink-0">
-                                    <img src="/storage/{{ $item['image'] }}" alt="images" class="">
+                            <div class="flex gap-5 items-center">
+                                <div
+                                    class="shrink-0 bg-gradient-to-t from-brand-blue/30 to-transparent w-24 h-24 rounded-full flex justify-center items-center">
+                                    <img src="/storage/{{ $item['image'] }}" alt="images" class="w-14">
                                 </div>
                                 <div>
                                     <h5 class="text-2xl font-medium mb-3">{{ $item['title'] }}</h5>
@@ -143,7 +241,7 @@
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ $page->data['steps_title'] }}</h2>
                     <p class="text-b-color mb-10">{{ $page->data['steps_description'] }}</p>
                     <a href="{{ $page->data['steps_button_url'] }}"
-                       class="px-8 py-3 rounded-full text-head-color font-medium bg-primary-2 text-white inline-flex items-center gap-2">{{ $page->data['steps_button_text'] }}
+                       class="px-8 py-3 rounded-full text-head-color font-medium bg-brand-red text-white inline-flex items-center gap-2">{{ $page->data['steps_button_text'] }}
                         <span><svg width="12" height="10" viewBox="0 0 12 10" fill="none"
                                    xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -157,15 +255,15 @@
                         @foreach($page->data['steps'] as $step)
                             <div class="col-span-12 md:col-span-6">
                                 <div
-                                    class="bg-transparent border-[3px] border-white rounded-xl p-5 relative hover:bg-white transition-all relative h-full">
-                                    <h4 class="text-5xl font-bold text-primary-1 text-opacity-25 absolute top-1 end-1">
+                                    class="bg-transparent border-[3px] border-white rounded-xl p-5 hover:bg-white transition-all relative h-full">
+                                    <h4 class="text-5xl font-bold text-brand-red text-opacity-25 absolute top-1 end-1">
                                         {{ $step['number'] }}</h4>
-                                    <img src="/storage/{{ $step['image'] }}" alt="images" class=" mb-3">
+                                    <img src="/storage/{{ $step['image'] }}" alt="images" class="w-20 mb-3">
                                     <h6 class="text-xl font-semibold mb-2">{{ $step['title'] }}</h6>
                                     <p class="mb-4">{{ $step['description'] }}</p>
                                     <div class="flex justify-between">
                                         <span
-                                            class="inline-block w-[36px] h-[36px] bg-primary-1 bg-opacity-50 rounded-full flex items-center justify-center">
+                                            class="inline-block w-[36px] h-[36px] bg-brand-red bg-opacity-50 rounded-full flex items-center justify-center">
                                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                              xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -253,7 +351,7 @@
             <div class="flex items-center justify-between gap-4 flex-wrap">
                 <div class="w-full xl:w-5/12">
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ $page->data['features_title'] }}</h2>
-                    <p class="text-b-color mb-8">{{ $page->data['features_description'] }}/p>
+                    <p class="text-b-color mb-8">{{ $page->data['features_description'] }}</p>
                     <div class="flex flex-col gap-6">
                         @foreach($page->data['features'] as $feature)
                             <div class="bg-white px-7 py-5 rounded-xl hover:shadow-default transition-all">
@@ -263,12 +361,12 @@
                                             <img src="/storage/{{ $feature['icon'] }}" alt="image" class="">
                                         </div>
                                         <div>
-                                            <h6 class="text-primary-2 text-base font-semibold mb-0">{{ $feature['subtitle'] }}</h6>
+                                            <h6 class="text-brand-green text-base font-semibold mb-0">{{ $feature['subtitle'] }}</h6>
                                             <h4 class="text-2xl font-semibold">{{$feature['title']}}</h4>
                                         </div>
                                     </div>
                                     <span
-                                        class="inline-block w-[36px] h-[36px] bg-primary-1 bg-opacity-50 hover:bg-opacity-100 rounded-full flex items-center justify-center">
+                                        class="inline-block w-[36px] h-[36px] bg-brand-green bg-opacity-50 hover:bg-opacity-100 rounded-full flex items-center justify-center">
                                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none"
                                          xmlns="http://www.w3.org/2000/svg">
                                         <path
@@ -281,8 +379,12 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="w-full xl:w-6/12">
-                    <img src="/storage/{{ $page->data['features_image'] }}" alt="images" class="">
+                <div class="w-full xl:w-6/12 relative">
+                    <div
+                        class="w-[650px] h-[650px] absolute rounded-full border-dashed border-2 z-10 border-brand-green bg-brand-green/30">
+                    </div>
+                    <img src="/storage/{{ $page->data['features_image'] }}" alt="images"
+                         class="relative w-[550px] z-30 mt-[50px] mr-[50px]">
                 </div>
             </div>
         </div>
@@ -298,8 +400,8 @@
                     <div id="container-s"></div>
                 </div>
                 <div class="w-full lg:w-5/12">
-                    <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ $page->data['map_title'] }}</h2>
-                    <p class="text-b-color mb-8">{{ $page->data['map_description'] }}</p>
+                    <h2 class="text-4xl sm:text-5xl font-semibold mb-3 leading-[100px]">{{ $page->data['map_title'] }}</h2>
+                    <p class="text-b-color mb-8 ">{{ $page->data['map_description'] }}</p>
 
                     <a href="{{ $page->data['map_button_url'] }}"
                        class="px-8 py-3 rounded-full text-head-color font-medium bg-black text-white inline-flex items-center gap-2">{{ $page->data['map_button_text'] }}
@@ -337,8 +439,9 @@
                             <h2 id="accordion-flush-heading-1">
                                 <button type="button"
                                         class="flex items-center justify-between w-full p-5 font-medium text-gray-500 border-b border-gray-200 gap-3"
-                                        data-accordion-target="#accordion-flush-body-1" aria-expanded="true"
-                                        aria-controls="accordion-flush-body-1">
+                                        data-accordion-target="#accordion-flush-body-{{ $loop->index }}"
+                                        aria-expanded="true"
+                                        aria-controls="accordion-flush-body-{{ $loop->index }}">
                                     <span>{{ $faq['question'] }}</span>
                                     <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0"
                                          xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
@@ -347,7 +450,8 @@
                                     </svg>
                                 </button>
                             </h2>
-                            <div id="accordion-flush-body-1" class="hidden" aria-labelledby="accordion-flush-heading-1">
+                            <div id="accordion-flush-body-{{ $loop->index }}" class="hidden"
+                                 aria-labelledby="accordion-flush-heading-1">
                                 <div class="p-5 bg-white border-b border-gray-200">
                                     <p class="text-b-color">
                                         {{ $faq['answer'] }}
@@ -362,6 +466,44 @@
         </div>
     </div>
     <!-- /Faq -->
+
+
+    <!-- Post -->
+    <div class="pt-12 pb-24">
+        <div class="container">
+            <div class="grid grid-cols-12 gap-4">
+                <div class="col-span-12 xl:col-span-6">
+                    <div class="bg-white px-7 py-9 rounded-xl group relative z-10 hover:bg-primary-2 transition-all">
+                            <span class="absolute end-0 bottom-0 -z-10 group-hover:opacity-10">
+                                <svg width="251" height="154" viewBox="0 0 251 154" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="161.5" cy="161" r="161" fill="#EBF9F8"/>
+                                </svg>
+                            </span>
+                        <h5 class="text-[28px] font-semibold mb-3 group-hover:text-white">{{ $page->data['cta_1_title'] }}</h5>
+                        <p class="mb-6 group-hover:text-white">{{ $page->data['cta_1_description']  }}</p>
+                        <a href="{{ $page->data['cta_1_button_link']  }}"
+                           class="px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">{{ $page->data['cta_1_button_text']  }}</a>
+                    </div>
+                </div>
+                <div class="col-span-12 xl:col-span-6">
+                    <div class="bg-white px-7 py-9 rounded-xl group relative z-10 hover:bg-brand-blue transition-all">
+                            <span class="absolute end-0 bottom-0 -z-10 group-hover:opacity-10">
+                                <svg width="251" height="154" viewBox="0 0 251 154" fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="161.5" cy="161" r="161" fill="#EBF9F8"/>
+                                </svg>
+                            </span>
+                        <h5 class="text-[28px] font-semibold mb-3 group-hover:text-white">{{ $page->data['cta_2_title'] }}</h5>
+                        <p class="mb-6 group-hover:text-white">{{ $page->data['cta_2_description']  }}</p>
+                        <a href="{{ $page->data['cta_2_button_link']  }}"
+                           class="px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">{{ $page->data['cta_2_button_text']  }}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Post -->
 
 
 </x-dynamic-component>
