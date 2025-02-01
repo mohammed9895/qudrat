@@ -15,11 +15,13 @@ class Index extends Component
     {
         return Work::where('status', Status::Active)->paginate(12);
     }
+
     public function breadcrumbs(Trail $trail): Trail
     {
         return $trail
-            ->push('Works', route('works.index'));
+            ->push(__('general.works'), route('works.index'));
     }
+
     public function render()
     {
         return view('livewire.frontend.work.index');

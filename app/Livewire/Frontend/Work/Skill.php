@@ -17,8 +17,8 @@ class Skill extends Component
     public function breadcrumbs(Trail $trail): Trail
     {
         return $trail
-            ->push('Works', route('works.index'))
-            ->push('Skill', route('works.index'))
+            ->push(__('general.works'), route('works.index'))
+            ->push(__('general.skills'), route('works.index'))
             ->push($this->skill->name, route('works.skill', $this->skill));
     }
 

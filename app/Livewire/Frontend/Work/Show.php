@@ -19,7 +19,7 @@ class Show extends Component
     public function breadcrumbs(Trail $trail): Trail
     {
         return $trail
-            ->push('Works', route('works.index'))
+            ->push(__('general.works'), route('works.index'))
             ->push($this->work->title, route('works.show', $this->work));
     }
 
@@ -27,6 +27,7 @@ class Show extends Component
     public function downloadAttachment($attachment)
     {
         dd($attachment);
+
         return response()->download(storage_path($attachment));
     }
 

@@ -1,10 +1,11 @@
+@php use Carbon\Carbon; @endphp
 <div>
     <!-- Banner -->
-    <div class="bg-primary-3 pt-24 md:pt-40 pb-5">
+    <div class="bg-brand-blue/30 pt-24 md:pt-40 pb-5">
         <div class="container">
             <div class="flex items-center justify-between gap-4 flex-wrap md:flex-nowrap">
                 <div class="w-full">
-                    <x-breadcrumbs />
+                    <x-breadcrumbs/>
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ $post->title }}</h2>
                 </div>
             </div>
@@ -15,7 +16,8 @@
     <!-- Card & Siderbar -->
     <div class="pt-24 pb-12">
         <div class="container bg-white px-5 py-5 rounded-lg">
-            <div class="w-full h-[400px] rounded-lg mb-5" style="background: url('{{ $post->getThumbnailImage() }}'); background-size: cover;"></div>
+            <div class="w-full h-[400px] rounded-lg mb-5"
+                 style="background: url('{{ $post->getThumbnailImage() }}'); background-size: cover;"></div>
             <h1 class="text-2xl text-gray-900 font-bold mb-5">{{ $post->title }}</h1>
             <div class="flex justify-start items-center space-x-3 mb-5">
                 <div class="flex items-center">
@@ -24,7 +26,7 @@
                 </div>
                 <div class="flex items-center">
                     @svg('hugeicons-calendar-02', 'w-6 h-6 text-primary-1 mr-2')
-                    <span>{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}</span>
+                    <span>{{ Carbon::parse($post->created_at)->diffForHumans() }}</span>
                 </div>
             </div>
             <div class="text-gray-700 mb-5">{!! $post->content !!}</div>
@@ -59,14 +61,18 @@
                                     {{--                                    src="{{ $comment->user->profile->avatar ? '/storage/' . $comment->user->profile->avatar : '/assets/images/unset.jpg' }}"--}}
                                     src="/assets/images/unset.jpg"
                                     alt="Michael Gough">{{ $comment->user->name }}</p>
-                            <p class="text-sm text-gray-600"><time pubdate datetime="2022-02-08"
-                                                                   title="February 8th, 2022">{{ \Carbon\Carbon::parse($comment->created_at)->format('M d. Y') }}</time></p>
+                            <p class="text-sm text-gray-600">
+                                <time pubdate datetime="2022-02-08"
+                                      title="February 8th, 2022">{{ Carbon::parse($comment->created_at)->format('M d. Y') }}</time>
+                            </p>
                         </div>
                         <button id="dropdownComment1Button" data-dropdown-toggle="dropdownComment1"
                                 class="inline-flex items-center p-2 text-sm font-medium text-center text-gray-500  bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-50 "
                                 type="button">
-                            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 3">
-                                <path d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
+                            <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                 fill="currentColor" viewBox="0 0 16 3">
+                                <path
+                                    d="M2 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Zm6.041 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM14 0a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3Z"/>
                             </svg>
                             <span class="sr-only">Comment settings</span>
                         </button>
@@ -92,8 +98,11 @@
                     <div class="flex items-center mt-4 space-x-4">
                         <button type="button"
                                 class="flex items-center text-sm text-gray-500 hover:underline  font-medium">
-                            <svg class="mr-1.5 w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 18">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
+                            <svg class="mr-1.5 w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                 fill="none" viewBox="0 0 20 18">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                      stroke-width="2"
+                                      d="M5 5h5M5 8h2m6-3h2m-5 3h6m2-7H2a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h3v5l5-5h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1Z"/>
                             </svg>
                             Reply
                         </button>

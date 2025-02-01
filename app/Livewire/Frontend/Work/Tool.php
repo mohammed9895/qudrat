@@ -17,8 +17,8 @@ class Tool extends Component
     public function breadcrumbs(Trail $trail): Trail
     {
         return $trail
-            ->push('Works', route('works.index'))
-            ->push('Tools', route('works.index'))
+            ->push(__('general.works'), route('works.index'))
+            ->push(__('general.tools'), route('works.index'))
             ->push($this->tool->name, route('works.tool', $this->tool));
     }
 

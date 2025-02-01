@@ -18,8 +18,8 @@ class Category extends Component
     public function breadcrumbs(Trail $trail): Trail
     {
         return $trail
-            ->push('Works', route('works.index'))
-            ->push('Categories', route('works.index'))
+            ->push(__('general.works'), route('works.index'))
+            ->push(__('general.category'), route('works.index'))
             ->push($this->category->name, route('works.category', $this->category));
     }
 

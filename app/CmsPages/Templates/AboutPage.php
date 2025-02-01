@@ -6,23 +6,23 @@ use Filament\Forms;
 use SolutionForest\FilamentCms\CmsPages\Contracts\CmsPageTemplate;
 use SolutionForest\FilamentCms\CmsPages\Renderer\AtomicDesignPageRenderer;
 
-final class HomeTemplate implements CmsPageTemplate
+final class AboutPage implements CmsPageTemplate
 {
     protected static ?string $view = null;
 
     public static function title(): string
     {
-        return 'HomeTemplate';
+        return 'AboutPage';
     }
 
     public static function schema(): array
     {
         return [
-            Forms\Components\Section::make('Hero Section')
+            Forms\Components\Section::make('Page Title')
                 ->schema([
-                    Forms\Components\RichEditor::make('main_title'),
-                    Forms\Components\Textarea::make('secondary_title'),
-                    Forms\Components\FileUpload::make('hero_image'),
+                    Forms\Components\TextInput::make('page_title'),
+                    Forms\Components\TextInput::make('page_description'),
+                    Forms\Components\FileUpload::make('page_image'),
                 ]),
             Forms\Components\Section::make('Sponsors Section')
                 ->schema([
@@ -31,40 +31,16 @@ final class HomeTemplate implements CmsPageTemplate
                         ->image()
                         ->multiple(),
                 ]),
-            Forms\Components\Section::make('Talent Section')
-                ->schema([
-                    Forms\Components\TextInput::make('talent_title'),
-                    Forms\Components\Textarea::make('talent_description'),
-                    Forms\Components\TextInput::make('talents_per_category')->integer(),
-                ]),
             Forms\Components\Section::make('About Section')
                 ->schema([
                     Forms\Components\TextInput::make('about_title'),
-                    Forms\Components\Textarea::make('about_description'),
-                    Forms\Components\FileUpload::make('about_image'),
                     Forms\Components\Repeater::make('about_items')
                         ->schema([
                             Forms\Components\TextInput::make('title'),
-                            Forms\Components\Textarea::make('description'),
+                            Forms\Components\RichEditor::make('description'),
                             Forms\Components\FileUpload::make('image'),
                         ]),
                 ]),
-
-            Forms\Components\Section::make('Steps Section')
-                ->schema([
-                    Forms\Components\TextInput::make('steps_title'),
-                    Forms\Components\Textarea::make('steps_description'),
-                    Forms\Components\TextInput::make('steps_button_text'),
-                    Forms\Components\TextInput::make('steps_button_url')->url(),
-                    Forms\Components\Repeater::make('steps')
-                        ->schema([
-                            Forms\Components\TextInput::make('title'),
-                            Forms\Components\Textarea::make('description'),
-                            Forms\Components\Textarea::make('number'),
-                            Forms\Components\FileUpload::make('image'),
-                        ]),
-                ]),
-
             Forms\Components\Section::make('Testimonials Section')
                 ->schema([
                     Forms\Components\TextInput::make('testimonials_title'),
@@ -92,15 +68,6 @@ final class HomeTemplate implements CmsPageTemplate
                             Forms\Components\TextInput::make('subtitle'),
                             Forms\Components\FileUpload::make('icon'),
                         ]),
-                ]),
-
-            Forms\Components\Section::make('Map Section')
-                ->schema([
-                    Forms\Components\TextInput::make('map_title'),
-                    Forms\Components\Textarea::make('map_description'),
-                    //                    Forms\Components\FileUpload::make('map_image'),
-                    Forms\Components\TextInput::make('map_button_text'),
-                    Forms\Components\TextInput::make('map_button_url')->url(),
                 ]),
 
             Forms\Components\Section::make('FAQ Section')

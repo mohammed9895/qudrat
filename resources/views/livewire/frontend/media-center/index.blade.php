@@ -1,11 +1,11 @@
 <div>
     <!-- Banner -->
-    <div class="bg-primary-3 pt-24 md:pt-10 pb-5">
+    <div class="bg-brand-blue/30 pt-24 md:pt-10 pb-5">
         <div class="container">
             <div class="flex items-center justify-between gap-4 flex-wrap md:flex-nowrap">
                 <div class="w-full md:w-6/12">
-                    <x-breadcrumbs />
-                    <h2 class="text-4xl sm:text-5xl font-semibold mb-3">Media Center Page</h2>
+                    <x-breadcrumbs/>
+                    <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ __('general.media-center.page-title') }}</h2>
                 </div>
                 <div class="w-6/12">
                     <div class="text-end">
@@ -26,9 +26,12 @@
                     <div class="">
                         <div class="bg-white p-5 rounded-xl shadow-default">
                             <img src="{{ $post->getThumbnailImage() }}" alt="images" class="w-full mb-4 rounded-md">
-                            <a href="" class="inline-block text-2xl font-medium mb-3 hover:text-primary-1">{{ $post->title }}</a>
+                            <a href=""
+                               class="inline-block text-2xl font-medium mb-3 hover:text-primary-1">{{ $post->title }}</a>
                             <p class="mb-4">{{ substr($post->content, 0, 100) }} ...</p>
-                            <a href="{{ route('media-center.post', [$post]) }}" class="inline-block px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">View Resource</a>
+                            <a href="{{ route('media-center.post', [$post]) }}"
+                               class="inline-block px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">View
+                                Resource</a>
                         </div>
                     </div>
                 @endforeach

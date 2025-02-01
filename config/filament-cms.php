@@ -2,6 +2,7 @@
 
 use App\Filament\Admin\Resources\CmsPageResource;
 use App\Http\Middleware\LocaleMiddleware;
+use App\Models\CmsPublishedPage;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -109,7 +110,7 @@ return [
 
     'models' => [
         'cms_page' => App\Models\CmsPage::class,
-        'cms_published_page' => Models\CmsPublishedPage::class,
+        'cms_published_page' => CmsPublishedPage::class,
         'cms_page_navigation' => Models\CmsPageNavigation::class,
         'cms_page_navigation_category' => Models\CmsPageNavigationCategory::class,
         'cms_tag' => Models\CmsTag::class,

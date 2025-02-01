@@ -12,6 +12,7 @@ class Index extends Component
     public Profile $profile;
 
     public $rating;
+
     public $comment = null;
 
     public function mount(Profile $profile)
@@ -22,10 +23,11 @@ class Index extends Component
             abort(403, 'This profile is not public.');
         }
     }
+
     public function breadcrumbs(Trail $trail): Trail
     {
         return $trail
-            ->push('Social Window', route('social-window.index'))
+            ->push(__('general.navigation.social-window'), route('social-window.index'))
             ->push($this->profile->user->name, route('profile.index', $this->profile));
     }
 
@@ -39,7 +41,7 @@ class Index extends Component
         $this->profile->ratings()->updateOrCreate([
             'user_id' => auth()->id(),
             'profile_id' => $this->profile->id,
-        ],[
+        ], [
             'rating' => $this->rating,
             'comment' => $this->comment,
             'status' => 1,
@@ -54,6 +56,7 @@ class Index extends Component
     public function render()
     {
         views($this->profile)->cooldown(now()->addMinute(10))->record();
+
         return view('livewire.frontend.profile.index');
     }
 }

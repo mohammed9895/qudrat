@@ -1,75 +1,16 @@
 <!-- Talents -->
-<div class="pt-12 pb-24">
+<div class="pt-40 pb-24">
     <div class="container">
-        <div class="flex justify-center mb-6">
-            <div class="lg:w-6/12">
-                <div class="text-center">
+        <div class="flex justify-between items-center mb-6">
+            <div class="">
+                <div class="">
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ $title }}</h2>
                     <p>{{ $title_description }}</p>
                 </div>
             </div>
-        </div>
-        <div class="flex items-center justify-between gap-4 flex-wrap">
-            <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
-                <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="default-tab" role="tablist">
-                    <li class="me-2" role="presentation">
-                        <button
-                            class="inline-block px-4 py-2 border-b-2 rounded-t-lg text-gray-500 hover:text-gray-600 hover:border-gray-300 aria-selected:text-primary-1 aria-selected:border-primary-1"
-                            id="profile-tab"
-                            data-tabs-target="#profile"
-                            type="button"
-                            role="tab"
-                            aria-controls="profile"
-                            aria-selected="true"
-                        >
-                            Design/ Creative
-                        </button>
-                    </li>
-                    <li class="me-2" role="presentation">
-                        <button
-                            class="inline-block px-4 py-2 border-b-2 rounded-t-lg text-gray-500 hover:text-gray-600 hover:border-gray-300 aria-selected:text-primary-1 aria-selected:border-primary-1"
-                            id="dashboard-tab"
-                            data-tabs-target="#dashboard"
-                            type="button"
-                            role="tab"
-                            aria-controls="dashboard"
-                            aria-selected="false"
-                        >
-                            Web Developer
-                        </button>
-                    </li>
-                    <li class="me-2" role="presentation">
-                        <button
-                            class="inline-block px-4 py-2 border-b-2 rounded-t-lg text-gray-500 hover:text-gray-600 hover:border-gray-300 aria-selected:text-primary-1 aria-selected:border-primary-1"
-                            id="settings-tab"
-                            data-tabs-target="#settings"
-                            type="button"
-                            role="tab"
-                            aria-controls="settings"
-                            aria-selected="false"
-                        >
-                            Accounts
-                        </button>
-                    </li>
-                    <li role="presentation">
-                        <button
-                            class="inline-block px-4 py-2 border-b-2 rounded-t-lg text-gray-500 hover:text-gray-600 hover:border-gray-300 aria-selected:text-primary-1 aria-selected:border-primary-1"
-                            id="contacts-tab"
-                            data-tabs-target="#contacts"
-                            type="button"
-                            role="tab"
-                            aria-controls="contacts"
-                            aria-selected="false"
-                        >
-                            Production/Operation
-                        </button>
-                    </li>
-                </ul>
-            </div>
-            <div class="nav_btn flex items-center hidden lg:flex">
+            <div class="nav_btn items-center hidden lg:flex">
                 <a href="{{ route('social-window.index') }}"
-                   class="px-8 py-3 rounded-full border border-primary-1 text-head-color font-medium hover:bg-primary-1 hover:text-white">View
-                    all talent</a>
+                   class="px-8 py-3 rounded-full border border-primary-1 text-head-color font-medium hover:bg-primary-1 hover:text-white">{{ __('general.profiles.view-all') }}</a>
                 <span
                     class="inline-block w-[48px] h-[48px] bg-primary-1 rounded-full flex items-center justify-center">
                         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -80,6 +21,9 @@
                     </span>
             </div>
         </div>
+        <div class="flex items-center justify-between gap-4 flex-wrap">
+
+        </div>
     </div>
     <div class="px-6 mt-7 overflow-hidden">
         <div id="default-tab-content">
@@ -89,9 +33,9 @@
                         @foreach($talents as $talent)
                             <div class="swiper-slide">
                                 <div
-                                    class="bg-transparent border-[3px] border-white rounded-xl p-7 relative hover:bg-white transition-all">
+                                    class="bg-transparent border-[3px] border-white rounded-xl p-7 relative hover:bg-white transition-all h-[370px]">
                                     <div
-                                        class="bg-primary-2 px-4 py-2 rounded-full absolute top-[-20px] right-[25px]">
+                                        class="bg-brand-blue px-4 py-2 rounded-full absolute top-[-20px] right-[25px]">
                                         <div class="flex items-center gap-1">
                                             <span>
                                                 <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
@@ -125,32 +69,13 @@
                                     @endif
                                     <p class="mb-6">{{ substr($talent->bio, 0 ,100) }}</p>
                                     <a href="{{ route('profile.index', $talent->username) }}"
-                                       class="inline-block px-8 py-3 rounded-full border border-primary-1 text-head-color font-medium hover:bg-primary-1 hover:text-white">View
-                                        Profile</a>
+                                       class="inline-block px-8 py-3 rounded-full border border-primary-1 text-head-color font-medium hover:bg-primary-1 hover:text-white">{{ __('general.profiles.view-profile') }}</a>
                                 </div>
                             </div>
                         @endforeach
                     </div>
                     <div class="swiper-pagination"></div>
                 </div>
-            </div>
-            <div class="hidden" id="dashboard" role="tabpanel" aria-labelledby="dashboard-tab">
-                <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong
-                        class="font-medium text-gray-800 dark:text-white">Dashboard tab's associated
-                        content</strong>. Clicking another tab will toggle the visibility of this one for the next.
-                    The tab JavaScript swaps classes to control the content visibility and styling.</p>
-            </div>
-            <div class="hidden" id="settings" role="tabpanel" aria-labelledby="settings-tab">
-                <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong
-                        class="font-medium text-gray-800 dark:text-white">Settings tab's associated content</strong>.
-                    Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript
-                    swaps classes to control the content visibility and styling.</p>
-            </div>
-            <div class="hidden" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
-                <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the <strong
-                        class="font-medium text-gray-800 dark:text-white">Contacts tab's associated content</strong>.
-                    Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript
-                    swaps classes to control the content visibility and styling.</p>
             </div>
         </div>
     </div>

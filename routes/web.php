@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/language/{locale}', function ($locale) {
     session()->put('lang', $locale);
 
-    return redirect('/');
+    return redirect()->back();
 })->name('locale');
 
 Route::get('/about', \App\Livewire\Frontend\About\Index::class)->name('about.index');

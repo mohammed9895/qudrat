@@ -17,8 +17,27 @@ export default {
             fontFamily: {
                 // sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            animation: {
+                'spinoo': 'spin360 100s infinite',
+            },
+            keyframes: {
+                spin360: {
+                    from: {
+                        transform: 'rotate(0deg)',
+                    },
+                    to: {
+                        transform: 'rotate(360deg)',
+                    }
+                }
+            },
             colors: {
                 'primary-1': '#3cc7bc',
+                'bg-primary-2': '#1d71b8',
+                'brand-blue': '#1d71b8',
+                'brand-red': '#ef485c',
+                'brand-yellow': '#fbad1e',
+                'brand-gray': '#949d91',
+                'brand-green': '#50c1b7',
             }
         },
     },
