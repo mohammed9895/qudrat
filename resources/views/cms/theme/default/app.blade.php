@@ -42,7 +42,7 @@
     />
 
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'], 'dist')
+    @vite(['resources/css/app.css', 'resources/js/app.js'], 'build')
     @stack('styles')
 </head>
 
