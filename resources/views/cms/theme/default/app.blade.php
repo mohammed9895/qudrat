@@ -34,7 +34,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/remixicon.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}">
+    {{--    <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}">--}}
 
     <link
         rel="stylesheet"
