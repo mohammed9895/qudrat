@@ -11,6 +11,7 @@ export default {
         './vendor/wireui/breadcrumbs/src/views/**/*.blade.php',
         './vendor/ralphjsmit/laravel-filament-onboard/resources/**/*.blade.php',
         'node_modules/preline/dist/*.js',
+        './resources/views/cms/theme/default/components/templates/*.blade.php'
     ],
     safelist: [
         'bg-[#1d71b8]',
