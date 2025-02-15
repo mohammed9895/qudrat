@@ -22,7 +22,13 @@ final class HomeTemplate implements CmsPageTemplate
                 ->schema([
                     Forms\Components\RichEditor::make('main_title'),
                     Forms\Components\Textarea::make('secondary_title'),
-                    Forms\Components\FileUpload::make('hero_image'),
+                    Forms\Components\Repeater::make('talents')
+                        ->schema([
+                            Forms\Components\TextInput::make('name'),
+                            Forms\Components\TextInput::make('category'),
+                            Forms\Components\FileUpload::make('image'),
+                            Forms\Components\ColorPicker::make('background'),
+                        ]),
                 ]),
             Forms\Components\Section::make('Sponsors Section')
                 ->schema([

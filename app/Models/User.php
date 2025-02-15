@@ -39,21 +39,7 @@ class User extends Authenticatable implements HasAvatar
         'remember_token',
     ];
 
-
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
-    {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
-    }
-
-    public function profile():HasOne
+    public function profile(): HasOne
     {
         return $this->hasOne(Profile::class);
     }
@@ -66,12 +52,25 @@ class User extends Authenticatable implements HasAvatar
     public function getFilamentAvatarUrl(): ?string
     {
         return optional($this->profile)->avatar
-            ? '/storage/' . $this->profile->avatar
-            : null;
+            ? '/storage/'.$this->profile->avatar
+            : asset('images/default-avatar.png');
     }
 
     public function rating(): HasMany
     {
         return $this->hasMany(ProfileRating::class);
+    }
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
 }

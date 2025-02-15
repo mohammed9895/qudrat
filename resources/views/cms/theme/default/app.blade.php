@@ -41,6 +41,7 @@
         href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
 
+
     @vite('resources/css/app.css', 'resources/js/app.js')
     @stack('styles')
 </head>
@@ -253,6 +254,17 @@
             dataMap.resize();
         });
     })();
+</script>
+
+<!-- Swiper JS -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Initialize Swiper -->
+<script>
+    var swiper = new Swiper(".mySwiper", {
+        effect: "cards",
+        grabCursor: true,
+    });
 </script>
 
 @stack('beforeCoreScripts')

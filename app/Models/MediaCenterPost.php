@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Translatable\HasTranslations;
 
 class MediaCenterPost extends Model
@@ -16,12 +17,12 @@ class MediaCenterPost extends Model
     use HasTranslations;
     use SoftDeletes;
 
-    protected $guarded = [];
-
     public $translatable = [
         'title',
         'content',
     ];
+
+    protected $guarded = [];
 
     protected $casts = [
         'status' => Status::class,
@@ -39,8 +40,7 @@ class MediaCenterPost extends Model
 
     public function getThumbnailImage()
     {
-        $isUrl = str_contains($this->image, 'http');
 
-        return $isUrl ? asset('assets/images/unset.jpg') : \Storage::disk('public')->url($this->image);
+        return ! $this->image ? asset('assets/images/unset.jpg') : Storage::disk('public')->url($this->image);
     }
 }

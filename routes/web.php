@@ -1,6 +1,8 @@
 <?php
 
+use App\Livewire\Frontend\Innovators;
 use App\Livewire\Frontend\MediaCenter\Post;
+use App\Livewire\Frontend\Researchers;
 use App\Livewire\Frontend\SocialWindow\Category;
 use App\Livewire\Frontend\SocialWindow\Experts;
 use App\Livewire\Frontend\SocialWindow\Skill;
@@ -43,6 +45,8 @@ Route::get('/social-window/experts', Experts::class)->name('social-window.expert
 Route::get('/social-window/{category:slug}', Category::class)->name('social-window.category');
 Route::get('/social-window/{tool}', Skill::class)->name('social-window.skill');
 Route::get('/social-window/{skill}', Tool::class)->name('social-window.tool');
+Route::get('/innovators', Innovators::class)->name('social-window.innovators');
+Route::get('/researchers', Researchers::class)->name('social-window.researchers');
 
 Route::get('/cv', function () {
     return view('cv-templates.template-1.index', ['profile' => auth()->user()->profile]);

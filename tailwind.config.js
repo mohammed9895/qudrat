@@ -12,6 +12,25 @@ export default {
         './vendor/ralphjsmit/laravel-filament-onboard/resources/**/*.blade.php',
         'node_modules/preline/dist/*.js',
     ],
+    safelist: [
+        'bg-[#1d71b8]',
+        'from-[#1d71b8]',
+        'via-[#1d71b8]',
+
+        'bg-[#ef485c]',
+        'from-[#ef485c]',
+        'via-[#ef485c]',
+
+        'bg-[#fbad1e]',
+        'from-[#fbad1e]',
+        'via-[#fbad1e]',
+
+
+        'bg-[#50c1b7]',
+        'from-[#50c1b7]',
+        'via-[#50c1b7]',
+
+    ],
     theme: {
         extend: {
             fontFamily: {

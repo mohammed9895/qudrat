@@ -9,26 +9,28 @@
             <div class="hidden w-full md:block md:w-auto" id="navbar-default">
                 <ul class="font-medium flex flex-col p-4 md:px-7 mt-4 border border-gray-100 md:rounded-full bg-gray-50 md:flex-row md:space-x-4 rtl:md:space-x-reverse md:mt-0 md:border-0 md:bg-white md:shadow-default">
                     <li>
-                        <a href="/" class="nav_link active" aria-current="page">{{ __('general.navigation.home') }}</a>
+                        <a href="/" class="nav_link {{ request()->path() == '/' ? 'active' : '' }}"
+                           aria-current="page">{{ __('general.navigation.home') }}</a>
                     </li>
                     <li>
-                        <a href="{{ route('about.index') }}" class="nav_link">{{ __('general.navigation.about') }}</a>
+                        <a href="{{ route('about.index') }}"
+                           class="nav_link {{ request()->path() == 'about' ? 'active' : '' }}">{{ __('general.navigation.about') }}</a>
                     </li>
                     <li>
                         <a href="{{ route('digital-library.index') }}"
-                           class="nav_link">{{ __('general.navigation.digital-library') }}</a>
+                           class="nav_link {{ request()->path() == 'digital-library' ? 'active' : '' }}">{{ __('general.navigation.digital-library') }}</a>
                     </li>
                     <li>
                         <a href="{{ route('future-skills.index') }}"
-                           class="nav_link">{{ __('general.navigation.future-skills') }}</a>
+                           class="nav_link {{ request()->path() == 'future-skills' ? 'active' : '' }}">{{ __('general.navigation.future-skills') }}</a>
                     </li>
                     <li>
                         <a href="{{ route('media-center.index') }}"
-                           class="nav_link">{{ __('general.navigation.media-center') }}</a>
+                           class="nav_link {{ request()->path() == 'media-center' ? 'active' : '' }}">{{ __('general.navigation.media-center') }}</a>
                     </li>
                     <li>
                         <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
-                                class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-brand-blue md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                                class="flex items-center justify-between w-full {{ request()->path() == 'social-window' ? 'active' : '' }} py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-brand-blue md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
                             {{ __('general.navigation.social-window') }}
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                  fill="none" viewBox="0 0 10 6">
@@ -70,7 +72,7 @@
                     </li>
                     <li>
                         <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar-oman"
-                                class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-brand-blue md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                                class="flex items-center justify-between {{ request()->path() == 'social-window/' ? 'active' : '' }} w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-brand-blue md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
                             {{ __('general.navigation.oman-scientists') }}
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                  fill="none" viewBox="0 0 10 6">
@@ -84,13 +86,13 @@
                             <ul class="py-2 text-sm text-gray-700 dark:text-gray-400"
                                 aria-labelledby="dropdownLargeButton">
                                 <li>
-                                    <a href="{{ route('social-window.category', 'researchers') }}"
+                                    <a href="{{ route('social-window.researchers') }}"
                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                         {{ __('general.navigation.researchers') }}
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('social-window.category', 'innovators') }}"
+                                    <a href="{{ route('social-window.innovators') }}"
                                        class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
                                         {{ __('general.navigation.innovators') }}
                                     </a>
@@ -100,7 +102,7 @@
                     </li>
                     <li>
                         <a href="{{ route('contact.index') }}"
-                           class="nav_link">{{ __('general.navigation.contact-us') }}</a>
+                           class="nav_link {{ request()->path() == 'contact' ? 'active' : '' }}">{{ __('general.navigation.contact-us') }}</a>
                     </li>
                 </ul>
             </div>

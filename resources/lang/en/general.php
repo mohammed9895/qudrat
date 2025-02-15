@@ -132,4 +132,8 @@ return [
         'message-placeholder' => 'Please write your message clearly',
         'submit' => 'Send Now',
     ],
+
+    'talents' => 'Talents',
+    'researchers' => 'Researchers',
+    'innovators' => 'Innovators',
 ];

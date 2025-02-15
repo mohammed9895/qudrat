@@ -2,14 +2,19 @@
 
 namespace App\Livewire\Frontend\DigitalLibrary;
 
+use App\Enums\Status;
 use App\Models\DigitalLibraryCategory;
+use Livewire\Attributes\Computed;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use WireUi\Breadcrumbs\Trail;
 
 class Category extends Component
 {
-
     public DigitalLibraryCategory $category;
+
+    #[Url]
+    public $search = '';
 
     public function mount(DigitalLibraryCategory $category)
     {
@@ -21,6 +26,15 @@ class Category extends Component
         return $trail
             ->push('Digital Library', route('digital-library.index'))
             ->push($this->category->name, route('digital-library.category', $this->category));
+    }
+
+    #[Computed]
+    public function posts()
+    {
+        return $this->category->posts()
+            ->where('status', Status::Active)
+            ->where('title', 'like', "%{$this->search}%")
+            ->paginate(10);
     }
 
     public function render()

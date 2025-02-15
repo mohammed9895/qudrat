@@ -132,4 +132,13 @@ return [
         'message-placeholder' => 'الرجاء اكتب رسالتك بوضوح',
         'submit' => 'ارسل الان',
     ],
+
+    'Showing' => 'عرض',
+    'of' => 'من',
+    'to' => 'الى',
+    'results' => 'نتائج',
+
+    'talents' => 'المواهب',
+    'researchers' => 'الباحثون',
+    'innovators' => 'المبتكرون',
 ];

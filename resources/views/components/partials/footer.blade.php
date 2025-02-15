@@ -50,7 +50,8 @@
                 <ul class="flex flex-col gap-4">
                     @foreach($categories as $category)
                         <li>
-                            <a href="" class="text-[#fff] hover:text-primary-1">{{ $category->name }}</a>
+                            <a href="{{ route('social-window.category', $category) }}"
+                               class="text-[#fff] hover:text-primary-1">{{ $category->name }}</a>
                         </li>
                     @endforeach
                 </ul>
@@ -64,23 +65,23 @@
                 </div>
                 <ul class="flex flex-col gap-4">
                     <li>
-                        <a href=""
+                        <a href="{{ route('jobs.index') }}"
                            class="text-[#fff] hover:text-primary-1">{{ __('general.footer.useful-link.browse-jobs') }}</a>
                     </li>
                     <li>
-                        <a href=""
+                        <a href="{{ route('social-window.index') }}"
                            class="text-[#fff] hover:text-primary-1">{{ __('general.footer.useful-link.browse-categories') }}</a>
                     </li>
                     <li>
-                        <a href=""
+                        <a href="{{ route('social-window.index') }}"
                            class="text-[#fff] hover:text-primary-1">{{ __('general.footer.useful-link.browse-profiles') }}</a>
                     </li>
                     <li>
-                        <a href=""
+                        <a href="{{ route('media-center.index') }}"
                            class="text-[#fff] hover:text-primary-1">{{ __('general.footer.useful-link.media-center') }}</a>
                     </li>
                     <li>
-                        <a href=""
+                        <a href="{{ route('social-window.index') }}"
                            class="text-[#fff] hover:text-primary-1">{{ __('general.footer.useful-link.social-window') }}</a>
                     </li>
                 </ul>
@@ -94,23 +95,23 @@
                 </div>
                 <ul class="flex flex-col gap-4">
                     <li>
-                        <a href=""
+                        <a href="{{ route('filament.entity.resources.job-applications.create') }}"
                            class="text-[#fff] hover:text-primary-1">{{ __('general.footer.focal-point.add-jobs') }}</a>
                     </li>
                     <li>
-                        <a href=""
+                        <a href="{{ route('social-window.index') }}"
                            class="text-[#fff] hover:text-primary-1">{{ __('general.footer.focal-point.browse-categories') }}</a>
                     </li>
                     <li>
-                        <a href=""
+                        <a href="{{ route('social-window.index') }}"
                            class="text-[#fff] hover:text-primary-1">{{ __('general.footer.focal-point.browse-profiles') }}</a>
                     </li>
                     <li>
-                        <a href=""
+                        <a href="{{ route('media-center.index') }}"
                            class="text-[#fff] hover:text-primary-1">{{ __('general.footer.focal-point.media-center') }}</a>
                     </li>
                     <li>
-                        <a href=""
+                        <a href="{{ route('social-window.index') }}"
                            class="text-[#fff] hover:text-primary-1">{{ __('general.footer.focal-point.social-window') }}</a>
                     </li>
                 </ul>

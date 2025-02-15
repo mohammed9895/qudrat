@@ -13,156 +13,70 @@
     :layout="$layout">
 
 
-    <div
-        class=" mt-32 py-48 container flex flex-col items-center justify-center relative overflow-hidden bg-brand-blue rounded-lg">
-        <div class="w-full h-full absolute top-0 invert z-10" style="background-image: url('https://yc.om/images/rouneded-lg.webp'); background-position: top center;
-    background-repeat: no-repeat;
-    background-size: 102% auto;" bis_skin_checked="1"></div>
-        <div class="z-30 flex flex-col w-full items-center justify-center">
-            <h1 class="prose prose-strong:text-brand-yellow text-white text-5xl text-center leading-3">{!! $page->data['main_title'] !!}</h1>
-            <form action="" class="mt-14 w-3/4 md:w-1/2 relative">
-                <input type="text" class="w-full border-none px-5 py-4 rounded-full"
-                       placeholder="{{ __('general.hero.hero-search') }}">
-                <button type="submit"
-                        class="absolute w-10 h-10 flex items-center justify-center rounded-full right-2 rtl:right-auto rtl:left-2 top-2 bg-brand-blue text-white">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                         stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                              d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"/>
-                    </svg>
-                </button>
-            </form>
-        </div>
-        <div class="absolute left-60 top-4 z-30" bis_skin_checked="1">
-            <div class="bg-brand-green shadow-2xl rounded-lg relative px-5 pt-10 "
-                 bis_skin_checked="1">
-                <div class="p-3 text-white absolute bottom-1 left-1 rtl:left-auto rtl:right-1 z-10"
-                     bis_skin_checked="1">
-                    <h3 class="font-bold text-md text-white">عبدالعزيز الريامي</h3>
-                    <h4 class="text-white">مسوق</h4>
-                </div>
-                <div class="flex justify-center" bis_skin_checked="1">
-                    <img src="https://yc.om/images/aziz.png" class="w-32 " alt="">
-                </div>
-            </div>
-        </div>
-        <div class="absolute left-10 top-32 z-30" bis_skin_checked="1">
-            <div class="bg-brand-yellow shadow-lg rounded-lg relative px-5 pt-10 "
-                 bis_skin_checked="1">
-                <div class="p-3 text-white absolute bottom-1 left-1 rtl:left-auto rtl:right-1 z-10"
-                     bis_skin_checked="1">
-                    <h3 class="font-bold text-md text-white">صفاء النبهاني</h3>
-                    <h4 class="text-white">مهندسة معمارية</h4>
-                </div>
-                <div class="flex justify-center" bis_skin_checked="1">
-                    <img src="https://yc.om/images/safa.png" class="w-32 " alt="">
-                </div>
-            </div>
-        </div>
-        <div class="absolute left-32 bottom-10 z-30" bis_skin_checked="1">
-            <div class="bg-brand-red shadow-lg rounded-lg relative px-5 pt-10 "
-                 bis_skin_checked="1">
-                <div class="p-3 text-white absolute bottom-1 left-1 rtl:left-auto rtl:right-1 z-10"
-                     bis_skin_checked="1">
-                    <h3 class="font-bold text-md text-white">مريم الكندي</h3>
-                    <h4 class="text-white">مهندسة معمارية</h4>
-                </div>
-                <div class="flex justify-center" bis_skin_checked="1">
-                    <img src="https://yc.om/images/maryam.png" class="w-32 " alt="">
-                </div>
-            </div>
-        </div>
-        <div class="absolute right-60 top-4 z-30" bis_skin_checked="1">
-            <div class="bg-brand-yellow shadow-lg rounded-lg relative px-5 pt-10 "
-                 bis_skin_checked="1">
-                <div class="p-3 text-white absolute bottom-1 left-1 rtl:left-auto rtl:right-1 z-10"
-                     bis_skin_checked="1">
-                    <h3 class="font-bold text-md text-white">مريم الكندي</h3>
-                    <h4 class="text-white">مهندسة معمارية</h4>
-                </div>
-                <div class="flex justify-center" bis_skin_checked="1">
-                    <img src="https://yc.om/images/audi.png" class="w-32 " alt="">
+    <!-- Hero -->
+    <div class="pt-24 px-6">
+        <div
+            class="bg-brand-blue/30 py-20 xl:py-[130px] rounded-[20px] relative overflow-hidden z-10 px-5 xl:px-0 hero-full">
+            <div class="container">
+                <div class="grid grid-cols-12 gap-4 flex justify-between items-center">
+                    <div class="col-span-full xl:col-span-7">
+                        <h1 class="text-4xl sm:text-[64px] font-bold sm:leading-[100px] mb-3 prose-strong:text-brand-blue">
+                            {!! $page->data['main_title'] !!}
+                        </h1>
+                        <p class="text-xl mb-10 ">{{ $page->data['secondary_title'] }}</p>
+                        <form action="#" class="relative max-w-[535px] mb-5">
+                            <input type="text" class="bg-white w-full px-6 py-4 border-none rounded-full"
+                                   placeholder="{{ __('general.hero.hero-search') }}">
+                            <div class="flex items-center gap-2 absolute top-[4px] end-[6px]">
+                                <select class="bg-transparent hero_select !px-5 hidden sm:block">
+                                    <option selected>{{ __('general.talents') }}</option>
+                                    <option>{{ __('general.experts') }}</option>
+                                    <option>{{ __('general.jobs') }}</option>
+                                    <option>{{ __('general.works') }}</option>
+                                    <option>{{ __('general.researchers') }}</option>
+                                    <option>{{ __('general.innovators') }}</option>
+                                </select>
+                                <button type="submit"
+                                        class="w-[48px] h-[48px] bg-brand-blue rounded-full flex items-center justify-center">
+                                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M21 21.2764L16.7 16.9764M19 11.2764C19 15.6946 15.4183 19.2764 11 19.2764C6.58172 19.2764 3 15.6946 3 11.2764C3 6.85809 6.58172 3.27637 11 3.27637C15.4183 3.27637 19 6.85809 19 11.2764Z"
+                                            stroke="white" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-span-full xl:col-span-5 hero-slider">
+                        <div class="swiper mySwiper">
+                            <div class="swiper-wrapper">
+                                @foreach($page->data['talents'] as $talent)
+                                    <div class="swiper-slide relative pt-10 bg-[{{ $talent['background'] }}]">
+                                        <div class="p-3 text-white" bis_skin_checked="1">
+                                            <h3 class="font-bold text-2xl text-white mb-2">{{ $talent['name'] }}</h3>
+                                            <h4 class="text-white text-lg">{{ $talent['category'] }}</h4>
+                                        </div>
+
+                                        <img src="/storage/{{ $talent['image'] }}"
+                                             class="absolute bottom-0 z-50 h-[500px]"
+                                             alt="">
+
+                                        <div
+                                            class="w-full h-3/4 bg-gradient-to-t from-[{{ $talent['background'] }}] via-[{{ $talent['background'] }}] to-transparent absolute bottom-0"></div>
+                                    </div>
+
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="absolute right-10 top-32 z-30" bis_skin_checked="1">
-            <div class="bg-brand-green shadow-lg rounded-lg relative px-5 pt-10 "
-                 bis_skin_checked="1">
-                <div class="p-3 text-white absolute bottom-1 left-1 rtl:left-auto rtl:right-1 z-10"
-                     bis_skin_checked="1">
-                    <h3 class="font-bold text-md text-white">وجدان الفارسي</h3>
-                    <h4 class="text-white">مهندسة معمارية</h4>
-                </div>
-                <div class="flex justify-center" bis_skin_checked="1">
-                    <img src="https://yc.om/images/wijdan.png" class="w-32 " alt="">
-                </div>
-            </div>
-        </div>
-        <div class="absolute right-32 bottom-10 z-30" bis_skin_checked="1">
-            <div class="bg-brand-gray shadow-lg rounded-lg relative px-5 pt-10 "
-                 bis_skin_checked="1">
-                <div class="p-3 text-white absolute bottom-1 left-1 rtl:left-auto rtl:right-1 z-10"
-                     bis_skin_checked="1">
-                    <h3 class="font-bold text-md text-white">وجدان الفارسي</h3>
-                    <h4 class="text-white">مهندسة معمارية</h4>
-                </div>
-                <div class="flex justify-center" bis_skin_checked="1">
-                    <img src="https://yc.om/images/bushra.png" class="w-32 " alt="">
-                </div>
-            </div>
+
         </div>
     </div>
-
-
-    {{--    <!-- Hero -->--}}
-    {{--    <div class="pt-24 px-6">--}}
-    {{--        <div class="bg-primary-3 py-20 xl:py-[170px] rounded-[20px] relative overflow-hidden z-10 px-5 xl:px-0">--}}
-    {{--            <img src="/storage/{{ $page->data['hero_image'] }}" alt="images"--}}
-    {{--                 class="absolute end-0 bottom-0 -z-10 hidden xl:block">--}}
-    {{--            <img src="assets/images/hero_shape_2.png" alt="images" class="absolute start-0 top-0 -z-10 hidden xl:block">--}}
-    {{--            <div class="container">--}}
-    {{--                <div class="grid grid-cols-12 gap-4">--}}
-    {{--                    <div class="col-span-full xl:col-span-7">--}}
-    {{--                        <div class="prose-strong:text-primary-1 relative">--}}
-    {{--                            <h1 class="text-4xl sm:text-[64px] font-bold sm:leading-[80px] mb-3">{!!   $page->data['main_title'] !!}--}}
-    {{--                                <img src="{{ asset('assets/images/hero_title.svg') }}" class="absolute right-0 bottom-0"--}}
-    {{--                                     alt=""></h1>--}}
-    {{--                        </div>--}}
-    {{--                        <p class="text-xl mb-10 max-w-[45ch]">{{ $page->data['secondary_title'] }}</p>--}}
-    {{--                        <form action="#" class="relative max-w-[535px] mb-5">--}}
-    {{--                            <input type="text" class="bg-white w-full px-6 py-4 border-none rounded-full"--}}
-    {{--                                   placeholder="Search..">--}}
-    {{--                            <div class="flex items-center gap-2 absolute top-[4px] end-[6px]">--}}
-    {{--                                <select class="bg-transparent hero_select !px-5 hidden sm:block">--}}
-    {{--                                    <option selected>Talents</option>--}}
-    {{--                                    <option>Export</option>--}}
-    {{--                                </select>--}}
-    {{--                                <button type="submit"--}}
-    {{--                                        class="w-[48px] h-[48px] bg-brand-blue rounded-full flex items-center justify-center">--}}
-    {{--                                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none"--}}
-    {{--                                         xmlns="http://www.w3.org/2000/svg">--}}
-    {{--                                        <path--}}
-    {{--                                            d="M21 21.2764L16.7 16.9764M19 11.2764C19 15.6946 15.4183 19.2764 11 19.2764C6.58172 19.2764 3 15.6946 3 11.2764C3 6.85809 6.58172 3.27637 11 3.27637C15.4183 3.27637 19 6.85809 19 11.2764Z"--}}
-    {{--                                            stroke="white" stroke-width="2" stroke-linecap="round"--}}
-    {{--                                            stroke-linejoin="round"/>--}}
-    {{--                                    </svg>--}}
-    {{--                                </button>--}}
-    {{--                            </div>--}}
-    {{--                        </form>--}}
-    {{--                        <div class="flex items-center gap-3 flex-wrap">--}}
-    {{--                            <p class="text-sm text-secondary-2">Popular Talents: </p>--}}
-    {{--                            <div class="flex items-center gap-1 flex-wrap">--}}
-    {{--                                <span class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">Designer</span>--}}
-    {{--                                <span class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">Web Developer</span>--}}
-    {{--                                <span class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">Software Engineer</span>--}}
-    {{--                            </div>--}}
-    {{--                        </div>--}}
-    {{--                    </div>--}}
-    {{--                </div>--}}
-    {{--            </div>--}}
-    {{--        </div>--}}
-    {{--    </div>--}}
-    {{--    <!-- /Hero -->--}}
+    <!-- /Hero -->
 
 
     <!-- Logo -->
