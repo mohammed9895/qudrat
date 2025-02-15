@@ -71,5 +71,6 @@
 
 .nav_link.active::after {
     background-color: #1d71b8;
+    content: "";
 }
 
