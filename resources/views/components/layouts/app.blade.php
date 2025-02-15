@@ -27,7 +27,7 @@
         href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
 
-    @vite(['resources/css/app.css', 'resources/css/style.min.css', 'resources/js/app.js'], 'dist')
+    @vite(['resources/css/app.css', 'resources/js/app.js'], 'dist')
 </head>
 <body>
 <x-partials.nav/>
