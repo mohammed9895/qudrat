@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="{{ asset('assets/css/remixicon.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.min.css') }}">
+    @vite(['resources/css/app.css', 'resources/js/app.js'], 'dist')
     <link rel="stylesheet" href="{{ asset('assets/css/style.min.css') }}">
 
     <link
@@ -42,7 +43,6 @@
     />
 
 
-    @vite(['resources/css/app.css', 'resources/js/app.js'], 'dist')
     @stack('styles')
 </head>
 
