@@ -47,7 +47,7 @@ class UserPanelProvider extends PanelProvider
             ->login()
             ->registration()
             ->colors([
-                'primary' => '#3cc7bc',
+                'primary' => '#1d71b8',
                 'gray' => Color::Slate,
             ])
             ->brandLogo(asset('assets/images/logo.svg'))

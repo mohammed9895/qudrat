@@ -3,7 +3,7 @@
 namespace App\Livewire\Frontend\DigitalLibrary;
 
 use App\Enums\Status;
-use App\Models\DigitalLibraryCategory;
+use App\Models\DigitalLibraryLink;
 use Livewire\Component;
 use WireUi\Breadcrumbs\Trail;
 
@@ -17,10 +17,10 @@ class Index extends Component
 
     public function render()
     {
-        $categories = DigitalLibraryCategory::where('status', Status::Active)->whereHas('posts')->withCount('posts')->get();
+        $links = DigitalLibraryLink::where('status', Status::Active)->get();
 
         return view('livewire.frontend.digital-library.index', [
-            'categories' => $categories,
+            'links' => $links,
         ]);
     }
 }

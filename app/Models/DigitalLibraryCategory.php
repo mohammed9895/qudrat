@@ -4,18 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
+use Storage;
 
 class DigitalLibraryCategory extends Model
 {
-
     use HasFactory;
     use HasTranslations;
     use SoftDeletes;
-    protected $fillable = ['name', 'slug', 'description', 'image', 'parent_id'];
 
     public $translatable = ['name', 'description', 'image'];
+
+    protected $fillable = ['name', 'slug', 'description', 'image', 'parent_id'];
 
     public function children()
     {
@@ -27,7 +29,7 @@ class DigitalLibraryCategory extends Model
         return $this->belongsTo(DigitalLibraryCategory::class, 'parent_id');
     }
 
-    public function posts()
+    public function posts(): HasMany
     {
         return $this->hasMany(DigitalLibraryPost::class);
     }
@@ -35,6 +37,7 @@ class DigitalLibraryCategory extends Model
     public function getThumbnailImage()
     {
         $isUrl = str_contains($this->image, 'http');
-        return $isUrl ? asset('assets/images/unset.jpg') : \Storage::disk('public')->url($this->image);
+
+        return $isUrl ? asset('assets/images/unset.jpg') : Storage::disk('public')->url($this->image);
     }
 }

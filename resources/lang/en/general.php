@@ -62,6 +62,7 @@ return [
     'digital-library' => [
         'main-title' => 'Digital Library',
         'sub-title' => 'Digital Library Categories',
+        'view-now' => 'View Now',
     ],
     'future-skills' => [
         'know-more' => 'Learn More',
@@ -136,4 +137,31 @@ return [
     'talents' => 'Talents',
     'researchers' => 'Researchers',
     'innovators' => 'Innovators',
+
+    'feedback' => [
+        'main-title' => 'User Feedback Survey',
+        'user_type' => 'User Type',
+        'general_impression' => 'Your overall impression of the Qudrat website',
+        'ease' => 'Ease of use and access to services and required information',
+        'speed' => 'Browsing speed and responsiveness of the website and services',
+        'meet_your_needs' => 'Overall, how well do our website and e-services meet your needs?',
+        'clarity' => 'Clarity and freshness of the content',
+        'comment' => 'Suggestions and feedback',
+        'phone_number' => 'To help us improve our website and e-services, please share your phone number for contact purposes',
+        'user_types' => [
+            'student' => 'Student',
+            'teacher' => 'Teacher',
+            'guardian' => 'Guardian',
+            'expert' => 'Expert',
+            'other' => 'Other',
+        ],
+        'ratings' => [
+            'weak' => 'Poor',
+            'acceptable' => 'Acceptable',
+            'very_good' => 'Average',
+            'good' => 'Good',
+            'excellent' => 'Excellent',
+        ],
+        'submit' => 'Submit',
+    ],
 ];

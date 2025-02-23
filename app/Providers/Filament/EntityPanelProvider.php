@@ -41,7 +41,7 @@ class EntityPanelProvider extends PanelProvider
                 'primary' => Color::Amber,
             ])
             ->colors([
-                'primary' => '#3cc7bc',
+                'primary' => '#1d71b8',
                 'gray' => Color::Slate,
             ])
             ->brandLogo(asset('assets/images/logo.svg'))

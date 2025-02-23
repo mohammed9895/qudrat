@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\Frontend\DigitalLibrary\ListPosts;
 use App\Livewire\Frontend\Innovators;
 use App\Livewire\Frontend\MediaCenter\Post;
 use App\Livewire\Frontend\Researchers;
@@ -12,7 +13,7 @@ use App\Livewire\Frontend\Work\Show;
 use App\Livewire\Frontend\Work\Tag;
 use Illuminate\Support\Facades\Route;
 
-//Route::get('/', Index::class)->name('home.index');
+Route::get('/digital-library/list-posts', ListPosts::class)->name('digital-library.list-posts');
 
 Route::get('/language/{locale}', function ($locale) {
     session()->put('lang', $locale);
@@ -51,3 +52,5 @@ Route::get('/researchers', Researchers::class)->name('social-window.researchers'
 Route::get('/cv', function () {
     return view('cv-templates.template-1.index', ['profile' => auth()->user()->profile]);
 })->name('cv.index');
+
+Route::get('/feedbacks', App\Livewire\Frontend\FeedBack\Index::class)->name('feedbacks.index');

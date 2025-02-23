@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\Translatable\HasTranslations;
+use Storage;
 
 class DigitalLibraryPost extends Model
 {
@@ -14,9 +15,9 @@ class DigitalLibraryPost extends Model
     use HasTranslations;
     use SoftDeletes;
 
-    protected $guarded = [];
-
     public $translatable = ['title', 'description', 'image'];
+
+    protected $guarded = [];
 
     protected $casts = [
         'is_featured' => 'boolean',
@@ -30,7 +31,7 @@ class DigitalLibraryPost extends Model
 
     public function digitalLibraryCategory()
     {
-        return $this->belongsTo(DigitalLibraryCategory::class);
+        return $this->belongsTo(DigitalLibraryCategory::class)->withCount('posts');
     }
 
     public function tags()
@@ -46,6 +47,7 @@ class DigitalLibraryPost extends Model
     public function getThumbnailImage()
     {
         $isUrl = str_contains($this->image, 'http');
-        return $isUrl ? asset('assets/images/unset.jpg') : \Storage::disk('public')->url($this->image);
+
+        return $isUrl ? asset('assets/images/unset.jpg') : Storage::disk('public')->url($this->image);
     }
 }

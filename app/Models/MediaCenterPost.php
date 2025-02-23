@@ -20,6 +20,7 @@ class MediaCenterPost extends Model
     public $translatable = [
         'title',
         'content',
+        'image',
     ];
 
     protected $guarded = [];

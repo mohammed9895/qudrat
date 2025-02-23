@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email');
-            $table->string('phone');
-            $table->text('message');
-            $table->string('status')->default('pending');
+            $table->integer('user_type')->nullable();
+            $table->integer('general_impression')->nullable();
+            $table->integer('ease')->nullable();
+            $table->integer('speed')->nullable();
+            $table->integer('meet_your_needs')->nullable();
+            $table->integer('clarity')->nullable();
+            $table->text('comment')->nullable();
+            $table->text('phone_number')->nullable();
             $table->timestamps();
         });
     }

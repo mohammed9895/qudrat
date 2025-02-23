@@ -160,8 +160,12 @@
                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">{{ __('general.navigation.dashboard') }}</a>
                             </li>
                             <li>
-                                <a href="{{ route('filament.user.auth.logout') }}"
-                                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">{{ __('general.navigation.sign-out') }}</a>
+                                <form action="{{ route('filament.user.auth.logout') }}" method="POST"
+                                      class="">
+                                    @csrf
+                                    <button type="submit"
+                                            class="block w-full text-left rtl:text-right px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">{{ __('general.navigation.sign-out') }}</button>
+                                </form>
                             </li>
                         </ul>
                     </div>
