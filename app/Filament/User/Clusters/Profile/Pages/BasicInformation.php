@@ -19,6 +19,8 @@ use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use App\Models\Profile as ProfileModel;
+use Illuminate\Contracts\Support\Htmlable;
 
 class BasicInformation extends Page
 {
@@ -32,6 +34,16 @@ class BasicInformation extends Page
 
     public \App\Models\Profile $profile;
 
+    public static function getNavigationLabel(): string 
+    {
+        return __('general.basic-information.title');
+    }
+    public function getTitle(): string | Htmlable
+    {
+        return __('general.basic-information.title');
+    }
+
+
     public ?array $data = [];
 
     public function mount(): void
@@ -41,67 +53,70 @@ class BasicInformation extends Page
     }
 
     public function form(Form $form): Form
-    {
-        return $form
-            ->schema([
-               Section::make('Basic Information')
-                   ->collapsible()
+        {
+            return $form
                 ->schema([
-                    FileUpload::make('avatar')->avatar(),
-                    TextInput::make('fullname'),
-                    TextInput::make('position'),
-                    Select::make('experience_level_id')
-                        ->preload()
-                        ->label('Experience Level')
-                        ->searchable()
-                        ->relationship('experienceLevel', 'name'),
-                    RichEditor::make('bio'),
-                    TextInput::make('username')->prefix('https://qudrat.om/'),
-                    TextInput::make('email'),
-                    TextInput::make('phone'),
-                    Select::make('gender')
-                        ->searchable()
-                        ->options(['Male', 'Female']),
-                    DatePicker::make('dob')->native(false),
-                    FileUpload::make('video')->acceptedFileTypes(['video/mp4', 'video/mov']),
-                ]),
-                Section::make('Location')
-                    ->collapsible()
-                ->schema([
-                    Select::make('country_id')
-                        ->label('Country')
-                        ->required()
-                        ->options(Country::all()->pluck('name', 'id'))
-                        ->searchable(),
-                    Select::make('nationality_id')
-                        ->label(__('Nationality'))
-                        ->searchable()
-                        ->relationship('nationality', 'name')
-                        ->required(),
-                    Select::make('province_id')
-                        ->label(__('Province'))
-                        ->required()
-                        ->options(Province::all()->pluck('name', 'id'))
-                        ->searchable()
-                        ->reactive()
-                        ->afterStateUpdated(fn(Set $set) => $set('state_id', null)),
-                    Select::make('state_id')
-                        ->label(__('State'))
-                        ->required()
-                        ->options(function (Get $get) {
-                            $province = Province::find($get('province_id'));
-                            if (!$province) {
-                                return State::all()->pluck('name', 'id');
-                            }
-                            return $province->states->pluck('name', 'id');
-                        })
-                        ->searchable(),
-                    TextInput::make('address'),
-                ]),
-            ])
-            ->statePath('data')
-            ->model($this->profile);
-    }
+                    Section::make(__('general.basic-information.title'))
+                        ->collapsible()
+                        ->schema([
+                            FileUpload::make('avatar')->avatar()->label(__('general.basic-information.avatar')),
+                            TextInput::make('position')->label(__('general.basic-information.position')),
+                            Select::make('experience_level_id')
+                                ->preload()
+                                ->label(__('general.basic-information.experience_level'))
+                                ->searchable()
+                                ->relationship('experienceLevel', 'name'),
+                            RichEditor::make('bio')->label(__('general.basic-information.bio'))->label(__('general.basic-information.bio')),
+                            TextInput::make('username')->prefix(env('APP_URL'))->unique(table: ProfileModel::class, ignorable: $this->profile)->label(__('general.basic-information.username')),
+                            TextInput::make('email')->label(__('general.basic-information.email')),
+                            TextInput::make('phone')->label(__('general.basic-information.phone')),
+                            Select::make('gender')
+                            ->label(__('general.basic-information.gender'))
+                                ->searchable()
+                                ->options([
+                                    1 => __('general.gender-types.male'),
+                                    0 => __('general.gender-types.female'),
+                                ])->disabled(),
+                            DatePicker::make('dob')->native(false)->disabled()->label(__('general.basic-information.dob')),
+                            FileUpload::make('video')->acceptedFileTypes(['video/mp4', 'video/mov'])->label(__('general.basic-information.video')),
+                        ]),
+                    Section::make(__('general.basic-information.location'))
+                        ->collapsible()
+                        ->schema([
+                            Select::make('country_id')
+                                ->label(__('general.basic-information.country'))
+                                ->required()
+                                ->options(Country::all()->pluck('name', 'id'))
+                                ->searchable(),
+                            Select::make('nationality_id')
+                                ->label(__('general.basic-information.nationality'))
+                                ->searchable()
+                                ->relationship('nationality', 'name')
+                                ->required(),
+                            Select::make('province_id')
+                                ->label(__('general.basic-information.province'))
+                                ->required()
+                                ->options(Province::all()->pluck('name', 'id'))
+                                ->searchable()
+                                ->reactive()
+                                ->afterStateUpdated(fn(Set $set) => $set('state_id', null)),
+                            Select::make('state_id')
+                                ->label(__('general.basic-information.state'))
+                                ->required()
+                                ->options(function (Get $get) {
+                                    $province = Province::find($get('province_id'));
+                                    if (!$province) {
+                                        return State::all()->pluck('name', 'id');
+                                    }
+                                    return $province->states->pluck('name', 'id');
+                                })
+                                ->searchable(),
+                            TextInput::make('address')->label(__('general.basic-information.address')),
+                        ]),
+                ])
+                ->statePath('data')
+                ->model($this->profile);
+        }
 
     public function create(): void
     {
@@ -111,8 +126,8 @@ class BasicInformation extends Page
         );
         $this->form->model($profile)->saveRelationships();
         Notification::make('saved')
-            ->title('Saved')
-            ->body('Your profile has been saved.')
+            ->title(__('general.save-success-title'))  // Use translation for title
+            ->body(__('general.save-success-body'))   // Use translation for body
             ->iconColor('success')
             ->icon('heroicon-o-check-circle')
             ->color('success')
@@ -123,7 +138,7 @@ class BasicInformation extends Page
     {
         return [
             Action::make('visit-profile')
-                ->label('Visit Profile')
+                ->label(__('general.visit-profile'))  // Use translation for label
                 ->icon('hugeicons-link-forward')
                 ->url(route('profile.index', ['profile' => $this->profile]))
                 ->openUrlInNewTab(),

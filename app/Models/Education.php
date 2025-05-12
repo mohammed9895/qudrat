@@ -37,8 +37,14 @@ class Education extends Model
         return $this->belongsTo(EducationType::class);
     }
 
-    public function fieldOfStudy(): BelongsTo
+    public function fieldOfStudy()
     {
         return $this->belongsTo(FieldOfStudy::class);
+    }
+
+    // Relationship to the child field of study
+    public function fieldOfStudyChild()
+    {
+        return $this->belongsTo(FieldOfStudy::class, 'field_of_study_child_id');
     }
 }

@@ -190,7 +190,7 @@ return [
     |
     | This option specifies the navigation label used in the sidebar.
     */
-    'navigation_label' => 'Messages',
+    'navigation_label' => 'general.messages',
 
     /*
     |--------------------------------------------------------------------------

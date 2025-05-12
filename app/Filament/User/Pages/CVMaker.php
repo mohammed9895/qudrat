@@ -7,6 +7,7 @@ use Filament\Forms\Form;
 use Filament\Pages\Page;
 use IbrahimBougaoua\RadioButtonImage\Actions\RadioButtonImage;
 use Spatie\LaravelPdf\Facades\Pdf;
+use Spatie\Browsershot\Browsershot;
 
 class CVMaker extends Page
 {
@@ -15,6 +16,19 @@ class CVMaker extends Page
     protected static string $view = 'filament.user.pages.c-v-maker';
 
     public array $data = [];
+    
+    public static function getNavigationLabel(): string
+    {
+        return __('general.user-dashboard.navigation.cv_maker');  // Use translated label for CV Maker
+    }
+
+    public function getTitle(): string
+    {
+        return __('general.user-dashboard.navigation.cv_maker');  // Use translated label for CV Maker
+    }
+
+
+    protected static ?int $navigationSort = 10;
 
     public function mount()
     {
@@ -26,6 +40,7 @@ class CVMaker extends Page
         return $form
             ->schema([
                 RadioButtonImage::make('template')
+                ->label(__('general.cvmaker.template_label')) 
                     ->options(Template::all()->pluck('image', 'id')->toArray()),
             ]);
     }
@@ -36,12 +51,20 @@ class CVMaker extends Page
 
         $cv_name = auth()->user()->profile->fullname.'-'.now()->format('d m Y').'XXXX.pdf';
 
-        Pdf::view('cv-templates.template-1.index', ['profile' => auth()->user()->profile])
-            ->margins(0, 0, 0, 0)
-            ->save(storage_path('app/public/cvs/'.$cv_name));
+            // Set the path to your view and the output path for the PDF
+            $viewPath = 'cv-templates.template-2.index';
+            $outputPath = storage_path('app/public/cvs/'.$cv_name);
 
-        // download the generated pdf
-        return response()->download(storage_path('app/public/cvs/'.$cv_name));
+            // Generate the PDF using Browsershot
+            Browsershot::html(view($viewPath, ['profile' => auth()->user()->profile])->render())
+                ->setOption('executablePath', '/usr/bin/google-chrome-stable')
+                ->setOption('args', ['--no-sandbox'])
+                ->setOption('viewport', ['width' => 2480, 'height' => 3508]) // Set a fixed viewport size
+                ->margins(0, 0, 0, 0)
+                ->save($outputPath);
+
+            // Return the generated PDF as a download response
+            return response()->download($outputPath);
 
     }
 }

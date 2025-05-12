@@ -34,7 +34,7 @@ class ProfileSeeder extends Seeder
             'province_id' => 1,
             'state_id' => 1,
             'permanent_residence_state_id' => 1,
-            'health_status' => 'fit',
+            'health_status' => 1,
             'disability_id' => 1,
             'education_type_id' => 1,
             'address' => 'PO Box 1011 Alaziba',

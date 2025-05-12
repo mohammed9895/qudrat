@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Profile::class)->constrained()->onDelete('cascade'); // Foreign key
-            $table->string('title'); // Name of the course
-            $table->string('organization'); // Organization providing the course
+            $table->text('title'); // Name of the course
+            $table->text('organization'); // Organization providing the course
             $table->date('start_date')->nullable(); // Start date of the course
             $table->date('end_date')->nullable(); // End date of the course
-            $table->string('certificate_file')->nullable(); // Optional file (certificate of completion)
+            $table->text('certificate_file')->nullable(); // Optional file (certificate of completion)
             $table->text('description')->nullable(); // Additional details about the course
             $table->integer('sort')->default(0); // Sort order
             $table->morphs('addable');

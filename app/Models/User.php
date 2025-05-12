@@ -14,6 +14,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use JaOcero\FilaChat\Traits\HasFilaChat;
 use Spatie\Permission\Traits\HasRoles;
+use Spatie\Translatable\HasTranslations;
+use App\Events\UserRegistered;
 
 class User extends Authenticatable implements HasAvatar
 {
@@ -23,8 +25,11 @@ class User extends Authenticatable implements HasAvatar
     use HasRoles;
     use Notifiable;
     use SoftDeletes;
+    use HasTranslations;
+
 
     protected $fillable = [
+        'civil_id',
         'name',
         'email',
         'password',
@@ -34,6 +39,9 @@ class User extends Authenticatable implements HasAvatar
         'password',
         'remember_token',
     ];
+
+    public array $translatable = ['name'];
+
 
     public function canAccessPanel(Panel $panel): bool
     {
@@ -59,12 +67,16 @@ class User extends Authenticatable implements HasAvatar
     {
         return optional($this->profile)->avatar
             ? '/storage/'.$this->profile->avatar
-            : asset('images/default-avatar.png');
+            : asset('assets/images/unset.jpg');
     }
 
     public function rating(): HasMany
     {
         return $this->hasMany(ProfileRating::class);
+    }
+
+    public function likes() {
+        return $this->hasMany(Like::class);
     }
 
     /**

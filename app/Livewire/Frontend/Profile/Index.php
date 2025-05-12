@@ -6,6 +6,7 @@ use App\Models\Profile;
 use Filament\Notifications\Notification;
 use Livewire\Component;
 use WireUi\Breadcrumbs\Trail;
+use JaOcero\FilaChat\Services\ChatListService;
 
 class Index extends Component
 {
@@ -19,7 +20,7 @@ class Index extends Component
     {
         $this->profile = $profile;
 
-        if ($profile->public_profile == false) {
+        if ($profile->public_profile == false && auth()->id() != $profile->user_id) {
             abort(403, 'This profile is not public.');
         }
     }
@@ -28,7 +29,7 @@ class Index extends Component
     {
         return $trail
             ->push(__('general.navigation.social-window'), route('social-window.index'))
-            ->push($this->profile->user->name, route('profile.index', $this->profile));
+            ->push($this->profile->fullname, route('profile.index', $this->profile));
     }
 
     public function rate()
@@ -51,6 +52,15 @@ class Index extends Component
             ->title('Rating Submitted')
             ->body('Thank you for rating this profile.')
             ->send();
+    }
+
+    public function send_message()
+    {
+        $data = [
+            'receiverable_id' => $this->profile->user_id,
+            'message' => 'Hello',
+        ];
+        ChatListService::make()->createConversation($data);
     }
 
     public function render()

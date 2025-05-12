@@ -6,13 +6,13 @@
     <meta name="color-scheme" content="light">
     <meta name="supported-color-schemes" content="light">
 
-    <title>{{ __('Qudrat') }} | {{ $title ?? 'Page Title' }}</title>
+    <title>{{ __('Qudrat') }} | @yield('title', 'Page Title')</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap"
         rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css2?family=Playball&display=swap" rel="stylesheet">
 
     <link href="https://fonts.cdnfonts.com/css/caros-soft" rel="stylesheet">
 
@@ -37,6 +37,7 @@
 <x-partials.footer/>
 
 @livewire('notifications')
+
 
 <script src="{{ asset('assets/js/plugins.min.js') }}"></script>
 <script src="{{ asset('assets/js/flowbite.min.js') }}"></script>

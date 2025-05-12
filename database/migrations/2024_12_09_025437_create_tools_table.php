@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->text('name');
             $table->text('description')->nullable();
-            $table->string('link')->nullable();
-            $table->string('image')->nullable();
+            $table->text('link')->nullable();
+            $table->text('image')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

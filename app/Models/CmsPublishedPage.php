@@ -8,6 +8,8 @@ class CmsPublishedPage extends \SolutionForest\FilamentCms\Models\CmsPublishedPa
 {
     use HasTranslations;
 
+    // public const HOME_SLUG = 'home';
+
     public $translatable = [
         'title',
         'data',

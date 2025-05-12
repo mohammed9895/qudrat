@@ -16,12 +16,12 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\User::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(\App\Models\Category::class)->nullable()->constrained()->nullOnDelete();
 
-            $table->string('fullname')->nullable();
-            $table->string('username')->nullable();
+            $table->text('fullname')->nullable();
+            $table->text('username')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('avatar')->nullable();
-            $table->string('position')->nullable();
+            $table->text('position')->nullable();
             $table->text('bio')->nullable();
             $table->string('gender')->nullable();
             $table->date('dob')->nullable();
@@ -36,13 +36,13 @@ return new class extends Migration
             $table->foreignIdFor(\App\Models\City::class)->nullable()->constrained()->nullOnDelete();
             $table->foreignIdFor(\App\Models\State::class, 'permanent_residence_state_id')->nullable()->constrained()->nullOnDelete();
 
-            $table->string('health_status')->nullable();
+            $table->integer('health_status')->nullable();
             $table->foreignIdFor(\App\Models\Disability::class)->nullable()->constrained()->nullOnDelete();
             $table->foreignIdFor(\App\Models\EducationType::class)->nullable()->constrained()->nullOnDelete();
 
-            $table->string('address')->nullable();
-            $table->string('company')->nullable();
-            $table->string('website')->nullable();
+            $table->text('address')->nullable();
+            $table->text('company')->nullable();
+            $table->text('website')->nullable();
 
 
             $table->string('social_facebook')->nullable();

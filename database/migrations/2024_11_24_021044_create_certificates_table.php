@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('certificates', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Profile::class)->constrained()->onDelete('cascade'); // Foreign key
-            $table->string('title'); // Name or title of the certificate
-            $table->string('organization'); // Issuing organization
+            $table->text('title'); // Name or title of the certificate
+            $table->text('organization'); // Issuing organization
             $table->date('issued_date'); // Date of issue
             $table->date('expiry_date')->nullable(); // Expiry date (if applicable)
-            $table->string('certificate_file')->nullable(); // Path to uploaded certificate file (e.g., PDF, image)
+            $table->text('certificate_file')->nullable(); // Path to uploaded certificate file (e.g., PDF, image)
             $table->integer('sort')->default(0); // Sort order
             $table->morphs('addable');
             $table->softDeletes();

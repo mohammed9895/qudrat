@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('job_applications', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Entity::class);
-            $table->string('title');
-            $table->string('position');
+            $table->text('title');
+            $table->text('position');
             $table->text('description');
             $table->foreignIdFor(\App\Models\JobDepartment::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(\App\Models\Province::class)->constrained()->cascadeOnDelete();

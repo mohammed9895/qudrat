@@ -15,11 +15,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('work_category_id')->constrained('work_categories')->cascadeOnDelete();
             $table->foreignId('profile_id')->constrained('profiles')->cascadeOnDelete();
-            $table->string('title');
+            $table->text('title');
             $table->string('slug')->unique();
             $table->text('description');
             $table->text('images')->nullable();
-            $table->string('cover')->nullable();
+            $table->text('cover')->nullable();
             $table->text('video')->nullable();
             $table->text('attachments')->nullable();
             $table->text('attachment_file_names')->nullable();

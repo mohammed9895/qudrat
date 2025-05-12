@@ -6,11 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Translatable\HasTranslations;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class FieldOfStudy extends Model
 {
     use HasFactory;
+    use HasTranslations;
     use SoftDeletes;
 
     protected $guarded = [];
@@ -22,13 +24,14 @@ class FieldOfStudy extends Model
         return $this->hasMany(Education::class);
     }
 
-    public function parent(): BelongsTo
+    public function parent()
     {
-        return $this->belongsTo(FieldOfStudy::class, 'parent_id');
+        return $this->belongsTo(FieldOfStudy::class, 'field_of_study_child_id');
     }
 
-    public function children(): HasMany
+    // Relationship to get the child fields of study
+    public function children()
     {
-        return $this->hasMany(FieldOfStudy::class, 'parent_id');
+        return $this->hasMany(FieldOfStudy::class, 'field_of_study_child_id');
     }
 }

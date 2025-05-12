@@ -36,6 +36,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Mohammed Hamad',
             'email' => 'toshiba9895@gmail.com',
+            'civil_id' => '12345678',
         ]);
 
         $this->call(CountriesTableSeeder::class);

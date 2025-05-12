@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('media_center_posts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->string('title');
+            $table->text('title');
             $table->string('slug')->unique();
             $table->text('content');
             $table->string('image')->nullable();

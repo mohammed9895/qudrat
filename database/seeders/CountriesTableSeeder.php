@@ -53,7 +53,7 @@ class CountriesTableSeeder extends Seeder
             ["en" => "North Korea", "ar" => "كوريا الشمالية", "code" => "KP"],
             ["en" => "North Macedonia", "ar" => "مقدونيا الشمالية", "code"=> "MK"],
             ["en" => "Norway", "ar" => "النرويج", "code"=> "NO"],
-            ["en" => "Oman", "ar" => "عمان", "code"=> "OM"],
+            ["en" => "Oman", "ar" => "سلطنة عمان", "code"=> "OM"],
             ["en" => "Pakistan", "ar" => "باكستان", "code"=> "PK"],
             ["en" => "Palau", "ar" => "بالاو", "code"=> "PW"],
             ["en" => "Palestine", "ar" => "فلسطين", "code"=> "PS"],

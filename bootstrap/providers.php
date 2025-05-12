@@ -7,4 +7,5 @@ return [
     App\Providers\Filament\UserPanelProvider::class,
     App\Providers\SoloServiceProvider::class,
     CyrildeWit\EloquentViewable\EloquentViewableServiceProvider::class,
+    Maatwebsite\Excel\ExcelServiceProvider::class,
 ];

@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('experiences', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Profile::class)->constrained()->cascadeOnDelete();
-            $table->string('company')->nullable();
-            $table->string('position')->nullable();
+            $table->text('company')->nullable();
+            $table->text('position')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
             $table->boolean('is_current')->default(false);

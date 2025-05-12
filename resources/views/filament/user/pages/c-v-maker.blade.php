@@ -2,7 +2,7 @@
     <form wire:submit="generate">
         {{ $this->form }}
         <x-filament::button type="submit" class="mt-3">
-            Generate CV
+            {{ __('general.cvmaker.generate_cv_button') }}
         </x-filament::button>
     </form>
 

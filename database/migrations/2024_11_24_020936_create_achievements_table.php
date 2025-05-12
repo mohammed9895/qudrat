@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('achievements', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Profile::class)->constrained()->onDelete('cascade'); // Foreign key
-            $table->string('title'); // Title of the achievement
+            $table->text('title'); // Title of the achievement
             $table->text('description')->nullable(); // Description of the achievement
             $table->date('date'); // Date of the achievement
-            $table->string('category')->nullable(); // Category of the achievement
-            $table->string('achievement_file')->nullable(); // Path to the achievement image or certificate
+            $table->text('category')->nullable(); // Category of the achievement
+            $table->text('achievement_file')->nullable(); // Path to the achievement image or certificate
             $table->integer('sort')->default(0); // Sort order
             $table->morphs('addable');
             $table->softDeletes();

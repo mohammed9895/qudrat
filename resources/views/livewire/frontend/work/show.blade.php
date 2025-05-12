@@ -1,3 +1,4 @@
+@section('title', $work->title)
 <div>
     <!-- Banner -->
     <div class="bg-brand-blue/30 pt-[160px] pb-28">
@@ -8,15 +9,33 @@
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ $work->title }}</h2>
                 </div>
                 <div class="w-6/12">
-                    <div class="flex items-center justify-end space-x-3">
-                        <a href="#"
-                           class="w-12 h-12 rounded-full bg-primary-4 text-white items-center justify-center flex">
+                    <div class="flex items-center justify-end space-x-3 rtl:space-x-reverse" x-data="{ showShare:false }">
+                        <div class="sharethis-inline-share-buttons" x-show="showShare"></div>
+                        <button id="share-buttons" @click="showShare = !showShare"
+                           class="w-12 h-12 rounded-full bg-brand-blue text-white items-center justify-center flex">
                             <x-hugeicons-share-08/>
-                        </a>
-                        <a href="#"
-                           class="w-12 h-12 rounded-full bg-primary-4 text-white items-center justify-center flex">
-                            <x-heroicon-o-heart class="w-6 h-6"/>
-                        </a>
+                        </button>
+                        <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=68171050bde97c0013e1db8c&product=inline-share-buttons&source=platform" async="async"></script>
+
+                            <script>
+                                new ShareButton('#share-buttons', {
+                                    networks: {
+                                        facebook: {},
+                                        twitter: {},
+                                        whatsapp: {},
+                                        telegram: {},
+                                        email: {}
+                                    }
+                                });
+                            </script>
+                        <button  wire:click="toggleLike"
+                           class="w-12 h-12 rounded-full bg-brand-blue text-white items-center justify-center flex">
+                            @if ($liked)
+                                <x-heroicon-s-heart class="w-6 h-6"/>
+                            @else
+                                <x-heroicon-o-heart class="w-6 h-6"/>
+                            @endif
+                        </button>
                     </div>
                 </div>
             </div>
@@ -31,7 +50,7 @@
             <div class="grid grid-cols-12 gap-5">
                 <div class="col-span-full xl:col-span-3">
                     <div class="bg-white p-6 rounded-xl relative">
-                        <div class="bg-primary-2 px-4 py-2 rounded-full absolute top-[20px] right-[20px]">
+                        <div class="bg-brand-blue px-4 py-2 rounded-full absolute top-[20px] right-[20px]">
                             <div class="flex items-center gap-1">
                                     <span>
                                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
@@ -96,13 +115,13 @@
                             </li>
                         </ul>
                         <a href="{{ route('profile.index', $work->profile) }}"
-                           class="px-8 py-3 rounded-full text-head-color font-medium bg-primary-2 text-white inline-flex items-center gap-2 w-full justify-center">
+                           class="px-8 py-3 rounded-full text-head-color font-medium bg-brand-blue text-white inline-flex items-center gap-2 w-full justify-center">
                             <span><x-hugeicons-profile-02 class="size-6"/></span>
                             {{ __('general.view-profile') }}
                         </a>
                         @if($work->link)
                             <a target="_blank" href="{{ $work->link }}"
-                               class="px-8 py-3 mt-2 rounded-full text-[#2e3192] font-medium border-2 border-primary-2  inline-flex items-center gap-2 w-full justify-center">
+                               class="px-8 py-3 mt-2 rounded-full text-brand-blue font-medium border-2 border-brand-blue  inline-flex items-center gap-2 w-full justify-center">
                                 <span><x-hugeicons-link-04 class="size-6"/></span>
                                 {{ __('general.view-project') }}
                             </a>
@@ -158,7 +177,7 @@
                 </div>
                 <div class="col-span-full xl:col-span-9">
                     <div class="bg-white p-6 rounded-xl">
-                        <div class="images overflow-hidden w-full">
+                        <div class="images overflow-hidden w-full" wire:ignore>
                             <div
                                 class="swiper swiper-thumb-images section-swiper-navigation rounded-xl relative max-h-[400px]">
                                 <button
@@ -181,7 +200,7 @@
                                 </button>
                             </div>
                             <div thumbsSlider="" class="swiper swiper-list-images mt-4">
-                                <div class="swiper-wrapper">
+                                <div class="swiper-wrapper" >
                                     @foreach($work->images as $image)
                                         <div class="swiper-slide overflow-hidden rounded-lg">
                                             <img src="/storage/{{ $image }}" alt="blog/1"

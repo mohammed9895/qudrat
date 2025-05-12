@@ -12,6 +12,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use Illuminate\Contracts\Support\Htmlable;
 
 class Achievements extends Page
 {
@@ -27,6 +28,16 @@ class Achievements extends Page
 
     public ?array $data = [];
 
+    public static function getNavigationLabel(): string 
+    {
+        return __('general.achievements.title');
+    }
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('general.achievements.title');
+    }
+
     public function mount(): void
     {
         $this->profile = \App\Models\Profile::where('user_id', auth()->id())->first();
@@ -37,21 +48,26 @@ class Achievements extends Page
     {
         return $form
             ->schema([
-                Section::make('Achievements')
+                Section::make(__('general.achievements.title'))  // Use translated title for achievements
                     ->collapsible()
                     ->schema([
                         Repeater::make('achievements')
                             ->collapsible()
+                            ->label(__('general.achievements.title'))
                             ->relationship('achievements')
                             ->reorderable()
                             ->orderColumn('sort')
                             ->schema([
-                                TextInput::make('title'),
-                                MarkdownEditor::make('description'),
+                                TextInput::make('title')
+                                    ->label(__('general.achievements.achievement_title')),  // Use translated label
+                                MarkdownEditor::make('description')
+                                    ->label(__('general.achievements.description')),  // Use translated label
                                 DatePicker::make('date')
                                     ->maxDate(now()->format('Y-m-d'))
-                                    ->native(false),
-                                FileUpload::make('achievement_file'),
+                                    ->native(false)
+                                    ->label(__('general.achievements.date')),  // Use translated label
+                                FileUpload::make('achievement_file')
+                                    ->label(__('general.achievements.achievement_file')),  // Use translated label
                             ])
                             ->itemLabel(fn (array $state): ?string => $state['title'] ?? null),
                     ]),
@@ -67,10 +83,11 @@ class Achievements extends Page
             $this->form->getState()
         );
         $this->form->model($profile)->saveRelationships();
-
+        
+        // Use translations for notification
         Notification::make('saved')
-            ->title('Saved')
-            ->body('Your profile has been saved.')
+            ->title(__('general.save-success-title'))  // Use translated title
+            ->body(__('general.save-success-body'))   // Use translated body
             ->iconColor('success')
             ->icon('heroicon-o-check-circle')
             ->color('success')

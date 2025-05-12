@@ -15,6 +15,14 @@ use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Support\Htmlable;
+use Filament\Forms\Components\Hidden;
+use Filament\Forms\Components\Actions\Action;
+
+
+
 
 class Educations extends Page
 {
@@ -30,6 +38,16 @@ class Educations extends Page
 
     public ?array $data = [];
 
+    public static function getNavigationLabel(): string 
+    {
+        return __('general.educations.title');
+    }
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('general.educations.title');
+    }
+
     public function mount(): void
     {
         $this->profile = \App\Models\Profile::where('user_id', auth()->id())->first();
@@ -40,48 +58,53 @@ class Educations extends Page
     {
         return $form
             ->schema([
-                Section::make('Educations')
+                Section::make(__('general.educations.title'))  // Use translated title
                     ->schema([
                         Repeater::make('educations')
+                        ->label(__('general.educations.title'))
                             ->collapsible()
                             ->relationship('educations')
                             ->reorderable()
+                            ->deletable(true) // Disable default delete button
                             ->orderColumn('sort')
                             ->schema([
+                                Hidden::make('addable_id'), // No need for hydration hacks
                                 Select::make('school_id')
                                     ->searchable()
                                     ->preload()
-                                    ->relationship('school', 'name'),
+                                    ->relationship('school', 'name')
+                                    ->label(__('general.educations.school')),  // Use translated label
                                 Select::make('education_type_id')
                                     ->preload()
                                     ->searchable()
-                                    ->relationship('educationType', 'name'),
+                                    ->relationship('educationType', 'name')
+                                    ->label(__('general.educations.education_type')),  // Use translated label
                                 Select::make('field_of_study_id')
-                                    ->live(onBlur: true)
+                                    ->live()
                                     ->preload()
                                     ->searchable()
                                     ->relationship('fieldOfStudy', 'name')
-                                    ->afterStateUpdated(fn(Set $set) => $set('filed_of_study_child', null)),
+                                    ->label(__('general.educations.field_of_study')),  // Use translated label
                                 Select::make('field_of_study_child_id')
                                     ->searchable()
                                     ->live()
                                     ->nullable()
-                                    ->options(function (Get $get) {
-                                        $field_of_study = FieldOfStudy::find($get('field_of_study'));
-                                        if (!$field_of_study) {
-                                            return null;
-                                        }
-                                        return $field_of_study->children->pluck('name', 'id');
-                                    })
-                                    ->label('Sub Field of Study'),
-                                TextInput::make('grade'),
+                                    ->options(fn(Get $get): Collection => FieldOfStudy::query()
+                                        ->where('parent_id', $get('field_of_study_id'))
+                                        ->pluck('name', 'id'))
+                                    ->label(__('general.educations.sub_field_of_study')),  // Use translated label
+                                TextInput::make('grade')
+                                    ->label(__('general.educations.grade')),  // Use translated label
                                 DatePicker::make('start_date')
                                     ->maxDate(now())
-                                    ->native(false),
-                                DatePicker::make('end_date')->native(false),
-                                Toggle::make('graduated'),
+                                    ->native(false)
+                                    ->label(__('general.educations.start_date')),  // Use translated label
+                                DatePicker::make('end_date')
+                                    ->native(false)
+                                    ->label(__('general.educations.end_date')),  // Use translated label
+                                Toggle::make('graduated')
+                                    ->label(__('general.educations.graduated')),  // Use translated label
                             ]),
-//                            ->itemLabel(fn (array $state): ?string => $state['field_of_study_id'] . ' - ' . $state['education_type_id'] ?? null),
                     ]),
             ])
             ->statePath('data')
@@ -89,18 +112,20 @@ class Educations extends Page
     }
 
     public function create(): void
-    {
-        $profile = \App\Models\Profile::updateOrCreate(
-            ['user_id' => auth()->id()],
-            $this->form->getState()
-        );
-        $this->form->model($profile)->saveRelationships();
-        Notification::make('saved')
-            ->title('Saved')
-            ->body('Your profile has been saved.')
-            ->iconColor('success')
-            ->icon('heroicon-o-check-circle')
-            ->color('success')
-            ->send();
-    }
+{
+    $profile = \App\Models\Profile::updateOrCreate(
+        ['user_id' => auth()->id()],
+        $this->form->getState()
+    );
+    $this->form->model($profile)->saveRelationships();
+    
+    // Use translations for notification
+    Notification::make('saved')
+        ->title(__('general.save-success-title'))  // Use translated title
+        ->body(__('general.save-success-body'))   // Use translated body
+        ->iconColor('success')
+        ->icon('heroicon-o-check-circle')
+        ->color('success')
+        ->send();
+}
 }

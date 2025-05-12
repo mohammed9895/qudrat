@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('entities', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            $table->string('name');
+            $table->text('name');
             $table->text('description')->nullable();
             $table->string('email')->nullable();
             $table->string('phone')->nullable();
             $table->string('website')->nullable();
             $table->string('logo')->nullable();
-            $table->string('address')->nullable();
+            $table->text('address')->nullable();
             $table->string('status')->default(0)->nullable();
             $table->softDeletes();
             $table->timestamps();

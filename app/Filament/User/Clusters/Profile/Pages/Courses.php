@@ -12,6 +12,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use Illuminate\Contracts\Support\Htmlable;
 
 class Courses extends Page
 {
@@ -27,6 +28,16 @@ class Courses extends Page
 
     public ?array $data = [];
 
+    public static function getNavigationLabel(): string 
+    {
+        return __('general.courses.title');
+    }
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('general.courses.title');
+    }
+
     public function mount(): void
     {
         $this->profile = \App\Models\Profile::where('user_id', auth()->id())->first();
@@ -38,29 +49,38 @@ class Courses extends Page
     {
         return $form
             ->schema([
-                Section::make('Courses')
-                ->schema([
-                    Repeater::make('courses')
-                        ->collapsible()
-                        ->hiddenLabel()
-                        ->relationship('courses')
-                        ->reorderable()
-                        ->orderColumn('sort')
-                        ->schema([
-                            TextInput::make('title'),
-                            TextInput::make('organization'),
-                            DatePicker::make('start_date')
-                                ->maxDate(now()->format('Y-m-d'))
-                                ->native(false),
-                            DatePicker::make('end_date')->native(false),
-                            FileUpload::make('certificate_file'),
-                            MarkdownEditor::make('description'),
-                        ])
-                ])
+                Section::make(__('general.courses.title'))  // Use translated title for courses
+                    ->schema([
+                        Repeater::make('courses')
+                            ->collapsible()
+                            ->hiddenLabel()
+                            ->label(__('general.courses.title'))
+                            ->relationship('courses')
+                            ->reorderable()
+                            ->orderColumn('sort')
+                            ->schema([
+                                TextInput::make('title')
+                                    ->label(__('general.courses.course_title')),  // Use translated label
+                                TextInput::make('organization')
+                                    ->label(__('general.courses.organization')),  // Use translated label
+                                DatePicker::make('start_date')
+                                    ->maxDate(now()->format('Y-m-d'))
+                                    ->native(false)
+                                    ->label(__('general.courses.start_date')),  // Use translated label
+                                DatePicker::make('end_date')
+                                    ->native(false)
+                                    ->label(__('general.courses.end_date')),  // Use translated label
+                                FileUpload::make('certificate_file')
+                                    ->label(__('general.courses.certificate_file')),  // Use translated label
+                                MarkdownEditor::make('description')
+                                    ->label(__('general.courses.description')),  // Use translated label
+                            ])
+                    ])
             ])
             ->statePath('data')
             ->model($this->profile);
     }
+
 
     public function create(): void
     {
@@ -69,10 +89,11 @@ class Courses extends Page
             $this->form->getState()
         );
         $this->form->model($profile)->saveRelationships();
-
+        
+        // Use translations for notification
         Notification::make('saved')
-            ->title('Saved')
-            ->body('Your profile has been saved.')
+            ->title(__('general.save-success-title'))  // Use translated title
+            ->body(__('general.save-success-body'))   // Use translated body
             ->iconColor('success')
             ->icon('heroicon-o-check-circle')
             ->color('success')

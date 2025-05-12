@@ -11,14 +11,20 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Mix;
+use Spatie\Translatable\HasTranslations;
 
 class Profile extends Model implements Viewable
 {
     use InteractsWithViews;
     use HasFactory;
     use SoftDeletes;
+    use HasTranslations;
+
 
     protected $guarded = [];
+
+
+    public $translatable = ['fullname'];
 
     protected $casts = [
         'categories' => 'array',
@@ -31,8 +37,20 @@ class Profile extends Model implements Viewable
 
     public function getThumbnailImage()
     {
-        $isUrl = str_contains($this->avatar, 'http');
-        return $isUrl ? asset('assets/images/unset.jpg') : \Storage::disk('public')->url($this->avatar);
+        // Check if avatar is null or empty
+        if (is_null($this->avatar) || empty($this->avatar)) {
+            return asset('assets/images/unset.jpg'); // Return default image if avatar is null or empty
+        }
+
+        // Return the avatar image URL from the public disk
+        return \Storage::disk('public')->url($this->avatar);
+    }
+
+    public function getAvatarUrlAttribute()
+    {
+        return $this->avatar 
+            ? '/storage/' . $this->avatar 
+            : asset('assets/images/unset.jpg');
     }
 
     public function user():BelongsTo
@@ -95,6 +113,11 @@ class Profile extends Model implements Viewable
         return $this->hasMany(Achievement::class);
     }
 
+    public function trainings()
+    {
+        return $this->hasMany(Training::class);
+    }
+
     public function courses(): HasMany
     {
         return $this->hasMany(Course::class);
@@ -103,6 +126,11 @@ class Profile extends Model implements Viewable
     public function certificates(): HasMany
     {
         return $this->hasMany(Certificate::class);
+    }
+
+    public function licenses()
+    {
+        return $this->hasMany(License::class);
     }
 
     public function ratings(): HasMany

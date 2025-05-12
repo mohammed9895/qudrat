@@ -156,8 +156,8 @@
                     <ul class="mt-2">
                         @foreach($profile->educations()->get() as $education)
                             <li class="pt-2">
-                                <p class="flex justify-between text-sm"><strong class="text-base">{{ $education->school->name }}</strong>{{ \Carbon\Carbon::create($education->start_date)->format('Y') }}-{{ \Carbon\Carbon::create($education->end_date)->format('Y') }}</p>
-                                <p class="flex justify-between text-sm">{{ $education->fieldOfStudy->name }} - {{ $education->subFieldOfStudy->name ?? '' }}<small>GPA {{ $education->grade }}</small></p>
+                                <p class="flex justify-between text-sm"><strong class="text-base">{{ $education->school->name ?? '' }}</strong>{{ \Carbon\Carbon::create($education->start_date ?? null)->format('Y') }}-{{ \Carbon\Carbon::create($education->end_date)->format('Y') }}</p>
+                                <p class="flex justify-between text-sm">{{ $education->fieldOfStudy->name ?? '' }} - {{ $education->subFieldOfStudy->name ?? '' }}<small>GPA {{ $education->grade }}</small></p>
                             </li>
                         @endforeach
                     </ul>
@@ -207,15 +207,6 @@
             @endif
         </div>
     </main>
-    <!-- short lines to introduce myself -->
-    <footer class="mt-6">
-        <p class="bg-gray-600 text-white text-center text-xs pt-2">The best way to predict the future is to
-            create it. <small>- AbrahamLincoln</small>
-        </p>
-        <p class="bg-gray-600 text-white text-center text-sm pb-2">I am creating my future by learning new things
-            and
-            making small progresses everyday.</p>
-    </footer>
 </div>
 </body>
 

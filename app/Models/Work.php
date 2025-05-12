@@ -30,6 +30,10 @@ class Work extends Model
         });
     }
 
+    public function likes() {
+        return $this->morphMany(Like::class, 'likeable');
+    }
+
     public function profile(): BelongsTo
     {
         return $this->belongsTo(Profile::class);

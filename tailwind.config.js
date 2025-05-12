@@ -17,6 +17,7 @@ export default {
         'bg-[#1d71b8]',
         'from-[#1d71b8]',
         'via-[#1d71b8]',
+        'text-[#1d71b8]',
 
         'bg-[#ef485c]',
         'from-[#ef485c]',
@@ -30,6 +31,7 @@ export default {
         'bg-[#50c1b7]',
         'from-[#50c1b7]',
         'via-[#50c1b7]',
+
 
     ],
     theme: {

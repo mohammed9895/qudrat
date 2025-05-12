@@ -117,11 +117,11 @@
                         <a href="{{ route('locale', 'ar') }}"
                            class="w-[50px] h-[50px] flex items-center justify-center rounded-full border border-brand-blue text-head-color font-medium hover:bg-brand-blue hover:text-white">ع</a>
                     @endif
-                    <a href="{{ route('filament.user.auth.register') }}"
+                   <a href="{{  env('PKI_LOGIN_URL') }}"
                        class="px-8 py-3 rounded-full border border-brand-blue text-head-color font-medium hover:bg-brand-blue hover:text-white">
                         {{ __('general.navigation.register') }}
                     </a>
-                    <a href="{{ route('filament.user.auth.login') }}"
+                    <a href="{{  env('PKI_LOGIN_URL') }}"
                        class="px-8 py-3 rounded-full border bg-brand-blue text-head-color font-medium hover:bg-primary-1 text-white flex items-center justify-center">
                         {{ __('general.navigation.login') }}
                         <img src="{{ asset('assets/images/arrow-right.svg') }}" class="ml-2 rtl:mr-2 rtl:ml-0" alt="">
@@ -142,7 +142,7 @@
                             id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown"
                             data-dropdown-placement="bottom">
                         <span class="sr-only">Open user menu</span>
-                        <img class="w-[50px] h-[50px] rounded-full" src="/storage/{{ auth()->user()->profile->avatar }}"
+                        <img class="w-[50px] h-[50px] rounded-full" src="{{ auth()->user()?->profile?->avatar_url }}"
                              alt="user photo">
                     </button>
                     <!-- Dropdown menu -->
@@ -160,12 +160,8 @@
                                    class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">{{ __('general.navigation.dashboard') }}</a>
                             </li>
                             <li>
-                                <form action="{{ route('filament.user.auth.logout') }}" method="POST"
-                                      class="">
-                                    @csrf
-                                    <button type="submit"
-                                            class="block w-full text-left rtl:text-right px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">{{ __('general.navigation.sign-out') }}</button>
-                                </form>
+                                <a href="{{  env('PKI_LOGOUT_URL') }}"
+                                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">{{ __('general.navigation.sign-out') }}</a>
                             </li>
                         </ul>
                     </div>

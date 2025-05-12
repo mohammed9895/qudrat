@@ -8,7 +8,11 @@ use Filament\Support\Facades\FilamentAsset;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\Event;
+use App\Events\UserRegistered;
+use App\Models\User;
+use App\Observers\UserObserver;
+use Illuminate\Support\Facades\URL;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -38,6 +42,12 @@ class AppServiceProvider extends ServiceProvider
         Blade::directive('endIsRoute', function () {
             return '<?php endif; ?>';
         });
+
+
+        User::observe(UserObserver::class);
+URL::forceScheme('https');
+
+
     }
 
     /**

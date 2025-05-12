@@ -21,7 +21,7 @@
             <div class="grid grid-cols-12 gap-5">
                 <div class="col-span-full xl:col-span-3">
                     <div class="bg-white p-6 rounded-xl relative">
-                        <div class="bg-primary-2 px-4 py-2 rounded-full absolute top-[20px] right-[20px]">
+                        <div class="bg-brand-blue px-4 py-2 rounded-full absolute top-[20px] right-[20px]">
                             <div class="flex items-center gap-1">
                                     <span>
                                         <svg width="17" height="17" viewBox="0 0 17 17" fill="none"
@@ -42,10 +42,11 @@
                         <h4 class="text-xl font-medium mb-1">{{ $profile->fullname }}</h4>
                         <p class="text-sm mb-5">{{ $profile->position }}</p>
                         <ul class="flex flex-col gap-3 mb-8">
-                            <li class="flex items-center gap-2">
+                            @if ($profile->show_location || auth()->id() == $profile->user_id)
+                                <li class="flex items-center gap-2">
                                     <span>
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
+                                            xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M17.5 8.33301C17.5 14.1663 10 19.1663 10 19.1663C10 19.1663 2.5 14.1663 2.5 8.33301C2.5 6.34388 3.29018 4.43623 4.6967 3.02971C6.10322 1.62318 8.01088 0.833008 10 0.833008C11.9891 0.833008 13.8968 1.62318 15.3033 3.02971C16.7098 4.43623 17.5 6.34388 17.5 8.33301Z"
                                                 stroke="#344054" stroke-width="1.5" stroke-linecap="round"
@@ -56,37 +57,52 @@
                                                 stroke-linejoin="round"/>
                                         </svg>
                                     </span>
-                                <p>{{ $profile->address }}</p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                    <span>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M3.33268 3.33301H16.666C17.5827 3.33301 18.3327 4.08301 18.3327 4.99967V14.9997C18.3327 15.9163 17.5827 16.6663 16.666 16.6663H3.33268C2.41602 16.6663 1.66602 15.9163 1.66602 14.9997V4.99967C1.66602 4.08301 2.41602 3.33301 3.33268 3.33301Z"
-                                                stroke="#344054" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round"/>
-                                            <path d="M18.3346 5L10.0013 10.8333L1.66797 5" stroke="#344054"
-                                                  stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                <p><a href="mailto:{{ $profile->email }}">{{ $profile->email }}</a></p>
-                            </li>
-                            <li class="flex items-center gap-2">
-                                    <span>
-                                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                             xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M18.3332 14.1004V16.6004C18.3341 16.8325 18.2866 17.0622 18.1936 17.2749C18.1006 17.4875 17.9643 17.6784 17.7933 17.8353C17.6222 17.9922 17.4203 18.1116 17.2005 18.186C16.9806 18.2603 16.7477 18.288 16.5165 18.2671C13.9522 17.9884 11.489 17.1122 9.32486 15.7087C7.31139 14.4293 5.60431 12.7222 4.32486 10.7087C2.91651 8.53474 2.04007 6.05957 1.76653 3.48374C1.7457 3.2533 1.77309 3.02104 1.84695 2.80176C1.9208 2.58248 2.03951 2.38098 2.1955 2.21009C2.3515 2.0392 2.54137 1.90266 2.75302 1.80917C2.96468 1.71569 3.19348 1.66729 3.42486 1.66707H5.92486C6.32928 1.66309 6.72136 1.80631 7.028 2.07002C7.33464 2.33373 7.53493 2.69995 7.59153 3.10041C7.69705 3.90046 7.89274 4.68601 8.17486 5.44207C8.28698 5.74034 8.31125 6.0645 8.24478 6.37614C8.17832 6.68778 8.02392 6.97383 7.79986 7.20041L6.74153 8.25874C7.92783 10.345 9.65524 12.0724 11.7415 13.2587L12.7999 12.2004C13.0264 11.9764 13.3125 11.8219 13.6241 11.7555C13.9358 11.689 14.2599 11.7133 14.5582 11.8254C15.3143 12.1075 16.0998 12.3032 16.8999 12.4087C17.3047 12.4658 17.6744 12.6697 17.9386 12.9817C18.2029 13.2936 18.3433 13.6917 18.3332 14.1004Z"
-                                                stroke="#344054" stroke-width="1.5" stroke-linecap="round"
-                                                stroke-linejoin="round"/>
-                                        </svg>
-                                    </span>
-                                <p><a href="tel:{{ $profile->phone }}">{{ $profile->phone }}</a></p>
-                            </li>
+                                    <p>{{ $profile->address }}</p>
+                                </li>
+                            @endif
+                            @if ($profile->show_email || auth()->id() == $profile->user_id)
+                                <li class="flex items-center gap-2">
+                                        <span>
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M3.33268 3.33301H16.666C17.5827 3.33301 18.3327 4.08301 18.3327 4.99967V14.9997C18.3327 15.9163 17.5827 16.6663 16.666 16.6663H3.33268C2.41602 16.6663 1.66602 15.9163 1.66602 14.9997V4.99967C1.66602 4.08301 2.41602 3.33301 3.33268 3.33301Z"
+                                                    stroke="#344054" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round"/>
+                                                <path d="M18.3346 5L10.0013 10.8333L1.66797 5" stroke="#344054"
+                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                            </svg>
+                                        </span>
+                                    <p><a href="mailto:{{ $profile->email }}">{{ $profile->email }}</a></p>
+                                </li>
+                            @endif
+                            @if ($profile->show_phone || auth()->id() == $profile->user_id)
+                                <li class="flex items-center gap-2">
+                                        <span>
+                                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+                                                xmlns="http://www.w3.org/2000/svg">
+                                                <path
+                                                    d="M18.3332 14.1004V16.6004C18.3341 16.8325 18.2866 17.0622 18.1936 17.2749C18.1006 17.4875 17.9643 17.6784 17.7933 17.8353C17.6222 17.9922 17.4203 18.1116 17.2005 18.186C16.9806 18.2603 16.7477 18.288 16.5165 18.2671C13.9522 17.9884 11.489 17.1122 9.32486 15.7087C7.31139 14.4293 5.60431 12.7222 4.32486 10.7087C2.91651 8.53474 2.04007 6.05957 1.76653 3.48374C1.7457 3.2533 1.77309 3.02104 1.84695 2.80176C1.9208 2.58248 2.03951 2.38098 2.1955 2.21009C2.3515 2.0392 2.54137 1.90266 2.75302 1.80917C2.96468 1.71569 3.19348 1.66729 3.42486 1.66707H5.92486C6.32928 1.66309 6.72136 1.80631 7.028 2.07002C7.33464 2.33373 7.53493 2.69995 7.59153 3.10041C7.69705 3.90046 7.89274 4.68601 8.17486 5.44207C8.28698 5.74034 8.31125 6.0645 8.24478 6.37614C8.17832 6.68778 8.02392 6.97383 7.79986 7.20041L6.74153 8.25874C7.92783 10.345 9.65524 12.0724 11.7415 13.2587L12.7999 12.2004C13.0264 11.9764 13.3125 11.8219 13.6241 11.7555C13.9358 11.689 14.2599 11.7133 14.5582 11.8254C15.3143 12.1075 16.0998 12.3032 16.8999 12.4087C17.3047 12.4658 17.6744 12.6697 17.9386 12.9817C18.2029 13.2936 18.3433 13.6917 18.3332 14.1004Z"
+                                                    stroke="#344054" stroke-width="1.5" stroke-linecap="round"
+                                                    stroke-linejoin="round"/>
+                                            </svg>
+                                        </span>
+                                    <p><a href="tel:{{ $profile->phone }}">{{ $profile->phone }}</a></p>
+                                </li>
+                            @endif
                         </ul>
+                        @if (auth()->check() && $profile->can_send_message && auth()->id() != $profile->user_id)
+                            <a wire:click="send_message"
+                                class="px-8 py-3 mb-3 cursor-pointer rounded-full text-head-color font-medium bg-gray-200 text-gray-500 inline-flex items-center gap-2 w-full justify-center">
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
+                                    </svg>                                  
+                                    </span>
+                                {{ __('general.send-message') }}
+                            </a>
+                        @endif
                         <a href="#"
-                           class="px-8 py-3 rounded-full text-head-color font-medium bg-primary-2 text-white inline-flex items-center gap-2 w-full justify-center">
+                           class="px-8 py-3 rounded-full text-head-color font-medium bg-brand-blue text-white inline-flex items-center gap-2 w-full justify-center">
                                 <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                            xmlns="http://www.w3.org/2000/svg">
                                 <path
@@ -118,7 +134,7 @@
                             <div class="flex items-center gap-3 flex-wrap">
                                 @foreach($profile->skills()->get() as $skill)
                                     <a href="{{ route('social-window.index') }}"
-                                       class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $skill }}</a>
+                                       class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $skill->name }}</a>
                                 @endforeach
                             </div>
                         </div>
@@ -127,9 +143,9 @@
                         <div class="bg-white p-6 rounded-xl mt-5">
                             <h6 class="text-lg font-semibold mb-3">{{ __('general.languages') }}</h6>
                             <div class="flex items-center gap-3 flex-wrap">
-                                @foreach($profile->languages as $language)
+                                @foreach($profile->languages()->get() as $language)
                                     <a href="{{ route('social-window.index') }}"
-                                       class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $language }}</a>
+                                       class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $language->name }}</a>
                                 @endforeach
                             </div>
                         </div>
@@ -138,9 +154,9 @@
                         <div class="bg-white p-6 rounded-xl mt-5">
                             <h6 class="text-lg font-semibold mb-3">{{ __('general.tools') }}</h6>
                             <div class="flex items-center gap-3 flex-wrap">
-                                @foreach($profile->tools as $tool)
+                                @foreach($profile->tools()->get() as $tool)
                                     <a href="{{ route('social-window.index') }}"
-                                       class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $tool }}</a>
+                                       class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $tool->name }}</a>
                                 @endforeach
                             </div>
                         </div>
@@ -149,9 +165,9 @@
                         <div class="bg-white p-6 rounded-xl mt-5">
                             <h6 class="text-lg font-semibold mb-3">{{ __('general.interest') }}</h6>
                             <div class="flex items-center gap-3 flex-wrap">
-                                @foreach($profile->interested as $interest)
+                                @foreach($profile->interests()->get() as $interest)
                                     <a href="{{ route('social-window.index') }}"
-                                       class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $interest }}</a>
+                                       class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $interest->name }}</a>
                                 @endforeach
                             </div>
                         </div>
@@ -161,55 +177,57 @@
                         <div class="flex items-center gap-3 flex-wrap">
                             @if($profile->website)
                                 <a href="{{ $profile->website }}"
-                                   class="px-8 py-3 mt-2 rounded-full text-white font-medium bg-primary-2 inline-flex items-center gap-2 w-full justify-center">
+                                   class="px-8 py-3 mt-2 rounded-full text-white font-medium bg-brand-blue inline-flex items-center gap-2 w-full justify-center">
                                     <span><x-hugeicons-global class="size-6"/></span>
                                     {{ __('general.view-website') }}
                                 </a>
                             @endif
-                            <div class="flex justify-start items-center space-x-2">
-                                @if($profile->social_facebook)
-                                    <a href="{{ $profile->social_facebook }}"
-                                       class="w-10 h-10 rounded-full text-[#2e3192] font-medium border-2 border-primary-2 inline-flex items-center justify-center hover:bg-primary-2 hover:text-white">
-                                        <span><x-fab-facebook-f class="size-5"/></span>
-                                    </a>
-                                @endif
-                                @if($profile->social_instagram)
-                                    <a href="{{ $profile->social_instagram }}"
-                                       class="w-10 h-10 rounded-full text-[#2e3192] font-medium border-2 border-primary-2 inline-flex items-center justify-center hover:bg-primary-2 hover:text-white">
-                                        <span><x-fab-instagram class="size-5"/></span>
-                                    </a>
-                                @endif
-                                @if($profile->social_x)
-                                    <a href="{{ $profile->social_x }}"
-                                       class="w-10 h-10 rounded-full text-[#2e3192] font-medium border-2 border-primary-2 inline-flex items-center justify-center hover:bg-primary-2 hover:text-white">
-                                        <span><x-fab-x-twitter class="size-5"/></span>
-                                    </a>
-                                @endif
-                                @if($profile->social_linkedin)
-                                    <a href="{{ $profile->social_instagram }}"
-                                       class="w-10 h-10 rounded-full text-[#2e3192] font-medium border-2 border-primary-2 inline-flex items-center justify-center hover:bg-primary-2 hover:text-white">
-                                        <span><x-fab-linkedin-in class="size-5"/></span>
-                                    </a>
-                                @endif
-                                @if($profile->social_pinterest)
-                                    <a href="{{ $profile->social_pinterest }}"
-                                       class="w-10 h-10 rounded-full text-[#2e3192] font-medium border-2 border-primary-2 inline-flex items-center justify-center hover:bg-primary-2 hover:text-white">
-                                        <span><x-fab-pinterest class="size-5"/></span>
-                                    </a>
-                                @endif
-                                @if($profile->social_stackoverflow)
-                                    <a href="{{ $profile->social_stackoverflow }}"
-                                       class="w-10 h-10 rounded-full text-[#2e3192] font-medium border-2 border-primary-2 inline-flex items-center justify-center hover:bg-primary-2 hover:text-white">
-                                        <span><x-fab-stack-overflow class="size-5"/></span>
-                                    </a>
-                                @endif
-                                @if($profile->social_whatsapp)
-                                    <a href="https://wa.me/{{ $profile->social_whatsapp }}"
-                                       class="w-10 h-10 rounded-full text-[#2e3192] font-medium border-2 border-primary-2 inline-flex items-center justify-center hover:bg-primary-2 hover:text-white">
-                                        <span><x-fab-whatsapp class="size-5"/></span>
-                                    </a>
-                                @endif
-                            </div>
+                            @if ($profile->show_social_links || auth()->id() == $profile->user_id)
+                                <div class="flex justify-start items-center space-x-2">
+                                    @if($profile->social_facebook)
+                                        <a href="{{ $profile->social_facebook }}"
+                                        class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
+                                            <span><x-fab-facebook-f class="size-5"/></span>
+                                        </a>
+                                    @endif
+                                    @if($profile->social_instagram)
+                                        <a href="{{ $profile->social_instagram }}"
+                                        class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
+                                            <span><x-fab-instagram class="size-5"/></span>
+                                        </a>
+                                    @endif
+                                    @if($profile->social_x)
+                                        <a href="{{ $profile->social_x }}"
+                                        class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
+                                            <span><x-fab-x-twitter class="size-5"/></span>
+                                        </a>
+                                    @endif
+                                    @if($profile->social_linkedin)
+                                        <a href="{{ $profile->social_instagram }}"
+                                        class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
+                                            <span><x-fab-linkedin-in class="size-5"/></span>
+                                        </a>
+                                    @endif
+                                    @if($profile->social_pinterest)
+                                        <a href="{{ $profile->social_pinterest }}"
+                                        class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
+                                            <span><x-fab-pinterest class="size-5"/></span>
+                                        </a>
+                                    @endif
+                                    @if($profile->social_stackoverflow)
+                                        <a href="{{ $profile->social_stackoverflow }}"
+                                        class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
+                                            <span><x-fab-stack-overflow class="size-5"/></span>
+                                        </a>
+                                    @endif
+                                    @if($profile->social_whatsapp)
+                                        <a href="https://wa.me/{{ $profile->social_whatsapp }}"
+                                        class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
+                                            <span><x-fab-whatsapp class="size-5"/></span>
+                                        </a>
+                                    @endif
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -252,10 +270,17 @@
                                                     stroke="#141B34" stroke-width="1.5" stroke-linecap="round"/>
                                             </svg>
                                         </span>                                                <h6
-                                                class="text-lg font-semibold mt-4 mb-2">{{ $education->degree }}</h6>
-                                            <p class="text-sm">Govt. Commerce College Oman</p>
-                                            <p class="text-sm">{{ Carbon::parse($education->start_date)->format('Y') }}
-                                                - {{ Carbon::parse($education->end_date)->format('Y') }}</p>
+                                                class="text-lg font-semibold mt-4 mb-2">{{ $education->educationType->name ?? '' }}</h6>
+                                            <p class="text-md font-bold">{{ $education->fieldOfStudy->name ?? '' }} - {{ $education->fieldOfStudyChild->name ?? '' }}</p>
+                                            <p class="text-sm mt-2">{{ $education->school->name ?? '' }}</p>
+                                            <p class="text-sm mt-2">
+                                                @if($education->start_date && Carbon::parse($education->start_date)->isValid())
+                                                    {{ Carbon::parse($education->start_date)->format('Y') }} -
+                                                @endif
+                                                @if($education->end_date && Carbon::parse($education->end_date)->isValid())
+                                                    - {{ Carbon::parse($education->end_date)->format('Y') }}
+                                                @endif
+                                            </p>
                                         </div>
                                     </div>
                                 @endforeach
@@ -282,9 +307,9 @@
                                             </svg>
                                         </span>
                                             <h6 class="text-lg font-semibold mt-4 mb-2">{{ $experience->position }}</h6>
-                                            <p class="text-sm">{{ $experience->company }}</p>
-                                            <p class="text-sm">{{ Carbon::parse($education->start_date)->format('Y') }}
-                                                - {{ $experience->is_current ? 'present' : Carbon::parse($education->end_date)->format('Y')}}</p>
+                                            <p class="text-md mt-2">{{ $experience->company }}</p>
+                                            <p class="text-sm mt-2">{{ Carbon::parse($education->start_date)->format('Y') }}
+                                                - {{ $experience->is_current ? __('general.present') : Carbon::parse($education->end_date)->format('Y')}}</p>
                                         </div>
                                     </div>
                                 @endforeach
@@ -299,26 +324,13 @@
                                     <div class="col-span-full lg:col-span-4">
                                         <div class="bg-white p-7 rounded-xl h-full">
                                         <span>
-                                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                 xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M19 10C16.995 9.36815 14.5882 9 12 9C9.41179 9 7.00499 9.36815 5 10V13.5C7.00499 12.8682 9.41179 12.5 12 12.5C14.5882 12.5 16.995 12.8682 19 13.5V10Z"
-                                                    stroke="#141B34" stroke-width="1.5" stroke-linejoin="round"/>
-                                                <path
-                                                    d="M19 11V14.2611C19.1795 15.4395 19.8462 18.0707 22 20.091C21.2821 21.2694 18.8769 23.1213 15 21.1011"
-                                                    stroke="#141B34" stroke-width="1.5" stroke-linejoin="round"/>
-                                                <path
-                                                    d="M5 11V14.2611C4.82051 15.4395 4.15385 18.0707 2 20.091C2.71795 21.2694 5.12308 23.1213 9 21.1011"
-                                                    stroke="#141B34" stroke-width="1.5" stroke-linejoin="round"/>
-                                                <path
-                                                    d="M16.5 16V17.3488C16.5 18.7695 15.8365 20.086 14.7522 20.8169L13.8522 21.4236C12.7121 22.1921 11.2879 22.1921 10.1478 21.4236L9.24782 20.8169C8.16348 20.086 7.5 18.7695 7.5 17.3488V16"
-                                                    stroke="#141B34" stroke-width="1.5" stroke-linecap="round"/>
-                                                <path
-                                                    d="M19 10L20.1257 9.4071C21.3888 8.57875 22.0203 8.16457 21.9995 7.57281C21.9787 6.98105 21.32 6.62104 20.0025 5.90101L15.2753 3.31756C13.6681 2.43919 12.8645 2 12 2C11.1355 2 10.3319 2.43919 8.72468 3.31756L3.99753 5.90101C2.68004 6.62104 2.02129 6.98105 2.0005 7.57281C1.9797 8.16457 2.61125 8.57875 3.87434 9.4071L5 10"
-                                                    stroke="#141B34" stroke-width="1.5" stroke-linecap="round"/>
-                                            </svg>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12" />
+                                              </svg>
+                                              
                                         </span>
                                             <h6 class="text-lg font-semibold mt-4 mb-2">{{ $certificate->title }}</h6>
+                                            <p class="text-md mt-2">{{ $certificate->organization }}</p>
                                             @if($certificate->certificate_file)
                                                 <a href="/storage/{{ $certificate->certificate_file }}"
                                                    class="text-primary-2 flex items-center space-x-2"
@@ -331,9 +343,36 @@
                             </div>
                         </div>
                     @endif
+                    @if($profile->courses()->count() > 0)
+                        <div class="mt-7">
+                            <h4 class="text-[28px] font-semibold mb-3">{{ __('general.courses.title') }}</h4>
+                            <div class="grid grid-cols-12 gap-4">
+                                @foreach($profile->courses as $course)
+                                    <div class="col-span-full lg:col-span-4">
+                                        <div class="bg-white p-7 rounded-xl h-full">
+                                        <span>
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12" />
+                                              </svg>
+                                              
+                                        </span>
+                                            <h6 class="text-lg font-semibold mt-4 mb-2">{{ $course->title }}</h6>
+                                            <p class="text-md mt-2">{{ $course->organization }}</p>
+                                            @if($course->course_file)
+                                                <a href="/storage/{{ $course->course_file }}"
+                                                   class="text-primary-2 flex items-center space-x-2"
+                                                   target="_blank">@svg('hugeicons-file-01', 'size-5 mr-1')View
+                                                    Certificate</a>
+                                            @endif
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    @endif
                     @if($profile->achievements()->count() > 0)
                         <div class="mt-7">
-                            <h4 class="text-[28px] font-semibold mb-3">{{ __('general.achievements') }}</h4>
+                            <h4 class="text-[28px] font-semibold mb-3">{{ __('general.achievements.title') }}</h4>
                             <div class="grid grid-cols-12 gap-4">
                                 @foreach($profile->achievements as $achievement)
                                     <div class="col-span-full lg:col-span-6">
@@ -356,7 +395,7 @@
                     @endif
                     @if($profile->works()->count() > 0)
                         <div class="mt-7">
-                            <h4 class="text-[28px] font-semibold mb-3">{{ __('general/.works') }}</h4>
+                            <h4 class="text-[28px] font-semibold mb-3">{{ __('general.works') }}</h4>
                             <div class="grid lg:grid-cols-3 gap-4">
                                 @foreach($profile->works as $work)
                                     <div
@@ -396,7 +435,7 @@
                     @endif
                     <div class="mt-7">
                         <h4 class="text-[28px] font-semibold mb-3">{{ __('general.reviews') }}</h4>
-                        @if($profile->user_id != auth()->id())
+                        @if($profile->user_id != auth()->id() && auth()->check())
                             <div class="w-full mb-5">
                                 <form wire:submit="rate">
                                     <!-- Rating -->
@@ -472,6 +511,7 @@
                                 </form>
                             </div>
                         @endif
+                        @if ($profile->show_ratings || auth()->id() == $profile->user_id)
                         @foreach($profile->ratings()->orderByDesc('created_at')->get() as $rating)
                             @if($loop->index == 0)
                                 <div class="py-4">
@@ -479,7 +519,7 @@
                                     <div class="py-4 border-t">
                                         <div class="flex gap-4">
                                             <div class="shrink-0">
-                                                <img src="/storage/{{ $rating->user->profile->avatar }}" alt="images"
+                                                <img src="{{ $rating->user->profile->getThumbnailImage() }}" alt="images"
                                                      class="size-16 rounded-full">
                                             </div>
                                             <div class="w-full">
@@ -513,6 +553,7 @@
                                     </div>
                                     @endforeach
                                 </div>
+                            @endif
                     </div>
                 </div>
             </div>

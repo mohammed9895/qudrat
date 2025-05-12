@@ -11,6 +11,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use Illuminate\Contracts\Support\Htmlable;
 
 class Certificates extends Page
 {
@@ -26,6 +27,16 @@ class Certificates extends Page
 
     public ?array $data = [];
 
+    public static function getNavigationLabel(): string 
+    {
+        return __('general.certificates.title');
+    }
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('general.certificates.title');
+    }
+
     public function mount(): void
     {
         $this->profile = \App\Models\Profile::where('user_id', auth()->id())->first();
@@ -36,22 +47,29 @@ class Certificates extends Page
     {
         return $form
             ->schema([
-                Section::make('Certificates')
+                Section::make(__('general.certificates.title'))  // Use translated title for certificates
                     ->collapsible()
                     ->schema([
                         Repeater::make('certificates')
                             ->collapsible()
+                            ->label(__('general.certificates.title'))
                             ->relationship('certificates')
                             ->reorderable()
                             ->orderColumn('sort')
                             ->schema([
-                                TextInput::make('title'),
-                                TextInput::make('organization'),
+                                TextInput::make('title')
+                                    ->label(__('general.certificates.certificate_title')),  // Use translated label
+                                TextInput::make('organization')
+                                    ->label(__('general.certificates.organization')),  // Use translated label
                                 DatePicker::make('issued_date')
                                     ->maxDate(now()->format('Y-m-d'))
-                                    ->native(false),
-                                DatePicker::make('expiry_date')->native(false),
-                                FileUpload::make('certificate_file'),
+                                    ->native(false)
+                                    ->label(__('general.certificates.issued_date')),  // Use translated label
+                                DatePicker::make('expiry_date')
+                                    ->native(false)
+                                    ->label(__('general.certificates.expiry_date')),  // Use translated label
+                                FileUpload::make('certificate_file')
+                                    ->label(__('general.certificates.certificate_file')),  // Use translated label
                             ])
                             ->itemLabel(fn (array $state): ?string => $state['title'] ?? null),
                     ]),
@@ -60,6 +78,7 @@ class Certificates extends Page
             ->model($this->profile);
     }
 
+
     public function create(): void
     {
         $profile = \App\Models\Profile::updateOrCreate(
@@ -67,10 +86,11 @@ class Certificates extends Page
             $this->form->getState()
         );
         $this->form->model($profile)->saveRelationships();
-
+        
+        // Use translations for notification
         Notification::make('saved')
-            ->title('Saved')
-            ->body('Your profile has been saved.')
+            ->title(__('general.save-success-title'))  // Use translated title
+            ->body(__('general.save-success-body'))   // Use translated body
             ->iconColor('success')
             ->icon('heroicon-o-check-circle')
             ->color('success')

@@ -18,12 +18,23 @@ use Filament\Forms\Get;
 use Filament\Forms\Set;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
+use Illuminate\Contracts\Support\Htmlable;
 
 class PrivacySettings extends Page
 {
     protected static ?string $navigationIcon = 'hugeicons-locked';
 
     protected static string $view = 'filament.user.clusters.profile.pages.privacy-settings';
+
+    public static function getNavigationLabel(): string 
+    {
+        return __('general.privacy_settings.title');
+    }
+
+    public function getTitle(): string | Htmlable
+    {
+        return __('general.privacy_settings.title');
+    }
 
     protected static ?string $cluster = Profile::class;
 
@@ -43,28 +54,37 @@ class PrivacySettings extends Page
     {
         return $form
             ->schema([
-                Section::make('Basic Information')
+
+                Section::make(__('general.privacy_settings.title'))  // Use translated title for section
                     ->collapsible()
                     ->schema([
-                       Toggle::make('public_profile')
-                            ->hint('If you enable this, your profile will be visible to everyone.'),
+                        Toggle::make('public_profile')
+                            ->label(__('general.privacy_settings.public_profile'))  // Use translated label for public_profile
+                            ->hint(__('general.privacy_settings.public_profile_hint')),  // Use translated hint
                         Toggle::make('can_send_message')
-                                ->hint('If you enable this, other users can send you messages.'),
+                            ->label(__('general.privacy_settings.can_send_message'))  // Use translated label for can_send_message
+                            ->hint(__('general.privacy_settings.can_send_message_hint')),  // Use translated hint
                         Toggle::make('show_email')
-                            ->hint('If you enable this, your email will be visible to everyone.'),
+                            ->label(__('general.privacy_settings.show_email'))  // Use translated label for show_email
+                            ->hint(__('general.privacy_settings.show_email_hint')),  // Use translated hint
                         Toggle::make('show_phone')
-                            ->hint('If you enable this, your phone number will be visible to everyone.'),
+                            ->label(__('general.privacy_settings.show_phone'))  // Use translated label for show_phone
+                            ->hint(__('general.privacy_settings.show_phone_hint')),  // Use translated hint
                         Toggle::make('show_location')
-                            ->hint('If you enable this, your location will be visible to everyone.'),
+                            ->label(__('general.privacy_settings.show_location'))  // Use translated label for show_location
+                            ->hint(__('general.privacy_settings.show_location_hint')),  // Use translated hint
                         Toggle::make('show_social_links')
-                            ->hint('If you enable this, your social links will be visible to everyone.'),
+                            ->label(__('general.privacy_settings.show_social_links'))  // Use translated label for show_social_links
+                            ->hint(__('general.privacy_settings.show_social_links_hint')),  // Use translated hint
                         Toggle::make('show_rating')
-                            ->hint('If you enable this, your rating will be visible to everyone.'),
+                            ->label(__('general.privacy_settings.show_rating'))  // Use translated label for show_rating
+                            ->hint(__('general.privacy_settings.show_rating_hint')),  // Use translated hint
                     ]),
             ])
             ->statePath('data')
             ->model($this->profile);
     }
+
 
     public function create(): void
     {
@@ -73,12 +93,15 @@ class PrivacySettings extends Page
             $this->form->getState()
         );
         $this->form->model($profile)->saveRelationships();
+        
+        // Use translations for notification
         Notification::make('saved')
-            ->title('Saved')
-            ->body('Your profile has been saved.')
+            ->title(__('general.save-success-title'))  // Use translated title
+            ->body(__('general.save-success-body'))   // Use translated body
             ->iconColor('success')
             ->icon('heroicon-o-check-circle')
             ->color('success')
             ->send();
     }
+    
 }
