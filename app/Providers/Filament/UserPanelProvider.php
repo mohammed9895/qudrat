@@ -161,7 +161,8 @@ class UserPanelProvider extends PanelProvider
                                 );
                                 $livewire->redirectRoute('filament.user.pages.dashboard');
                             }),
-                    ])->completeBeforeAccess())
+                    ])
+                    // ->completeBeforeAccess())
                     ->addTrack(fn () => Track::make([
                             Step::make(name: __('general.steps.add_education'), identifier: 'widget::add-educations')
                                     ->description(__('general.steps.add_education_description'))
