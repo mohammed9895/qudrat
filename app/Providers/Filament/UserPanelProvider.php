@@ -85,7 +85,7 @@ class UserPanelProvider extends PanelProvider
                     ->addTrack(fn () => Track::make([
                         Step::make(name: fn () => 'Hello '.auth()->user()->name, identifier: 'Welcome to the onboarding process.')
                             ->description('Let\'s get started by filling in your basic information. and then you can complate your profile.')
-                            ->completeIf(fn () => auth()->user()->profile && auth()->user()->profile->username !== null)
+                            // ->completeIf(fn () => auth()->user()->profile && auth()->user()->profile->username !== null)
                             ->cardWidth('3xl')
                             ->wizard([
                                 WizardStep::make('Basic Information')
