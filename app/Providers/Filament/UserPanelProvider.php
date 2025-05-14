@@ -143,13 +143,13 @@ class UserPanelProvider extends PanelProvider
                         
                                 return [
                                     'step_1' => [
-                                        'fullname' => $profile->fullname,
-                                        'position' => $profile->position,
-                                        'email' => $profile->email,
-                                        'gender' => $profile->gender,
-                                        'dob' => $profile->dob,
-                                        'phone' => $profile->phone,
-                                        'country_id' => $profile->country_id,
+                                        'fullname' => $profile->fullname ?? '',
+                                        'position' => $profile->position ?? '',
+                                        'email' => $profile->email ?? '',
+                                        'gender' => $profile->gender ?? '',
+                                        'dob' => $profile->dob ?? '',
+                                        'phone' => $profile->phone ?? '',
+                                        'country_id' => $profile->country_id ?? '',
                                     ]
                                 ];
                             })
