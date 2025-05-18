@@ -45,7 +45,10 @@ class AppServiceProvider extends ServiceProvider
 
 
         User::observe(UserObserver::class);
-        // URL::forceScheme('https');
+        
+        if (env('APP_ENV') !== 'local') {
+            URL::forceScheme('https');
+        }
 
 
     }
