@@ -91,6 +91,7 @@ class AuthController extends Controller
         // 1. Get token from query or cookie
         $token = $request->cookie('AUTH_COOKIE');
 
+
         if (!$token) {
             dd('no token');
             return redirect('/login')->withErrors('No token received.');

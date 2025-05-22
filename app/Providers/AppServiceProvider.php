@@ -13,6 +13,8 @@ use App\Events\UserRegistered;
 use App\Models\User;
 use App\Observers\UserObserver;
 use Illuminate\Support\Facades\URL;
+use Illuminate\Cookie\Middleware\EncryptCookies;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -49,6 +51,8 @@ class AppServiceProvider extends ServiceProvider
         // if (env('APP_ENV') !== 'local') {
         //     URL::forceScheme('https');
         // }
+
+        EncryptCookies::except('AUTH_COOKIE');
 
 
     }
