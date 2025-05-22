@@ -91,7 +91,6 @@ class AuthController extends Controller
         // 1. Get token from query or cookie
         $token = strtok($request->cookie('AUTH_COOKIE'), '|');
         
-
         if (!$token) {
             dd('no token');
             return redirect('/login')->withErrors('No token received.');
@@ -112,6 +111,8 @@ class AuthController extends Controller
 
             $principal = $principalResponse->json();
             $userId = $principal['CurrentUserID'] ?? null;
+
+            dd($userId);
 
             if (!$userId) {
                  dd('Invalid principal response.');
