@@ -106,6 +106,7 @@ class AuthController extends Controller
                 ]);
 
             if (!$principalResponse->successful()) {
+                dd('Failed to verify token.');
                 return redirect('/login')->withErrors('Failed to verify token.');
             }
 
@@ -113,6 +114,7 @@ class AuthController extends Controller
             $userId = $principal['CurrentUserID'] ?? null;
 
             if (!$userId) {
+                 dd('Invalid principal response.');
                 return redirect('/login')->withErrors('Invalid principal response.');
             }
 
