@@ -86,12 +86,13 @@ class AuthController extends Controller
     // }
 
 
-    public function handleSSOLogin(Request $request)
+    public function handleQudratLoginCallback(Request $request)
     {
         // 1. Get token from query or cookie
-        $token = $request->cookie('SSOToken');
+        $token = $request->cookie('AUTH_COOKIE');
 
         if (!$token) {
+            dd('no token');
             return redirect('/login')->withErrors('No token received.');
         }
 
@@ -149,6 +150,7 @@ class AuthController extends Controller
             return redirect('/user')->with('success', 'Logged in successfully!');
 
         } catch (\Exception $e) {
+            dd($e->getMessage());
             return redirect('/login')->withErrors('Login failed: ' . $e->getMessage());
         }
     }
