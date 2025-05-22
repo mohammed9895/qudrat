@@ -112,7 +112,8 @@ class AuthController extends Controller
             $principal = $principalResponse->json();
             $userId = $principal['CurrentUserID'] ?? null;
 
-            dd($userId);
+
+            dd($principal);
 
             if (!$userId) {
                  dd('Invalid principal response.');
