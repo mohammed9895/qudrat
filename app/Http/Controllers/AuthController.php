@@ -129,6 +129,7 @@ class AuthController extends Controller
             $userData = $userResponse->json()['Data'] ?? null;
 
             if (!$userData || empty($userData['CivilID'])) {
+                dd('User info not found.');
                 return redirect('/login')->withErrors('User info not found.');
             }
 
