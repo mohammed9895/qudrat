@@ -89,10 +89,8 @@ class AuthController extends Controller
     public function handleQudratLoginCallback(Request $request)
     {
         // 1. Get token from query or cookie
-        $token = $request->cookie('AUTH_COOKIE');
-
-
-        dd($token);
+        $token = strtok($request->cookie('AUTH_COOKIE'), '|');
+        
 
         if (!$token) {
             dd('no token');
