@@ -19,7 +19,8 @@ use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Support\Htmlable;
 use Filament\Forms\Components\Hidden;
-use Filament\Forms\Components\Actions\Action;
+// use Filament\Forms\Components\Actions\Action;
+use Filament\Actions\Action;
 
 
 
@@ -128,4 +129,14 @@ class Educations extends Page
         ->color('success')
         ->send();
 }
+protected function getHeaderActions(): array
+    {
+        return [
+            Action::make('visit-profile')
+                ->label(__('general.visit-profile'))  // Use translation for label
+                ->icon('hugeicons-link-forward')
+                ->url(route('profile.index', ['profile' => $this->profile]))
+                ->openUrlInNewTab(),
+        ];
+    }
 }
