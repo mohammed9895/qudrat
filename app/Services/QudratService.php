@@ -1,20 +1,16 @@
-<?php 
-
+<?php
 
 // app/Services/QudratService.php
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Http;
 
 class QudratService
 {
     /**
      * Fetch user registration data by national ID and return as Collection.
-     *
-     * @param string $nationalId
-     * @return Collection|null
      */
     public function getRegistrationByNationalId(string $nationalId): ?Collection
     {
@@ -23,7 +19,7 @@ class QudratService
                 'nationalId' => $nationalId,
             ]);
 
-            if (!$response->ok()) {
+            if (! $response->ok()) {
                 return null;
             }
 
@@ -42,7 +38,8 @@ class QudratService
 
         } catch (\Exception $e) {
             // You can log the error if needed
-            \Log::error('QudratService Error: ' . $e->getMessage());
+            \Log::error('QudratService Error: '.$e->getMessage());
+
             return null;
         }
     }

@@ -178,7 +178,7 @@ return [
     'user-dashboard' => [
         'navigation' => [
             'profile' => 'Profile',
-        ]
+        ],
     ],
     'basic-information' => [
         'title' => 'Basic Information',
@@ -340,7 +340,7 @@ return [
         'template_label' => 'Choose a Template',  // Translation for the template label
         'save_cv' => 'Save CV',  // Button label for saving CV
         'cv_generated' => 'Your CV has been generated successfully!',  // Notification after CV is generated
-        'generate_cv_button' => 'Generate CV', 
+        'generate_cv_button' => 'Generate CV',
     ],
     'present' => 'Present',
     'messages' => 'Messages',
@@ -348,26 +348,26 @@ return [
     'steps' => [
         'add_education' => 'Add Education',
         'add_education_description' => 'Add your education information.',
-        
+
         'add_experience' => 'Add Experience',
         'add_experience_description' => 'Add your experiences information.',
-        
+
         'add_certificates' => 'Add Certificates',
         'add_certificates_description' => 'Add your certificates information.',
-        
+
         'add_achievements' => 'Add Achievements',
         'add_achievements_description' => 'Add your achievements information.',
-        
+
         'add_courses' => 'Add Courses',
         'add_courses_description' => 'Add your courses information.',
-        
+
         'more_about_you' => 'More About You',
         'more_about_you_description' => 'Add more information about you.',
-        
+
         'add_social_media' => 'Add Social Media',
         'add_social_media_description' => 'Add your social media links.',
-        
+
         'your_privacy' => 'Your Privacy',
         'your_privacy_description' => 'Choose where you want to be public or not.',
-    ]
+    ],
 ];

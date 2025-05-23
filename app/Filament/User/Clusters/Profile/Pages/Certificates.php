@@ -27,12 +27,12 @@ class Certificates extends Page
 
     public ?array $data = [];
 
-    public static function getNavigationLabel(): string 
+    public static function getNavigationLabel(): string
     {
         return __('general.certificates.title');
     }
 
-    public function getTitle(): string | Htmlable
+    public function getTitle(): string|Htmlable
     {
         return __('general.certificates.title');
     }
@@ -78,7 +78,6 @@ class Certificates extends Page
             ->model($this->profile);
     }
 
-
     public function create(): void
     {
         $profile = \App\Models\Profile::updateOrCreate(
@@ -86,7 +85,7 @@ class Certificates extends Page
             $this->form->getState()
         );
         $this->form->model($profile)->saveRelationships();
-        
+
         // Use translations for notification
         Notification::make('saved')
             ->title(__('general.save-success-title'))  // Use translated title

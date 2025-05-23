@@ -38,6 +38,6 @@ return [
     'pki' => [
         'login_url' => env('PKI_LOGIN_URL'),
         'logout_url' => env('PKI_LOGOUT_URL'),
-    ]
+    ],
 
 ];

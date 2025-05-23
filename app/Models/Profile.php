@@ -10,19 +10,16 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Mix;
 use Spatie\Translatable\HasTranslations;
 
 class Profile extends Model implements Viewable
 {
-    use InteractsWithViews;
     use HasFactory;
-    use SoftDeletes;
     use HasTranslations;
-
+    use InteractsWithViews;
+    use SoftDeletes;
 
     protected $guarded = [];
-
 
     public $translatable = ['fullname'];
 
@@ -33,7 +30,6 @@ class Profile extends Model implements Viewable
         'tools' => 'array',
         'interested' => 'array',
     ];
-
 
     public function getThumbnailImage()
     {
@@ -48,12 +44,12 @@ class Profile extends Model implements Viewable
 
     public function getAvatarUrlAttribute()
     {
-        return $this->avatar 
-            ? '/storage/' . $this->avatar 
+        return $this->avatar
+            ? '/storage/'.$this->avatar
             : asset('assets/images/unset.jpg');
     }
 
-    public function user():BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
@@ -177,5 +173,4 @@ class Profile extends Model implements Viewable
     {
         return $this->belongsToMany(Skill::class, 'profile_skill', 'profile_id', 'skill_id');
     }
-
 }

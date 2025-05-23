@@ -14,15 +14,15 @@ return new class extends Migration
         Schema::create('trainings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('profile_id')->constrained()->onDelete('cascade');
-        
+
             $table->json('course_name')->nullable();
             $table->json('country')->nullable();
             $table->json('type')->nullable();
-        
+
             $table->integer('duration')->nullable();
             $table->date('start_date')->nullable();
             $table->date('end_date')->nullable();
-        
+
             $table->softDeletes();
             $table->timestamps();
         });

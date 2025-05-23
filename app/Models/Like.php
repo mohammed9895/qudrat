@@ -1,17 +1,21 @@
 <?php
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 
-class Like extends Model {
+class Like extends Model
+{
     protected $guarded = [];
 
-    public function likeable(): MorphTo {
+    public function likeable(): MorphTo
+    {
         return $this->morphTo();
     }
 
-    public function user() {
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 }

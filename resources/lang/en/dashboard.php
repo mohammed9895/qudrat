@@ -6,6 +6,6 @@ return [
             'profile' => 'Profile',
             'works' => 'Works',
             'cv-Maker' => 'CV Maker',
-        ]
-    ]
+        ],
+    ],
 ];

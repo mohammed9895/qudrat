@@ -173,7 +173,7 @@ return [
 
     'health_status' => [
         'healthy' => 'لائق صحيًا',
-        'unhealthy' => 'غير لائق صحيًا'
+        'unhealthy' => 'غير لائق صحيًا',
     ],
 
     'gender-types' => [
@@ -187,7 +187,7 @@ return [
     'user-dashboard' => [
         'navigation' => [
             'profile' => 'الملف الشخصي',
-        ]
+        ],
     ],
     'basic-information' => [
         'title' => 'المعلومات الأساسية',
@@ -357,26 +357,26 @@ return [
     'steps' => [
         'add_education' => 'أضف التعليم',
         'add_education_description' => 'أضف معلومات التعليم الخاصة بك.',
-        
+
         'add_experience' => 'أضف الخبرة',
         'add_experience_description' => 'أضف معلومات خبرتك.',
-        
+
         'add_certificates' => 'أضف الشهادات',
         'add_certificates_description' => 'أضف معلومات شهاداتك.',
-        
+
         'add_achievements' => 'أضف الإنجازات',
         'add_achievements_description' => 'أضف معلومات إنجازاتك.',
-        
+
         'add_courses' => 'أضف الدورات التدريبية',
         'add_courses_description' => 'أضف معلومات دوراتك التدريبية.',
-        
+
         'more_about_you' => 'المزيد عنك',
         'more_about_you_description' => 'أضف المزيد من المعلومات عنك.',
-        
+
         'add_social_media' => 'أضف وسائل التواصل الاجتماعي',
         'add_social_media_description' => 'أضف روابط وسائل التواصل الاجتماعي الخاصة بك.',
-        
+
         'your_privacy' => 'خصوصيتك',
         'your_privacy_description' => 'اختر أين تريد أن تكون علنياً أو لا.',
-    ]
+    ],
 ];

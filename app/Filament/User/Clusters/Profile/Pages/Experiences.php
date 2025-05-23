@@ -28,12 +28,12 @@ class Experiences extends Page
 
     public ?array $data = [];
 
-    public static function getNavigationLabel(): string 
+    public static function getNavigationLabel(): string
     {
         return __('general.experiences.title');
     }
 
-    public function getTitle(): string | Htmlable
+    public function getTitle(): string|Htmlable
     {
         return __('general.experiences.title');
     }
@@ -81,7 +81,6 @@ class Experiences extends Page
             ->model($this->profile);
     }
 
-
     public function create(): void
     {
         $profile = \App\Models\Profile::updateOrCreate(
@@ -89,7 +88,7 @@ class Experiences extends Page
             $this->form->getState()
         );
         $this->form->model($profile)->saveRelationships();
-        
+
         // Use translations for notification
         Notification::make('saved')
             ->title(__('general.save-success-title'))  // Use translated title

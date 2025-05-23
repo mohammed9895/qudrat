@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Events\UserRegistered;
 use App\Models\User;
-use PHPOpenSourceSaver\JWTAuth\Facades\JWTAuth; // ✅ Correct package
+// ✅ Correct package
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Events\UserRegistered;
 use Illuminate\Support\Facades\Http;
 
 class AuthController extends Controller
@@ -33,7 +33,6 @@ class AuthController extends Controller
     //         // 🔥 Decode the Qudrat token
     //         $decoded = JWT::decode($token, new Key('aP3xW9z!Q4eR7tY*uI2oP6lKjH1gFnBcDvSm5', 'HS256'));
 
-
     //         // 🔥 Extract user info
     //         $civilId = $decoded->CivilId ?? null;
     //         $fullNameArabic = $decoded->FullNameArabic ?? null;
@@ -43,9 +42,7 @@ class AuthController extends Controller
     //             return redirect('/login')->withErrors('Invalid token payload.');
     //         }
 
-
     //         $oldUser = User::where('civil_id', $civilId)->count();
-
 
     //         if($oldUser <= 0) {
     //              // 🔥 Find or create user
@@ -54,7 +51,7 @@ class AuthController extends Controller
     //                 ['name' => [
     //                         'en' => $fullNameEnglish,
     //                         'ar' => $fullNameArabic,
-    //                     ],  
+    //                     ],
     //                 ]
     //             );
     //             event(new UserRegistered($user));
@@ -66,12 +63,9 @@ class AuthController extends Controller
     //             ['name' => [
     //                     'en' => $fullNameEnglish,
     //                     'ar' => $fullNameArabic,
-    //                 ],  
+    //                 ],
     //             ]
     //         );
-
-
-           
 
     //         // 🔥 Log the user into Laravel
     //         Auth::login($user);
@@ -85,16 +79,16 @@ class AuthController extends Controller
     //     }
     // }
 
-
     public function handleQudratLoginCallback(Request $request)
     {
         // 1. Get token from query or cookie
         $token = strtok($request->cookie('AUTH_COOKIE'), '|');
 
         // dd($request->cookie('AUTH_COOKIE'));
-        
-        if (!$token) {
+
+        if (! $token) {
             dd('no token');
+
             return redirect('/login')->withErrors('No token received.');
         }
 
@@ -106,16 +100,18 @@ class AuthController extends Controller
                     'Token' => $token,
                 ]);
 
-            if (!$principalResponse->successful()) {
+            if (! $principalResponse->successful()) {
                 dd('Failed to verify token.');
+
                 return redirect('/login')->withErrors('Failed to verify token.');
             }
 
             $principal = $principalResponse->json();
             $userId = $principal['CurrentUserID'] ?? null;
 
-            if (!$userId) {
-                 dd('Invalid principal response.');
+            if (! $userId) {
+                dd('Invalid principal response.');
+
                 return redirect('/login')->withErrors('Invalid principal response.');
             }
 
@@ -129,8 +125,9 @@ class AuthController extends Controller
 
             $userData = $userResponse->json()['Data'] ?? null;
 
-            if (!$userData || empty($userData['CivilID'])) {
+            if (! $userData || empty($userData['CivilID'])) {
                 dd('User info not found.');
+
                 return redirect('/login')->withErrors('User info not found.');
             }
 
@@ -146,7 +143,7 @@ class AuthController extends Controller
                 ]
             );
 
-            if (!$user->hasRole('panel_user')) {
+            if (! $user->hasRole('panel_user')) {
                 $user->assignRole('panel_user');
             }
 
@@ -155,7 +152,7 @@ class AuthController extends Controller
 
             $request->session()->regenerate();
 
-            if (!$user->profile) {
+            if (! $user->profile) {
                 event(new UserRegistered($user));
             }
 
@@ -163,7 +160,8 @@ class AuthController extends Controller
 
         } catch (\Exception $e) {
             dd($e->getMessage());
-            return redirect('/login')->withErrors('Login failed: ' . $e->getMessage());
+
+            return redirect('/login')->withErrors('Login failed: '.$e->getMessage());
         }
     }
 

@@ -12,12 +12,13 @@ class SessionTimeout
 
     public function handle($request, Closure $next)
     {
-    
+
         if (Auth::check()) {
             $lastActivity = Session::get('lastActivityTime');
             if ($lastActivity && (time() - $lastActivity > $this->timeout)) {
                 Auth::logout();
                 Session::flush();
+
                 return redirect('/')->withErrors(['message' => 'Session expired due to inactivity.']);
             }
             Session::put('lastActivityTime', time());

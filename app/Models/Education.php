@@ -16,7 +16,7 @@ class Education extends Model
 
     protected static function booted()
     {
-        static::creating(function($model) {
+        static::creating(function ($model) {
             $model->addable_type = User::class;
             $model->addable_id = auth()->id() ?? null;
         });

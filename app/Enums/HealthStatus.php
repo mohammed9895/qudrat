@@ -14,11 +14,11 @@ enum HealthStatus: int implements HasColor, HasLabel
     {
         return match ($this) {
             self::Healthy => __('general.health_status.healthy'),
-            self::UnHealthy =>  __('general.health_status.unhealthy'),
+            self::UnHealthy => __('general.health_status.unhealthy'),
         };
     }
 
-    public function getColor(): string | array | null
+    public function getColor(): string|array|null
     {
         return match ($this) {
             self::Healthy => 'success',

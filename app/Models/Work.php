@@ -25,12 +25,13 @@ class Work extends Model
 
     protected static function booted()
     {
-        static::creating(function($model) {
+        static::creating(function ($model) {
             $model->profile_id = auth()->user()->profile->id ?? Profile::factory()->create()->id;
         });
     }
 
-    public function likes() {
+    public function likes()
+    {
         return $this->morphMany(Like::class, 'likeable');
     }
 

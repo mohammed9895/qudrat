@@ -26,7 +26,7 @@ class UserResource extends Resource
                 Forms\Components\TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                    Forms\Components\TextInput::make('civil_id')
+                Forms\Components\TextInput::make('civil_id')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\TextInput::make('email')

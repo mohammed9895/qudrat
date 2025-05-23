@@ -18,6 +18,7 @@ use Filament\Forms\Set;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\MenuItem;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
@@ -35,7 +36,6 @@ use RalphJSmit\Filament\Onboard\Http\Livewire\Wizard;
 use RalphJSmit\Filament\Onboard\Http\Middleware\OnboardMiddleware;
 use RalphJSmit\Filament\Onboard\Step;
 use RalphJSmit\Filament\Onboard\Track;
-use Filament\Navigation\MenuItem;
 
 class UserPanelProvider extends PanelProvider
 {
@@ -81,7 +81,7 @@ class UserPanelProvider extends PanelProvider
             ])
             ->userMenuItems([
                 'logout' => MenuItem::make()->url(env('PKI_LOGOUT_URL'))->label('Log out'),
-            ])  
+            ])
             ->viteTheme('resources/css/filament/user/theme.css')
             ->plugins([
                 FilaChatPlugin::make(),
@@ -108,7 +108,7 @@ class UserPanelProvider extends PanelProvider
                                             ->options([
                                                 1 => __('general.gender-types.male'),
                                                 0 => __('general.gender-types.female'),
-                                                ])->disabled(),
+                                            ])->disabled(),
                                         DatePicker::make('dob')->disabled()->format('Y-mm-dd')->label(__('general.basic-information.dob')),
                                         FileUpload::make('video')
                                             ->label(__('general.basic-information.video'))
@@ -129,7 +129,7 @@ class UserPanelProvider extends PanelProvider
                                             ->reactive()
                                             ->afterStateUpdated(fn (Set $set) => $set('state_id', null)),
                                         Select::make('state_id')
-                                        ->label(__('general.basic-information.state'))
+                                            ->label(__('general.basic-information.state'))
                                             ->options(function (Get $get) {
                                                 $province = Province::find($get('province_id'));
                                                 if (! $province) {
@@ -142,9 +142,9 @@ class UserPanelProvider extends PanelProvider
                                         TextInput::make('address')->label(__('general.basic-information.address')),
                                     ])->columns(2),
                             ])
-                            ->wizardFillFormUsing(function() {
+                            ->wizardFillFormUsing(function () {
                                 $profile = auth()->user()->profile;
-                        
+
                                 return [
                                     'step_1' => [
                                         'fullname' => $profile->fullname ?? '',
@@ -154,7 +154,7 @@ class UserPanelProvider extends PanelProvider
                                         'dob' => $profile->dob ?? '',
                                         'phone' => $profile->phone ?? '',
                                         'country_id' => $profile->country_id ?? '',
-                                    ]
+                                    ],
                                 ];
                             })
                             ->wizardSubmitFormUsing(function (array $state, Wizard $livewire) {
@@ -167,59 +167,59 @@ class UserPanelProvider extends PanelProvider
                             }),
                     ])->completeBeforeAccess())
                     ->addTrack(fn () => Track::make([
-                            Step::make(name: __('general.steps.add_education'), identifier: 'widget::add-educations')
-                                    ->description(__('general.steps.add_education_description'))
-                                    ->icon('hugeicons-graduation-scroll')
-                                    ->url(route('filament.user.profile.pages.educations'))
-                                    ->completeIf(fn () => auth()->user()->profile->educations()->count() > 0),
-                            Step::make(name: __('general.steps.add_experience'), identifier: 'widget::connect-experiences')
-                                ->icon('hugeicons-new-job')
-                                ->description(__('general.steps.add_experience_description'))
-                                ->url(route('filament.user.profile.pages.experiences'))
-                                ->completeIf(fn () => auth()->user()->profile->experiences()->count() > 0),
+                        Step::make(name: __('general.steps.add_education'), identifier: 'widget::add-educations')
+                            ->description(__('general.steps.add_education_description'))
+                            ->icon('hugeicons-graduation-scroll')
+                            ->url(route('filament.user.profile.pages.educations'))
+                            ->completeIf(fn () => auth()->user()->profile->educations()->count() > 0),
+                        Step::make(name: __('general.steps.add_experience'), identifier: 'widget::connect-experiences')
+                            ->icon('hugeicons-new-job')
+                            ->description(__('general.steps.add_experience_description'))
+                            ->url(route('filament.user.profile.pages.experiences'))
+                            ->completeIf(fn () => auth()->user()->profile->experiences()->count() > 0),
 
-                            Step::make(__('general.steps.add_certificates'), 'widget::add-certificates')
-                                ->icon('hugeicons-certificate-01')
-                                ->description(__('general.steps.add_certificates_description'))
-                                ->url(route('filament.user.profile.pages.certificates'))
-                                ->completeIf(fn () => auth()->user()->profile->certificates()->count() > 0),
+                        Step::make(__('general.steps.add_certificates'), 'widget::add-certificates')
+                            ->icon('hugeicons-certificate-01')
+                            ->description(__('general.steps.add_certificates_description'))
+                            ->url(route('filament.user.profile.pages.certificates'))
+                            ->completeIf(fn () => auth()->user()->profile->certificates()->count() > 0),
 
-                            Step::make(__('general.steps.add_achievements'), 'widget::add-achievements')
-                                ->icon('hugeicons-checkmark-square-03')
-                                ->description(__('general.steps.add_achievements_description'))
-                                ->url(route('filament.user.profile.pages.achievements'))
-                                ->completeIf(fn () => auth()->user()->profile->achievements()->count() > 0),
+                        Step::make(__('general.steps.add_achievements'), 'widget::add-achievements')
+                            ->icon('hugeicons-checkmark-square-03')
+                            ->description(__('general.steps.add_achievements_description'))
+                            ->url(route('filament.user.profile.pages.achievements'))
+                            ->completeIf(fn () => auth()->user()->profile->achievements()->count() > 0),
 
-                            Step::make(__('general.steps.add_courses'), 'widget::add-courses')
-                                ->icon('hugeicons-course')
-                                ->description(__('general.steps.add_courses_description'))
-                                ->url(route('filament.user.profile.pages.courses'))
-                                ->completeIf(fn () => auth()->user()->profile->courses()->count() > 0),
+                        Step::make(__('general.steps.add_courses'), 'widget::add-courses')
+                            ->icon('hugeicons-course')
+                            ->description(__('general.steps.add_courses_description'))
+                            ->url(route('filament.user.profile.pages.courses'))
+                            ->completeIf(fn () => auth()->user()->profile->courses()->count() > 0),
 
-                            Step::make(__('general.steps.more_about_you'), 'widget::add-more-about-you')
-                                ->icon('hugeicons-user-search-01')
-                                ->description(__('general.steps.more_about_you_description'))
-                                ->url(route('filament.user.profile.pages.more-about-you'))
-                                ->completeIf(function () {
-                                    if (auth()->user()->profile->skills || auth()->user()->profile->languages || auth()->user()->profile->interested || auth()->user()->profile->tools || auth()->user()->profile->categories) {
-                                        return true;
-                                    } else {
-                                        return false;
-                                    }
-                                }),
+                        Step::make(__('general.steps.more_about_you'), 'widget::add-more-about-you')
+                            ->icon('hugeicons-user-search-01')
+                            ->description(__('general.steps.more_about_you_description'))
+                            ->url(route('filament.user.profile.pages.more-about-you'))
+                            ->completeIf(function () {
+                                if (auth()->user()->profile->skills || auth()->user()->profile->languages || auth()->user()->profile->interested || auth()->user()->profile->tools || auth()->user()->profile->categories) {
+                                    return true;
+                                } else {
+                                    return false;
+                                }
+                            }),
 
-                            Step::make(__('general.steps.add_social_media'), 'widget::add-social-media')
-                                ->icon('hugeicons-share-08')
-                                ->description(__('general.steps.add_social_media_description'))
-                                ->url(route('filament.user.profile.pages.more-about-you'))
-                                ->completeIf(fn () => auth()->user()->profile->achievements()->count() > 0),
+                        Step::make(__('general.steps.add_social_media'), 'widget::add-social-media')
+                            ->icon('hugeicons-share-08')
+                            ->description(__('general.steps.add_social_media_description'))
+                            ->url(route('filament.user.profile.pages.more-about-you'))
+                            ->completeIf(fn () => auth()->user()->profile->achievements()->count() > 0),
 
-                            Step::make(__('general.steps.your_privacy'), 'widget::add-privacy')
-                                ->icon('hugeicons-locked')
-                                ->description(__('general.steps.your_privacy_description'))
-                                ->url(route('filament.user.profile.pages.more-about-you'))
-                                ->completeIf(fn () => auth()->user()->profile->achievements()->count() > 0),
-                ])->sequential(false)),
+                        Step::make(__('general.steps.your_privacy'), 'widget::add-privacy')
+                            ->icon('hugeicons-locked')
+                            ->description(__('general.steps.your_privacy_description'))
+                            ->url(route('filament.user.profile.pages.more-about-you'))
+                            ->completeIf(fn () => auth()->user()->profile->achievements()->count() > 0),
+                    ])->sequential(false)),
             ]);
     }
 }

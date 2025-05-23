@@ -2,18 +2,16 @@
 
 namespace App\Providers;
 
+use App\Models\User;
+use App\Observers\UserObserver;
 use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 use Filament\Support\Assets\Js;
 use Filament\Support\Facades\FilamentAsset;
+use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Support\Facades\Blade;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Event;
-use App\Events\UserRegistered;
-use App\Models\User;
-use App\Observers\UserObserver;
-use Illuminate\Support\Facades\URL;
-use Illuminate\Cookie\Middleware\EncryptCookies;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -45,7 +43,6 @@ class AppServiceProvider extends ServiceProvider
             return '<?php endif; ?>';
         });
 
-
         User::observe(UserObserver::class);
 
         // if (env('APP_ENV') !== 'local') {
@@ -53,7 +50,6 @@ class AppServiceProvider extends ServiceProvider
         // }
 
         EncryptCookies::except('AUTH_COOKIE');
-
 
     }
 

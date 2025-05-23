@@ -236,7 +236,6 @@ return [
     */
     'max_content_width' => \Filament\Support\Enums\MaxWidth::Full,
 
-
     /*
     |--------------------------------------------------------------------------
     | Timezone

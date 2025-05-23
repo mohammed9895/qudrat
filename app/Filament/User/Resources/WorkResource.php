@@ -3,19 +3,17 @@
 namespace App\Filament\User\Resources;
 
 use App\Filament\User\Resources\WorkResource\Pages;
-use App\Filament\User\Resources\WorkResource\RelationManagers;
 use App\Models\Work;
 use Filament\Forms;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Form;
+use Filament\Forms\Set;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
 use Filament\Support\Enums\FontWeight;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Filament\Forms\Set;
 use Illuminate\Support\Str;
 
 class WorkResource extends Resource
@@ -36,7 +34,6 @@ class WorkResource extends Resource
         return __('general.work_resource.title_p');
     }
 
-
     public static function form(Form $form): Form
     {
         return $form
@@ -46,7 +43,7 @@ class WorkResource extends Resource
                         Forms\Components\TextInput::make('title')
                             ->label(__('general.work_resource.title_label'))
                             ->required()
-                            ->afterStateUpdated(fn(?string $state, Forms\Set $set) => $set('slug', \Illuminate\Support\Str::slug($state)))
+                            ->afterStateUpdated(fn (?string $state, Forms\Set $set) => $set('slug', \Illuminate\Support\Str::slug($state)))
                             ->maxLength(255)
                             ->live(onBlur: true)
                             ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state))),
@@ -106,7 +103,7 @@ class WorkResource extends Resource
                             ->multiple()
                             ->storeFileNamesIn('attachment_file_names')
                             ->columnSpanFull(),
-                    ])
+                    ]),
             ]);
     }
 
@@ -160,7 +157,6 @@ class WorkResource extends Resource
                 $query->where('profile_id', auth()->user()->profile->id);
             });
     }
-
 
     public static function getRelations(): array
     {

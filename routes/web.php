@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Imports\SchoolsImport;
 use App\Livewire\Frontend\DigitalLibrary\ListPosts;
 use App\Livewire\Frontend\Innovators;
 use App\Livewire\Frontend\MediaCenter\Post;
@@ -11,26 +13,12 @@ use App\Livewire\Frontend\SocialWindow\Tool;
 use App\Livewire\Frontend\Work\Index;
 use App\Livewire\Frontend\Work\Show;
 use App\Livewire\Frontend\Work\Tag;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController;
-use Maatwebsite\Excel\Facades\Excel;
-use App\Imports\SchoolsImport;
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
-use App\Models\Nationality;
-use App\Models\Country;
-use App\Models\Province;
-use App\Models\State;
 use App\Models\Profile;
-use App\Models\EducationType;
-use  App\Events\UserRegistered;
-use Illuminate\Support\Facades\Http;
 use App\Services\QudratService;
-use App\Models\School;
-use App\Models\FieldOfStudy;
-use App\Models\Education;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 Route::get('/digital-library/list-posts', ListPosts::class)->name('digital-library.list-posts');
 
@@ -74,13 +62,11 @@ Route::get('/cv', function () {
 
 Route::get('/feedbacks', App\Livewire\Frontend\FeedBack\Index::class)->name('feedbacks.index');
 
-
 Route::get('/auth/login/callback', [AuthController::class, 'handleQudratLoginCallback'])->name('auth.login.callback');
 
 Route::get('/otpki', [AuthController::class, 'handleQudratLogoutCallback'])->name('auth.logout.callback');
 
-
-Route::get('auth/test', function() {
+Route::get('auth/test', function () {
     $response = Http::get('https://qudrat-uat-pki.mol.gov.om/registration', [
         'nationalId' => '4837853',
     ]);
@@ -90,20 +76,18 @@ Route::get('auth/test', function() {
     $json = json_encode($xmlObject, JSON_PRETTY_PRINT);
 
     $array = json_decode($json, true);
-    $collection = collect($array);  
+    $collection = collect($array);
 
     // dd($collection['ListOfEducation']['TRANEDUCATIONDet']);
 
     dd($collection);
-       
+
 });
 
-
-Route::get('import', function() {
-    
+Route::get('import', function () {
 
     try {
-       
+
         $path = storage_path('app/imports/schoolsm.xlsx');
 
         // Import the file using the SchoolsImport class
@@ -113,71 +97,62 @@ Route::get('import', function() {
         return back()->with('success', 'Data imported successfully!');
     } catch (\Exception $e) {
         dd($e->getMessage());
-        Log::error('Import error: ' . $e->getMessage());
+        Log::error('Import error: '.$e->getMessage());
+
         return back()->withErrors(['error' => 'An error occurred while importing the file']);
     }
 });
 
-
 Route::get('update-pro', function () {
-
 
     $user = auth()->user();
 
-        $qudratService = new QudratService();
+    $qudratService = new QudratService;
 
+    $data = $qudratService->getRegistrationByNationalId('12747519');
 
-        $data = $qudratService->getRegistrationByNationalId('12747519');
+    if (! $data) {
+        return response()->json(['error' => 'Failed to fetch or parse data'], 500);
+    } else {
+        $experiences = $data['listOfExp']['EXPDETAILS'] ?? [];
 
-        
+        // dd($experiences);
 
-        if (!$data) {
-            return response()->json(['error' => 'Failed to fetch or parse data'], 500);
-        }
-        else {
-            $experiences = $data['listOfExp']['EXPDETAILS'] ?? [];
+        foreach ($experiences as $index => $exp) {
 
-            // dd($experiences);
-
-
-
-            foreach ($experiences as $index => $exp) {
-
-                // Clean up values
-                $startDate = is_string($exp['StartDate'] ?? null) && !empty($exp['StartDate'] ?? null)
+            // Clean up values
+            $startDate = is_string($exp['StartDate'] ?? null) && ! empty($exp['StartDate'] ?? null)
             ? Carbon::parse($exp['StartDate'] ?? null)->format('Y-m-d')
             : null;
-                $endDate = is_string($exp['EndDate'] ?? null) && !empty($exp['EndDate'] ?? null)
-                ? Carbon::parse($exp['EndDate'] ?? null)->format('Y-m-d')
-                : null;
-                $company = is_string($exp['SponsorName'] ?? null) ? trim($exp['SponsorName'] ?? null) : null;
-                $position = is_string($exp['OccupDesc'] ?? null) ? trim($exp['OccupDesc'] ?? null) : null;
-                
+            $endDate = is_string($exp['EndDate'] ?? null) && ! empty($exp['EndDate'] ?? null)
+            ? Carbon::parse($exp['EndDate'] ?? null)->format('Y-m-d')
+            : null;
+            $company = is_string($exp['SponsorName'] ?? null) ? trim($exp['SponsorName'] ?? null) : null;
+            $position = is_string($exp['OccupDesc'] ?? null) ? trim($exp['OccupDesc'] ?? null) : null;
 
-                // Determine if current job (no end date = still working)
-                $isCurrent = $endDate === null;
+            // Determine if current job (no end date = still working)
+            $isCurrent = $endDate === null;
 
-                // Insert into the database
-                App\Models\Experience::create([
-                    'profile_id' => auth()->user()->profile->id,
-                    'company' => $company,
-                    'position' => $position,
-                    'start_date' => $startDate,
-                    'end_date' => $endDate,
-                    'is_current' => $isCurrent,
-                    'description' => null,
-                    'sort' => 0,
-                    'addable_type' => \App\Models\User::class,
-                    'addable_id' => auth()->user()->profile->id,
-                ]); 
-            }
+            // Insert into the database
+            App\Models\Experience::create([
+                'profile_id' => auth()->user()->profile->id,
+                'company' => $company,
+                'position' => $position,
+                'start_date' => $startDate,
+                'end_date' => $endDate,
+                'is_current' => $isCurrent,
+                'description' => null,
+                'sort' => 0,
+                'addable_type' => \App\Models\User::class,
+                'addable_id' => auth()->user()->profile->id,
+            ]);
         }
+    }
 });
 
 Route::get('run-event', function () {
     event(new App\Events\UserRegistered(auth()->user()));
 });
-
 
 Route::get('/xprofile/{id}', function ($id) {
     $profile = Profile::with([
@@ -208,7 +183,7 @@ Route::get('/xprofile/{id}', function ($id) {
         'position' => $profile->position,
         'address' => $profile->address,
         'avatar' => $profile->getThumbnailImage(),
-        'video' => $profile->video ? asset('storage/' . $profile->video) : null,
+        'video' => $profile->video ? asset('storage/'.$profile->video) : null,
         'website' => $profile->website,
         'social' => [
             'facebook' => $profile->social_facebook,
@@ -229,7 +204,7 @@ Route::get('/xprofile/{id}', function ($id) {
         'works' => $profile->works->map(function ($work) {
             return [
                 'title' => $work->title,
-                'cover' => asset('storage/' . $work->cover),
+                'cover' => asset('storage/'.$work->cover),
                 'category' => $work->workCategory->name ?? null,
                 'skills' => $work->skills->pluck('name'),
                 'created_at' => $work->created_at->toDateTimeString(),
@@ -257,14 +232,14 @@ Route::get('/xprofile/{id}', function ($id) {
             return [
                 'title' => $cert->title,
                 'organization' => $cert->organization,
-                'file' => $cert->certificate_file ? asset('storage/' . $cert->certificate_file) : null,
+                'file' => $cert->certificate_file ? asset('storage/'.$cert->certificate_file) : null,
             ];
         }),
         'courses' => $profile->courses->map(function ($course) {
             return [
                 'title' => $course->title,
                 'organization' => $course->organization,
-                'file' => $course->course_file ? asset('storage/' . $course->course_file) : null,
+                'file' => $course->course_file ? asset('storage/'.$course->course_file) : null,
             ];
         }),
         'achievements' => $profile->achievements->map(function ($ach) {

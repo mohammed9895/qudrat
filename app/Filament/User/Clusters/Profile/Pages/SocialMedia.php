@@ -16,12 +16,12 @@ class SocialMedia extends Page
 
     protected static string $view = 'filament.user.clusters.profile.pages.social-media';
 
-    public static function getNavigationLabel(): string 
+    public static function getNavigationLabel(): string
     {
         return __('general.social_media.title');
     }
 
-    public function getTitle(): string | Htmlable
+    public function getTitle(): string|Htmlable
     {
         return __('general.social_media.title');
     }
@@ -67,15 +67,14 @@ class SocialMedia extends Page
             ->model($this->profile);
     }
 
-
-        public function create(): void
+    public function create(): void
     {
         $profile = \App\Models\Profile::updateOrCreate(
             ['user_id' => auth()->id()],
             $this->form->getState()
         );
         $this->form->model($profile)->saveRelationships();
-        
+
         // Use translations for notification
         Notification::make('saved')
             ->title(__('general.save-success-title'))  // Use translated title
@@ -85,5 +84,4 @@ class SocialMedia extends Page
             ->color('success')
             ->send();
     }
-
 }

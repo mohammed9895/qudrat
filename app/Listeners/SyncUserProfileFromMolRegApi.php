@@ -2,25 +2,20 @@
 
 namespace App\Listeners;
 
-use Illuminate\Auth\Events\Registered;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
-use App\Models\Nationality;
+use App\Events\UserRegistered;
 use App\Models\Country;
-use App\Models\Province;
-use App\Models\State;
-use App\Models\EducationType;
-use  App\Events\UserRegistered;
-use Illuminate\Support\Facades\Http;
-use App\Services\QudratService;
-use App\Models\School;
-use App\Models\FieldOfStudy;
 use App\Models\Education;
+use App\Models\EducationType;
 use App\Models\Experience;
+use App\Models\FieldOfStudy;
 use App\Models\Language;
+use App\Models\Nationality;
+use App\Models\Province;
+use App\Models\School;
 use App\Models\Skill;
+use App\Models\State;
+use App\Services\QudratService;
 use Carbon\Carbon;
-
 
 class SyncUserProfileFromMolRegApi
 {
@@ -39,53 +34,51 @@ class SyncUserProfileFromMolRegApi
     {
         $user = $event->user;
 
-        $qudratService = new QudratService();
-
+        $qudratService = new QudratService;
 
         $data = $qudratService->getRegistrationByNationalId($user->civil_id);
 
-        if (!$data) {
+        if (! $data) {
             return response()->json(['error' => 'Failed to fetch or parse data'], 500);
-        }
-        else {
-            if (!$data['issuccess'] || ($data['message'] ?? '') !== 'Data Retrieved Successfully') {
+        } else {
+            if (! $data['issuccess'] || ($data['message'] ?? '') !== 'Data Retrieved Successfully') {
                 dd($data['message']);
                 // You can log or return a response
                 Log::warning('API response was not successful', ['message' => $data['message'] ?? null]);
+
                 return; // or continue, or throw exception, depending on context
             }
-           
 
             $nationalityAr = $this->safeString($data['NATIONALITY_DESC_ARB'] ?? '');
             $regionAr = $this->safeString($data['PER_REGION_desc'] ?? '');
             $wilayatAr = $this->safeString($data['PER_WILAYAT_DESC_ARB'] ?? '');
             $residenceWilayatAr = $this->safeString($data['RES_WILAYAT_DESC_ARB'] ?? '');
 
-        // Country
-        $country = !empty($nationalityAr)
-            ? Country::where('name->ar', $nationalityAr)->first()
-                ?: Country::create(['name' => ['ar' => $nationalityAr, 'en' => $nationalityAr]])
-            : null;
+            // Country
+            $country = ! empty($nationalityAr)
+                ? Country::where('name->ar', $nationalityAr)->first()
+                    ?: Country::create(['name' => ['ar' => $nationalityAr, 'en' => $nationalityAr]])
+                : null;
 
-        // Province
-        $province = !empty($regionAr)
-            ? Province::where('name->ar', $regionAr)->first()
-                ?: Province::create(['name' => ['ar' => $regionAr, 'en' => $regionAr]])
-            : null;
+            // Province
+            $province = ! empty($regionAr)
+                ? Province::where('name->ar', $regionAr)->first()
+                    ?: Province::create(['name' => ['ar' => $regionAr, 'en' => $regionAr]])
+                : null;
 
-        // State
-        $state = !empty($wilayatAr)
-            ? State::where('name->ar', $wilayatAr)->first()
-                ?: State::create(['name' => ['ar' => $wilayatAr, 'en' => $wilayatAr], 'province_id' => $province->id])
-            : null;
+            // State
+            $state = ! empty($wilayatAr)
+                ? State::where('name->ar', $wilayatAr)->first()
+                    ?: State::create(['name' => ['ar' => $wilayatAr, 'en' => $wilayatAr], 'province_id' => $province->id])
+                : null;
 
-        // Residence State
-        $residenceState = !empty($residenceWilayatAr)
-            ? State::where('name->ar', $residenceWilayatAr)->first()
-                ?: State::create(['name' => ['ar' => $residenceWilayatAr, 'en' => $residenceWilayatAr]])
-            : null;
+            // Residence State
+            $residenceState = ! empty($residenceWilayatAr)
+                ? State::where('name->ar', $residenceWilayatAr)->first()
+                    ?: State::create(['name' => ['ar' => $residenceWilayatAr, 'en' => $residenceWilayatAr]])
+                : null;
 
-            $nationality = !empty($nationalityAr)
+            $nationality = ! empty($nationalityAr)
             ? Nationality::where('name->ar', $nationalityAr)->first()
                 ?: Nationality::create(['name' => ['ar' => $nationalityAr, 'en' => $nationalityAr]])
             : null;
@@ -110,11 +103,10 @@ class SyncUserProfileFromMolRegApi
                 'permanent_residence_state_id' => optional($residenceState)->id,
                 'health_status' => $this->safeString($data['HEALTH_STATUS'] ?? null),
                 'education_type_id' => optional(
-                    EducationType::where('name->ar', 'like', '%' . $this->safeString($data['EDUCATION_DESC_ARB'] ?? '') . '%')->first()
+                    EducationType::where('name->ar', 'like', '%'.$this->safeString($data['EDUCATION_DESC_ARB'] ?? '').'%')->first()
                 )->id,
                 'company' => $this->safeString($data['SPONSOR_NAME'] ?? null),
             ]);
-
 
             // Normalize data
             $educationList = $data['ListOfEducation']['TRANEDUCATIONDet'] ?? [];
@@ -125,17 +117,17 @@ class SyncUserProfileFromMolRegApi
 
             foreach ($educationList as $item) {
 
-                if (!is_array($item)) {
+                if (! is_array($item)) {
                     continue;
                 }
 
                 // Arabic names
-                $schoolNameAr =  $this->safeString($item['NIMR_MOHE_UNIVERSITY_DESC'] ?? null);
-                $educationTypeNameAr =  $this->safeString($item['EDUCATION_DESC_ARB'] ?? null);
-                $majorNameAr =  $this->safeString($item['NIMR_MOHE_MAJOR_QLFN_DESC'] ?? null);
-                $minorNameAr =  $this->safeString($item['NIMR_MOHE_MINOR_QLFN_DESC'] ?? null);
+                $schoolNameAr = $this->safeString($item['NIMR_MOHE_UNIVERSITY_DESC'] ?? null);
+                $educationTypeNameAr = $this->safeString($item['EDUCATION_DESC_ARB'] ?? null);
+                $majorNameAr = $this->safeString($item['NIMR_MOHE_MAJOR_QLFN_DESC'] ?? null);
+                $minorNameAr = $this->safeString($item['NIMR_MOHE_MINOR_QLFN_DESC'] ?? null);
 
-                if (!$schoolNameAr && !$educationTypeNameAr && !$majorNameAr && !$minorNameAr) {
+                if (! $schoolNameAr && ! $educationTypeNameAr && ! $majorNameAr && ! $minorNameAr) {
                     continue;
                 }
 
@@ -198,7 +190,7 @@ class SyncUserProfileFromMolRegApi
             }
 
             foreach ($experienceList as $exp) {
-                if (!is_array($exp)) {
+                if (! is_array($exp)) {
                     continue;
                 }
 
@@ -207,7 +199,7 @@ class SyncUserProfileFromMolRegApi
                 $startDate = $this->safeDate($exp['StartDate'] ?? null);
                 $endDate = $this->safeDate($exp['EndDate'] ?? null);
 
-                if (!$company && !$startDate) {
+                if (! $company && ! $startDate) {
                     continue;
                 }
 
@@ -240,7 +232,6 @@ class SyncUserProfileFromMolRegApi
                 ]);
             }
 
-
             // Normalize
             $langList = $data['listOfLang']['LANGUAGEDet'] ?? [];
 
@@ -249,21 +240,21 @@ class SyncUserProfileFromMolRegApi
             }
 
             foreach ($langList as $item) {
-                if (!is_array($item)) {
+                if (! is_array($item)) {
                     continue;
                 }
 
                 $langNameAr = $this->safeString($item['LANGUAGE_DESC_ARB'] ?? null);
                 $langNameEn = $this->safeString($item['LANGUAGE_DESC_ENG'] ?? $langNameAr);
 
-                if (!$langNameAr) {
+                if (! $langNameAr) {
                     continue;
                 }
 
                 // ✅ Find or create language by Arabic name
                 $language = Language::where('name->ar', $langNameAr)->first();
 
-                if (!$language) {
+                if (! $language) {
                     $language = Language::create([
                         'name' => ['ar' => $langNameAr, 'en' => $langNameEn],
                         'code' => uniqid('lang_'),
@@ -273,7 +264,7 @@ class SyncUserProfileFromMolRegApi
                 // ✅ Prevent duplicate pivot entries
                 $alreadyLinked = $profile->languages()->where('language_id', $language->id)->exists();
 
-                if (!$alreadyLinked) {
+                if (! $alreadyLinked) {
                     $profile->languages()->attach($language->id);
                 }
             }
@@ -286,7 +277,7 @@ class SyncUserProfileFromMolRegApi
             }
 
             foreach ($skillsList as $item) {
-                if (!is_array($item)) {
+                if (! is_array($item)) {
                     continue;
                 }
 
@@ -295,14 +286,14 @@ class SyncUserProfileFromMolRegApi
                 $skillTypeDescAr = $this->safeString($item['SKILLTYPE_DESC'] ?? null);
                 $skillTypeDescEn = $this->safeString($item['SKILLTYPE_DESC_ENG'] ?? $skillTypeDescAr);
 
-                if (!$skillNameAr) {
+                if (! $skillNameAr) {
                     continue;
                 }
 
                 // ✅ Find or create by Arabic name
                 $skill = Skill::where('name->ar', $skillNameAr)->first();
 
-                if (!$skill) {
+                if (! $skill) {
                     $skill = Skill::create([
                         'name' => ['ar' => $skillNameAr, 'en' => $skillNameEn],
                         'description' => ['ar' => $skillTypeDescAr, 'en' => $skillTypeDescEn],
@@ -313,12 +304,11 @@ class SyncUserProfileFromMolRegApi
                 // ✅ Prevent duplicate in pivot
                 $alreadyLinked = $profile->skills()->where('skill_id', $skill->id)->exists();
 
-                if (!$alreadyLinked) {
+                if (! $alreadyLinked) {
                     $profile->skills()->attach($skill->id);
                 }
             }
 
-          
             $licenseList = $data['LicenDet']['LICENSEDETAILSDet'] ?? [];
 
             if (isset($licenseList['LICENSE_TYPE'])) {
@@ -326,7 +316,9 @@ class SyncUserProfileFromMolRegApi
             }
 
             foreach ($licenseList as $item) {
-                if (!is_array($item)) continue;
+                if (! is_array($item)) {
+                    continue;
+                }
 
                 $typeAr = $this->safeString($item['LICENSE_DESC_ARB'] ?? null);
                 $typeEn = $this->safeString($item['LICENSE_DESC_ENG'] ?? $typeAr);
@@ -334,10 +326,10 @@ class SyncUserProfileFromMolRegApi
                 $issuePlaceAr = $this->safeString($item['LICENSE_ISSUE_PLACE_DESC_ARB'] ?? null);
                 $issuePlaceEn = $this->safeString($item['LICENSE_ISSUE_PLACE_DESC_ENG'] ?? $issuePlaceAr);
 
-                $issueDate = !empty($item['LICENSE_ISSUE_DATE']) ? Carbon::parse($item['LICENSE_ISSUE_DATE'])->format('Y-m-d') : null;
-                $expireDate = !empty($item['LICENSE_EXPIRE_DATE']) ? Carbon::parse($item['LICENSE_EXPIRE_DATE'])->format('Y-m-d') : null;
+                $issueDate = ! empty($item['LICENSE_ISSUE_DATE']) ? Carbon::parse($item['LICENSE_ISSUE_DATE'])->format('Y-m-d') : null;
+                $expireDate = ! empty($item['LICENSE_EXPIRE_DATE']) ? Carbon::parse($item['LICENSE_EXPIRE_DATE'])->format('Y-m-d') : null;
 
-                if (!$typeAr && !$issueDate && !$expireDate) {
+                if (! $typeAr && ! $issueDate && ! $expireDate) {
                     continue;
                 }
 
@@ -348,7 +340,7 @@ class SyncUserProfileFromMolRegApi
                     ->whereDate('expire_date', $expireDate)
                     ->first();
 
-                if (!$existing) {
+                if (! $existing) {
                     $profile->licenses()->create([
                         'type' => ['ar' => $typeAr, 'en' => $typeEn],
                         'issue_place' => ['ar' => $issuePlaceAr, 'en' => $issuePlaceEn],
@@ -358,7 +350,6 @@ class SyncUserProfileFromMolRegApi
                 }
             }
 
-            
             $trainingList = $data['listOfTrain']['VOCTRAINGDet'] ?? [];
 
             if (isset($trainingList['TRAINING_COURSE_DESC_ARB'])) {
@@ -366,7 +357,9 @@ class SyncUserProfileFromMolRegApi
             }
 
             foreach ($trainingList as $item) {
-                if (!is_array($item)) continue;
+                if (! is_array($item)) {
+                    continue;
+                }
 
                 $courseNameAr = $this->safeString($item['TRAINING_COURSE_DESC_ARB'] ?? null);
                 $courseNameEn = $this->safeString($item['TRAINING_COURSE_DESC_ENG'] ?? $courseNameAr);
@@ -379,10 +372,12 @@ class SyncUserProfileFromMolRegApi
 
                 $duration = is_numeric($item['TRAINING_DURATION'] ?? null) ? (int) $item['TRAINING_DURATION'] : null;
 
-                $startDate = !empty($item['TRAINING_FROM']) ? Carbon::parse($item['TRAINING_FROM'])->format('Y-m-d') : null;
-                $endDate = !empty($item['TRAINING_TO']) ? Carbon::parse($item['TRAINING_TO'])->format('Y-m-d') : null;
+                $startDate = ! empty($item['TRAINING_FROM']) ? Carbon::parse($item['TRAINING_FROM'])->format('Y-m-d') : null;
+                $endDate = ! empty($item['TRAINING_TO']) ? Carbon::parse($item['TRAINING_TO'])->format('Y-m-d') : null;
 
-                if (!$courseNameAr) continue;
+                if (! $courseNameAr) {
+                    continue;
+                }
 
                 // Avoid duplicates: match on course name, dates, and duration
                 $exists = $profile->trainings()
@@ -392,7 +387,7 @@ class SyncUserProfileFromMolRegApi
                     ->where('duration', $duration)
                     ->first();
 
-                if (!$exists) {
+                if (! $exists) {
                     $profile->trainings()->create([
                         'course_name' => ['ar' => $courseNameAr, 'en' => $courseNameEn],
                         'country' => ['ar' => $countryAr, 'en' => $countryEn],
@@ -404,20 +399,21 @@ class SyncUserProfileFromMolRegApi
                 }
             }
         }
-    
+
     }
 
-    public function safeString($value) {
+    public function safeString($value)
+    {
         return is_string($value) ? trim($value) : null;
     }
-    
+
     /**
      * Helper to safely parse a date
      */
-    public function safeDate($value) {
-        return is_string($value) && !empty($value)
+    public function safeDate($value)
+    {
+        return is_string($value) && ! empty($value)
             ? Carbon::parse($value)->format('Y-m-d')
             : null;
     }
-        
 }

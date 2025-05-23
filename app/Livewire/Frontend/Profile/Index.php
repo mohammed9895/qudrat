@@ -4,9 +4,9 @@ namespace App\Livewire\Frontend\Profile;
 
 use App\Models\Profile;
 use Filament\Notifications\Notification;
+use JaOcero\FilaChat\Services\ChatListService;
 use Livewire\Component;
 use WireUi\Breadcrumbs\Trail;
-use JaOcero\FilaChat\Services\ChatListService;
 
 class Index extends Component
 {

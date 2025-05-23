@@ -2,18 +2,20 @@
 
 namespace App\Livewire\Frontend\Work;
 
+use App\Models\Like;
 use App\Models\Work;
+use Illuminate\Cache\RateLimiter;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use WireUi\Breadcrumbs\Trail;
-use App\Models\Like;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Cache\RateLimiter;
 
 class Show extends Component
 {
     public Work $work;
+
     public $liked = false;
+
     public $likesCount = 0;
 
     public function mount(Work $work)
@@ -39,7 +41,9 @@ class Show extends Component
 
     public function toggleLike()
     {
-        if (!Auth::check()) return;
+        if (! Auth::check()) {
+            return;
+        }
 
         // $key = 'like-toggle:' . Auth::id() . ':' . $this->modelType . ':' . $this->modelId;
 

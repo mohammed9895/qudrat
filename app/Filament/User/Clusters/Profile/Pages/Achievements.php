@@ -21,19 +21,19 @@ class Achievements extends Page
     protected static string $view = 'filament.user.clusters.profile.pages.achievements';
 
     protected static ?string $cluster = Profile::class;
-    protected static ?int $navigationSort = 5;
 
+    protected static ?int $navigationSort = 5;
 
     public \App\Models\Profile $profile;
 
     public ?array $data = [];
 
-    public static function getNavigationLabel(): string 
+    public static function getNavigationLabel(): string
     {
         return __('general.achievements.title');
     }
 
-    public function getTitle(): string | Htmlable
+    public function getTitle(): string|Htmlable
     {
         return __('general.achievements.title');
     }
@@ -83,7 +83,7 @@ class Achievements extends Page
             $this->form->getState()
         );
         $this->form->model($profile)->saveRelationships();
-        
+
         // Use translations for notification
         Notification::make('saved')
             ->title(__('general.save-success-title'))  // Use translated title

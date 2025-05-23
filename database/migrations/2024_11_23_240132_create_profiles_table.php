@@ -44,7 +44,6 @@ return new class extends Migration
             $table->text('company')->nullable();
             $table->text('website')->nullable();
 
-
             $table->string('social_facebook')->nullable();
             $table->string('social_x')->nullable();
             $table->string('social_linkedin')->nullable();

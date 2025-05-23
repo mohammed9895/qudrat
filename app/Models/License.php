@@ -10,7 +10,7 @@ class License extends Model
     use HasTranslations;
 
     protected $fillable = [
-        'type', 'issue_date', 'expire_date', 'issue_place', 'profile_id'
+        'type', 'issue_date', 'expire_date', 'issue_place', 'profile_id',
     ];
 
     public $translatable = ['type', 'issue_place'];

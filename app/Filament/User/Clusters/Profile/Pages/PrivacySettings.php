@@ -3,19 +3,9 @@
 namespace App\Filament\User\Clusters\Profile\Pages;
 
 use App\Filament\User\Clusters\Profile;
-use App\Models\Country;
-use App\Models\Province;
-use App\Models\State;
-use Filament\Forms\Components\DatePicker;
-use Filament\Forms\Components\FileUpload;
-use Filament\Forms\Components\RichEditor;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
-use Filament\Forms\Get;
-use Filament\Forms\Set;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Support\Htmlable;
@@ -26,12 +16,12 @@ class PrivacySettings extends Page
 
     protected static string $view = 'filament.user.clusters.profile.pages.privacy-settings';
 
-    public static function getNavigationLabel(): string 
+    public static function getNavigationLabel(): string
     {
         return __('general.privacy_settings.title');
     }
 
-    public function getTitle(): string | Htmlable
+    public function getTitle(): string|Htmlable
     {
         return __('general.privacy_settings.title');
     }
@@ -85,7 +75,6 @@ class PrivacySettings extends Page
             ->model($this->profile);
     }
 
-
     public function create(): void
     {
         $profile = \App\Models\Profile::updateOrCreate(
@@ -93,7 +82,7 @@ class PrivacySettings extends Page
             $this->form->getState()
         );
         $this->form->model($profile)->saveRelationships();
-        
+
         // Use translations for notification
         Notification::make('saved')
             ->title(__('general.save-success-title'))  // Use translated title
@@ -103,5 +92,4 @@ class PrivacySettings extends Page
             ->color('success')
             ->send();
     }
-    
 }

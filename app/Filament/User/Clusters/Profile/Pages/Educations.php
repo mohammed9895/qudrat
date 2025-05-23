@@ -4,7 +4,9 @@ namespace App\Filament\User\Clusters\Profile\Pages;
 
 use App\Filament\User\Clusters\Profile;
 use App\Models\FieldOfStudy;
+use Filament\Actions\Action;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -12,18 +14,11 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
-use Filament\Forms\Set;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
-use Illuminate\Support\Collection;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Support\Htmlable;
-use Filament\Forms\Components\Hidden;
 // use Filament\Forms\Components\Actions\Action;
-use Filament\Actions\Action;
-
-
-
+use Illuminate\Support\Collection;
 
 class Educations extends Page
 {
@@ -39,12 +34,12 @@ class Educations extends Page
 
     public ?array $data = [];
 
-    public static function getNavigationLabel(): string 
+    public static function getNavigationLabel(): string
     {
         return __('general.educations.title');
     }
 
-    public function getTitle(): string | Htmlable
+    public function getTitle(): string|Htmlable
     {
         return __('general.educations.title');
     }
@@ -62,7 +57,7 @@ class Educations extends Page
                 Section::make(__('general.educations.title'))  // Use translated title
                     ->schema([
                         Repeater::make('educations')
-                        ->label(__('general.educations.title'))
+                            ->label(__('general.educations.title'))
                             ->collapsible()
                             ->relationship('educations')
                             ->reorderable()
@@ -90,7 +85,7 @@ class Educations extends Page
                                     ->searchable()
                                     ->live()
                                     ->nullable()
-                                    ->options(fn(Get $get): Collection => FieldOfStudy::query()
+                                    ->options(fn (Get $get): Collection => FieldOfStudy::query()
                                         ->where('parent_id', $get('field_of_study_id'))
                                         ->pluck('name', 'id'))
                                     ->label(__('general.educations.sub_field_of_study')),  // Use translated label
@@ -113,23 +108,24 @@ class Educations extends Page
     }
 
     public function create(): void
-{
-    $profile = \App\Models\Profile::updateOrCreate(
-        ['user_id' => auth()->id()],
-        $this->form->getState()
-    );
-    $this->form->model($profile)->saveRelationships();
-    
-    // Use translations for notification
-    Notification::make('saved')
-        ->title(__('general.save-success-title'))  // Use translated title
-        ->body(__('general.save-success-body'))   // Use translated body
-        ->iconColor('success')
-        ->icon('heroicon-o-check-circle')
-        ->color('success')
-        ->send();
-}
-protected function getHeaderActions(): array
+    {
+        $profile = \App\Models\Profile::updateOrCreate(
+            ['user_id' => auth()->id()],
+            $this->form->getState()
+        );
+        $this->form->model($profile)->saveRelationships();
+
+        // Use translations for notification
+        Notification::make('saved')
+            ->title(__('general.save-success-title'))  // Use translated title
+            ->body(__('general.save-success-body'))   // Use translated body
+            ->iconColor('success')
+            ->icon('heroicon-o-check-circle')
+            ->color('success')
+            ->send();
+    }
+
+    protected function getHeaderActions(): array
     {
         return [
             Action::make('visit-profile')
@@ -137,11 +133,11 @@ protected function getHeaderActions(): array
                 ->icon('hugeicons-link-forward')
                 ->url(route('profile.index', ['profile' => $this->profile]))
                 ->openUrlInNewTab(),
-                Action::make('visit-profile')
-                    ->label(__('general.visit-profile'))  // Use translation for label
-                    ->icon('hugeicons-link-forward')
-                    ->url(route('profile.index', ['profile' => $this->profile]))
-                    ->openUrlInNewTab(),
+            Action::make('visit-profile')
+                ->label(__('general.visit-profile'))  // Use translation for label
+                ->icon('hugeicons-link-forward')
+                ->url(route('profile.index', ['profile' => $this->profile]))
+                ->openUrlInNewTab(),
         ];
     }
 }

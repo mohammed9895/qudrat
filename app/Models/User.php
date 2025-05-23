@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use BezhanSalleh\FilamentShield\Traits\HasPanelShield;
+use Filament\Models\Contracts\FilamentUser;
 use Filament\Models\Contracts\HasAvatar;
 use Filament\Panel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -15,19 +16,16 @@ use Illuminate\Notifications\Notifiable;
 use JaOcero\FilaChat\Traits\HasFilaChat;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Translatable\HasTranslations;
-use App\Events\UserRegistered;
-use Filament\Models\Contracts\FilamentUser;
 
-class User extends Authenticatable implements HasAvatar, FilamentUser
+class User extends Authenticatable implements FilamentUser, HasAvatar
 {
     use HasFactory;
     use HasFilaChat;
     use HasPanelShield;
     use HasRoles;
+    use HasTranslations;
     use Notifiable;
     use SoftDeletes;
-    use HasTranslations;
-
 
     protected $fillable = [
         'civil_id',
@@ -42,8 +40,6 @@ class User extends Authenticatable implements HasAvatar, FilamentUser
     ];
 
     public array $translatable = ['name'];
-
-
 
     public function canAccessPanel(Panel $panel): bool
     {
@@ -77,7 +73,8 @@ class User extends Authenticatable implements HasAvatar, FilamentUser
         return $this->hasMany(ProfileRating::class);
     }
 
-    public function likes() {
+    public function likes()
+    {
         return $this->hasMany(Like::class);
     }
 

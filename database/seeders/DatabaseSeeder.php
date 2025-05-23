@@ -9,7 +9,6 @@ use App\Models\DigitalLibraryPostComment;
 use App\Models\DigitalLibraryTag;
 use App\Models\FieldOfStudy;
 use App\Models\Interest;
-use App\Models\Language;
 use App\Models\MediaCenterComment;
 use App\Models\MediaCenterPost;
 use App\Models\Profile;
@@ -92,7 +91,6 @@ class DatabaseSeeder extends Seeder
         FieldOfStudy::factory(50)->create();
 
         Interest::factory(50)->create();
-
 
         $this->call(ProfileSeeder::class);
 

@@ -38,14 +38,14 @@ return new class extends Migration
         Schema::create('job_application_skill', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(\App\Models\Skill::class)->constrained()->cascadeOnDelete();
-            $table->foreignIdFor(\App\Models\JobApplication::class)->constrained()->cascadeOnDelete();;
+            $table->foreignIdFor(\App\Models\JobApplication::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
 
         Schema::create('job_application_tool', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(\App\Models\JobApplication::class)->constrained()->cascadeOnDelete();;
-            $table->foreignIdFor(\App\Models\Tool::class)->constrained()->cascadeOnDelete();;
+            $table->foreignIdFor(\App\Models\JobApplication::class)->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\Tool::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
