@@ -16,8 +16,9 @@ use JaOcero\FilaChat\Traits\HasFilaChat;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Translatable\HasTranslations;
 use App\Events\UserRegistered;
+use Filament\Models\Contracts\FilamentUser;
 
-class User extends Authenticatable implements HasAvatar
+class User extends Authenticatable implements HasAvatar, FilamentUser
 {
     use HasFactory;
     use HasFilaChat;
