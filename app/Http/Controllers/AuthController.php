@@ -135,7 +135,7 @@ class AuthController extends Controller
             }
 
             // 4. Create or update user in DB
-            $user = User::updateOrCreate(
+            $user = User::firstOrCreate(
                 ['civil_id' => $userData['CivilID']],
                 [
                     'name' => [
