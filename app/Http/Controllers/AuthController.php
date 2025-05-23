@@ -150,11 +150,14 @@ class AuthController extends Controller
                 $user->assignRole('panel_user');
             }
 
-            event(new UserRegistered($user));
-
             // 5. Log in the user
             Auth::login($user);
+
             $request->session()->regenerate();
+
+            if (!$user->profile) {
+                event(new UserRegistered($user));
+            }
 
             return redirect('/user')->with('success', 'Logged in successfully!');
 
