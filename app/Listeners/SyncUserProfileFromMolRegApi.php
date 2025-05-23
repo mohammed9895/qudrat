@@ -57,9 +57,9 @@ class SyncUserProfileFromMolRegApi
            
 
             $nationalityAr = $this->safeString($data['NATIONALITY_DESC_ARB'] ?? '');
-$regionAr = $this->safeString($data['PER_REGION_desc'] ?? '');
-$wilayatAr = $this->safeString($data['PER_WILAYAT_DESC_ARB'] ?? '');
-$residenceWilayatAr = $this->safeString($data['RES_WILAYAT_DESC_ARB'] ?? '');
+            $regionAr = $this->safeString($data['PER_REGION_desc'] ?? '');
+            $wilayatAr = $this->safeString($data['PER_WILAYAT_DESC_ARB'] ?? '');
+            $residenceWilayatAr = $this->safeString($data['RES_WILAYAT_DESC_ARB'] ?? '');
 
         // Country
         $country = !empty($nationalityAr)
@@ -85,6 +85,11 @@ $residenceWilayatAr = $this->safeString($data['RES_WILAYAT_DESC_ARB'] ?? '');
                 ?: State::create(['name' => ['ar' => $residenceWilayatAr, 'en' => $residenceWilayatAr]])
             : null;
 
+            $nationality = !empty($nationalityAr)
+            ? Nationality::where('name->ar', $nationalityAr)->first()
+                ?: Nationality::create(['name' => ['ar' => $nationalityAr, 'en' => $nationalityAr]])
+            : null;
+
             $profile = $user->profile()->updateOrCreate(['user_id' => $user->id], [
                 'fullname' => [
                     'en' => $user->getTranslation('name', 'en'),  // Get 'fullname' in English
@@ -98,7 +103,7 @@ $residenceWilayatAr = $this->safeString($data['RES_WILAYAT_DESC_ARB'] ?? '');
                     ? \Carbon\Carbon::parse($data['DATE_OF_BIRTH'])->format('Y-m-d')
                     : null,
                 'country_id' => optional($country)->id,
-                'nationality_id' => optional($country)->id,
+                'nationality_id' => optional($nationality)->id,
                 'province_id' => optional($province)->id,
                 'state_id' => optional($state)->id,
                 'permanent_residence_state_id' => optional($residenceState)->id,

@@ -48,7 +48,8 @@ class User extends Authenticatable implements HasAvatar
         return match ($panel->getId()) {
             'admin' => $this->hasRole('super_admin'),
             'entity' => $this->hasRole('super_admin') || $this->hasRole('entity'),
-            'user' => $this->hasRole('super_admin') || $this->hasRole('panel_user'),
+            // 'user' => $this->hasRole('super_admin') || $this->hasRole('panel_user'),
+            'user' => $this->hasRole('super_admin') || $this->hasRole('panel_user') || true,
             default => false,
         };
     }

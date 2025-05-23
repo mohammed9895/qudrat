@@ -90,6 +90,8 @@ class AuthController extends Controller
     {
         // 1. Get token from query or cookie
         $token = strtok($request->cookie('AUTH_COOKIE'), '|');
+
+        // dd($request->cookie('AUTH_COOKIE'));
         
         if (!$token) {
             dd('no token');
