@@ -137,6 +137,11 @@ protected function getHeaderActions(): array
                 ->icon('hugeicons-link-forward')
                 ->url(route('profile.index', ['profile' => $this->profile]))
                 ->openUrlInNewTab(),
+                Action::make('visit-profile')
+                    ->label(__('general.visit-profile'))  // Use translation for label
+                    ->icon('hugeicons-link-forward')
+                    ->url(route('profile.index', ['profile' => $this->profile]))
+                    ->openUrlInNewTab(),
         ];
     }
 }
