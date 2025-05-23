@@ -112,16 +112,13 @@ class AuthController extends Controller
             $principal = $principalResponse->json();
             $userId = $principal['CurrentUserID'] ?? null;
 
-
-            dd($principal);
-
             if (!$userId) {
                  dd('Invalid principal response.');
                 return redirect('/login')->withErrors('Invalid principal response.');
             }
 
             // 3. Call GetLoggedUserInfo using another Basic Auth key
-            $userResponse = Http::withBasicAuth('eJWTUserName', 'eP@ssw0rd@123abc') // ← replace with actual credentials
+            $userResponse = Http::withBasicAuth('UMSDEVUSER', 'xbwdjsMHtpL5MWL3') // ← replace with actual credentials
                 ->withOptions(['verify' => false])
                 ->get('https://eservices-be-stg.mol.gov.om/UMS.API/api/User/GetLoggedUserInfo', [
                     'UserID' => $userId,
