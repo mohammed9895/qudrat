@@ -35,6 +35,7 @@ use RalphJSmit\Filament\Onboard\Http\Livewire\Wizard;
 use RalphJSmit\Filament\Onboard\Http\Middleware\OnboardMiddleware;
 use RalphJSmit\Filament\Onboard\Step;
 use RalphJSmit\Filament\Onboard\Track;
+use Filament\Navigation\MenuItem;
 
 class UserPanelProvider extends PanelProvider
 {
@@ -78,6 +79,9 @@ class UserPanelProvider extends PanelProvider
                 Authenticate::class,
                 OnboardMiddleware::class,
             ])
+            ->userMenuItems([
+                'logout' => MenuItem::make()->url(env('PKI_LOGOUT_URL'))->label('Log out'),
+            ])  
             ->viteTheme('resources/css/filament/user/theme.css')
             ->plugins([
                 FilaChatPlugin::make(),
