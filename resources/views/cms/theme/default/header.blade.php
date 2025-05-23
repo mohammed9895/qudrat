@@ -1,7 +1,7 @@
 @php
     use Illuminate\Routing\Route;use SolutionForest\FilamentCms\Facades\FilamentCms;$menu = FilamentCms::getNavigation('main-menu') ?? [];
 @endphp
-{{ request()->ip() }}
+{{ gethostname() }}
     <!-- Header -->
 <nav class="nav_area">
     <div class="px-10">
