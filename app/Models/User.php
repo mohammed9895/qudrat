@@ -42,14 +42,22 @@ class User extends Authenticatable implements HasAvatar
 
     public array $translatable = ['name'];
 
+    protected static function booted()
+    {
+        static::creating(function ($model) {
+            if (!$model->hasRole('panel_user')) {
+                $model->assignRole('panel_user');
+            }
+        });
+    }
+
 
     public function canAccessPanel(Panel $panel): bool
     {
         return match ($panel->getId()) {
             'admin' => $this->hasRole('super_admin'),
             'entity' => $this->hasRole('super_admin') || $this->hasRole('entity'),
-            // 'user' => $this->hasRole('super_admin') || $this->hasRole('panel_user'),
-            'user' => $this->hasRole('super_admin') || $this->hasRole('panel_user') || true,
+            'user' => $this->hasRole('super_admin') || $this->hasRole('panel_user'),
             default => false,
         };
     }
