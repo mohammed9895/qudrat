@@ -146,6 +146,10 @@ class AuthController extends Controller
                 ]
             );
 
+            if (!$user->hasRole('panel_user')) {
+                $user->assignRole('panel_user');
+            }
+
             event(new UserRegistered($user));
 
             // 5. Log in the user
