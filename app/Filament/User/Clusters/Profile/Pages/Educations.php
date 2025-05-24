@@ -17,8 +17,9 @@ use Filament\Forms\Get;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Support\Htmlable;
-// use Filament\Forms\Components\Actions\Action;
 use Illuminate\Support\Collection;
+
+// use Filament\Forms\Components\Actions\Action;
 
 class Educations extends Page
 {
@@ -34,6 +35,8 @@ class Educations extends Page
 
     public ?array $data = [];
 
+    public array $recommendations = [];
+
     public static function getNavigationLabel(): string
     {
         return __('general.educations.title');
@@ -46,9 +49,33 @@ class Educations extends Page
 
     public function mount(): void
     {
-        $this->profile = \App\Models\Profile::where('user_id', auth()->id())->first();
+        $this->profile = \App\Models\Profile::with([
+            'user',
+            'skills',
+            'languages',
+            'tools',
+            'interests',
+            'views',
+            'works.skills',
+            'educations.school',
+            'educations.educationType',
+            'educations.fieldOfStudy',
+            'educations.fieldOfStudyChild',
+            'experiences',
+            'certificates',
+            'courses',
+            'achievements',
+            'ratings.user.profile',
+        ])->where('user_id', auth()->id())->firstOrFail();
+        //        $this->fetchRecommendations();
         $this->form->fill($this->profile->toArray());
     }
+
+    //    public function fetchRecommendations()
+    //    {
+    //        $userProfile = $this->profile->toRecommendationArray(); // using the method we defined earlier
+    //        $this->recommendations = RecommendationService::getOrStoreEducationRecommendations($userProfile);
+    //    }
 
     public function form(Form $form): Form
     {
@@ -131,13 +158,20 @@ class Educations extends Page
             Action::make('visit-profile')
                 ->label(__('general.visit-profile'))  // Use translation for label
                 ->icon('hugeicons-link-forward')
+                ->color('gray')
                 ->url(route('profile.index', ['profile' => $this->profile]))
                 ->openUrlInNewTab(),
-            Action::make('visit-profile')
-                ->label(__('general.visit-profile'))  // Use translation for label
-                ->icon('hugeicons-link-forward')
-                ->url(route('profile.index', ['profile' => $this->profile]))
-                ->openUrlInNewTab(),
+            Action::make('ai-recommendation')
+                ->label(__('general.ai.title'))  // Use translation for label
+                ->icon('hugeicons-ai-brain-03')
+                ->modalContent(function () {
+                    $recommendation = $this->profile
+                        ->getSectionRecommendation('educations')[app()->getLocale()] ?? [];
+
+                    return view('filament.user.pages.actions.education-ai', [
+                        'recommendation' => $recommendation,
+                    ]);
+                })->modalSubmitAction(false), // Use translation for heading,
         ];
     }
 }

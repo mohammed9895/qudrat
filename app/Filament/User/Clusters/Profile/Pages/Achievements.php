@@ -3,6 +3,7 @@
 namespace App\Filament\User\Clusters\Profile\Pages;
 
 use App\Filament\User\Clusters\Profile;
+use Filament\Actions\Action;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
@@ -92,5 +93,28 @@ class Achievements extends Page
             ->icon('heroicon-o-check-circle')
             ->color('success')
             ->send();
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Action::make('visit-profile')
+                ->label(__('general.visit-profile'))  // Use translation for label
+                ->icon('hugeicons-link-forward')
+                ->color('gray')
+                ->url(route('profile.index', ['profile' => $this->profile]))
+                ->openUrlInNewTab(),
+            Action::make('ai-recommendation')
+                ->label(__('general.ai.title'))  // Use translation for label
+                ->icon('hugeicons-ai-brain-03')
+                ->modalContent(function () {
+                    $recommendation = $this->profile
+                        ->getSectionRecommendation('achievements')[app()->getLocale()] ?? [];
+
+                    return view('filament.user.pages.actions.education-ai', [
+                        'recommendation' => $recommendation,
+                    ]);
+                })->modalSubmitAction(false), // Use translation for heading,
+        ];
     }
 }

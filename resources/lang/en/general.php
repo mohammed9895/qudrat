@@ -370,4 +370,13 @@ return [
         'your_privacy' => 'Your Privacy',
         'your_privacy_description' => 'Choose where you want to be public or not.',
     ],
+    'ai' => [
+        'title' => 'AI Recommendation',
+        'description' => 'Ask me anything about your profile, and I will help you.',
+        'ask_placeholder' => 'What do you want to ask?',
+        'ask_button' => 'Ask',
+        'response_placeholder' => 'I am thinking...',
+        'no_suggestion' => 'No suggestions available.',
+        'score' => 'Score',
+    ],
 ];

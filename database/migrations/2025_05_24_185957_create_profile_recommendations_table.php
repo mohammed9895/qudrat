@@ -11,18 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('languages', function (Blueprint $table) {
+        Schema::create('profile_recommendations', function (Blueprint $table) {
             $table->id();
-            $table->text('name');
-            $table->string('code')->unique()->nullable();
-            $table->softDeletes();
-            $table->timestamps();
-        });
-
-        Schema::create('language_profile', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('language_id')->constrained()->onDelete('cascade');
             $table->foreignId('profile_id')->constrained()->onDelete('cascade');
+            $table->string('section'); // e.g. 'educations'
+            $table->json('recommendation'); // Translatable JSON
+            $table->timestamp('generated_at')->nullable();
+            $table->timestamp('profile_last_updated_at')->nullable();
             $table->timestamps();
         });
     }
@@ -32,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('langauges');
+        Schema::dropIfExists('profile_recommendations');
     }
 };

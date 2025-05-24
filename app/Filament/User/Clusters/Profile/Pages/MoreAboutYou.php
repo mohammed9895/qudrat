@@ -3,6 +3,7 @@
 namespace App\Filament\User\Clusters\Profile\Pages;
 
 use App\Filament\User\Clusters\Profile;
+use Filament\Forms\Components\Actions\Action;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
@@ -16,6 +17,14 @@ class MoreAboutYou extends Page
 
     protected static string $view = 'filament.user.clusters.profile.pages.more-about-you';
 
+    protected static ?string $cluster = Profile::class;
+
+    protected static ?int $navigationSort = 7;
+
+    public \App\Models\Profile $profile;
+
+    public ?array $data = [];
+
     public static function getNavigationLabel(): string
     {
         return __('general.more_about_you.title');
@@ -25,14 +34,6 @@ class MoreAboutYou extends Page
     {
         return __('general.more_about_you.title');
     }
-
-    protected static ?string $cluster = Profile::class;
-
-    protected static ?int $navigationSort = 7;
-
-    public \App\Models\Profile $profile;
-
-    public ?array $data = [];
 
     public function mount(): void
     {
@@ -54,11 +55,37 @@ class MoreAboutYou extends Page
                             ->hint(__('general.more_about_you.add_hint'))  // Use translated hint for categories
                             ->searchable()
                             ->multiple()
+                            ->hintAction(
+                                Action::make('ai-recommendation')
+                                    ->label(__('general.ai.title'))  // Use translation for label
+                                    ->icon('hugeicons-ai-brain-03')
+                                    ->modalContent(function () {
+                                        $recommendation = $this->profile
+                                            ->getSectionRecommendation('categories')[app()->getLocale()] ?? [];
+
+                                        return view('filament.user.pages.actions.education-ai', [
+                                            'recommendation' => $recommendation,
+                                        ]);
+                                    })->modalSubmitAction(false), // Use translation for heading,
+                            )
                             ->relationship('categories', 'name'),
                         Select::make('skills')
                             ->preload()
                             ->label(__('general.more_about_you.skills'))  // Use translated label for skills
                             ->multiple()
+                            ->hintAction(
+                                Action::make('ai-recommendation')
+                                    ->label(__('general.ai.title'))  // Use translation for label
+                                    ->icon('hugeicons-ai-brain-03')
+                                    ->modalContent(function () {
+                                        $recommendation = $this->profile
+                                            ->getSectionRecommendation('skills')[app()->getLocale()] ?? [];
+
+                                        return view('filament.user.pages.actions.education-ai', [
+                                            'recommendation' => $recommendation,
+                                        ]);
+                                    })->modalSubmitAction(false), // Use translation for heading,
+                            )
                             ->relationship('skills', 'name')
                             ->searchable()
                             ->hint(__('general.more_about_you.skills_hint')),  // Use translated hint for skills
@@ -66,6 +93,19 @@ class MoreAboutYou extends Page
                             ->preload()
                             ->label(__('general.more_about_you.interests'))  // Use translated label for interests
                             ->multiple()
+                            ->hintAction(
+                                Action::make('ai-recommendation')
+                                    ->label(__('general.ai.title'))  // Use translation for label
+                                    ->icon('hugeicons-ai-brain-03')
+                                    ->modalContent(function () {
+                                        $recommendation = $this->profile
+                                            ->getSectionRecommendation('interests')[app()->getLocale()] ?? [];
+
+                                        return view('filament.user.pages.actions.education-ai', [
+                                            'recommendation' => $recommendation,
+                                        ]);
+                                    })->modalSubmitAction(false), // Use translation for heading,
+                            )
                             ->relationship('interests', 'name')
                             ->hint(__('general.more_about_you.interests_hint'))  // Use translated hint for interests
                             ->searchable(),
@@ -73,6 +113,19 @@ class MoreAboutYou extends Page
                             ->preload()
                             ->label(__('general.more_about_you.languages'))  // Use translated label for languages
                             ->multiple()
+                            ->hintAction(
+                                Action::make('ai-recommendation')
+                                    ->label(__('general.ai.title'))  // Use translation for label
+                                    ->icon('hugeicons-ai-brain-03')
+                                    ->modalContent(function () {
+                                        $recommendation = $this->profile
+                                            ->getSectionRecommendation('languages')[app()->getLocale()] ?? [];
+
+                                        return view('filament.user.pages.actions.education-ai', [
+                                            'recommendation' => $recommendation,
+                                        ]);
+                                    })->modalSubmitAction(false), // Use translation for heading,
+                            )
                             ->relationship('languages', 'name')
                             ->hint(__('general.more_about_you.languages_hint'))  // Use translated hint for languages
                             ->searchable(),
@@ -82,6 +135,19 @@ class MoreAboutYou extends Page
                             ->multiple()
                             ->relationship('tools', 'name')
                             ->searchable()
+                            ->hintAction(
+                                Action::make('ai-recommendation')
+                                    ->label(__('general.ai.title'))  // Use translation for label
+                                    ->icon('hugeicons-ai-brain-03')
+                                    ->modalContent(function () {
+                                        $recommendation = $this->profile
+                                            ->getSectionRecommendation('tools')[app()->getLocale()] ?? [];
+
+                                        return view('filament.user.pages.actions.education-ai', [
+                                            'recommendation' => $recommendation,
+                                        ]);
+                                    })->modalSubmitAction(false), // Use translation for heading,
+                            )
                             ->placeholder(__('general.more_about_you.tools'))  // Use translated placeholder for tools
                             ->hint(__('general.more_about_you.tools_hint')),   // Use translated hint for tools
                     ]),

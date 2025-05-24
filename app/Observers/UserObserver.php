@@ -2,7 +2,6 @@
 
 namespace App\Observers;
 
-use App\Events\UserRegistered;
 use App\Models\User;
 
 class UserObserver
@@ -12,7 +11,7 @@ class UserObserver
      */
     public function created(User $user): void
     {
-        event(new UserRegistered($user));
+        //        event(new UserRegistered($user));
     }
 
     /**

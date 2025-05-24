@@ -379,4 +379,13 @@ return [
         'your_privacy' => 'خصوصيتك',
         'your_privacy_description' => 'اختر أين تريد أن تكون علنياً أو لا.',
     ],
+    'ai' => [
+        'title' => 'توصيات الذكاء الاصطناعي',
+        'no_suggestion' => 'لا توجد اقتراحات حالياً.',
+        'score' => 'التقييم',
+        'description' => 'استخدم الذكاء الاصطناعي لتحسين ملفك الشخصي.',
+        'fetch_recommendations' => 'احصل على توصيات',
+        'recommendations' => 'التوصيات',
+        'recommendations_description' => 'استنادًا إلى ملفك الشخصي، إليك بعض التوصيات.',
+    ],
 ];
