@@ -99,7 +99,7 @@ class AuthController extends Controller
                 $password = 'eP@ssw0rd@123abc';
 
                 // Encode the username and password in base64
-                $basicAuth = base64_encode("{$username}:{$password}");
+                $basicAuth = base64_encode("eJWTUserName:eP@ssw0rd@123abc");
 
                 $principalResponse = Http::withHeaders([
                     'Content-Type' => 'application/json',
