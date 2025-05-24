@@ -108,6 +108,8 @@ class AuthController extends Controller
                     'Token' => $token
                 ]);
 
+                dd($principalResponse->status());
+
                 if ($principalResponse->failed()) {
                     \Log::error('API Request Failed', [
                         'status' => $principalResponse->status(),
