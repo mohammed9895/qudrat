@@ -95,7 +95,7 @@ class AuthController extends Controller
         try {
             // 2. Call GetPrincipal with Basic Auth
             $principalResponse = Http::withBasicAuth('eJWTUserName', 'eP@ssw0rd@123abc') // ← replace with actual credentials
-                ->withOptions(['verify' => false]) // Self-signed cert workaround
+                // ->withOptions(['verify' => false]) // Self-signed cert workaround
                 ->post('https://api.mol.gov.om/sso.token.api/api/Token/GetPrincipal', [
                     'Token' => $token,
                 ]);
