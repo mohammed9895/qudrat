@@ -83,7 +83,6 @@ class AuthController extends Controller
 
     public function handleQudratLoginCallback(Request $request)
     {
-        Log::info('This is a test log');
 
         // 1. Get token from query or cookie
         $token = strtok($request->cookie('AUTH_COOKIE'), '|');
@@ -112,7 +111,19 @@ class AuthController extends Controller
                     'Token' => $token
                 ]);
 
-                dd($principalResponse->status());
+                if ($principalResponse->failed()) {
+    // Log the error if the request fails
+    Log::error('API Request Failed', [
+        'status' => $principalResponse->status(),
+        'body' => $principalResponse->body(),
+        'headers' => $principalResponse->headers(),
+    ]);
+} else {
+    // If the request is successful, log the response
+    Log::info('API Request Successful', [
+        'response' => $principalResponse->json(),
+    ]);
+}
 
                 if ($principalResponse->failed()) {
                     \Log::error('API Request Failed', [
