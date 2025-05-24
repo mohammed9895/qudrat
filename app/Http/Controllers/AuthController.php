@@ -96,7 +96,7 @@ class AuthController extends Controller
             // 2. Call GetPrincipal with Basic Auth
             $principalResponse = Http::withBasicAuth('eJWTUserName', 'eP@ssw0rd@123abc') // ← replace with actual credentials
                 ->withOptions(['verify' => false]) // Self-signed cert workaround
-                ->post('https://eservices-be-stg.mol.gov.om/sso.token.api/api/Token/GetPrincipal', [
+                ->post('http://api.mol.gov.om/sso.token.api/api/Token/GetPrincipal', [
                     'Token' => $token,
                 ]);
 
@@ -118,9 +118,9 @@ class AuthController extends Controller
             // 3. Call GetLoggedUserInfo using another Basic Auth key
             $userResponse = Http::withBasicAuth('UMSDEVUSER', 'xbwdjsMHtpL5MWL3') // ← replace with actual credentials
                 ->withOptions(['verify' => false])
-                ->get('https://eservices-be-stg.mol.gov.om/UMS.API/api/User/GetLoggedUserInfo', [
+                ->get('http://api.mol.gov.om/UMS.API/api/User/GetLoggedUserInfo', [
                     'UserID' => $userId,
-                    'CertificateType' => 'ID_CARD',
+                    'CertificateType' => $principal['CertificateType'],
                 ]);
 
             $userData = $userResponse->json()['Data'] ?? null;
