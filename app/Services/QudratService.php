@@ -17,7 +17,7 @@ class QudratService
         try {
             $response = Http::Http::withOptions([
                 'verify' => false,
-            ])->get('https://qudrat-prd-pki.mol.gov.om/registration', [
+            ])->get('http://qudrat-prd-pki.mol.gov.om/registration', [
                 'nationalId' => $nationalId,
             ]);
 
