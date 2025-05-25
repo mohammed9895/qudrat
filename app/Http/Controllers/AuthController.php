@@ -148,7 +148,7 @@ class AuthController extends Controller
             }
 
             // 3. Call GetLoggedUserInfo using another Basic Auth key
-            $userResponse = Http::withBasicAuth('UMSDEVUSER', 'xbwdjsMHtpL5MWL3') // ← replace with actual credentials
+            $userResponse = Http::withBasicAuth('UMSPRDUSER', 'aU1OJdbhmGwZjoBj') // ← replace with actual credentials
                 ->withOptions(['verify' => false])
                 ->get('http://10.153.25.11/UMS.API/api/User/GetLoggedUserInfo', [
                     'UserID' => $userId,
