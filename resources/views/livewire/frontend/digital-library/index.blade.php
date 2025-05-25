@@ -20,7 +20,7 @@
     <!-- Card & Siderbar -->
     <div class="pt-24 pb-12">
         <div class="container">
-            <div class="grid grid-cols-1 md:grid-cols-2">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                 @foreach($links as $link)
                     <div class="p-5 rounded-xl shadow-default h-[400px] relative flex justify-start items-end"
                          style="background: url('{{ $link->getThumbnailImage() }}'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
