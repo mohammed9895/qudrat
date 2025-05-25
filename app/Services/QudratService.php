@@ -23,6 +23,8 @@ class QudratService
                 return null;
             }
 
+            dd($response->body());
+
             $xmlString = $response->body();
             $xmlObject = simplexml_load_string($xmlString);
 
