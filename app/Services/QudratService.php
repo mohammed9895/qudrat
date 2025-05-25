@@ -14,7 +14,6 @@ class QudratService
      */
     public function getRegistrationByNationalId(string $nationalId): ?Collection
     {
-        dd('here');
         try {
             $response = Http::get('https://qudrat-prd-pki.mol.gov.om/registration', [
                 'nationalId' => $nationalId,
@@ -40,6 +39,9 @@ class QudratService
             return collect($array);
 
         } catch (\Exception $e) {
+
+            dd($e->getMessage());
+
             // You can log the error if needed
             \Log::error('QudratService Error: '.$e->getMessage());
 
