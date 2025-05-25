@@ -15,8 +15,10 @@ class QudratService
     public function getRegistrationByNationalId(string $nationalId): ?Collection
     {
         try {
-            $response = Http::get('https://qudrat-uat-pki.mol.gov.om/registration', [
-                'nationalId' => '13019435',
+            $response = Http::withOptions([
+                'verify' => false,
+            ])->get('http://qudrat-prd-pki.mol.gov.om/registration', [
+                'nationalId' => $nationalId,
             ]);
 
             dd($response);
