@@ -18,7 +18,7 @@ class QudratService
             $response = Http::withOptions([
                 'verify' => false,
             ])->get('http://qudrat-prd-pki.mol.gov.om/registration', [
-                'nationalId' => $nationalId,
+                'nationalId' => '13019435',
             ]);
 
             dd($response);
