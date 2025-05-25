@@ -66,7 +66,6 @@ class SyncUserProfileFromMolRegApi
                     ?: Province::create(['name' => ['ar' => $regionAr, 'en' => $regionAr]])
                 : null;
 
-                dd($province->id);
 
             // State
             $state = ! empty($wilayatAr)
