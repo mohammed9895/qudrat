@@ -19,8 +19,6 @@ class QudratService
                 'nationalId' => $nationalId,
             ]);
 
-            dd($response);
-
             if (! $response->ok()) {
                 return null;
             }
