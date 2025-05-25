@@ -18,9 +18,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->appendToGroup('web', LocaleMiddleware::class);
         $middleware->append(SessionTimeout::class);
-         $middleware->trustProxies(at: '*');
+        //  $middleware->trustProxies(at: '*');
         // $middleware->append(CorsMiddleware::class)
-        // $middleware->trustProxies(at: '*', headers: Request::HEADER_X_FORWARDED_ALL);
+        $middleware->trustProxies(at: '*', headers: Request::HEADER_X_FORWARDED_ALL);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
