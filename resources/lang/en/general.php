@@ -190,6 +190,7 @@ return [
         'email' => 'Email',
         'phone' => 'Phone',
         'gender' => 'Gender',
+        'cv' => 'CV',
         'dob' => 'Date of Birth',
         'video' => 'Upload Video',
         'country' => 'Country',

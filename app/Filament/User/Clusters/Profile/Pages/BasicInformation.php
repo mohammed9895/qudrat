@@ -77,6 +77,7 @@ class BasicInformation extends Page
                                 0 => __('general.gender-types.female'),
                             ])->disabled(),
                         DatePicker::make('dob')->native(false)->disabled()->label(__('general.basic-information.dob')),
+                        FileUpload::make('cv')->acceptedFileTypes(['application/pdf', 'application/msword'])->label(__('general.basic-information.cv')),
                         FileUpload::make('video')->acceptedFileTypes(['video/mp4', 'video/mov'])->label(__('general.basic-information.video')),
                     ]),
                 Section::make(__('general.basic-information.location'))
