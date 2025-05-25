@@ -42,7 +42,7 @@
                         <h4 class="text-xl font-medium mb-1">{{ $profile->fullname }}</h4>
                         <p class="text-sm mb-5">{{ $profile->position }}</p>
                         <ul class="flex flex-col gap-3 mb-8">
-                            @if (($profile->show_location || auth()->id() == $profile->user_id) && isset($profile->location))
+                            @if (($profile->show_location || auth()->id() == $profile->user_id) && isset($profile->address))
                                 <li class="flex items-center gap-2">
                                     <span>
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
