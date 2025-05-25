@@ -38,6 +38,8 @@ class SyncUserProfileFromMolRegApi
 
         $data = $qudratService->getRegistrationByNationalId($user->civil_id);
 
+        dd($data);
+
         if (! $data) {
             return response()->json(['error' => 'Failed to fetch or parse data'], 500);
         } else {
