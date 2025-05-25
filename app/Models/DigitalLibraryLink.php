@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Support\Facades\App;
 
 class DigitalLibraryLink extends Model
 {
@@ -17,7 +18,7 @@ class DigitalLibraryLink extends Model
     public function getThumbnailImage()
     {
         // Get the current application locale (e.g., 'en' or 'ar')
-        $lang = app()->getLocale();
+        $lang = App::getLocale();
 
         // Check if the cover array has the language key and return the respective cover image URL
         $coverKey = $this->cover[$lang] ?? null;
