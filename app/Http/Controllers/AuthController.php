@@ -107,23 +107,23 @@ class AuthController extends Controller
                 $principalResponse = Http::withHeaders([
                     'Content-Type' => 'application/json',
                     'Authorization' => 'Basic ' . $basicAuth,
-                ])->post('https://api.mol.gov.om/sso.token.api/api/Token/GetPrincipal', [
+                ])->post('http://10.153.25.11/sso.token.api/api/Token/GetPrincipal', [
                     'Token' => $token
                 ]);
 
                 if ($principalResponse->failed()) {
-    // Log the error if the request fails
-    Log::error('API Request Failed', [
-        'status' => $principalResponse->status(),
-        'body' => $principalResponse->body(),
-        'headers' => $principalResponse->headers(),
-    ]);
-} else {
-    // If the request is successful, log the response
-    Log::info('API Request Successful', [
-        'response' => $principalResponse->json(),
-    ]);
-}
+                // Log the error if the request fails
+                Log::error('API Request Failed', [
+                    'status' => $principalResponse->status(),
+                    'body' => $principalResponse->body(),
+                    'headers' => $principalResponse->headers(),
+                ]);
+            } else {
+                // If the request is successful, log the response
+                Log::info('API Request Successful', [
+                    'response' => $principalResponse->json(),
+                ]);
+            }
 
                 if ($principalResponse->failed()) {
                     \Log::error('API Request Failed', [
@@ -150,7 +150,7 @@ class AuthController extends Controller
             // 3. Call GetLoggedUserInfo using another Basic Auth key
             $userResponse = Http::withBasicAuth('UMSDEVUSER', 'xbwdjsMHtpL5MWL3') // ← replace with actual credentials
                 ->withOptions(['verify' => false])
-                ->get('http://api.mol.gov.om/UMS.API/api/User/GetLoggedUserInfo', [
+                ->get('http://10.153.25.11/UMS.API/api/User/GetLoggedUserInfo', [
                     'UserID' => $userId,
                     'CertificateType' => $principal['CertificateType'],
                 ]);
