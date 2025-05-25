@@ -93,7 +93,6 @@ class SyncUserProfileFromMolRegApi
                 'phone' => $this->safeString($data['TELNO1'] ?? null),
                 'position' => $this->safeString($data['DESIGNATION_DESC'] ?? null),
                 'gender' => ($data['SEX'] ?? '') === 'M' ? 1 : 0,
-                'username' => rand(1000000, 9999999),
                 'dob' => isset($data['DATE_OF_BIRTH']) && is_string($data['DATE_OF_BIRTH'])
                     ? \Carbon\Carbon::parse($data['DATE_OF_BIRTH'])->format('Y-m-d')
                     : null,
