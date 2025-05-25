@@ -205,6 +205,8 @@ class AuthController extends Controller
 
         Cookie::queue(Cookie::forget('AUTH_COOKIE'));
 
+        session()->flush();
+
         auth()->logout();
 
         // You can clear the session if needed
