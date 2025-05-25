@@ -14,8 +14,8 @@ class DigitalLibraryLink extends Model
 
     protected $guarded = [];
 
-    public function getThumbnailImage()
-    {
-        return !$this->cover ? asset('assets/images/unset.jpg') : Storage::disk('public')->url($this->cover);
-    }
+    // public function getThumbnailImage()
+    // {
+    //     return !$this->cover ? asset('assets/images/unset.jpg') : Storage::disk('public')->url($this->cover);
+    // }
 }
