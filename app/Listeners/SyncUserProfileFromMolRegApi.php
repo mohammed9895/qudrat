@@ -76,7 +76,7 @@ class SyncUserProfileFromMolRegApi
             // Residence State
             $residenceState = ! empty($residenceWilayatAr)
                 ? State::where('name->ar', $residenceWilayatAr)->first()
-                    ?: State::create(['name' => ['ar' => $residenceWilayatAr, 'en' => $residenceWilayatAr]])
+                    ?: State::create(['name' => ['ar' => $residenceWilayatAr, 'en' => $residenceWilayatAr], 'province_id' => $province->id])
                 : null;
 
             $nationality = ! empty($nationalityAr)
