@@ -16,7 +16,7 @@ return new class extends Migration
             $table->json('title');
             $table->json('description');
             $table->string('link');
-            $table->json('cover');
+            $table->string('cover');
             $table->integer('status')->default(1);
             $table->timestamps();
         });

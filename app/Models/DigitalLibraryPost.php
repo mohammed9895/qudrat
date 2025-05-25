@@ -15,7 +15,7 @@ class DigitalLibraryPost extends Model
     use HasTranslations;
     use SoftDeletes;
 
-    public $translatable = ['title', 'description', 'image'];
+    public $translatable = ['title', 'description'];
 
     protected $guarded = [];
 

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('title')->nullable();
             $table->string('slug')->nullable();
             $table->text('description')->nullable();
-            $table->text('image')->nullable();
+            $table->string('image')->nullable();
             $table->text('file')->nullable();
             $table->boolean('is_featured')->nullable();
             $table->integer('status')->default(0);
