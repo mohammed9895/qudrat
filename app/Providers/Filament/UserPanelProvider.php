@@ -45,7 +45,7 @@ class UserPanelProvider extends PanelProvider
             ->default()
             ->id('user')
             ->path('user')
-            ->login()
+            // ->login()
             ->registration()
             ->colors([
                 'primary' => '#1d71b8',
