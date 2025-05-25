@@ -17,7 +17,7 @@ class DigitalLibraryLink extends Model
     public function getThumbnailImage()
     {
         // Get the current application locale (e.g., 'en' or 'ar')
-        $lang = App::getLocale();
+        $lang = app()->getLocale();
 
         // Check if the cover array has the language key and return the respective cover image URL
         $coverKey = $this->cover[$lang] ?? null;
