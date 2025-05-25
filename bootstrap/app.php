@@ -20,7 +20,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->append(SessionTimeout::class);
         //  $middleware->trustProxies(at: '*');
         // $middleware->append(CorsMiddleware::class)
-        $middleware->trustProxies(at: '*', headers: Request::HEADER_X_FORWARDED_ALL);
+        $middleware->trustProxies(at: [
+            '192.168.1.1',
+            '10.0.0.0/8',
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //
