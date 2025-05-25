@@ -200,7 +200,7 @@ class AuthController extends Controller
     public function handleQudratLogoutCallback(Request $request)
     {
 
-        dd('logout');
+
         Cookie::queue(Cookie::forget('AUTH_COOKIE'));
 
         auth()->logout();
