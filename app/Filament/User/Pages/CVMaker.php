@@ -57,7 +57,11 @@ class CVMaker extends Page
         // Generate the PDF using Browsershot
         Browsershot::html(view($viewPath, ['profile' => auth()->user()->profile])->render())
             ->setOption('executablePath', '/usr/bin/google-chrome-stable')
-            ->setOption('args', ['--no-sandbox'])
+    ->setOption('args', [
+        '--no-sandbox',
+        '--disable-gpu',
+        '--user-data-dir=/tmp', // <== 🔑 this line fixes the permission issue
+    ])
             ->setOption('viewport', ['width' => 2480, 'height' => 3508]) // Set a fixed viewport size
             ->margins(0, 0, 0, 0)
             ->save($outputPath);
