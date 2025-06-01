@@ -45,6 +45,7 @@ class SyncUserProfileFromMolRegApi
             ],
             'email' => $fallback['Contact']['Email'] ?? 'info@example.com',
             'gender' => ($fallback['GenderID'] ?? '') === 1 ? 1 : 0,
+            'username' => rand(1000000000000, 99999999999999),
         ]);
 
         \Log::info('User profile created using fallback data for user_id: ' . $user->id);
