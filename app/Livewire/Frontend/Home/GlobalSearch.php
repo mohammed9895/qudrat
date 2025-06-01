@@ -41,7 +41,7 @@ class GlobalSearch extends Component
                     ->where('public_profile', true)
                     ->where(function ($q) use ($query, $locale) {
                         $q->where("fullname->ar", 'like', "%{$query}%")
-                            ->orWhere('title', 'like', "%{$query}%")
+                            ->orWhere('fuulname->en', 'like', "%{$query}%")
                             ->orWhere('username', 'like', "%{$query}%")
                             ->orWhereHas('category', fn ($cat) => $cat->where('name', 'like', "%{$query}%"));
                     })
