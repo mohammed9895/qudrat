@@ -240,6 +240,7 @@ return [
         'description' => 'الوصف',
         'save-success-title' => 'تم الحفظ',
         'save-success-body' => 'تم حفظ معلومات الخبرة الخاصة بك.',
+        'sector' => 'القطاع'
     ],
     'certificates' => [
         'title' => 'الشهادات',

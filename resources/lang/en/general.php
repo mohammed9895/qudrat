@@ -231,6 +231,7 @@ return [
         'description' => 'Description',
         'save-success-title' => 'Saved',
         'save-success-body' => 'Your experience information has been saved.',
+        'sector' => 'Sector',
     ],
     'certificates' => [
         'title' => 'Certificates',
