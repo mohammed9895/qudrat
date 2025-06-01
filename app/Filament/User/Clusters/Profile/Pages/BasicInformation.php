@@ -148,7 +148,7 @@ class BasicInformation extends Page
                 ->openUrlInNewTab(),
                  Action::make('fetch-data')
                 ->label(__('general.fetch-data'))  // Use translation for label
-                ->icon('hugeicons-reload ')
+                ->icon('hugeicons-reload')
                 ->action(function () {
                     $qudratService = new QudratService;
                     $registrationData = $qudratService->getRegistrationByNationalId($user->civil_id);
