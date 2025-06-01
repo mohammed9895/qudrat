@@ -54,6 +54,7 @@ class WorkResource extends Resource
                             ->unique(table: Work::class),
                         Forms\Components\Select::make('work_category_id')
                             ->label(__('general.work_resource.category_label'))
+                            ->preload()
                             ->relationship('workCategory', 'name')
                             ->searchable(),
                         Forms\Components\TextInput::make('link')
