@@ -23,6 +23,7 @@ use Illuminate\Contracts\Support\Htmlable;
 use App\Events\UserRegistered;
 use App\Models\User;
 use App\Services\QudratService;
+use Illuminate\Support\Facades\Http;
 
 class BasicInformation extends Page
 {
