@@ -34,12 +34,13 @@ class GlobalSearch extends Component
 
         $query = $this->search;
 
+        $locale = app()->getLocale();
+
         $this->results = [
                 'profiles' => Profile::with('category')
                     ->where('public_profile', true)
                     ->where(function ($q) use ($query) {
-                        $q->where('fullname->en', 'like', "%{$query}%")
-                            ->orWhere('fullname->ar', 'like', "%{$query}%")
+                        $q->where("fullname->{$locale}", 'like', "%{$query}%")
                             ->orWhere('username', 'like', "%{$query}%")
                             ->orWhereHas('category', fn ($cat) => $cat->where('name', 'like', "%{$query}%"));
                     })
