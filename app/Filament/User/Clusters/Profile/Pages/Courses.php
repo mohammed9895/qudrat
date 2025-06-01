@@ -127,6 +127,10 @@ class Courses extends Page
                 }
             }
 
+            if (empty($options)) {
+                $options[$query] = $query; // Use the search query as both the value and label
+            }
+
             return $options; // Return the options for the select field
         }
 
