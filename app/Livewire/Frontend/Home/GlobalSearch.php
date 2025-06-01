@@ -59,8 +59,8 @@ class GlobalSearch extends Component
 
                 'jobs' => JobApplication::with(['jobDepartment', 'province', 'employmentType'])
                     ->where(function ($q) use ($query) {
-                        $q->where('fullname->en', 'like', "%{$query}%")
-                            ->orWhere('fullname->ar', 'like', "%{$query}%")
+                        $q->where('title->en', 'like', "%{$query}%")
+                            ->orWhere('title->ar', 'like', "%{$query}%")
                             ->orWhere('position', 'like', "%{$query}%")
                             ->orWhere('description', 'like', "%{$query}%")
                             ->orWhereHas('jobDepartment', fn ($cat) => $cat->whereTranslationLike('name', "%{$query}%"))
