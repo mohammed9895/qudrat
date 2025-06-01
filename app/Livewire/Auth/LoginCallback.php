@@ -2,19 +2,18 @@
 
 namespace App\Livewire\Auth;
 
-use Livewire\Component;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Http\Request;
-use App\Models\User;
 use App\Events\UserRegistered;
+use App\Models\User;
 use App\Services\QudratService;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 class LoginCallback extends Component
 {
     public $loading = true;
+
     public $error = null;
 
     public function mount() {}
@@ -24,30 +23,33 @@ class LoginCallback extends Component
         try {
             $token = strtok(request()->cookie('AUTH_COOKIE'), '|');
 
-            if (!$token) {
+            if (! $token) {
                 $this->error = 'No token received.';
+
                 return;
             }
 
-            $basicAuth = base64_encode("eJWTUserName:eP@ssw0rd@123abc");
+            $basicAuth = base64_encode('eJWTUserName:eP@ssw0rd@123abc');
 
             $principalResponse = Http::withHeaders([
                 'Content-Type' => 'application/json',
-                'Authorization' => 'Basic ' . $basicAuth,
+                'Authorization' => 'Basic '.$basicAuth,
             ])->post('http://10.153.25.11/sso.token.api/api/Token/GetPrincipal', [
-                'Token' => $token
+                'Token' => $token,
             ]);
 
-            if (!$principalResponse->successful()) {
+            if (! $principalResponse->successful()) {
                 $this->error = 'Failed to verify token.';
+
                 return;
             }
 
             $principal = $principalResponse->json();
             $userId = $principal['CurrentUserID'] ?? null;
 
-            if (!$userId) {
+            if (! $userId) {
                 $this->error = 'Invalid principal response.';
+
                 return;
             }
 
@@ -60,8 +62,9 @@ class LoginCallback extends Component
 
             $userData = $userResponse->json()['Data'] ?? null;
 
-            if (!$userData || empty($userData['CivilID'])) {
+            if (! $userData || empty($userData['CivilID'])) {
                 $this->error = 'User info not found.';
+
                 return;
             }
 
@@ -76,7 +79,7 @@ class LoginCallback extends Component
                 ]
             );
 
-            if (!$user->hasRole('panel_user')) {
+            if (! $user->hasRole('panel_user')) {
                 $user->assignRole('panel_user');
             }
 
@@ -84,26 +87,26 @@ class LoginCallback extends Component
             session()->regenerate();
 
             // ✅ Call QudratService only once
-            $qudratService = new QudratService();
+            $qudratService = new QudratService;
             $registrationData = $qudratService->getRegistrationByNationalId($user->civil_id);
 
             // ✅ Pass both data sources to event
             event(new UserRegistered(
                 user: $user,
                 registrationData: $registrationData,
-                fallbackData: !$registrationData ? $userData : null
+                fallbackData: ! $registrationData ? $userData : null
             ));
 
             // ✅ Finally redirect
             redirect('/user')->with('success', 'Logged in successfully!');
         } catch (\Exception $e) {
-            $this->error = 'Login failed: ' . $e->getMessage();
+            $this->error = 'Login failed: '.$e->getMessage();
         } finally {
             $this->loading = false;
         }
     }
 
-     #[Layout('components.layouts.loading')] 
+    #[Layout('components.layouts.loading')]
     public function render()
     {
         return view('livewire.auth.login-callback');

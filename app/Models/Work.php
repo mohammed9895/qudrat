@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Work extends Model
 {
@@ -58,5 +59,16 @@ class Work extends Model
     public function tools(): BelongsToMany
     {
         return $this->belongsToMany(Tool::class);
+    }
+
+    public function getThumbnailImage()
+    {
+        // Check if avatar is null or empty
+        if (is_null($this->cover) || empty($this->cover)) {
+            return asset('assets/images/unset.jpg'); // Return default image if avatar is null or empty
+        }
+
+        // Return the avatar image URL from the public disk
+        return Storage::disk('public')->url($this->cover);
     }
 }

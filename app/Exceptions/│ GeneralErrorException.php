@@ -3,7 +3,6 @@
 namespace App\Exceptions;
 
 use Exception;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class GeneralErrorException extends Exception
@@ -22,7 +21,7 @@ class GeneralErrorException extends Exception
             if ($request->expectsJson() || $request->header('X-Livewire')) {
                 return response()->json([
                     'message' => 'Something went wrong. Please try again.',
-                    'exception' => config('app.debug') ? $e->getMessage() : null
+                    'exception' => config('app.debug') ? $e->getMessage() : null,
                 ], 500);
             }
         });
@@ -36,7 +35,7 @@ class GeneralErrorException extends Exception
         if (! config('app.debug')) {
             // Return a clean error view for normal web requests
             return response()->view('errors.general', [
-                'message' => 'Something went wrong. Please try again later.'
+                'message' => 'Something went wrong. Please try again later.',
             ], 500);
         }
 

@@ -11,8 +11,10 @@ class UserRegistered
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-   public $user;
+    public $user;
+
     public $registrationData;
+
     public $fallbackData;
 
     public function __construct(User $user, ?array $registrationData = null, ?array $fallbackData = null)

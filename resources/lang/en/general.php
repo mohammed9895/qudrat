@@ -1,7 +1,9 @@
 <?php
 
 return [
-     'loading-info' => 'Loading your infomration',
+    'loading-info' => 'Loading your information',
+    'search-result' => 'Search Results',
+    'search-result-for' => 'Search Results For :query',
     'navigation' => [
         'home' => 'Home',
         'about' => 'About Us',

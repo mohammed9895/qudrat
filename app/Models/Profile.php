@@ -83,7 +83,7 @@ class Profile extends Model implements Viewable
 
     public function category(): BelongsToMany
     {
-        return $this->belongsToMany(Category::class, 'category_id');
+        return $this->belongsToMany(Category::class, 'category_profile');
     }
 
     public function trainings()

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Imports\SchoolsImport;
+use App\Livewire\Auth\LoginCallback;
 use App\Livewire\Frontend\DigitalLibrary\ListPosts;
+use App\Livewire\Frontend\Home\GlobalSearch;
 use App\Livewire\Frontend\Innovators;
 use App\Livewire\Frontend\MediaCenter\Post;
 use App\Livewire\Frontend\Researchers;
@@ -14,6 +16,7 @@ use App\Livewire\Frontend\Work\Index;
 use App\Livewire\Frontend\Work\Show;
 use App\Livewire\Frontend\Work\Tag;
 use App\Models\Profile;
+use App\Models\User;
 use App\Services\QudratService;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
@@ -55,6 +58,7 @@ Route::get('/social-window/{tool}', Skill::class)->name('social-window.skill');
 Route::get('/social-window/{skill}', Tool::class)->name('social-window.tool');
 Route::get('/innovators', Innovators::class)->name('social-window.innovators');
 Route::get('/researchers', Researchers::class)->name('social-window.researchers');
+Route::get('/search', GlobalSearch::class)->name('search');
 
 Route::get('/cv', function () {
     return view('cv-templates.template-1.index', ['profile' => auth()->user()->profile]);
@@ -62,7 +66,7 @@ Route::get('/cv', function () {
 
 Route::get('/feedbacks', App\Livewire\Frontend\FeedBack\Index::class)->name('feedbacks.index');
 
-Route::get('/auth/login/callback', \App\Livewire\Auth\LoginCallback::class)->name('auth.login.callback');
+Route::get('/auth/login/callback', LoginCallback::class)->name('auth.login.callback');
 
 Route::get('/otpki', [AuthController::class, 'handleQudratLogoutCallback'])->name('auth.logout.callback');
 
@@ -95,7 +99,7 @@ Route::get('import', function () {
 
         // Return success message
         return back()->with('success', 'Data imported successfully!');
-    } catch (\Exception $e) {
+    } catch (Exception $e) {
         dd($e->getMessage());
         Log::error('Import error: '.$e->getMessage());
 
@@ -143,7 +147,7 @@ Route::get('update-pro', function () {
                 'is_current' => $isCurrent,
                 'description' => null,
                 'sort' => 0,
-                'addable_type' => \App\Models\User::class,
+                'addable_type' => User::class,
                 'addable_id' => auth()->user()->profile->id,
             ]);
         }

@@ -9,27 +9,30 @@
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ $work->title }}</h2>
                 </div>
                 <div class="w-6/12">
-                    <div class="flex items-center justify-end space-x-3 rtl:space-x-reverse" x-data="{ showShare:false }">
+                    <div class="flex items-center justify-end space-x-3 rtl:space-x-reverse"
+                         x-data="{ showShare:false }">
                         <div class="sharethis-inline-share-buttons" x-show="showShare"></div>
                         <button id="share-buttons" @click="showShare = !showShare"
-                           class="w-12 h-12 rounded-full bg-brand-blue text-white items-center justify-center flex">
+                                class="w-12 h-12 rounded-full bg-brand-blue text-white items-center justify-center flex">
                             <x-hugeicons-share-08/>
                         </button>
-                        <script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=68171050bde97c0013e1db8c&product=inline-share-buttons&source=platform" async="async"></script>
+                        <script type="text/javascript"
+                                src="https://platform-api.sharethis.com/js/sharethis.js#property=68171050bde97c0013e1db8c&product=inline-share-buttons&source=platform"
+                                async="async"></script>
 
-                            <script>
-                                new ShareButton('#share-buttons', {
-                                    networks: {
-                                        facebook: {},
-                                        twitter: {},
-                                        whatsapp: {},
-                                        telegram: {},
-                                        email: {}
-                                    }
-                                });
-                            </script>
-                        <button  wire:click="toggleLike"
-                           class="w-12 h-12 rounded-full bg-brand-blue text-white items-center justify-center flex">
+                        <script>
+                            new ShareButton('#share-buttons', {
+                                networks: {
+                                    facebook: {},
+                                    twitter: {},
+                                    whatsapp: {},
+                                    telegram: {},
+                                    email: {}
+                                }
+                            });
+                        </script>
+                        <button wire:click="toggleLike"
+                                class="w-12 h-12 rounded-full bg-brand-blue text-white items-center justify-center flex">
                             @if ($liked)
                                 <x-heroicon-s-heart class="w-6 h-6"/>
                             @else
@@ -66,7 +69,7 @@
                                 </p>
                             </div>
                         </div>
-                        <img src="/storage/{{ $work->profile->avatar }}" width="120" alt="image"
+                        <img src="{{ $work->profile->getThumbnailImage() }}" width="120" alt="image"
                              class="mb-5 rounded-full border-2">
                         <h4 class="text-xl font-medium mb-1">{{$work->profile->fullname }}</h4>
                         <p class="text-sm mb-5">{{ $work->profile->position }}</p>
@@ -177,39 +180,41 @@
                 </div>
                 <div class="col-span-full xl:col-span-9">
                     <div class="bg-white p-6 rounded-xl">
-                        <div class="images overflow-hidden w-full" wire:ignore>
-                            <div
-                                class="swiper swiper-thumb-images section-swiper-navigation rounded-xl relative max-h-[400px]">
-                                <button
-                                    class="custom-button-prev size-12 rounded-full -border lg:left-6 left-4 absolute z-50 top-1/2 bg-white flex items-center justify-center">
-                                    @svg('hugeicons-arrow-left-04', 'size-8')
-                                </button>
-                                @if($work->images != null)
+                        @if($work->images)
+                            <div class="images overflow-hidden w-full" wire:ignore>
+                                <div
+                                    class="swiper swiper-thumb-images section-swiper-navigation rounded-xl relative max-h-[400px]">
+                                    <button
+                                        class="custom-button-prev size-12 rounded-full -border lg:left-6 left-4 absolute z-50 top-1/2 bg-white flex items-center justify-center">
+                                        @svg('hugeicons-arrow-left-04', 'size-8')
+                                    </button>
+                                    @if($work->images != null)
+                                        <div class="swiper-wrapper">
+                                            @foreach($work->images as $image)
+                                                <div class="swiper-slide">
+                                                    <img src="/storage/{{ $image }}" alt="blog/1"
+                                                         class="w-full h-full object-cover"/>
+                                                </div>
+                                            @endforeach
+                                        </div>
+                                    @endif
+                                    <button
+                                        class="custom-button-next size-12 bg-white rounded-full absolute z-50 top-1/2 -border lg:right-6 right-4 flex items-center justify-center">
+                                        @svg('hugeicons-arrow-right-04', 'size-8')
+                                    </button>
+                                </div>
+                                <div thumbsSlider="" class="swiper swiper-list-images mt-4">
                                     <div class="swiper-wrapper">
                                         @foreach($work->images as $image)
-                                            <div class="swiper-slide">
+                                            <div class="swiper-slide overflow-hidden rounded-lg">
                                                 <img src="/storage/{{ $image }}" alt="blog/1"
                                                      class="w-full h-full object-cover"/>
                                             </div>
                                         @endforeach
                                     </div>
-                                @endif
-                                <button
-                                    class="custom-button-next size-12 bg-white rounded-full absolute z-50 top-1/2 -border lg:right-6 right-4 flex items-center justify-center">
-                                    @svg('hugeicons-arrow-right-04', 'size-8')
-                                </button>
-                            </div>
-                            <div thumbsSlider="" class="swiper swiper-list-images mt-4">
-                                <div class="swiper-wrapper" >
-                                    @foreach($work->images as $image)
-                                        <div class="swiper-slide overflow-hidden rounded-lg">
-                                            <img src="/storage/{{ $image }}" alt="blog/1"
-                                                 class="w-full h-full object-cover"/>
-                                        </div>
-                                    @endforeach
                                 </div>
                             </div>
-                        </div>
+                        @endif
                         <div class="mt-6">
                             <h3 class="text-2xl font-semibold mb-3">{{ __('general.description') }}</h3>
                             <div class="leading-loose mb-3">{!!  $work->description  !!}</div>

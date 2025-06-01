@@ -2,6 +2,8 @@
 
 return [
     'loading-info' => 'جاري جلب معلوماتك...',
+    'search-result' => 'نتائج البحث',
+    'search-result-for' => 'نتائج البحث عن :query',
     'navigation' => [
         'home' => 'الرئيسية',
         'about' => 'من نحن',

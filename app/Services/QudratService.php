@@ -38,12 +38,14 @@ class QudratService
                 \Log::warning("QudratService: No data retrieved for {$nationalId}", [
                     'response' => $array,
                 ]);
+
                 return null;
             }
 
             return collect($array);
         } catch (\Exception $e) {
-            \Log::error('QudratService Error: ' . $e->getMessage());
+            \Log::error('QudratService Error: '.$e->getMessage());
+
             return null;
         }
     }
