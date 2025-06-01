@@ -1,4 +1,4 @@
-loading-info<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}" dir="{{ app()->getLocale() == 'en' ? 'ltr' : 'rtl' }}" class="scroll-smooth">
 <head>
     <meta charset="utf-8">
