@@ -101,7 +101,7 @@
                                 {{ __('general.send-message') }}
                             </a>
                         @endif
-                        <a href="{{ asset('storage/cvs/' . $profile->cv) }}" 
+                        <a 
    wire:click="download"
    class="px-8 py-3 rounded-full text-head-color font-medium bg-brand-blue text-white inline-flex items-center gap-2 w-full justify-center">
     <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
