@@ -40,7 +40,7 @@ class QudratService
 
         } catch (\Exception $e) {
 
-            dd('ssss');
+            dd($e->getMessage());
 
             // You can log the error if needed
             \Log::error('QudratService Error: '.$e->getMessage());
