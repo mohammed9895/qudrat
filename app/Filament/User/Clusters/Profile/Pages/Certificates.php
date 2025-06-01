@@ -9,6 +9,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
@@ -66,7 +67,6 @@ class Certificates extends Page
         // Make the API request using the query input for filtering
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
-            'Cookie' => 'dtCookiea48j9srs=v_4_srv_2_sn_288E7912363DBF7D2C6C69DB251EF4CC_perc_100000_ol_0_mul_1_app-3A3fb7a5f7b7255885_1_rcs-3Acss_0; ASP.NET_SessionId=q3yigk0xwoxk1cnoz2s41yhm'
         ])
         ->post('https://jobseeker.mol.gov.om/js/gup/NewREG.aspx/tranCourseList', [
             'prefix' => $query, // Using search query to filter the results
