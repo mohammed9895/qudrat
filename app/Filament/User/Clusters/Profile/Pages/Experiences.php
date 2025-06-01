@@ -117,16 +117,21 @@ class Experiences extends Page
                 // Split the string into name and ID parts
                 $parts = explode('-', $item);
                 if (count($parts) == 2) {
-                    // Assign the ID as the value but display only the name in the dropdown
-                     $options[$parts[0]] = $parts[0];// Use ID as value, name as label
+                    // Use the name as both value and label
+                    $options[$parts[0]] = $parts[0]; // Use name as value and label
                 }
+            }
+
+            // If no options are found, use the search query as the option
+            if (empty($options)) {
+                $options[$query] = $query; // Use the search query as both the value and label
             }
 
             return $options; // Return the options for the select field
         }
 
         // Return an empty array if the request fails
-        return $options['محملا'] = 'DDDDDD';
+        return [];
     })
                                     ->label(__('general.experiences.position')),  // Use translated label
                                 DatePicker::make('start_date')
