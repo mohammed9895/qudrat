@@ -104,7 +104,7 @@ class LoginCallback extends Component
         }
     }
 
-     #[Layout('layouts.loading')] 
+     #[Layout('components.layouts.loading')] 
     public function render()
     {
         return view('livewire.auth.login-callback');
