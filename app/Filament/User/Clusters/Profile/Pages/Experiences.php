@@ -122,17 +122,16 @@ class Experiences extends Page
                 }
             }
 
-            // If no options are found, use the search query as the option
-            if (empty($options)) {
-                dd($query);
-                $options[$query] = $query; // Use the search query as both the value and label
-            }
+            // // If no options are found, use the search query as the option
+            // if (empty($options)) {
+            //     $options[$query] = $query; // Use the search query as both the value and label
+            // }
 
             return $options; // Return the options for the select field
         }
 
         // Return an empty array if the request fails
-        return [];
+        return $options[$query] = $query;
     })
                                     ->label(__('general.experiences.position')),  // Use translated label
                                 DatePicker::make('start_date')
