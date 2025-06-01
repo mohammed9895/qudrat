@@ -60,7 +60,7 @@ class Certificates extends Page
                             ->reorderable()
                             ->orderColumn('sort')
                             ->schema([
-                                TextInput::make('title')
+                                Select::make('title')
                                 ->searchable()
                             ->getSearchResultsUsing(function ($query) {
         // Make the API request using the query input for filtering
