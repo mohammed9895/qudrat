@@ -124,6 +124,7 @@ class Experiences extends Page
 
             // If no options are found, use the search query as the option
             if (empty($options)) {
+                dd($query);
                 $options[$query] = $query; // Use the search query as both the value and label
             }
 
