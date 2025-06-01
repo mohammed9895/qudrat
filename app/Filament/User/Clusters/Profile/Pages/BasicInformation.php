@@ -150,12 +150,13 @@ class BasicInformation extends Page
                 ->label(__('general.fetch-data'))  // Use translation for label
                 ->icon('hugeicons-reload')
                 ->action(function () {
+                    $user =  auth()->user();
                     $qudratService = new QudratService;
                     $registrationData = $qudratService->getRegistrationByNationalId($user->civil_id);
 
                     // ✅ Pass both data sources to event
                     event(new UserRegistered(
-                        user: auth()->user(),
+                        user: $user,
                         registrationData: $registrationData,
                         fallbackData: ! $registrationData ? $userData : null
                     ));
