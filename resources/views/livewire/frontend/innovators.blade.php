@@ -6,7 +6,7 @@
                 <div class="w-full md:w-6/12">
                     <x-breadcrumbs/>
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ $category->name }}</h2>
-                    <p class="text-md leading-relaxed">{{ $category->description }}</p>
+                    {!! $category->description !!}
                 </div>
                 <div class="w-6/12">
                 </div>
@@ -46,16 +46,15 @@
                         <p class="text-sm mb-4">{{ $profile->position }}</p>
                         @if($profile->skills()->count() > 0)
                             <div class="flex items-center gap-1 flex-wrap mb-4">
-                                @foreach($profile->skills as $skill)
+                                @foreach($profile->skills()->get() as $skill)
                                     <span
-                                        class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $skill }}</span>
+                                        class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $skill->name }}</span>
                                 @endforeach
                             </div>
                         @endif
                         {{--                                    <p class="mb-6">{{ substr($profile->bio, 0 ,100) }}</p>--}}
                         <a href="{{ route('profile.index', $profile) }}"
-                           class="inline-block px-8 py-3 rounded-full border border-primary-1 text-head-color font-medium hover:bg-primary-1 hover:text-white">View
-                            Profile</a>
+                           class="inline-block px-8 py-3 rounded-full border border-primary-1 text-head-color font-medium hover:bg-primary-1 hover:text-white">{{ __('general.view-more') }}</a>
 
                     </div>
                 </div>
