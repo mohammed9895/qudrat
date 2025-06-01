@@ -56,17 +56,22 @@ class CVMaker extends Page
 
         // Generate the PDF using Browsershot
         Browsershot::html(view($viewPath, ['profile' => auth()->user()->profile])->render())
-            ->setOption('executablePath', '/usr/bin/google-chrome-stable')
+            Browsershot::html('<h1>Hello</h1>')
+    ->setOption('executablePath', '/usr/bin/google-chrome-stable')
     ->setOption('args', [
         '--no-sandbox',
         '--disable-gpu',
         '--disable-dev-shm-usage',
-        '--no-zygote',
         '--single-process',
+        '--no-zygote',
         '--user-data-dir=/tmp/chrome-profile',
         '--no-first-run',
         '--no-default-browser-check',
         '--disable-crash-reporter',
+    ])
+    ->setEnv([
+        'XDG_DATA_HOME' => '/tmp/.local/share',
+        'XDG_CONFIG_HOME' => '/tmp/.config',
     ])
             ->setOption('viewport', ['width' => 2480, 'height' => 3508]) // Set a fixed viewport size
             ->margins(0, 0, 0, 0)
