@@ -5,7 +5,10 @@
         <div class="container">
             <div class="flex items-center justify-between gap-4 flex-wrap md:flex-nowrap">
                 <div class="w-full md:w-6/12">
-                    <x-breadcrumbs/>
+                    <div wire:ignore>
+ <x-breadcrumbs />
+                    </div>
+                   
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ $work->title }}</h2>
                 </div>
                 <div class="w-6/12">
