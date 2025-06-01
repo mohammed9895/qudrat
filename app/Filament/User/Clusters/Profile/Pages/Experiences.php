@@ -5,6 +5,7 @@ namespace App\Filament\User\Clusters\Profile\Pages;
 use App\Filament\User\Clusters\Profile;
 use Filament\Actions\Action;
 use Filament\Forms\Components\DatePicker;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
@@ -14,6 +15,7 @@ use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Support\Htmlable;
+use Illuminate\Support\Facades\Http;
 
 class Experiences extends Page
 {
@@ -59,7 +61,39 @@ class Experiences extends Page
                             ->reorderable()
                             ->orderColumn('sort')
                             ->schema([
-                                TextInput::make('company')
+                                Select::make('company')
+                                 ->searchable()
+                            ->getSearchResultsUsing(function ($query) {
+        // Make the API request using the query input for filtering
+        $response = Http::withHeaders([
+            'Content-Type' => 'application/json',
+        ])
+        ->post('https://jobseeker.mol.gov.om/js/gup/NewREG.aspx/GetExpSponserList', [
+            'prefix' => $query, // Using search query to filter the results
+        ]);
+
+        // Check if the response is successful
+        if ($response->successful()) {
+            // Access the 'd' field which contains the list of course names with IDs
+            $data = $response->json()['d'];
+            $options = [];
+
+            // Loop through the data to create key-value pairs for the options
+            foreach ($data as $item) {
+                // Split the string into name and ID parts
+                $parts = explode('-', $item);
+                if (count($parts) == 2) {
+                    // Assign the ID as the value but display only the name in the dropdown
+                     $options[$parts[0]] = $parts[0];// Use ID as value, name as label
+                }
+            }
+
+            return $options; // Return the options for the select field
+        }
+
+        // Return an empty array if the request fails
+        return [];
+    })
                                     ->label(__('general.experiences.company')),  // Use translated label
                                 TextInput::make('position')
                                     ->label(__('general.experiences.position')),  // Use translated label
