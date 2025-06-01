@@ -97,6 +97,7 @@ class Experiences extends Page
         return [];
     })->label(__('general.experiences.company')),
     Select::make('sector')
+    ->label(__('general.experiences.sector'))
     ->options([
         1 => 'القطاع العام',
         2 => 'القطاع الخاص',
