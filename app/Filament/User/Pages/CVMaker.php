@@ -66,15 +66,11 @@ class CVMaker extends Page
         '--user-data-dir=/tmp/chrome-profile',
         '--no-first-run',
         '--no-default-browser-check',
-        '--disable-crash-reporter',
+        '--disable-crash-reporter'
     ])
-    ->setEnv([
-        'XDG_DATA_HOME' => '/tmp/.local/share',
-        'XDG_CONFIG_HOME' => '/tmp/.config',
-    ])
-            ->setOption('viewport', ['width' => 2480, 'height' => 3508]) // Set a fixed viewport size
-            ->margins(0, 0, 0, 0)
-            ->save($outputPath);
+    ->setOption('viewport', ['width' => 2480, 'height' => 3508])
+    ->margins(0, 0, 0, 0)
+    ->save($outputPath);
 
         // Return the generated PDF as a download response
         return response()->download($outputPath);
