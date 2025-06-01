@@ -208,6 +208,7 @@ return [
     'save-success-title' => 'Saved',
     'save-success-body' => 'Your profile has been saved.',
     'visit-profile' => 'Visit Profile',
+     'fetch-data' => 'Fetch Data',
     'educations' => [
         'title' => 'Educations',
         'school' => 'School',

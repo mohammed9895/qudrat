@@ -20,6 +20,9 @@ use Filament\Forms\Set;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Support\Htmlable;
+use App\Events\UserRegistered;
+use App\Models\User;
+use App\Services\QudratService;
 
 class BasicInformation extends Page
 {
@@ -143,6 +146,20 @@ class BasicInformation extends Page
                 ->icon('hugeicons-link-forward')
                 ->url(route('profile.index', ['profile' => $this->profile]))
                 ->openUrlInNewTab(),
+                 Action::make('fetch-data')
+                ->label(__('general.fetch-data'))  // Use translation for label
+                ->icon('hugeicons-reload ')
+                ->action(function () {
+                    $qudratService = new QudratService;
+                    $registrationData = $qudratService->getRegistrationByNationalId($user->civil_id);
+
+                    // ✅ Pass both data sources to event
+                    event(new UserRegistered(
+                        user: auth()->user(),
+                        registrationData: $registrationData,
+                        fallbackData: ! $registrationData ? $userData : null
+                    ));
+                }),
         ];
     }
 }

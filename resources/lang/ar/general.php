@@ -217,6 +217,7 @@ return [
     'save-success-title' => 'تم الحفظ',
     'save-success-body' => 'تم حفظ ملفك الشخصي.',
     'visit-profile' => 'زيارة الملف الشخصي',
+    'fetch-data' => 'جلب المعلومات',
     'educations' => [
         'title' => 'التعليم',
         'school' => 'المدرسة',
