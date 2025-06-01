@@ -61,9 +61,12 @@ class CVMaker extends Page
         '--no-sandbox',
         '--disable-gpu',
         '--disable-dev-shm-usage',
-        '--single-process',
         '--no-zygote',
+        '--single-process',
         '--user-data-dir=/tmp/chrome-profile',
+        '--no-first-run',
+        '--no-default-browser-check',
+        '--disable-crash-reporter',
     ])
             ->setOption('viewport', ['width' => 2480, 'height' => 3508]) // Set a fixed viewport size
             ->margins(0, 0, 0, 0)
