@@ -60,7 +60,10 @@ class CVMaker extends Page
     ->setOption('args', [
         '--no-sandbox',
         '--disable-gpu',
-        '--user-data-dir=/tmp', // <== 🔑 this line fixes the permission issue
+        '--disable-dev-shm-usage',
+        '--single-process',
+        '--no-zygote',
+        '--user-data-dir=/tmp/chrome-profile',
     ])
             ->setOption('viewport', ['width' => 2480, 'height' => 3508]) // Set a fixed viewport size
             ->margins(0, 0, 0, 0)
