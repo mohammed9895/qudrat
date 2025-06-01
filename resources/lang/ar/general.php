@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'loading-info' => 'جاري جلب معلوماتك...',
     'navigation' => [
         'home' => 'الرئيسية',
         'about' => 'من نحن',

@@ -1,6 +1,7 @@
 <?php
 
 return [
+     'loading-info' => 'Loading your infomration',
     'navigation' => [
         'home' => 'Home',
         'about' => 'About Us',

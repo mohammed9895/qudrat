@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Events\UserRegistered;
 use App\Services\QudratService;
+use Livewire\Attributes\Layout;
 
 class LoginCallback extends Component
 {
@@ -103,6 +104,7 @@ class LoginCallback extends Component
         }
     }
 
+     #[Layout('layouts.loading')] 
     public function render()
     {
         return view('livewire.auth.login-callback');
