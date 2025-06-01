@@ -28,14 +28,14 @@
                             <input type="text" name="search" class="bg-white w-full px-6 py-4 border-none rounded-full"
                                    placeholder="{{ __('general.hero.hero-search') }}">
                             <div class="flex items-center gap-2 absolute top-[4px] end-[6px]">
-                                <select name="serachType" class="bg-transparent hero_select !px-5 hidden sm:block">
+                                <!-- <select name="serachType" class="bg-transparent hero_select !px-5 hidden sm:block">
                                     <option selected value="talents">{{ __('general.talents') }}</option>
                                     <option value="experts">{{ __('general.experts') }}</option>
                                     <option value="job">{{ __('general.jobs') }}</option>
                                     <option value="works">{{ __('general.works') }}</option>
                                     <option value="researchers">{{ __('general.researchers') }}</option>
                                     <option value="innovators">{{ __('general.innovators') }}</option>
-                                </select>
+                                </select> -->
                                 <button type="submit"
                                         class="w-[48px] h-[48px] bg-brand-blue rounded-full flex items-center justify-center">
                                     <svg width="24" height="25" viewBox="0 0 24 25" fill="none"
