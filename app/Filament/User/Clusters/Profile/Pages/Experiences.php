@@ -93,17 +93,25 @@ class Experiences extends Page
 
         // Return an empty array if the request fails
         return [];
-    })
-                                    ->label(__('general.experiences.company')),  // Use translated label
+    })->label(__('general.experiences.company')),
+    Select::make('sector')
+    ->options([
+        1 => 'القطاع العام',
+        2 => 'القطاع الخاص',
+         3 => 'العاملين خارج السلطنة',
+    ])->live(),
+                                      // Use translated label
                                 Select::make('position')
                                 ->searchable()
-                            ->getSearchResultsUsing(function ($query) {
+                                ->live()
+                            ->getSearchResultsUsing(function ($query, Form\Get $get) {
         // Make the API request using the query input for filtering
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
         ])
         ->post('https://jobseeker.mol.gov.om/js/gup/NewREG.aspx/GetExpDesignationList', [
             'prefix' => $query, // Using search query to filter the results
+            'sector_ID' => $get('sector')
         ]);
 
         // Check if the response is successful
