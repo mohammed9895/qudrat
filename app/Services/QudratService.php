@@ -1,7 +1,5 @@
 <?php
 
-// app/Services/QudratService.php
-
 namespace App\Services;
 
 use Illuminate\Support\Collection;
@@ -9,15 +7,12 @@ use Illuminate\Support\Facades\Http;
 
 class QudratService
 {
-    /**
-     * Fetch user registration data by national ID and return as Collection.
-     */
     public function getRegistrationByNationalId(string $nationalId): ?Collection
     {
         try {
             $response = Http::withOptions([
-    'verify' => false,  // Disable SSL certificate verification
-])->get('https://qudrat-prd-pki.mol.gov.om/registration', [
+                'verify' => false,
+            ])->get('https://qudrat-prd-pki.mol.gov.om/registration', [
                 'nationalId' => $nationalId,
             ]);
 
@@ -32,19 +27,23 @@ class QudratService
                 return null;
             }
 
-            // Convert the XML object to an array
+            // Convert to array
             $array = json_decode(json_encode($xmlObject), true);
 
-            // Return as a Laravel Collection
+            // ✅ Check for issuccess = false or message contains "No Data"
+            if (
+                isset($array['issuccess']) && $array['issuccess'] === 'false' ||
+                str_contains(strtolower($array['message'] ?? ''), 'no data')
+            ) {
+                \Log::warning("QudratService: No data retrieved for {$nationalId}", [
+                    'response' => $array,
+                ]);
+                return null;
+            }
+
             return collect($array);
-
         } catch (\Exception $e) {
-
-            dd($e->getMessage());
-
-            // You can log the error if needed
-            \Log::error('QudratService Error: '.$e->getMessage());
-
+            \Log::error('QudratService Error: ' . $e->getMessage());
             return null;
         }
     }

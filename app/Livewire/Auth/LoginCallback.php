@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Events\UserRegistered;
+use App\Services\QudratService;
 
 class LoginCallback extends Component
 {
@@ -81,9 +82,16 @@ class LoginCallback extends Component
             Auth::login($user);
             session()->regenerate();
 
-            if (!$user->profile) {
-                event(new UserRegistered($user));
-            }
+            // ✅ Call QudratService only once
+            $qudratService = new QudratService();
+            $registrationData = $qudratService->getRegistrationByNationalId($user->civil_id);
+
+            // ✅ Pass both data sources to event
+            event(new UserRegistered(
+                user: $user,
+                registrationData: $registrationData,
+                fallbackData: !$registrationData ? $userData : null
+            ));
 
             return redirect('/user')->with('success', 'Logged in successfully!');
         } catch (\Exception $e) {

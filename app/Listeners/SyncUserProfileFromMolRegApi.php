@@ -32,21 +32,29 @@ class SyncUserProfileFromMolRegApi
      */
     public function handle(UserRegistered $event)
     {
-        $user = $event->user;
+       $user = $event->user;
+        $data = $event->registrationData;
+        $fallback = $event->fallbackData;
 
-        $qudratService = new QudratService;
+       if (! $data && $fallback) {
+        // Fallback mode – QudratService returned no data
+        $user->profile()->updateOrCreate(['user_id' => $user->id], [
+            'fullname' => [
+                'en' => $user->getTranslation('name', 'en'),
+                'ar' => $user->getTranslation('name', 'ar'),
+            ],
+            'email' => $fallback['Contact']['Email'] ?? 'info@example.com',
+            'gender' => ($fallback['GenderID'] ?? '') === 1 ? 1 : 0,
+        ]);
 
-        $data = $qudratService->getRegistrationByNationalId($user->civil_id);
+        \Log::info('User profile created using fallback data for user_id: ' . $user->id);
+        return;
+    }
 
-        if (! $data) {
-            return response()->json(['error' => 'Failed to fetch or parse data'], 500);
-        } else {
-            if (! $data['issuccess'] || ($data['message'] ?? '') !== 'Data Retrieved Successfully') {
-                dd($data['message']);
-                // You can log or return a response
-                Log::warning('API response was not successful', ['message' => $data['message'] ?? null]);
-
-                return; // or continue, or throw exception, depending on context
+            // Skip if data is not valid
+            if (! $data || !($data['issuccess'] ?? true) || strtolower($data['message'] ?? '') !== 'data retrieved successfully') {
+                \Log::warning('Qudrat API returned no valid data for user_id: ' . $user->id);
+                return;
             }
 
             $nationalityAr = $this->safeString($data['NATIONALITY_DESC_ARB'] ?? '');
@@ -399,7 +407,7 @@ class SyncUserProfileFromMolRegApi
                     ]);
                 }
             }
-        }
+        
 
     }
 
