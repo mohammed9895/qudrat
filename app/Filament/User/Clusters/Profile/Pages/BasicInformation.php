@@ -151,6 +151,38 @@ class BasicInformation extends Page
                 ->icon('hugeicons-reload')
                 ->action(function () {
                     $user =  auth()->user();
+                    $basicAuth = base64_encode('eJWTUserName:eP@ssw0rd@123abc');
+
+            $principalResponse = Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Basic '.$basicAuth,
+            ])->post('http://10.153.25.11/sso.token.api/api/Token/GetPrincipal', [
+                'Token' => $token,
+            ]);
+
+            if (! $principalResponse->successful()) {
+                $this->error = 'Failed to verify token.';
+
+                return;
+            }
+
+            $principal = $principalResponse->json();
+            $userId = $principal['CurrentUserID'] ?? null;
+
+            if (! $userId) {
+                $this->error = 'Invalid principal response.';
+
+                return;
+            }
+
+            $userResponse = Http::withBasicAuth('UMSPRDUSER', 'aU1OJdbhmGwZjoBj')
+                ->withOptions(['verify' => false])
+                ->get('http://10.153.25.11/UMS.API/api/User/GetLoggedUserInfo', [
+                    'UserID' => $userId,
+                    'CertificateType' => $principal['CertificateType'],
+                ]);
+
+            $userData = $userResponse->json()['Data'] ?? null;
                     $qudratService = new QudratService;
                     $registrationData = $qudratService->getRegistrationByNationalId($user->civil_id);
 
