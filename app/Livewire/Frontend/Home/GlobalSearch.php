@@ -74,7 +74,7 @@ class GlobalSearch extends Component
                         $q->where('title', 'like', "%{$query}%")
                             ->orWhere('description', 'like', "%{$query}%")
                             ->orWhereHas('workCategory', fn ($cat) => $cat->where('name->ar', "%{$query}%")->orWhere('name->en', "%{$query}%"))
-                            ->orWhereHas('profile', fn ($p) => $p->where('name->ar', "%{$query}%")->orWhere('name->en', "%{$query}%"));
+                            ->orWhereHas('profile', fn ($p) => $p->where('fullname->ar', "%{$query}%")->orWhere('fullname->en', "%{$query}%"));
                     })
                     ->limit(5)->get(),
 
