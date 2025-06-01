@@ -17,7 +17,7 @@ class UserRegistered
 
     public $fallbackData;
 
-    public function __construct(User $user, ?array $registrationData = null, ?array $fallbackData = null)
+    public function __construct(User $user, $registrationData = null, $fallbackData = null)
     {
         $this->user = $user;
         $this->registrationData = $registrationData;
