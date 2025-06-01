@@ -46,7 +46,7 @@
                         <p class="text-sm mb-4">{{ $profile->position }}</p>
                         @if($profile->skills()->count() > 0)
                             <div class="flex items-center gap-1 flex-wrap mb-4">
-                                @foreach($profile->skills as $skill)
+                                @foreach($profile->skills()->get() as $skill)
                                     <span
                                         class="px-3 py-1 border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $skill }}</span>
                                 @endforeach
