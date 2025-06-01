@@ -32,6 +32,18 @@ class Index extends Component
             ->push($this->profile->fullname, route('profile.index', $this->profile));
     }
 
+    public function download()
+    {
+        // Adjust this path based on where your files are stored (e.g., storage/app/public)
+        $filePath = storage_path('app/public/' . $this->profile->cv);
+
+        if (file_exists($filePath)) {
+            return response()->download($filePath);
+        } else {
+            session()->flash('error', 'File not found.');
+        }
+    }
+
     public function rate()
     {
         $this->validate([
