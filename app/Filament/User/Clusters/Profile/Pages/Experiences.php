@@ -98,6 +98,7 @@ class Experiences extends Page
     })->label(__('general.experiences.company')),
     Select::make('sector')
     ->label(__('general.experiences.sector'))
+     ->dehydrated(false)
     ->options([
         1 => 'القطاع العام',
         2 => 'القطاع الخاص',
