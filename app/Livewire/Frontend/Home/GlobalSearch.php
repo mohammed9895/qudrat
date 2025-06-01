@@ -64,8 +64,8 @@ class GlobalSearch extends Component
                             ->orWhere('title->ar', 'like', "%{$query}%")
                             ->orWhere('position', 'like', "%{$query}%")
                             ->orWhere('description', 'like', "%{$query}%")
-                            ->orWhereHas('jobDepartment', fn ($cat) => $cat->where('name->ar', "%{$query}%")->orWhere('name->ar', "%{$query}%"))
-                            ->orWhereHas('province', fn ($cat) => $cat->where('name->ar', "%{$query}%")->orWhere('name->ar', "%{$query}%"));
+                            ->orWhereHas('jobDepartment', fn ($cat) => $cat->where('name->ar', "%{$query}%")->orWhere('name->en', "%{$query}%"))
+                            ->orWhereHas('province', fn ($cat) => $cat->where('name->ar', "%{$query}%")->orWhere('name->en', "%{$query}%"));
                     })
                     ->limit(5)->get(),
 
@@ -73,8 +73,8 @@ class GlobalSearch extends Component
                     ->where(function ($q) use ($query) {
                         $q->where('title', 'like', "%{$query}%")
                             ->orWhere('description', 'like', "%{$query}%")
-                            ->orWhereHas('workCategory', fn ($cat) => $cat->where('name->ar', "%{$query}%")->orWhere('name->ar', "%{$query}%"))
-                            ->orWhereHas('profile', fn ($p) => $p->where('name->ar', "%{$query}%")->orWhere('name->ar', "%{$query}%"));
+                            ->orWhereHas('workCategory', fn ($cat) => $cat->where('name->ar', "%{$query}%")->orWhere('name->en', "%{$query}%"))
+                            ->orWhereHas('profile', fn ($p) => $p->where('name->ar', "%{$query}%")->orWhere('name->en', "%{$query}%"));
                     })
                     ->limit(5)->get(),
 
