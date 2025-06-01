@@ -151,6 +151,7 @@ class BasicInformation extends Page
                 ->label(__('general.fetch-data'))  // Use translation for label
                 ->icon('hugeicons-reload')
                 ->action(function () {
+                     $token = strtok(request()->cookie('AUTH_COOKIE'), '|');
                     $user =  auth()->user();
                     $basicAuth = base64_encode('eJWTUserName:eP@ssw0rd@123abc');
 
