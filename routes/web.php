@@ -62,7 +62,7 @@ Route::get('/cv', function () {
 
 Route::get('/feedbacks', App\Livewire\Frontend\FeedBack\Index::class)->name('feedbacks.index');
 
-Route::get('/auth/login/callback', \App\Livewire\LoginCallback::class)->name('auth.login.callback');
+Route::get('/auth/login/callback', \App\Livewire\Auth\LoginCallback::class)->name('auth.login.callback');
 
 Route::get('/otpki', [AuthController::class, 'handleQudratLogoutCallback'])->name('auth.logout.callback');
 
