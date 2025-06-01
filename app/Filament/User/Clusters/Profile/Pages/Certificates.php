@@ -67,7 +67,7 @@ class Certificates extends Page
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
         ])
-        ->post('https://jobseeker.mol.gov.om/js/gup/NewREG.aspx/GetTranInstituteList', [
+        ->post('https://jobseeker.mol.gov.om/js/gup/NewREG.aspx/tranCourseList', [
             'prefix' => $query, // Using search query to filter the results
         ]);
 
@@ -101,7 +101,7 @@ class Certificates extends Page
         $response = Http::withHeaders([
             'Content-Type' => 'application/json',
         ])
-        ->post('https://jobseeker.mol.gov.om/js/gup/NewREG.aspx/tranCourseList', [
+        ->post('https://jobseeker.mol.gov.om/js/gup/NewREG.aspx/GetTranInstituteList', [
             'prefix' => $query, // Using search query to filter the results
         ]);
 
