@@ -13,15 +13,15 @@ use App\Services\QudratService;
 
 class LoginCallback extends Component
 {
-    public $loading = false;
+    public $loading = true;
     public $error = null;
 
-    public function mount(Request $request)
-    {
-        $this->loading = true;
+    public function mount() {}
 
+    public function processLogin()
+    {
         try {
-            $token = strtok($request->cookie('AUTH_COOKIE'), '|');
+            $token = strtok(request()->cookie('AUTH_COOKIE'), '|');
 
             if (!$token) {
                 $this->error = 'No token received.';
@@ -93,7 +93,8 @@ class LoginCallback extends Component
                 fallbackData: !$registrationData ? $userData : null
             ));
 
-            return redirect('/user')->with('success', 'Logged in successfully!');
+            // ✅ Finally redirect
+            redirect('/user')->with('success', 'Logged in successfully!');
         } catch (\Exception $e) {
             $this->error = 'Login failed: ' . $e->getMessage();
         } finally {
