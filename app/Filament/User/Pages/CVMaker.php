@@ -66,10 +66,11 @@ class CVMaker extends Page
         '--user-data-dir=/tmp/chrome-profile',
         '--no-first-run',
         '--no-default-browser-check',
-        '--disable-crash-reporter'
+        '--disable-crash-reporter',
+        '--no-crashpad' // Disable crashpad handler entirely
     ])
-    ->setOption('viewport', ['width' => 2480, 'height' => 3508])
-    ->margins(0, 0, 0, 0)
+    ->setOption('viewport', ['width' => 2480, 'height' => 3508])  // Set viewport for consistent rendering
+    ->margins(0, 0, 0, 0)  // Remove margins for full-page PDF
     ->save($outputPath);
 
         // Return the generated PDF as a download response
