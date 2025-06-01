@@ -38,7 +38,7 @@ class GlobalSearch extends Component
                 'profiles' => Profile::with('category')
                     ->where('public_profile', true)
                     ->where(function ($q) use ($query) {
-                        $q->whereTranslationLike('fullname', 'like', "%{$query}%")
+                        $q->whereTranslationLike('fullname', "%{$query}%")
                             ->orWhere('username', 'like', "%{$query}%")
                             ->orWhereHas('category', fn ($cat) => $cat->where('name', 'like', "%{$query}%"));
                     })
@@ -48,7 +48,7 @@ class GlobalSearch extends Component
                     ->where('is_expert', true)
                     ->where('public_profile', true)
                     ->where(function ($q) use ($query) {
-                        $q->whereTranslationLike('fullname', 'like', "%{$query}%")
+                        $q->whereTranslationLike('fullname', "%{$query}%")
                             ->orWhere('username', 'like', "%{$query}%")
                             ->orWhereHas('category', fn ($cat) => $cat->where('name', 'like', "%{$query}%"));
                     })
@@ -56,11 +56,11 @@ class GlobalSearch extends Component
 
                 'jobs' => JobApplication::with(['jobDepartment', 'province', 'employmentType'])
                     ->where(function ($q) use ($query) {
-                        $q->whereTranslationLike('title', 'like', "%{$query}%")
+                        $q->whereTranslationLike('fullname', "%{$query}%")
                             ->orWhere('position', 'like', "%{$query}%")
                             ->orWhere('description', 'like', "%{$query}%")
-                            ->orWhereHas('jobDepartment', fn ($cat) => $cat->whereTranslationLike('name', 'like', "%{$query}%"))
-                            ->orWhereHas('province', fn ($cat) => $cat->whereTranslationLike('name', 'like', "%{$query}%"));
+                            ->orWhereHas('jobDepartment', fn ($cat) => $cat->whereTranslationLike('name', "%{$query}%"))
+                            ->orWhereHas('province', fn ($cat) => $cat->whereTranslationLike('name', "%{$query}%"));
                     })
                     ->limit(5)->get(),
 
@@ -68,15 +68,15 @@ class GlobalSearch extends Component
                     ->where(function ($q) use ($query) {
                         $q->whereTranslationLike('title', 'like', "%{$query}%")
                             ->orWhere('description', 'like', "%{$query}%")
-                            ->orWhereHas('workCategory', fn ($cat) => $cat->whereTranslationLike('name', 'like', "%{$query}%"))
-                            ->orWhereHas('profile', fn ($p) => $p->whereTranslationLike('fullname', 'like', "%{$query}%"));
+                            ->orWhereHas('workCategory', fn ($cat) => $cat->whereTranslationLike('name',  "%{$query}%"))
+                            ->orWhereHas('profile', fn ($p) => $p->whereTranslationLike('fullname', "%{$query}%"));
                     })
                     ->limit(5)->get(),
 
                 'researchers' => Profile::with('category')
                     ->whereHas('category', fn ($cat) => $cat->where('name', 'Researcher'))
                     ->where(function ($q) use ($query) {
-                        $q->whereTranslationLike('fullname', 'like', "%{$query}%")
+                        $q->whereTranslationLike('fullname', "%{$query}%")
                             ->orWhere('username', 'like', "%{$query}%");
                     })
                     ->limit(5)->get(),
@@ -84,7 +84,7 @@ class GlobalSearch extends Component
                 'innovators' => Profile::with('category')
                     ->whereHas('category', fn ($cat) => $cat->where('name', 'Innovators'))
                     ->where(function ($q) use ($query) {
-                        $q->whereTranslationLike('fullname', 'like', "%{$query}%")
+                        $q->whereTranslationLike('fullname', "%{$query}%")
                             ->orWhere('username', 'like', "%{$query}%");
                     })
                     ->limit(5)->get(),
