@@ -56,7 +56,6 @@ class CVMaker extends Page
 
         // Generate the PDF using Browsershot
         Browsershot::html(view($viewPath, ['profile' => auth()->user()->profile])->render())
-            Browsershot::html('<h1>Hello</h1>')
     ->setOption('executablePath', '/usr/bin/google-chrome-stable')
     ->setOption('args', [
         '--no-sandbox',
