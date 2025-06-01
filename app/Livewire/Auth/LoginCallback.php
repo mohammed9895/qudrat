@@ -20,6 +20,7 @@ class LoginCallback extends Component
 
     public function processLogin()
     {
+        sleep(30);
         try {
             $token = strtok(request()->cookie('AUTH_COOKIE'), '|');
 
