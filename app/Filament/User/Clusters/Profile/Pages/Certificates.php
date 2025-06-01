@@ -83,7 +83,7 @@ class Certificates extends Page
                 $parts = explode('-', $item);
                 if (count($parts) == 2) {
                     // Assign the ID as the value but display only the name in the dropdown
-                    $options[$parts[1]] = $parts[0]; // Use ID as value, name as label
+                    $options[$parts[0]] = $parts[0];// Use ID as value, name as label
                 }
             }
 
@@ -117,7 +117,7 @@ class Certificates extends Page
                 $parts = explode('-', $item);
                 if (count($parts) == 2) {
                     // Assign the ID as the value but display only the name in the dropdown
-                    $options[$parts[1]] = $parts[0]; // Use ID as value, name as label
+                     $options[$parts[0]] = $parts[0];// Use ID as value, name as label
                 }
             }
 
