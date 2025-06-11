@@ -47,16 +47,16 @@
                     </div>
                 </div>
             </div>
-            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+            <div class="grid grid-cols-12 gap-4">
                 @foreach($page->data['categories'] as $category)
-                    <a href="{{ $category['link'] }}" class="">
+                    <a href="{{ $category['link'] }}" class="col-span-full lg:col-span-4">
                         <div class="group bg-white hover:bg-brand-blue transition-all px-4 py-6 rounded-2xl h-full">
                             <div class="text-center flex items-center justify-center flex-col">
                                 <x-icon name="{{ $category['icon'] }}" class="size-28 text-brand-green mb-5"/>
                                 <h4 class="text-2xl font-medium group-hover:text-white">{{ $category['title'] }}</h4>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 @endforeach
             </div>
         </div>
