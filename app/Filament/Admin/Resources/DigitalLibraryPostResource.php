@@ -7,6 +7,7 @@ use App\Actions\DeactivateAction;
 use App\Filament\Admin\Resources\DigitalLibraryPostResource\Pages;
 use App\Filament\Admin\Resources\DigitalLibraryPostResource\RelationManagers;
 use App\Models\DigitalLibraryPost;
+use Illuminate\Database\Eloquent\Builder;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Set;
@@ -58,7 +59,11 @@ class DigitalLibraryPostResource extends Resource
                             ->relationship('author', 'name'),
                         Forms\Components\Select::make('digital_library_category_id')
                             ->required()
-                            ->relationship('digitalLibraryCategory', 'name'),
+                            ->relationship(
+                                name: 'digitalLibraryCategory',
+                                titleAttribute: 'name',
+                                modifyQueryUsing: fn (Builder $query) => $query->where('status', true),
+                            ),
                         Forms\Components\Toggle::make('is_featured'),
                         Forms\Components\Toggle::make('status'),
                     ])->columns(2),
