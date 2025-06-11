@@ -87,7 +87,7 @@
         <div class="px-10">
             <div class="flex items-center justify-center 2xl:justify-between gap-5 flex-wrap">
                 @foreach($page->data['sponsors_images'] as $sponsor)
-                    <img src="/storage/{{ $sponsor }}" alt="images" width="100"
+                    <img src="/storage/{{ $sponsor }}" alt="images" width="200"
                          class="opacity-50 hover:opacity-100 transition"/>
                 @endforeach
             </div>
