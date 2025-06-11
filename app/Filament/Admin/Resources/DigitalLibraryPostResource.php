@@ -59,6 +59,7 @@ class DigitalLibraryPostResource extends Resource
                             ->relationship('author', 'name'),
                         Forms\Components\Select::make('digital_library_category_id')
                             ->required()
+                            ->searchable()
                             ->relationship(
                                 name: 'digitalLibraryCategory',
                                 titleAttribute: 'name',
