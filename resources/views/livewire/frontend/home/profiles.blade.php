@@ -67,7 +67,7 @@
                                             @endforeach
                                         </div>
                                     @endif
-                                    <p class="mb-6">{{ substr($talent->bio, 0 ,100) }}</p>
+                                    <p class="mb-6">{{ substr(strip_tags($talent->bio), 0, 200) }}...</p>
                                     <a href="{{ route('profile.index', $talent->username) }}"
                                        class="inline-block px-8 py-3 rounded-full border border-primary-1 text-head-color font-medium hover:bg-primary-1 hover:text-white">{{ __('general.profiles.view-profile') }}</a>
                                 </div>
