@@ -48,9 +48,9 @@
             <h5 class="font-semibold text-xl mb-5">{{ $page->data['sponsors_title'] }}</h5>
         </div>
         <div class="px-10">
-            <div class="flex items-center justify-center 2xl:justify-between gap-5 flex-wrap">
+            <div class="flex items-center justify-center 2xl:justify-cenetr gap-5 flex-wrap">
                 @foreach($page->data['sponsors_images'] as $sponsor)
-                    <img src="/storage/{{ $sponsor }}" alt="images"
+                    <img src="/storage/{{ $sponsor }}" alt="images" width="150"
                          class="opacity-50 hover:opacity-100 transition"/>
                 @endforeach
             </div>
