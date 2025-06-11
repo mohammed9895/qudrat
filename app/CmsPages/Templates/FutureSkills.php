@@ -26,6 +26,7 @@ final class FutureSkills implements CmsPageTemplate
                     Forms\Components\Repeater::make('categories')
                         ->schema([
                             Forms\Components\TextInput::make('title'),
+                            Forms\Components\TextInput::make('link'),
                             IconPicker::make('icon'),
                         ]),
                 ]),
