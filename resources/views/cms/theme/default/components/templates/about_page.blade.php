@@ -22,7 +22,7 @@
     <div class="bg-brand-blue/30 pt-[160px] pb-28">
         <div class="container">
             <div class="flex items-center justify-between gap-4 flex-wrap md:flex-nowrap">
-                <div class="w-full md:w-8/12">
+                <div class="w-full">
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3"
                         style="line-height: 80px;">{{ $page->data['page_title'] }}</h2>
                     <p class="mb-6 leading-relaxed">{{ $page->data['page_description'] }}</p>
