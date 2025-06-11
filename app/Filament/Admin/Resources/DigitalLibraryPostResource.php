@@ -50,7 +50,7 @@ class DigitalLibraryPostResource extends Resource
                             ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
                             ->maxLength(255),
                         Forms\Components\TextInput::make('slug')
-                            ->disabled()
+                        
                             ->maxLength(255),
                         Forms\Components\RichEditor::make('description')
                             ->columnSpanFull(),
