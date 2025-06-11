@@ -29,7 +29,7 @@ class DigitalLibraryCategory extends Model
         return $this->belongsTo(DigitalLibraryCategory::class, 'parent_id');
     }
 
-    public function posts(): HasMany
+    public function digitalLibraryposts(): HasMany
     {
         return $this->hasMany(DigitalLibraryPost::class);
     }
