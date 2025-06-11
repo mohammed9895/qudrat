@@ -120,7 +120,7 @@ return [
     'interest' => 'الاهتمامات',
     'social' => 'التواصل',
     'view-website' => 'زيارة الموقع',
-    'about-me' => 'عني',
+    'about-me' => 'السيرة الذاتية',
     'educational-background' => 'الخلفية التعليمة',
     'work-experience' => 'الخبرات',
     'certification-list' => 'الشهادات',
