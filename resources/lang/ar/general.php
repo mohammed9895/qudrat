@@ -4,6 +4,7 @@ return [
     'loading-info' => 'جاري جلب معلوماتك...',
     'search-result' => 'نتائج البحث',
     'search-result-for' => 'نتائج البحث عن :query',
+    'view-resoucre' => 'عرض',
     'navigation' => [
         'home' => 'الرئيسية',
         'about' => 'من نحن',
