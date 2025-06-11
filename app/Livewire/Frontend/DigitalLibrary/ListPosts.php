@@ -21,7 +21,7 @@ class ListPosts extends Component
 
     public function mount()
     {
-        $this->categories = DigitalLibraryCategory::whereHas('posts')->where('status', Status::Active)->get();
+        $this->categories = DigitalLibraryCategory::whereHas('DigitalLibraryPosts')->where('status', Status::Active)->get();
     }
 
     public function breadcrumbs(Trail $trail): Trail
