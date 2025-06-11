@@ -62,51 +62,49 @@
     <div class="py-12">
         <div class="container">
             <div class="flex justify-center mb-9">
-                <div class="lg:w-7/12">
-                    <div class="text-center">
+                <div class="w-full">
+                    <div class="leading-loose">
                         <h2 class="text-4xl sm:text-5xl font-semibold">{{ $page->data['about_title'] }}</h2>
                     </div>
                 </div>
             </div>
-            <div class="mb-4 border-b border-gray-200 dark:border-gray-700">
-                <ul class="flex justify-center flex-wrap -mb-px text-sm font-medium text-center" id="default-tab"
-                    role="tablist">
-                    @foreach($page->data['about_items'] as $item)
-                        <li class="me-2" role="presentation">
-                            <button
-                                class="inline-block px-4 py-2 border-b-2 rounded-t-lg text-gray-500 hover:text-gray-600 hover:border-gray-300 aria-selected:text-brand-blue aria-selected:border-brand-blue"
-                                id="profile-tab"
-                                data-tabs-target="#tab-{{ $loop->index }}"
-                                type="button"
-                                role="tab"
-                                aria-controls="tab-{{ $loop->index }}"
-                                aria-selected="{{ $loop->first ? 'true' : '' }}"
-                            >
-                                {{ $item['title'] }}
-                            </button>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="mt-12" id="default-tab-content">
-                @foreach($page->data['about_items'] as $item)
-                    <div class="{{ !$loop->first ? 'hidden' : '' }}" id="tab-{{ $loop->index }}" role="tabpanel"
-                         aria-labelledby="profile-tab">
-                        <div class="flex items-center justify-between gap-4 flex-wrap lg:flex-nowrap">
-                            <div class="w-full lg:w-5/12 rtl:order-2">
-                                <h2 class="text-4xl font-semibold mb-4">{{ $item['title'] }}</h2>
-                                <div>
-                                    {!!  $item['description']  !!}
+            <div class="mt-12 bg-slate-200 rounded-xl p-10 flex justify-between">
+                <div class="flex items-center justify-between gap-4 flex-wrap lg:flex-nowrap">
+                    <div class="w-full lg:w-6/12 relative">
+                        <img src="{{ asset('assets/images/about-images.png') }}" alt="images" class="">
+                        <img src="{{ asset('assets/images/red-shape.svg') }}"
+                             class="w-20 absolute top-32 -right-10"
+                             alt="">
+
+                        <img src="{{ asset('assets/images/yellow-shape.svg') }}"
+                             class="w-20 absolute -top-10 left-2 rotate-120 "
+                             alt="">
+
+                        <img src="{{ asset('assets/images/green-shape.svg') }}"
+                             class="w-20 absolute bottom-64 left-2 rotate-45 "
+                             alt="">
+
+                        <img src="{{ asset('assets/images/gray-shape.svg') }}"
+                             class="w-10 absolute -bottom-10 left-3/4 rotate-45"
+                             alt="">
+                    </div>
+                    <div class="w-full lg:w-6/12 xl:w-5/12">
+                        <div class="flex flex-col gap-8">
+                            @foreach($page->data['about_items'] as $item)
+                                <div class="flex gap-5 items-center">
+                                    <div
+                                        class="shrink-0 bg-gradient-to-t from-brand-blue/30 to-transparent w-24 h-24 rounded-full flex justify-center items-center">
+                                        <img src="/storage/{{ $item['image'] }}" alt="images" class="w-14">
+                                    </div>
+                                    <div>
+                                        <h5 class="text-2xl font-medium mb-3">{{ $item['title'] }}</h5>
+                                        <p>{!! $item['description'] !!}</p>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="w-full lg:w-6/12 rtl:order-1">
-                                <div class="flex justify-end">
-                                    <img src="/storage/{{ $item['image'] }}" alt="image" class="">
-                                </div>
-                            </div>
+                            @endforeach
                         </div>
                     </div>
-                @endforeach
+                </div>
             </div>
         </div>
     </div>

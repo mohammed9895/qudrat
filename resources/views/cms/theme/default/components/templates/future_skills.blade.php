@@ -24,6 +24,7 @@
                         <span class="text-b-color text-sm">{{ $page->title }}</span>
                     </div>
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ $page->title }}</h2>
+                    <h3 class="mt-5 text-xl">{{ __('general.future-skills.sub-title') }}</h3>
                 </div>
                 <div class="w-6/12">
                     <div class="flex justify-end">

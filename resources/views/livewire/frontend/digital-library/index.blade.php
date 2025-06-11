@@ -6,6 +6,7 @@
                 <div class="w-full md:w-6/12">
                     <x-breadcrumbs/>
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ __('general.digital-library.main-title') }}</h2>
+                    <h3 class="mt-5 text-xl">{{ __('general.digital-library.sub-title') }}</h3>
                 </div>
                 <div class="w-6/12">
                     <div class="text-end">

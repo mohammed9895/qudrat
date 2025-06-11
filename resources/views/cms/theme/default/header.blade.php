@@ -121,7 +121,7 @@
                            class="w-[50px] h-[50px] flex items-center justify-center rounded-full border border-brand-blue text-head-color font-medium hover:bg-brand-blue hover:text-white">ع</a>
                     @endif
                     <a href="{{  env('PKI_LOGIN_URL') }}"
-                       class="px-8 py-3 rounded-full border bg-brand-blue text-head-color font-medium hover:bg-primary-1 text-white flex items-center justify-center">
+                       class="px-8 py-3 rounded-full bg-brand-blue text-head-color font-medium hover:bg-primary-1 text-white flex items-center justify-center">
                         {{ __('general.navigation.login') }}
                         <img src="{{ asset('assets/images/arrow-right.svg') }}" class="ml-2 rtl:mr-2 rtl:ml-0" alt="">
                     </a>

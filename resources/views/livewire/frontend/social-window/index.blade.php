@@ -10,6 +10,7 @@
                         <span class="text-b-color text-sm">{{ __('general.social-window.page-title') }}</span>
                     </div>
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ __('general.social-window.page-title') }}</h2>
+                    <h2 class="mt-5 text-xl">{{ __('general.social-window.sub-title') }}</h2>
                 </div>
                 <div class="w-6/12">
                     <div class="text-end">

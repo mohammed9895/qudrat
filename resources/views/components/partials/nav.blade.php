@@ -30,7 +30,7 @@
                     </li>
                     <li>
                         <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
-                                class="flex items-center justify-between w-full {{ request()->path() == 'social-window' ? 'active' : '' }} py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-brand-blue md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                                class="flex items-center justify-between w-full {{ request()->path() == 'social-window/' ? 'active' : '' }} py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-brand-blue md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
                             {{ __('general.navigation.social-window') }}
                             <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                                  fill="none" viewBox="0 0 10 6">
@@ -117,12 +117,8 @@
                         <a href="{{ route('locale', 'ar') }}"
                            class="w-[50px] h-[50px] flex items-center justify-center rounded-full border border-brand-blue text-head-color font-medium hover:bg-brand-blue hover:text-white">ع</a>
                     @endif
-                   <a href="{{  env('PKI_LOGIN_URL') }}"
-                       class="px-8 py-3 rounded-full border border-brand-blue text-head-color font-medium hover:bg-brand-blue hover:text-white">
-                        {{ __('general.navigation.register') }}
-                    </a>
                     <a href="{{  env('PKI_LOGIN_URL') }}"
-                       class="px-8 py-3 rounded-full border bg-brand-blue text-head-color font-medium hover:bg-primary-1 text-white flex items-center justify-center">
+                       class="px-8 py-3 rounded-full bg-brand-blue text-head-color font-medium hover:bg-primary-1 text-white flex items-center justify-center">
                         {{ __('general.navigation.login') }}
                         <img src="{{ asset('assets/images/arrow-right.svg') }}" class="ml-2 rtl:mr-2 rtl:ml-0" alt="">
                     </a>

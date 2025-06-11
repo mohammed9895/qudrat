@@ -64,18 +64,28 @@ return [
 
     'digital-library' => [
         'main-title' => 'Digital Library',
-        'sub-title' => 'Digital Library Categories',
+        'sub-title' => 'There are no limits to what you can achieve if you’re willing to learn and grow.',
         'view-now' => 'View Now',
     ],
     'future-skills' => [
+        'sub-title' => 'Skill development is the first step toward achieving excellence.',
         'know-more' => 'Learn More',
     ],
     'media-center' => [
         'page-title' => 'Media Center',
+        'sub-title' => 'Believe in your abilities and start turning your dreams into achievements.',
     ],
 
     'social-window' => [
         'page-title' => 'Social Window',
+        'sub-title' => 'Invest in yourself; you are the most valuable asset.',
+        'innovators-sub-title' => 'Innovate, learn, and grow; the future awaits your creativity.',
+    ],
+
+    'expert' => [
+        'page-title' => 'Experts',
+        'sub-title' => 'Capacity building is not an option; it’s a necessity for growth and sustainability.',
+        'view-all' => 'View All Experts',
     ],
 
     'home' => 'Home',
@@ -208,7 +218,7 @@ return [
     'save-success-title' => 'Saved',
     'save-success-body' => 'Your profile has been saved.',
     'visit-profile' => 'Visit Profile',
-     'fetch-data' => 'Fetch Data',
+    'fetch-data' => 'Fetch Data',
     'educations' => [
         'title' => 'Educations',
         'school' => 'School',

@@ -31,58 +31,69 @@
             </div>
             <div class="flex justify-center">
                 <div class="w-full lg:w-8/12">
-                    <form action="#">
+                    <form wire:submit.prevent="submit">
                         <div class="grid grid-cols-12 gap-4 lg:gap-6">
                             <div class="col-span-full lg:col-span-6">
                                 <label for="name" class="block text-sm font-semibold mb-2">
                                     {{ __('general.contact.full-name') }}: <span class="text-primary-2">*</span>
                                 </label>
-                                <input type="text" id="name"
-                                       class="bg-white bg-opacity-50 w-full px-6 py-4 border border-gray-1 rounded-lg"
-                                >
+                                <input type="text" id="name" wire:model.defer="name"
+                                       class="bg-white bg-opacity-50 w-full px-6 py-4 border border-gray-1 rounded-lg">
+                                @error('name') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                             </div>
+
                             <div class="col-span-full lg:col-span-6">
                                 <label for="email" class="block text-sm font-semibold mb-2">
                                     {{ __('general.contact.email') }}: <span class="text-primary-2">*</span>
                                 </label>
-                                <input type="email" id="email"
-                                       class="bg-white bg-opacity-50 w-full px-6 py-4 border border-gray-1 rounded-lg"
-                                >
+                                <input type="email" id="email" wire:model.defer="email"
+                                       class="bg-white bg-opacity-50 w-full px-6 py-4 border border-gray-1 rounded-lg">
+                                @error('email') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                             </div>
+
                             <div class="col-span-full lg:col-span-6">
-                                <label for="name" class="block text-sm font-semibold mb-2">
+                                <label for="subject" class="block text-sm font-semibold mb-2">
                                     {{ __('general.contact.subject') }}:
                                 </label>
-                                <input type="text" id="name"
-                                       class="bg-white bg-opacity-50 w-full px-6 py-4 border border-gray-1 rounded-lg"
-                                >
+                                <input type="text" id="subject" wire:model.defer="subject"
+                                       class="bg-white bg-opacity-50 w-full px-6 py-4 border border-gray-1 rounded-lg">
                             </div>
+
                             <div class="col-span-full lg:col-span-6">
-                                <label for="text" class="block text-sm font-semibold mb-2">
+                                <label for="phone" class="block text-sm font-semibold mb-2">
                                     {{ __('general.contact.phone-number') }}:
                                 </label>
-                                <input type="text" id="email"
-                                       class="bg-white bg-opacity-50 w-full px-6 py-4 border border-gray-1 rounded-lg"
-                                >
+                                <input type="text" id="phone" wire:model.defer="phone"
+                                       class="bg-white bg-opacity-50 w-full px-6 py-4 border border-gray-1 rounded-lg">
                             </div>
-                            <div class="col-span-full ">
-                                <label for="text" class="block text-sm font-semibold mb-2">
+
+                            <div class="col-span-full">
+                                <label for="message" class="block text-sm font-semibold mb-2">
                                     {{ __('general.contact.message') }}:
                                 </label>
-                                <textarea name="" id=""
+                                <textarea id="message" wire:model.defer="message"
                                           class="bg-white bg-opacity-50 w-full px-6 py-4 border border-gray-1 rounded-lg min-h-[150px]"
                                           placeholder="{{ __('general.contact.message-placeholder') }}"></textarea>
+                                @error('message') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                             </div>
+
                             <div class="col-span-full">
                                 <div class="flex justify-center">
                                     <button type="submit"
-                                            class="px-8 py-3 rounded-full  text-head-color font-medium bg-black text-white">
+                                            class="px-8 py-3 rounded-full text-head-color font-medium bg-black text-white">
                                         {{ __('general.contact.submit') }}
                                     </button>
                                 </div>
                             </div>
                         </div>
+
+                        @if (session()->has('success'))
+                            <div class="mt-4 text-green-600 text-center">
+                                {{ session('success') }}
+                            </div>
+                        @endif
                     </form>
+
                 </div>
             </div>
         </div>

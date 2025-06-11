@@ -6,6 +6,7 @@
                 <div class="w-full md:w-6/12">
                     <x-breadcrumbs/>
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3">{{ __('general.experts') }}</h2>
+                    <h2 class="mt-5 text-xl">{{ __('general.expert.sub-title') }}</h2>
                 </div>
                 <div class="w-6/12">
                 </div>
