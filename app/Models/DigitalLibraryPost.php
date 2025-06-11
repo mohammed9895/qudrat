@@ -31,7 +31,7 @@ class DigitalLibraryPost extends Model
 
     public function digitalLibraryCategory()
     {
-        return $this->belongsTo(DigitalLibraryCategory::class)->withCount('posts');
+        return $this->belongsTo(DigitalLibraryCategory::class)->withCount('digitalLibraryPosts');
     }
 
     public function tags()
