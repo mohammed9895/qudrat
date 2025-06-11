@@ -59,12 +59,11 @@ class DigitalLibraryPostResource extends Resource
                             ->relationship('author', 'name'),
                         Forms\Components\Select::make('digital_library_category_id')
                             ->required()
-                            ->searchable()
                             ->relationship(
                                 name: 'digitalLibraryCategory',
                                 titleAttribute: 'name',
                                 modifyQueryUsing: fn (Builder $query) => $query->where('status', true),
-                            ),
+                            )->searchable(),
                         Forms\Components\Toggle::make('is_featured'),
                         Forms\Components\Toggle::make('status'),
                     ])->columns(2),
