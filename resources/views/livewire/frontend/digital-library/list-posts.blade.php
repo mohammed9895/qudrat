@@ -76,7 +76,7 @@
                                          class="w-full mb-4 rounded-md">
                                     <a href=""
                                        class="inline-block text-2xl font-medium mb-3 hover:text-primary-1">{{ $post->title }}</a>
-                                    <p class="mb-4">{{ substr(strip_tags($post->description), 0, 100) }}</p>
+                                    <p class="mb-4">{{ substr(strip_tags($post->description), 0, 300) }}</p>
                                     <a href="{{ route('digital-library.post', [$post->digitalLibraryCategory,$post]) }}"
                                        class="inline-block px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">{{ __('general.view-resoucre') }}</a>
                                 </div>
