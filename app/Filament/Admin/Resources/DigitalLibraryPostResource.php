@@ -61,7 +61,7 @@ class DigitalLibraryPostResource extends Resource
                             ->required()
                             ->relationship(
                                 name: 'digitalLibraryCategory',
-                                titleAttribute: 'title',
+                                titleAttribute: 'name',
                                 modifyQueryUsing: fn (Builder $query) => $query->where('status', true),
                             ),
                         Forms\Components\Toggle::make('is_featured'),
