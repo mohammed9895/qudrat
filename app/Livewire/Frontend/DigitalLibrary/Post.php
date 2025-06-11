@@ -16,11 +16,11 @@ class Post extends Component
 
     public $content;
 
-    public function mount(DigitalLibraryCategory $category, DigitalLibraryPost $post)
-    {
-        $this->category = $category;
-        $this->post = $post;
-    }
+    // public function mount(DigitalLibraryCategory $category, DigitalLibraryPost $post)
+    // {
+    //     $this->category = $category;
+    //     $this->post = $post;
+    // }
 
     public function breadcrumbs(Trail $trail): Trail
     {
