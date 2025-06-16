@@ -38,7 +38,7 @@
     <section class="py-8 lg:py-16 antialiased">
         <div class="max-w-2xl mx-auto px-4">
             <div class="flex justify-between items-center mb-6">
-                <h2 class="text-lg lg:text-2xl font-bold text-gray-900">Comments ({{ $post->comments_count }})</h2>
+                <h2 class="text-lg lg:text-2xl font-bold text-gray-900">Comments ({{ $post->comments()->count();}})</h2>
             </div>
             <form class="mb-6" wire:submit="comment">
                 <div class="py-2 px-4 mb-4 bg-white rounded-lg rounded-t-lg border border-gray-200 ">

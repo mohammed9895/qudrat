@@ -41,7 +41,7 @@ class DigitalLibraryPost extends Model
 
     public function comments()
     {
-        return $this->hasMany(DigitalLibraryPostComment::class)->withCount();
+        return $this->hasMany(DigitalLibraryPostComment::class);
     }
 
     public function getThumbnailImage()
