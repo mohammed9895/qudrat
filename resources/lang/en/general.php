@@ -221,7 +221,7 @@ return [
     'fetch-data' => 'Fetch Data',
     'educations' => [
         'title' => 'Educations',
-        'school' => 'School',
+        'school' => 'Education Institution',
         'education_type' => 'Education Type',
         'field_of_study' => 'Field of Study',
         'sub_field_of_study' => 'Sub Field of Study',

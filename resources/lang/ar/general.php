@@ -231,7 +231,7 @@ return [
     'fetch-data' => 'جلب المعلومات',
     'educations' => [
         'title' => 'التعليم',
-        'school' => 'المدرسة',
+        'school' => 'المؤسسة التعلمية',
         'education_type' => 'نوع التعليم',
         'field_of_study' => 'مجال الدراسة',
         'sub_field_of_study' => 'التخصص الفرعي',
