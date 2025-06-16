@@ -20,10 +20,10 @@
                  style="background: url({{ $post->getThumbnailImage() }}); background-size: cover; background-position: center center;"></div>
             <h1 class="text-2xl text-gray-900 font-bold mb-5">{{ $post->title }}</h1>
             <div class="flex justify-start items-center space-x-3 mb-5">
-                <div class="flex items-center">
+                <!-- <div class="flex items-center">
                     @svg('hugeicons-user-circle', 'w-6 h-6 text-primary-1 mr-2')
                     <span>{{ $post->author->name }}</span>
-                </div>
+                </div> -->
                 <div class="flex items-center">
                     @svg('hugeicons-calendar-02', 'w-6 h-6 text-primary-1 mr-2')
                     <span>{{ Carbon::parse($post->created_at)->diffForHumans() }}</span>
