@@ -55,7 +55,7 @@
                 <article class="p-6 text-base bg-white rounded-lg mb-3">
                     <footer class="flex justify-between items-center mb-2">
                         <div class="flex items-center">
-                            <p class="inline-flex items-center mr-3 text-sm text-gray-900  font-semibold"><img
+                            <p class="inline-flex items-center mr-3 rtl:mr-0 rtl:ml-3 text-sm text-gray-900  font-semibold"><img
                                     class="mr-2 rtl:mr-0 rtl:ml-2 w-6 h-6 rounded-full"
                                     {{--                                    src="{{ $comment->user->profile->avatar ? '/storage/' . $comment->user->profile->avatar : '/assets/images/unset.jpg' }}"--}}
                                     src="/assets/images/unset.jpg"
