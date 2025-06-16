@@ -40,9 +40,9 @@ class DigitalLibraryPost extends Model
     }
 
     public function comments()
-    {
-        return $this->hasMany(DigitalLibraryPostComment::class);
-    }
+{
+    return $this->hasMany(DigitalLibraryPostComment::class)->orderBy('created_at', 'desc');
+}
 
     public function getThumbnailImage()
     {
