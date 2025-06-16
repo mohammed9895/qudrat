@@ -77,7 +77,7 @@ return [
     ],
 
     'social-window' => [
-        'page-title' => 'Social Window',
+        'page-title' => 'Profiles',
         'sub-title' => 'Invest in yourself; you are the most valuable asset.',
         'innovators-sub-title' => 'Innovate, learn, and grow; the future awaits your creativity.',
     ],
