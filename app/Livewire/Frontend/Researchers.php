@@ -18,7 +18,7 @@ class Researchers extends Component
     public function breadcrumbs(Trail $trail): Trail
     {
         return $trail
-            ->push(__('general.navigation.social-window'), route('works.index'))
+            ->push(__('general.social-window.oman-reasrchers'), route('social-window.index'))
             ->push($this->category->name);
     }
 
