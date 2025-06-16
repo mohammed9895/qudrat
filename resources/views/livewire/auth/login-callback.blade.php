@@ -10,5 +10,8 @@
         <div class="text-center text-red-600">
             <p>{{ $error }}</p>
         </div>
+        <div class="text-center mt-3">
+             <button class="bg-slate-600 text-slate-100 p-3" onclick="location.reload();" c>{{ __('general.reload') }}</button>
+        </div>
     @endif
 </div>

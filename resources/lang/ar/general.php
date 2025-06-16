@@ -405,4 +405,10 @@ return [
         'recommendations' => 'التوصيات',
         'recommendations_description' => 'استنادًا إلى ملفك الشخصي، إليك بعض التوصيات.',
     ],
+    'comments' => [
+        'comments' => 'التعليقات',
+        'placeholder' => 'اكتب التعليق',
+        'submit' => 'ارسال',
+    ],
+    'reload' => 'اعادة المحاولة'
 ];

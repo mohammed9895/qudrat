@@ -395,4 +395,10 @@ return [
         'no_suggestion' => 'No suggestions available.',
         'score' => 'Score',
     ],
+    'comments' => [
+        'comments' => 'Comments',
+        'placeholder' => 'Write your comment',
+        'submit' => 'Send',
+    ],
+    'reload' => 'Try Again'
 ];
