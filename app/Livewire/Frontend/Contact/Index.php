@@ -20,7 +20,7 @@ class Index extends Component
         'name' => 'required|string|max:255',
         'email' => 'required|email',
         'subject' => 'nullable|string|max:255',
-        'phone' => 'nullable|digits|max:20|tel',
+        'phone' => 'nullable|numeric|max:20|tel',
         'message' => 'required|string',
     ];
 
