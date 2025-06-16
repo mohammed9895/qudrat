@@ -65,6 +65,7 @@
                                 </label>
                                 <input type="text" id="phone" wire:model.defer="phone"
                                        class="bg-white bg-opacity-50 w-full px-6 py-4 border border-gray-1 rounded-lg">
+                                        @error('phone') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="col-span-full">
