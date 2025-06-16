@@ -400,5 +400,6 @@ return [
         'placeholder' => 'Write your comment',
         'submit' => 'Send',
     ],
-    'reload' => 'Try Again'
+    'reload' => 'Try Again',
+    'all' => 'All',
 ];
