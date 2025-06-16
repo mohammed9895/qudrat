@@ -9,7 +9,7 @@
         <div class="flex justify-between gap-5 sm:gap-6 flex-wrap pb-20">
             <div class="w-full sm:w-5/12 xl:w-4/12 2xl:w-3/12">
                 <img src="{{ asset('assets/images/white-logo.svg')}}" alt="images" class="mb-7 w-20">
-                <p class="text-white mb-14">{{ substr(__('general.footer.about-text'), 0, 409) }}</p>
+                <p class="text-white mb-14">{{ __('general.footer.about-text') }}</p>
                 <h6 class="text-white text-base mb-2">{{ __('general.footer.social-media') }}</h6>
                 <ul class="flex items-center gap-x-3">
                     <li>
