@@ -25,7 +25,7 @@ class Post extends Component
     public function breadcrumbs(Trail $trail): Trail
     {
         return $trail
-            ->push('Digital Library', route('digital-library.index'))
+            ->push(__('general.navigation.digital-library'), route('digital-library.index'))
             ->push($this->category->name, route('digital-library.category', $this->category))
             ->push($this->post->title, route('digital-library.post', [$this->category, $this->post]));
     }
