@@ -1,4 +1,5 @@
 <div>
+    @dd('fffff')
     <!-- Hero -->
     <div class="pt-24 px-6">
         <div class="bg-primary-3 py-20 xl:py-[170px] rounded-[20px] relative overflow-hidden z-10 px-5 xl:px-0">
