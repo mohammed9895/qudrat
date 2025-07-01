@@ -37,7 +37,7 @@
     <!-- Image -->
     <div class="mt-[-60px]">
         <div class="container">
-            <img src="storage/{{ $page->data['page_image'] }}" alt="image" class="w-full rounded-md">
+            <img src="uploads/{{ $page->data['page_image'] }}" alt="image" class="w-full rounded-md">
         </div>
     </div>
     <!-- /Image -->
