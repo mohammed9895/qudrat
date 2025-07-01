@@ -48,7 +48,9 @@ class AppServiceProvider extends ServiceProvider
 
         User::observe(UserObserver::class);
 
-        URL::forceScheme('https');
+       if (env('APP_ENV') !== 'local') {
+        URL::forceScheme('https'); // Force HTTPS in production
+    }
 
         EncryptCookies::except('AUTH_COOKIE');
 
