@@ -37,7 +37,7 @@ class Profile extends Model implements Viewable
     public function getAvatarUrlAttribute()
     {
         return $this->avatar
-            ? '/storage/'.$this->avatar
+            ? '/uploads/'.$this->avatar
             : asset('assets/images/unset.jpg');
     }
 

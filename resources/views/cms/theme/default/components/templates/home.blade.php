@@ -59,7 +59,7 @@
                                             <h4 class="text-white text-lg">{{ $talent['category'] }}</h4>
                                         </div>
 
-                                        <img src="/storage/{{ $talent['image'] }}"
+                                        <img src="/uploads/{{ $talent['image'] }}"
                                              class="absolute bottom-0 z-50 h-[500px]"
                                              alt="">
 
@@ -87,7 +87,7 @@
         <div class="px-10">
             <div class="flex items-center justify-center 2xl:justify-cenetr gap-5 flex-wrap">
                 @foreach($page->data['sponsors_images'] as $sponsor)
-                    <img src="/storage/{{ $sponsor }}" alt="images" width="150"
+                    <img src="/uploads/{{ $sponsor }}" alt="images" width="150"
                          class="opacity-50 hover:opacity-100 transition"/>
                 @endforeach
             </div>
@@ -106,7 +106,7 @@
         <div class="container">
             <div class="flex items-center justify-between gap-4 flex-wrap lg:flex-nowrap">
                 <div class="w-full lg:w-6/12 relative">
-                    <img src="/storage/{{ $page->data['about_image'] }}" alt="images" class="">
+                    <img src="/uploads/{{ $page->data['about_image'] }}" alt="images" class="">
                     <img src="{{ asset('assets/images/red-shape.svg') }}"
                          class="w-20 absolute top-32 -right-10"
                          alt="">
@@ -131,7 +131,7 @@
                             <div class="flex gap-5 items-center">
                                 <div
                                     class="shrink-0 bg-gradient-to-t from-brand-blue/30 to-transparent w-24 h-24 rounded-full flex justify-center items-center">
-                                    <img src="/storage/{{ $item['image'] }}" alt="images" class="w-14">
+                                    <img src="/uploads/{{ $item['image'] }}" alt="images" class="w-14">
                                 </div>
                                 <div>
                                     <h5 class="text-2xl font-medium mb-3">{{ $item['title'] }}</h5>
@@ -172,7 +172,7 @@
                                     class="bg-transparent border-[3px] border-white rounded-xl p-5 hover:bg-white transition-all relative h-full">
                                     <h4 class="text-5xl font-bold text-brand-red text-opacity-25 absolute top-1 end-1">
                                         {{ $step['number'] }}</h4>
-                                    <img src="/storage/{{ $step['image'] }}" alt="images" class="w-20 mb-3">
+                                    <img src="/uploads/{{ $step['image'] }}" alt="images" class="w-20 mb-3">
                                     <h6 class="text-xl font-semibold mb-2">{{ $step['title'] }}</h6>
                                     <p class="mb-4">{{ $step['description'] }}</p>
                                     <div class="flex justify-between">
@@ -201,7 +201,7 @@
     <div class="py-12">
         <div class="container">
             <div class="rounded-lg relative">
-                <img src="/storage/{{ $page->data['testimonials_image'] }}" alt="images" class="min-h-[280px] w-full">
+                <img src="/uploads/{{ $page->data['testimonials_image'] }}" alt="images" class="min-h-[280px] w-full">
                 <div class="pt-8 sm:pt-16 lg:pt-24 w-full flex justify-center absolute start-0 top-0">
                     <div class="xl:w-7/12 text-center px-6 xl:px-0">
                         <h2 class="text-white text-4xl sm:text-5xl font-semibold mb-3">{{ $page->data['testimonials_title'] }}</h2>
@@ -217,7 +217,7 @@
                                     <p class="mb-4">{{ $testimonial['description'] }}</p>
                                     <div class="flex items-center gap-4">
                                         <div class="shrink-0">
-                                            <img src="/storage/{{ $testimonial['image'] }}" alt="image" class="">
+                                            <img src="/uploads/{{ $testimonial['image'] }}" alt="image" class="">
                                         </div>
                                         <div>
                                             <h6 class="text-sm font-semibold">{{ $testimonial['name'] }}</h6>
@@ -272,7 +272,7 @@
                                 <div class="flex items-center justify-between gap-4 flex-wrap">
                                     <div class="flex items-center gap-3">
                                         <div class="shrink-0">
-                                            <img src="/storage/{{ $feature['icon'] }}" alt="image" class="">
+                                            <img src="/uploads/{{ $feature['icon'] }}" alt="image" class="">
                                         </div>
                                         <div>
                                             <h6 class="text-brand-green text-base font-semibold mb-0">{{ $feature['subtitle'] }}</h6>
@@ -297,7 +297,7 @@
                     <div
                         class="w-[650px] h-[650px] absolute rounded-full border-dashed border-2 z-10 border-brand-green bg-brand-green/30">
                     </div>
-                    <img src="/storage/{{ $page->data['features_image'] }}" alt="images"
+                    <img src="/uploads/{{ $page->data['features_image'] }}" alt="images"
                          class="relative w-[550px] z-30 mt-[50px] mr-[50px]">
                 </div>
             </div>

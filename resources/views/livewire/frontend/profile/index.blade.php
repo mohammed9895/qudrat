@@ -240,7 +240,7 @@
                     @if($profile->video)
                         <div class="inline-block relative rounded-2xl overflow-hidden w-full mt-7">
                             <video controls>
-                                <source src="/storage/{{ $profile->video }}">
+                                <source src="/uploads/{{ $profile->video }}">
                             </video>
                         </div>
                     @endif
@@ -333,7 +333,7 @@
                                             <h6 class="text-lg font-semibold mt-4 mb-2">{{ $certificate->title }}</h6>
                                             <p class="text-md mt-2">{{ $certificate->organization }}</p>
                                             @if($certificate->certificate_file)
-                                                <a href="/storage/{{ $certificate->certificate_file }}"
+                                                <a href="/uploads/{{ $certificate->certificate_file }}"
                                                    class="text-primary-2 flex items-center space-x-2"
                                                    target="_blank">@svg('hugeicons-file-01', 'size-5 mr-1')View
                                                     Certificate</a>
@@ -360,7 +360,7 @@
                                             <h6 class="text-lg font-semibold mt-4 mb-2">{{ $course->title }}</h6>
                                             <p class="text-md mt-2">{{ $course->organization }}</p>
                                             @if($course->course_file)
-                                                <a href="/storage/{{ $course->course_file }}"
+                                                <a href="/uploads/{{ $course->course_file }}"
                                                    class="text-primary-2 flex items-center space-x-2"
                                                    target="_blank">@svg('hugeicons-file-01', 'size-5 mr-1')View
                                                     Certificate</a>
@@ -403,7 +403,7 @@
                                         class="bg-white border-[3px] border-white rounded-xl p-3 relative hover:bg-white transition-all">
                                         <div class="w-full mb-4">
                                             <div class="rounded-md w-full h-36"
-                                                 style="background: url('/storage/{{ $work->cover }}'); background-size: cover; background-position: center center;"></div>
+                                                 style="background: url('/uploads/{{ $work->cover }}'); background-size: cover; background-position: center center;"></div>
                                         </div>
                                         <h4 class="text-xl font-medium mb-2">{{ $work->title }}</h4>
 

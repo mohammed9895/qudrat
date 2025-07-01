@@ -47,7 +47,7 @@
         <div class="bg-white px-6 py-8 rounded-2xl">
             <div class="flex items-center gap-3 mb-6">
                 <div class="shrink-0">
-                    <img src="/storage/{{ $item->entity->logo  }}" width="100" alt="image"
+                    <img src="/uploads/{{ $item->entity->logo  }}" width="100" alt="image"
                          class="">
                 </div>
                 <div>
