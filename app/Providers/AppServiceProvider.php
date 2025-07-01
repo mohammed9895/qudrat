@@ -23,10 +23,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-
-        URL::forceScheme('https');
-
-        
         FilamentAsset::register([
             Js::make('app', Vite::asset('resources/js/app.js'))->module(),
         ]);
@@ -52,6 +48,9 @@ class AppServiceProvider extends ServiceProvider
 
         User::observe(UserObserver::class);
 
+        if (env('APP_ENV') !== 'local') {
+            URL::forceScheme('https');
+        }
 
         EncryptCookies::except('AUTH_COOKIE');
 
