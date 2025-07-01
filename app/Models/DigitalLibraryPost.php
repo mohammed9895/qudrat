@@ -46,6 +46,6 @@ class DigitalLibraryPost extends Model
 
     public function getThumbnailImage()
     {
-        return !$this->cover ? asset('assets/images/unset.jpg') : Storage::disk('public')->url($this->cover);
+        return !$this->cover ? asset('assets/images/unset.jpg') : Storage::disk('nfs')->url($this->cover);
     }
 }
