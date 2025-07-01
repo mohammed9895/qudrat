@@ -334,7 +334,7 @@ class Profile extends Model implements Viewable
         }
 
         // Return the avatar image URL from the public disk
-        return Storage::disk('public')->url($this->avatar);
+        return Storage::disk('nfs')->url($this->avatar);
     }
 
     public function languages(): BelongsToMany
