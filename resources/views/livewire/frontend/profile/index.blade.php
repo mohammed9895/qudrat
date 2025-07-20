@@ -312,7 +312,7 @@
                                             </svg>
                                         </span>
                                             <h6 class="text-lg font-semibold mt-4 mb-2">{{ $experience->position }}</h6>
-                                            <p class="text-md mt-2">{{ $experience->company }}</p>
+                                            <p class="text-md mt-2">{{ $experience->company  }}</p>
                                             <p class="text-sm mt-2">{{ Carbon::parse($experience->start_date)->format('Y') }}
                                                 - {{ $experience->is_current ? __('general.present') : Carbon::parse($experience->end_date)->format('Y')}}</p>
                                         </div>
