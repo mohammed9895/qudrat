@@ -41,6 +41,6 @@ class MediaCenterPost extends Model
     public function getThumbnailImage()
     {
 
-        return ! $this->image ? asset('assets/images/unset.jpg') : Storage::disk('public')->url($this->image);
+        return ! $this->image ? asset('assets/images/unset.jpg') : Storage::disk('nfs')->url($this->image);
     }
 }

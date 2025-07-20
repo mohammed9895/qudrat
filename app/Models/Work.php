@@ -72,6 +72,6 @@ class Work extends Model implements Viewable
         }
 
         // Return the avatar image URL from the public disk
-        return Storage::disk('public')->url($this->cover);
+        return Storage::disk('nfs')->url($this->cover);
     }
 }

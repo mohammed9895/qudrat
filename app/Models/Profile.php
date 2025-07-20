@@ -37,7 +37,7 @@ class Profile extends Model implements Viewable
     public function getAvatarUrlAttribute()
     {
         return $this->avatar
-            ? '/storage/'.$this->avatar
+            ? '/uploads/'.$this->avatar
             : asset('assets/images/unset.jpg');
     }
 
@@ -269,7 +269,7 @@ class Profile extends Model implements Viewable
             'position' => $this->position,
             'address' => $this->address,
             'avatar' => $this->getThumbnailImage(),
-            'video' => $this->video ? asset('storage/'.$this->video) : null,
+            'video' => $this->video ? asset('uploads/'.$this->video) : null,
             'website' => $this->website,
             'social' => [
                 'facebook' => $this->social_facebook,
@@ -289,7 +289,7 @@ class Profile extends Model implements Viewable
             'works_count' => $this->works->count(),
             'works' => $this->works->map(fn ($work) => [
                 'title' => $work->title,
-                'cover' => asset('storage/'.$work->cover),
+                'cover' => asset('uploads/'.$work->cover),
                 'category' => $work->workCategory->name ?? null,
                 'skills' => $work->skills->pluck('name')->toArray(),
                 'created_at' => $work->created_at->toDateTimeString(),
@@ -311,12 +311,12 @@ class Profile extends Model implements Viewable
             'certificates' => $this->certificates->map(fn ($cert) => [
                 'title' => $cert->title,
                 'organization' => $cert->organization,
-                'file' => $cert->certificate_file ? asset('storage/'.$cert->certificate_file) : null,
+                'file' => $cert->certificate_file ? asset('uploads/'.$cert->certificate_file) : null,
             ]),
             'courses' => $this->courses->map(fn ($course) => [
                 'title' => $course->title,
                 'organization' => $course->organization,
-                'file' => $course->course_file ? asset('storage/'.$course->course_file) : null,
+                'file' => $course->course_file ? asset('uploads/'.$course->course_file) : null,
             ]),
             'achievements' => $this->achievements->map(fn ($ach) => [
                 'title' => $ach->title,
@@ -334,7 +334,7 @@ class Profile extends Model implements Viewable
         }
 
         // Return the avatar image URL from the public disk
-        return Storage::disk('public')->url($this->avatar);
+        return Storage::disk('nfs')->url($this->avatar);
     }
 
     public function languages(): BelongsToMany

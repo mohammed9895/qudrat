@@ -71,7 +71,7 @@
         </ul>
         <div class="flex justify-between items-center">
             <div>
-                    <img src="/storage/{{ $profile->avatar }}" class="rounded-full h-52 w-52" alt="">
+                    <img src="/uploads/{{ $profile->avatar }}" class="rounded-full h-52 w-52" alt="">
             </div>
             <div class="grid justify-items-end">
                 <h1 class="text-7xl font-extrabold">{{ $profile->fullname }}</h1>

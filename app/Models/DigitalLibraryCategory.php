@@ -38,6 +38,6 @@ class DigitalLibraryCategory extends Model
     {
         $isUrl = str_contains($this->image, 'http');
 
-        return $isUrl ? asset('assets/images/unset.jpg') : Storage::disk('public')->url($this->image);
+        return $isUrl ? asset('assets/images/unset.jpg') : Storage::disk('nfs')->url($this->image);
     }
 }

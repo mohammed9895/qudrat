@@ -37,7 +37,7 @@
     <!-- Image -->
     <div class="mt-[-60px]">
         <div class="container">
-            <img src="storage/{{ $page->data['page_image'] }}" alt="image" class="w-full rounded-md">
+            <img src="uploads/{{ $page->data['page_image'] }}" alt="image" class="w-full rounded-md">
         </div>
     </div>
     <!-- /Image -->
@@ -50,7 +50,7 @@
         <div class="px-10">
             <div class="flex items-center justify-center 2xl:justify-cenetr gap-5 flex-wrap">
                 @foreach($page->data['sponsors_images'] as $sponsor)
-                    <img src="/storage/{{ $sponsor }}" alt="images" width="150"
+                    <img src="/uploads/{{ $sponsor }}" alt="images" width="150"
                          class="opacity-50 hover:opacity-100 transition"/>
                 @endforeach
             </div>
@@ -94,7 +94,7 @@
                                 <div class="flex gap-5 items-center">
                                     <div
                                         class="shrink-0 bg-gradient-to-t from-brand-blue/30 to-transparent w-24 h-24 rounded-full flex justify-center items-center">
-                                        <img src="/storage/{{ $item['image'] }}" alt="images" class="w-14">
+                                        <img src="/uploads/{{ $item['image'] }}" alt="images" class="w-14">
                                     </div>
                                     <div>
                                         <h5 class="text-2xl font-medium mb-3">{{ $item['title'] }}</h5>
@@ -150,7 +150,7 @@
     {{--                                <div class="flex items-center justify-between gap-4 flex-wrap">--}}
     {{--                                    <div class="flex items-center gap-3">--}}
     {{--                                        <div class="shrink-0">--}}
-    {{--                                            <img src="/storage/{{ $feature['icon'] }}" alt="image" class="">--}}
+    {{--                                            <img src="/uploads/{{ $feature['icon'] }}" alt="image" class="">--}}
     {{--                                        </div>--}}
     {{--                                        <div>--}}
     {{--                                            <h6 class="text-brand-green text-base font-semibold mb-0">{{ $feature['subtitle'] }}</h6>--}}
@@ -175,7 +175,7 @@
     {{--                    <div--}}
     {{--                        class="w-[650px] h-[650px] absolute rounded-full border-dashed border-2 z-10 border-brand-green bg-brand-green/30 animate-spinoo">--}}
     {{--                    </div>--}}
-    {{--                    <img src="/storage/{{ $page->data['features_image'] }}" alt="images"--}}
+    {{--                    <img src="/uploads/{{ $page->data['features_image'] }}" alt="images"--}}
     {{--                         class="relative w-[550px] z-30 mt-[50px] mr-[50px]">--}}
     {{--                </div>--}}
     {{--            </div>--}}
@@ -187,7 +187,7 @@
     {{--    <div class="py-12">--}}
     {{--        <div class="container">--}}
     {{--            <div class="rounded-lg relative">--}}
-    {{--                <img src="/storage/{{ $page->data['testimonials_image'] }}" alt="images" class="min-h-[280px] w-full">--}}
+    {{--                <img src="/uploads/{{ $page->data['testimonials_image'] }}" alt="images" class="min-h-[280px] w-full">--}}
     {{--                <div class="pt-8 sm:pt-16 lg:pt-24 w-full flex justify-center absolute start-0 top-0">--}}
     {{--                    <div class="xl:w-7/12 text-center px-6 xl:px-0">--}}
     {{--                        <h2 class="text-white text-4xl sm:text-5xl font-semibold mb-3">{{ $page->data['testimonials_title'] }}</h2>--}}
@@ -203,7 +203,7 @@
     {{--                                    <p class="mb-4">{{ $testimonial['description'] }}</p>--}}
     {{--                                    <div class="flex items-center gap-4">--}}
     {{--                                        <div class="shrink-0">--}}
-    {{--                                            <img src="/storage/{{ $testimonial['image'] }}" alt="image" class="">--}}
+    {{--                                            <img src="/uploads/{{ $testimonial['image'] }}" alt="image" class="">--}}
     {{--                                        </div>--}}
     {{--                                        <div>--}}
     {{--                                            <h6 class="text-sm font-semibold">{{ $testimonial['name'] }}</h6>--}}

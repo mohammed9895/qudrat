@@ -189,7 +189,7 @@ Route::get('/xprofile/{id}', function ($id) {
         'position' => $profile->position,
         'address' => $profile->address,
         'avatar' => $profile->getThumbnailImage(),
-        'video' => $profile->video ? asset('storage/'.$profile->video) : null,
+        'video' => $profile->video ? asset('uploads/'.$profile->video) : null,
         'website' => $profile->website,
         'social' => [
             'facebook' => $profile->social_facebook,
@@ -210,7 +210,7 @@ Route::get('/xprofile/{id}', function ($id) {
         'works' => $profile->works->map(function ($work) {
             return [
                 'title' => $work->title,
-                'cover' => asset('storage/'.$work->cover),
+                'cover' => asset('uploads/'.$work->cover),
                 'category' => $work->workCategory->name ?? null,
                 'skills' => $work->skills->pluck('name'),
                 'created_at' => $work->created_at->toDateTimeString(),
@@ -238,14 +238,14 @@ Route::get('/xprofile/{id}', function ($id) {
             return [
                 'title' => $cert->title,
                 'organization' => $cert->organization,
-                'file' => $cert->certificate_file ? asset('storage/'.$cert->certificate_file) : null,
+                'file' => $cert->certificate_file ? asset('uploads/'.$cert->certificate_file) : null,
             ];
         }),
         'courses' => $profile->courses->map(function ($course) {
             return [
                 'title' => $course->title,
                 'organization' => $course->organization,
-                'file' => $course->course_file ? asset('storage/'.$course->course_file) : null,
+                'file' => $course->course_file ? asset('uploads/'.$course->course_file) : null,
             ];
         }),
         'achievements' => $profile->achievements->map(function ($ach) {
