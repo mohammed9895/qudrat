@@ -232,11 +232,14 @@
                         <div
                             class="swiper_nav_prev w-[48px] h-[48px] bg-white hover:bg-primary-1 rounded-full flex items-center justify-center">
                             <span>
-<svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                @verbatim
+                                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none"
+                                         xmlns="http://www.w3.org/2000/svg">
     <path
         d="M14.3344 14.0526C14.3344 14.0526 8.06084 7.77895 0.886306 0.604417M0.886306 0.604417C6.06915 5.78726 12.3212 1.44861 12.3212 1.44861M0.886306 0.604417C6.06915 5.78726 1.7305 12.0393 1.7305 12.0393"
         stroke="#010101" stroke-width="1.37143"/>
 </svg>
+                                @endverbatim
                             </span>
                         </div>
                         <div
