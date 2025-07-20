@@ -3,6 +3,8 @@
 namespace App\Models;
 
 use App\Enums\Status;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -10,9 +12,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 
-class Work extends Model
+class Work extends Model implements Viewable
 {
     use HasFactory;
+    use InteractsWithViews;
     use SoftDeletes;
 
     protected $guarded = [];

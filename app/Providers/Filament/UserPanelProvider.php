@@ -45,7 +45,7 @@ class UserPanelProvider extends PanelProvider
             ->default()
             ->id('user')
             ->path('user')
-            // ->login()
+            ->login()
             ->registration()
             ->colors([
                 'primary' => '#1d71b8',
@@ -96,8 +96,8 @@ class UserPanelProvider extends PanelProvider
                                     ->statePath('step_1') // It is recommended to keep the form data in a separate array key for each step.
                                     ->schema([
                                         FileUpload::make('avatar')->avatar()->columnSpanFull()->label(__('general.basic-information.username')),
-                                        TextInput::make('fullname')->disabled()->label(__('general.contact.full-name')),
-                                        TextInput::make('position')->disabled()->label(__('general.basic-information.position')),
+                                        TextInput::make('fullname')->label(__('general.contact.full-name')),
+                                        TextInput::make('position')->label(__('general.basic-information.position')),
                                         MarkdownEditor::make('bio')->columnSpanFull()->label(__('general.basic-information.bio')),
                                         TextInput::make('username')->prefix(env('APP_URL'))->unique(table: Profile::class)->columnSpanFull()->required()->label(__('general.basic-information.username')),
                                         TextInput::make('email')->default('John')->label(__('general.basic-information.email')),
@@ -108,8 +108,8 @@ class UserPanelProvider extends PanelProvider
                                             ->options([
                                                 1 => __('general.gender-types.male'),
                                                 0 => __('general.gender-types.female'),
-                                            ])->disabled(),
-                                        DatePicker::make('dob')->disabled()->format('Y-mm-dd')->label(__('general.basic-information.dob')),
+                                            ]),
+                                        DatePicker::make('dob')->format('Y-mm-dd')->label(__('general.basic-information.dob')),
                                         FileUpload::make('video')
                                             ->label(__('general.basic-information.video'))
                                             ->hint('Upload a video about your attachments.')

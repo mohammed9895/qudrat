@@ -6,15 +6,17 @@ use App\Models\User;
 use App\Observers\UserObserver;
 use BezhanSalleh\FilamentLanguageSwitch\LanguageSwitch;
 use Filament\Support\Assets\Js;
+use Filament\Support\Colors\Color;
 use Filament\Support\Facades\FilamentAsset;
+use Filament\Support\Facades\FilamentColor;
 use Illuminate\Cookie\Middleware\EncryptCookies;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\Vite;
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Str;
-use Illuminate\Http\Request;
+use RuntimeException;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -25,6 +27,15 @@ class AppServiceProvider extends ServiceProvider
     {
         FilamentAsset::register([
             Js::make('app', Vite::asset('resources/js/app.js'))->module(),
+        ]);
+
+        FilamentColor::register([
+            'danger' => Color::Red,
+            'info' => Color::Blue,
+            'primary' => '#1d71b8',
+            'gray' => Color::Slate,
+            'success' => Color::Green,
+            'warning' => Color::Amber,
         ]);
 
         //        Vite::useBuildDirectory('/public');
@@ -68,21 +79,21 @@ class AppServiceProvider extends ServiceProvider
 
             // Build the URL
             $absoluteUrl = url($request->path());
-            $url = $absolute ? $absoluteUrl : '/' . $request->path();
+            $url = $absolute ? $absoluteUrl : '/'.$request->path();
 
             // Collect and filter query string parameters
             $queryString = collect(explode('&', (string) $request->server->get('QUERY_STRING')))
-                ->reject(fn($parameter) => in_array(Str::before($parameter, '='), $ignoreQuery))
+                ->reject(fn ($parameter) => in_array(Str::before($parameter, '='), $ignoreQuery))
                 ->join('&');
 
             // Original URL before signing (including query parameters)
-            $original = rtrim($url . '?' . $queryString, '?');
+            $original = rtrim($url.'?'.$queryString, '?');
 
             // Use the application key to generate the signature
             $key = config('app.key'); // Ensure app.key is set in .env
 
             if (empty($key)) {
-                throw new \RuntimeException('Application key is not set.');
+                throw new RuntimeException('Application key is not set.');
             }
 
             // Generate the signature with HMAC

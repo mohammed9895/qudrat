@@ -40,12 +40,12 @@ class DigitalLibraryPost extends Model
     }
 
     public function comments()
-{
-    return $this->hasMany(DigitalLibraryPostComment::class)->orderBy('created_at', 'desc');
-}
+    {
+        return $this->hasMany(DigitalLibraryPostComment::class)->orderBy('created_at', 'desc');
+    }
 
     public function getThumbnailImage()
     {
-        return !$this->cover ? asset('assets/images/unset.jpg') : Storage::disk('public')->url($this->cover);
+        return ! $this->cover ? asset('assets/images/unset.jpg') : Storage::disk('public')->url($this->cover);
     }
 }

@@ -7,13 +7,16 @@ use Filament\Forms\Form;
 use Filament\Pages\Page;
 use IbrahimBougaoua\RadioButtonImage\Actions\RadioButtonImage;
 use Spatie\Browsershot\Browsershot;
-use Spatie\LaravelPdf\Facades\Pdf;
 
 class CVMaker extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'filament.user.pages.c-v-maker';
+
+    protected static bool $shouldRegisterNavigation = false;
+
+    protected static ?int $navigationSort = 10;
 
     public array $data = [];
 
@@ -26,8 +29,6 @@ class CVMaker extends Page
     {
         return __('general.user-dashboard.navigation.cv_maker');  // Use translated label for CV Maker
     }
-
-    protected static ?int $navigationSort = 10;
 
     public function mount()
     {
@@ -56,22 +57,22 @@ class CVMaker extends Page
 
         // Generate the PDF using Browsershot
         Browsershot::html(view($viewPath, ['profile' => auth()->user()->profile])->render())
-    ->setOption('executablePath', '/usr/bin/google-chrome-stable')
-    ->setOption('args', [
-        '--no-sandbox',
-        '--disable-gpu',
-        '--disable-dev-shm-usage',
-        '--single-process',
-        '--no-zygote',
-        '--user-data-dir=/tmp/chrome-profile',
-        '--no-first-run',
-        '--no-default-browser-check',
-        '--disable-crash-reporter',
-        '--no-crashpad' // Disable crashpad handler entirely
-    ])
-    ->setOption('viewport', ['width' => 2480, 'height' => 3508])  // Set viewport for consistent rendering
-    ->margins(0, 0, 0, 0)  // Remove margins for full-page PDF
-    ->save($outputPath);
+            ->setOption('executablePath', '/usr/bin/google-chrome-stable')
+            ->setOption('args', [
+                '--no-sandbox',
+                '--disable-gpu',
+                '--disable-dev-shm-usage',
+                '--single-process',
+                '--no-zygote',
+                '--user-data-dir=/tmp/chrome-profile',
+                '--no-first-run',
+                '--no-default-browser-check',
+                '--disable-crash-reporter',
+                '--no-crashpad', // Disable crashpad handler entirely
+            ])
+            ->setOption('viewport', ['width' => 2480, 'height' => 3508])  // Set viewport for consistent rendering
+            ->margins(0, 0, 0, 0)  // Remove margins for full-page PDF
+            ->save($outputPath);
 
         // Return the generated PDF as a download response
         return response()->download($outputPath);

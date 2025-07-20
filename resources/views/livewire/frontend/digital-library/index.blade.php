@@ -30,7 +30,7 @@
                             <a href=""
                                class="inline-block text-2xl text-white font-medium mb-3 hover:text-primary-1">{{ $link->title }}</a>
                             <p class="mb-4 text-white">{{ $link->description }}</p>
-                            <a href="{{ $link->link }}"
+                            <a href="{{ $link->link }}" target="_blank"
                                class="inline-block px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">{{ __('general.digital-library.view-now') }}</a>
                         </div>
                     </div>

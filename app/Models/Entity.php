@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\Status;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -15,16 +16,20 @@ class Entity extends Model
 
     protected $guarded = [];
 
-    protected static function booted()
-    {
-        static::creating(function($model) {
-            $model->user_id = auth()->id();
-        });
-    }
+    //    protected static function booted()
+    //    {
+    //        static::creating(function($model) {
+    //            $model->user_id = auth()->id();
+    //        });
+    //    }
 
-    public function user():BelongsTo
+    protected $casts = [
+        'status' => Status::class,
+    ];
+
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'entity_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function entityCertificatePresets(): HasMany

@@ -6,6 +6,8 @@ use App\Livewire\Auth\LoginCallback;
 use App\Livewire\Frontend\DigitalLibrary\ListPosts;
 use App\Livewire\Frontend\Home\GlobalSearch;
 use App\Livewire\Frontend\Innovators;
+use App\Livewire\Frontend\InternationalTalentRequest;
+use App\Livewire\Frontend\InternationalTalents;
 use App\Livewire\Frontend\MediaCenter\Post;
 use App\Livewire\Frontend\Researchers;
 use App\Livewire\Frontend\SocialWindow\Category;
@@ -263,3 +265,7 @@ Route::get('/xprofile/{id}', function ($id) {
         }),
     ]);
 });
+
+Route::get('/international-talent-requests', InternationalTalentRequest::class)->name('international-talent-requests.index');
+Route::get('/international-talents', InternationalTalents::class)->name('international-talents.index');
+Route::get('/scale', \App\Livewire\Frontend\Scale\Index::class)->name('scale.index');

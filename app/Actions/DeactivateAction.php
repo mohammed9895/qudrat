@@ -2,26 +2,27 @@
 
 namespace App\Actions;
 
-use Filament\Tables\Actions\Action;
-use Filament\Notifications\Notification;
 use App\Enums\Status;
+use Filament\Notifications\Notification;
+use Filament\Tables\Actions\Action;
 
 class DeactivateAction extends Action
 {
     public static function make(?string $name = 'deactivate'): static
     {
         return parent::make($name)
-            ->label('Deactivate')
+            ->label(__('general.deactivate'))
             ->icon('hugeicons-cancel-01')
             ->color('danger')
-            ->hidden(fn ($record) => $record->status === Status::Inactive) // Adjust for inactive state
+            ->hidden(fn ($record) => $record->status === Status::Inactive)
             ->action(function ($record) {
-                $record->update(['status' => Status::Inactive]); // Adjust `Status::Inactive` based on your implementation
+                $record->update(['status' => Status::Inactive->value]);
+
                 Notification::make()
-                    ->title('Success')
+                    ->title(__('general.success'))
                     ->icon('hugeicons-cancel-01')
                     ->color('danger')
-                    ->body('Comment has been deactivated.')
+                    ->body(__('general.deactivated_successfully'))
                     ->send();
             });
     }

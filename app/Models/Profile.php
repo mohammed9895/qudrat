@@ -360,4 +360,9 @@ class Profile extends Model implements Viewable
         Cache::add($key, 0, now()->addDay()); // ensure key exists
         Cache::increment($key);
     }
+
+    public function expertRequests(): HasMany
+    {
+        return $this->hasMany(ExpertRequest::class);
+    }
 }

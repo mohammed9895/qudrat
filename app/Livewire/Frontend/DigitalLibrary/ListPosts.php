@@ -5,23 +5,56 @@ namespace App\Livewire\Frontend\DigitalLibrary;
 use App\Enums\Status;
 use App\Models\DigitalLibraryCategory;
 use App\Models\DigitalLibraryPost;
+use Filament\Forms\Components\CheckboxList;
+use Filament\Forms\Components\TextInput;
+use Filament\Forms\Concerns\InteractsWithForms;
+use Filament\Forms\Contracts\HasForms;
+use Filament\Forms\Form;
 use Livewire\Attributes\Computed;
-use Livewire\Attributes\Url;
 use Livewire\Component;
 use WireUi\Breadcrumbs\Trail;
 
-class ListPosts extends Component
+class ListPosts extends Component implements HasForms
 {
-    public $categoriesList = [];
+    use InteractsWithForms;
 
-    public $categories;
+    public ?array $data = [];
 
-    #[Url]
-    public $search = '';
+    public string $viewMode = 'grid'; // Options: 'grid' or 'list'
+
+    public string $orderDirection = 'desc'; // or 'asc'
 
     public function mount()
     {
-        $this->categories = DigitalLibraryCategory::whereHas('DigitalLibraryPosts')->where('status', Status::Active)->get();
+        $this->form->fill();
+    }
+
+    public function toggleOrderDirection()
+    {
+        $this->orderDirection = $this->orderDirection === 'asc' ? 'desc' : 'asc';
+    }
+
+    public function form(Form $form): Form
+    {
+        $options = DigitalLibraryCategory::withCount('digitalLibraryposts')->get()->mapWithKeys(function ($category) {
+            return [$category->id => "{$category->name} ({$category->posts_count})"];
+        });
+
+        return $form->schema([
+            TextInput::make('search')
+                ->label(__('general.search'))
+                ->placeholder(__('general.search-placeholder'))
+                ->live(onBlur: true)
+                ->columnSpanFull(),
+            CheckboxList::make('categoriesList')
+                ->label(__('general.category'))
+                ->options(
+                    DigitalLibraryCategory::whereHas('digitalLibraryposts')->pluck('name', 'id')
+                )
+                ->live()
+                ->searchable()
+                ->columnSpanFull(),
+        ])->statePath('data');
     }
 
     public function breadcrumbs(Trail $trail): Trail
@@ -33,20 +66,17 @@ class ListPosts extends Component
     #[Computed]
     public function posts()
     {
-        $query = DigitalLibraryPost::query()
-            ->where('status', Status::Active);
-
-        if (! empty($this->categoriesList)) {
-            $query->whereIn('digital_library_category_id', $this->categoriesList);
-        }
-
-        if (! empty($this->search)) {
-            $query->where('title', 'like', "%{$this->search}%");
-        }
-
-        $posts = $query->paginate(10);
-
-        return $posts;
+        return DigitalLibraryPost::query()
+            ->where('status', Status::Active)
+            ->when(! empty($this->data['categoriesList']), function ($query) {
+                $query->whereIn('digital_library_category_id', $this->data['categoriesList']);
+            })
+            ->when(! empty($this->data['search']), function ($query) {
+                $query->where('title', 'like', '%'.$this->data['search'].'%');
+            })
+            ->with('digitalLibraryCategory') // optional: eager load category
+            ->orderBy('created_at', $this->orderDirection) // optional: order by latest post
+            ->paginate(10);
     }
 
     public function render()

@@ -59,7 +59,7 @@ return [
         'nfs' => [
             'driver' => 'local',
             'root' => '/mnt/laravel_uploads',
-            'url' => env('APP_URL') . '/uploads',
+            'url' => env('APP_URL').'/uploads',
             'visibility' => 'public',
         ],
 

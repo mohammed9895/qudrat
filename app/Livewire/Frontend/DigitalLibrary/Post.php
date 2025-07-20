@@ -10,8 +10,8 @@ use WireUi\Breadcrumbs\Trail;
 
 class Post extends Component
 {
-
     public DigitalLibraryPost $post;
+
     public DigitalLibraryCategory $category;
 
     public $content;
@@ -45,6 +45,7 @@ class Post extends Component
     public function render()
     {
         $comments = $this->post->comments()->where('status', Status::Active)->get();
+
         return view('livewire.frontend.digital-library.post', [
             'comments' => $comments,
         ]);

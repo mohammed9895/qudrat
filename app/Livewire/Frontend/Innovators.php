@@ -17,7 +17,7 @@ class Innovators extends Component
 
     public function breadcrumbs(Trail $trail): Trail
     {
-       return $trail
+        return $trail
             ->push(__('general.social-window.oman-reasrchers'), route('social-window.index'))
             ->push($this->category->name);
     }

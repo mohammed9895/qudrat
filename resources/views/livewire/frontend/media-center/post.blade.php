@@ -19,7 +19,7 @@
             <div class="w-full h-[400px] rounded-lg mb-5"
                  style="background: url('{{ $post->getThumbnailImage() }}'); background-size: cover;"></div>
             <h1 class="text-2xl text-gray-900 font-bold mb-5">{{ $post->title }}</h1>
-            <div class="flex justify-start items-center space-x-3 mb-5">
+            <div class="flex justify-start items-center space-x-3 mb-5 rtl:space-x-reverse">
                 <div class="flex items-center">
                     @svg('hugeicons-user-circle', 'w-6 h-6 text-primary-1 mr-2')
                     <span>{{ $post->user->name }}</span>
@@ -87,15 +87,11 @@
                                            class="block py-2 px-4 hover:bg-gray-100">Remove</a>
                                     </li>
                                 @endif
-                                <li>
-                                    <a href="#"
-                                       class="block py-2 px-4 hover:bg-gray-100">Report</a>
-                                </li>
                             </ul>
                         </div>
                     </footer>
                     <p class="text-gray-500 ">{{ $comment->content }}</p>
-                    <div class="flex items-center mt-4 space-x-4">
+                    <div class="flex items-center mt-4 space-x-4 rtl:space-x-reverse">
                         <button type="button"
                                 class="flex items-center text-sm text-gray-500 hover:underline  font-medium">
                             <svg class="mr-1.5 w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"

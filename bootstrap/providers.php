@@ -8,4 +8,5 @@ return [
     App\Providers\SoloServiceProvider::class,
     CyrildeWit\EloquentViewable\EloquentViewableServiceProvider::class,
     Maatwebsite\Excel\ExcelServiceProvider::class,
+    ZanySoft\Zip\ZipServiceProvider::class,
 ];

@@ -26,7 +26,7 @@
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
     />
-
+    @filamentStyles
     @vite(['resources/css/app.css', 'resources/js/app.js'], 'build')
 </head>
 <body>
@@ -38,7 +38,7 @@
 
 @livewire('notifications')
 
-
+@filamentScripts
 <script src="{{ asset('assets/js/plugins.min.js') }}"></script>
 <script src="{{ asset('assets/js/flowbite.min.js') }}"></script>
 <script src="{{ asset('assets/js/app.min.js') }}"></script>

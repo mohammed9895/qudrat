@@ -2,11 +2,13 @@
 
 namespace App\Filament\User\Clusters\Profile\Pages;
 
+use App\Events\UserRegistered;
 use App\Filament\User\Clusters\Profile;
 use App\Models\Country;
 use App\Models\Profile as ProfileModel;
 use App\Models\Province;
 use App\Models\State;
+use App\Services\QudratService;
 use Filament\Actions\Action;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
@@ -20,9 +22,6 @@ use Filament\Forms\Set;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Illuminate\Contracts\Support\Htmlable;
-use App\Events\UserRegistered;
-use App\Models\User;
-use App\Services\QudratService;
 use Illuminate\Support\Facades\Http;
 
 class BasicInformation extends Page
@@ -35,7 +34,9 @@ class BasicInformation extends Page
 
     protected static ?string $cluster = Profile::class;
 
-    public \App\Models\Profile $profile;
+    public ProfileModel $profile;
+
+    public ?array $data = [];
 
     public static function getNavigationLabel(): string
     {
@@ -47,11 +48,9 @@ class BasicInformation extends Page
         return __('general.basic-information.title');
     }
 
-    public ?array $data = [];
-
     public function mount(): void
     {
-        $this->profile = \App\Models\Profile::where('user_id', auth()->id())->first();
+        $this->profile = ProfileModel::where('user_id', auth()->id())->first();
         $this->form->fill($this->profile->toArray());
     }
 
@@ -68,7 +67,9 @@ class BasicInformation extends Page
                             ->preload()
                             ->label(__('general.basic-information.experience_level'))
                             ->searchable()
-                            ->relationship('experienceLevel', 'name'),
+                            ->relationship('experienceLevel', 'name', function ($query) {
+                                return $query->orderBy('id', 'asc');
+                            }),
                         RichEditor::make('bio')->label(__('general.basic-information.bio'))->label(__('general.basic-information.bio')),
                         TextInput::make('username')->prefix(env('APP_URL'))->unique(table: ProfileModel::class, ignorable: $this->profile)->label(__('general.basic-information.username')),
                         TextInput::make('email')->label(__('general.basic-information.email')),
@@ -125,7 +126,7 @@ class BasicInformation extends Page
 
     public function create(): void
     {
-        $profile = \App\Models\Profile::updateOrCreate(
+        $profile = ProfileModel::updateOrCreate(
             ['user_id' => auth()->id()],
             $this->form->getState()
         );
@@ -147,44 +148,44 @@ class BasicInformation extends Page
                 ->icon('hugeicons-link-forward')
                 ->url(route('profile.index', ['profile' => $this->profile]))
                 ->openUrlInNewTab(),
-                 Action::make('fetch-data')
+            Action::make('fetch-data')
                 ->label(__('general.fetch-data'))  // Use translation for label
                 ->icon('hugeicons-reload')
                 ->action(function () {
-                     $token = strtok(request()->cookie('AUTH_COOKIE'), '|');
-                    $user =  auth()->user();
+                    $token = strtok(request()->cookie('AUTH_COOKIE'), '|');
+                    $user = auth()->user();
                     $basicAuth = base64_encode('eJWTUserName:eP@ssw0rd@123abc');
 
-            $principalResponse = Http::withHeaders([
-                'Content-Type' => 'application/json',
-                'Authorization' => 'Basic '.$basicAuth,
-            ])->post('http://10.153.25.11/sso.token.api/api/Token/GetPrincipal', [
-                'Token' => $token,
-            ]);
+                    $principalResponse = Http::withHeaders([
+                        'Content-Type' => 'application/json',
+                        'Authorization' => 'Basic '.$basicAuth,
+                    ])->post('http://10.153.25.11/sso.token.api/api/Token/GetPrincipal', [
+                        'Token' => $token,
+                    ]);
 
-            if (! $principalResponse->successful()) {
-                $this->error = 'Failed to verify token.';
+                    if (! $principalResponse->successful()) {
+                        $this->error = 'Failed to verify token.';
 
-                return;
-            }
+                        return;
+                    }
 
-            $principal = $principalResponse->json();
-            $userId = $principal['CurrentUserID'] ?? null;
+                    $principal = $principalResponse->json();
+                    $userId = $principal['CurrentUserID'] ?? null;
 
-            if (! $userId) {
-                $this->error = 'Invalid principal response.';
+                    if (! $userId) {
+                        $this->error = 'Invalid principal response.';
 
-                return;
-            }
+                        return;
+                    }
 
-            $userResponse = Http::withBasicAuth('UMSPRDUSER', 'aU1OJdbhmGwZjoBj')
-                ->withOptions(['verify' => false])
-                ->get('http://10.153.25.11/UMS.API/api/User/GetLoggedUserInfo', [
-                    'UserID' => $userId,
-                    'CertificateType' => $principal['CertificateType'],
-                ]);
+                    $userResponse = Http::withBasicAuth('UMSPRDUSER', 'aU1OJdbhmGwZjoBj')
+                        ->withOptions(['verify' => false])
+                        ->get('http://10.153.25.11/UMS.API/api/User/GetLoggedUserInfo', [
+                            'UserID' => $userId,
+                            'CertificateType' => $principal['CertificateType'],
+                        ]);
 
-            $userData = $userResponse->json()['Data'] ?? null;
+                    $userData = $userResponse->json()['Data'] ?? null;
                     $qudratService = new QudratService;
                     $registrationData = $qudratService->getRegistrationByNationalId($user->civil_id);
 

@@ -27,6 +27,8 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
     use Notifiable;
     use SoftDeletes;
 
+    public array $translatable = ['name'];
+
     protected $fillable = [
         'civil_id',
         'name',
@@ -39,15 +41,13 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
         'remember_token',
     ];
 
-    public array $translatable = ['name'];
-
     public function canAccessPanel(Panel $panel): bool
     {
         return match ($panel->getId()) {
             'admin' => $this->hasRole('super_admin'),
             'entity' => $this->hasRole('super_admin') || $this->hasRole('entity'),
             'user' => $this->hasRole('super_admin') || $this->hasRole('panel_user'),
-            default => false,
+            default => true,
         };
     }
 
