@@ -444,6 +444,11 @@ return [
         'success' => 'Application Submitted',
         'submission-success' => 'Your application has been submitted successfully. We will contact you if selected.',
     ],
+
+    'international-talent' => [
+        'title' => 'International Talents',
+        'description' => 'Global missions to connect global talent with opportunities in the Sultanate of Oman.',
+    ],
     'soon' => 'Coming Soon',
     'download-portfolio' => 'Download Portfolio',
 
