@@ -13,6 +13,8 @@ return [
         'social-window' => 'Social Window',
         'oman-scientists' => 'Omani Scientists',
         'profiles' => 'Profiles',
+        'international-talents' => 'International Talents',
+        'international-talent-request' => 'Request to Join',
         'experts' => 'Experts',
         'jobs' => 'Jobs',
         'works' => 'Works',
