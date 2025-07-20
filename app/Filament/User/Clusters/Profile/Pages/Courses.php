@@ -8,9 +8,8 @@ use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Section;
-use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
@@ -63,80 +62,80 @@ class Courses extends Page
                             ->orderColumn('sort')
                             ->schema([
                                 Select::make('title')
-                                ->searchable()
-                            ->getSearchResultsUsing(function ($query) {
-        // Make the API request using the query input for filtering
-        $response = Http::withHeaders([
-            'Content-Type' => 'application/json',
-        ])
-        ->post('https://jobseeker.mol.gov.om/js/gup/NewREG.aspx/tranCourseList', [
-            'prefix' => $query, // Using search query to filter the results
-        ]);
+                                    ->searchable()
+                                    ->getSearchResultsUsing(function ($query) {
+                                        // Make the API request using the query input for filtering
+                                        $response = Http::withHeaders([
+                                            'Content-Type' => 'application/json',
+                                        ])
+                                            ->post('https://jobseeker.mol.gov.om/js/gup/NewREG.aspx/tranCourseList', [
+                                                'prefix' => $query, // Using search query to filter the results
+                                            ]);
 
-        // Check if the response is successful
-        if ($response->successful()) {
-            // Access the 'd' field which contains the list of course names with IDs
-            $data = $response->json()['d'];
-            $options = [];
+                                        // Check if the response is successful
+                                        if ($response->successful()) {
+                                            // Access the 'd' field which contains the list of course names with IDs
+                                            $data = $response->json()['d'];
+                                            $options = [];
 
-            // Loop through the data to create key-value pairs for the options
-            foreach ($data as $item) {
-                // Split the string into name and ID parts
-                $parts = explode('-', $item);
-                if (count($parts) == 2) {
-                    // Assign the ID as the value but display only the name in the dropdown
-                    $options[$parts[0]] = $parts[0];// Use ID as value, name as label
-                }
-            }
+                                            // Loop through the data to create key-value pairs for the options
+                                            foreach ($data as $item) {
+                                                // Split the string into name and ID parts
+                                                $parts = explode('-', $item);
+                                                if (count($parts) == 2) {
+                                                    // Assign the ID as the value but display only the name in the dropdown
+                                                    $options[$parts[0]] = $parts[0]; // Use ID as value, name as label
+                                                }
+                                            }
 
-             if (empty($options)) {
-                $options[$query] = $query; // Use the search query as both the value and label
-            }
+                                            if (empty($options)) {
+                                                $options[$query] = $query; // Use the search query as both the value and label
+                                            }
 
-            return $options; // Return the options for the select field
-        }
+                                            return $options; // Return the options for the select field
+                                        }
 
-        // Return an empty array if the request fails
-        return [];
-    })
+                                        // Return an empty array if the request fails
+                                        return [];
+                                    })
                                     ->label(__('general.courses.course_title')),  // Use translated label
                                 Select::make('organization')
-                                ->searchable()
-                            ->getSearchResultsUsing(function ($query) {
-        // Make the API request using the query input for filtering
-        $response = Http::withHeaders([
-            'Content-Type' => 'application/json',
-        ])
-        ->post('https://jobseeker.mol.gov.om/js/gup/NewREG.aspx/GetTranInstituteList', [
-            'prefix' => $query, // Using search query to filter the results
-        ]);
+                                    ->searchable()
+                                    ->getSearchResultsUsing(function ($query) {
+                                        // Make the API request using the query input for filtering
+                                        $response = Http::withHeaders([
+                                            'Content-Type' => 'application/json',
+                                        ])
+                                            ->post('https://jobseeker.mol.gov.om/js/gup/NewREG.aspx/GetTranInstituteList', [
+                                                'prefix' => $query, // Using search query to filter the results
+                                            ]);
 
-        // Check if the response is successful
-        if ($response->successful()) {
-            // Access the 'd' field which contains the list of course names with IDs
-            $data = $response->json()['d'];
-            $options = [];
+                                        // Check if the response is successful
+                                        if ($response->successful()) {
+                                            // Access the 'd' field which contains the list of course names with IDs
+                                            $data = $response->json()['d'];
+                                            $options = [];
 
-            // Loop through the data to create key-value pairs for the options
-            foreach ($data as $item) {
-                // Split the string into name and ID parts
-                $parts = explode('-', $item);
-                if (count($parts) == 2) {
-                    // Assign the ID as the value but display only the name in the dropdown
-                     $options[$parts[0]] = $parts[0];// Use ID as value, name as label
-                }
-            }
+                                            // Loop through the data to create key-value pairs for the options
+                                            foreach ($data as $item) {
+                                                // Split the string into name and ID parts
+                                                $parts = explode('-', $item);
+                                                if (count($parts) == 2) {
+                                                    // Assign the ID as the value but display only the name in the dropdown
+                                                    $options[$parts[0]] = $parts[0]; // Use ID as value, name as label
+                                                }
+                                            }
 
-            if (empty($options)) {
-                $options[$query] = $query; // Use the search query as both the value and label
-            }
+                                            if (empty($options)) {
+                                                $options[$query] = $query; // Use the search query as both the value and label
+                                            }
 
-            return $options; // Return the options for the select field
-        }
+                                            return $options; // Return the options for the select field
+                                        }
 
-        // Return an empty array if the request fails
-        return [];
-    })
+                                        // Return an empty array if the request fails
+                                        return [];
+                                    })
                                     ->label(__('general.courses.organization')),  // Use translated label
                                 DatePicker::make('start_date')
                                     ->maxDate(now()->format('Y-m-d'))
@@ -146,6 +145,15 @@ class Courses extends Page
                                     ->native(false)
                                     ->label(__('general.courses.end_date')),  // Use translated label
                                 FileUpload::make('certificate_file')
+                                    ->maxSize(3072)
+                                    ->acceptedFileTypes([
+                                                                        'application/pdf',
+                                                                        'image/jpeg',
+                                                                        'image/png',
+                                                                        'image/webp',
+                                                                        'image/gif',
+                                                                        'image/svg+xml',
+                                                                    ])
                                     ->label(__('general.courses.certificate_file')),  // Use translated label
                                 MarkdownEditor::make('description')
                                     ->label(__('general.courses.description')),  // Use translated label

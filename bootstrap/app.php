@@ -1,12 +1,11 @@
 <?php
 
-use App\Http\Middleware\CorsMiddleware;
 use App\Http\Middleware\LocaleMiddleware;
+use App\Http\Middleware\SecureHeaders;
 use App\Http\Middleware\SessionTimeout;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
-use Illuminate\Http\Request;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -18,10 +17,12 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function (Middleware $middleware) {
         $middleware->appendToGroup('web', LocaleMiddleware::class);
         $middleware->append(SessionTimeout::class);
+        $middleware->append(SecureHeaders::class);
+
         //  $middleware->trustProxies(at: '*');
         // $middleware->append(CorsMiddleware::class)
         $middleware->trustProxies(at: '*');
-        
+
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

@@ -68,6 +68,15 @@ class Achievements extends Page
                                     ->native(false)
                                     ->label(__('general.achievements.date')),  // Use translated label
                                 FileUpload::make('achievement_file')
+                                    ->maxSize(3072)
+                                    ->acceptedFileTypes([
+                                        'application/pdf',
+                                        'image/jpeg',
+                                        'image/png',
+                                        'image/webp',
+                                        'image/gif',
+                                        'image/svg+xml',
+                                    ])
                                     ->label(__('general.achievements.achievement_file')),  // Use translated label
                             ])
                             ->itemLabel(fn (array $state): ?string => $state['title'] ?? null),
