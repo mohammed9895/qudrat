@@ -46,7 +46,7 @@
                                 <li class="flex items-center gap-2">
                                     <span>
                                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
+                                             xmlns="http://www.w3.org/2000/svg">
                                             <path
                                                 d="M17.5 8.33301C17.5 14.1663 10 19.1663 10 19.1663C10 19.1663 2.5 14.1663 2.5 8.33301C2.5 6.34388 3.29018 4.43623 4.6967 3.02971C6.10322 1.62318 8.01088 0.833008 10 0.833008C11.9891 0.833008 13.8968 1.62318 15.3033 3.02971C16.7098 4.43623 17.5 6.34388 17.5 8.33301Z"
                                                 stroke="#344054" stroke-width="1.5" stroke-linecap="round"
@@ -60,17 +60,18 @@
                                     <p>{{ $profile->address }}</p>
                                 </li>
                             @endif
-                           @if (($profile->show_email || auth()->id() == $profile->user_id) && isset($profile->email))
+                            @if (($profile->show_email || auth()->id() == $profile->user_id) && isset($profile->email))
                                 <li class="flex items-center gap-2">
                                         <span>
                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
+                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M3.33268 3.33301H16.666C17.5827 3.33301 18.3327 4.08301 18.3327 4.99967V14.9997C18.3327 15.9163 17.5827 16.6663 16.666 16.6663H3.33268C2.41602 16.6663 1.66602 15.9163 1.66602 14.9997V4.99967C1.66602 4.08301 2.41602 3.33301 3.33268 3.33301Z"
                                                     stroke="#344054" stroke-width="1.5" stroke-linecap="round"
                                                     stroke-linejoin="round"/>
                                                 <path d="M18.3346 5L10.0013 10.8333L1.66797 5" stroke="#344054"
-                                                    stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                                      stroke-width="1.5" stroke-linecap="round"
+                                                      stroke-linejoin="round"/>
                                             </svg>
                                         </span>
                                     <p><a href="mailto:{{ $profile->email }}">{{ $profile->email }}</a></p>
@@ -80,7 +81,7 @@
                                 <li class="flex items-center gap-2">
                                         <span>
                                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
+                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M18.3332 14.1004V16.6004C18.3341 16.8325 18.2866 17.0622 18.1936 17.2749C18.1006 17.4875 17.9643 17.6784 17.7933 17.8353C17.6222 17.9922 17.4203 18.1116 17.2005 18.186C16.9806 18.2603 16.7477 18.288 16.5165 18.2671C13.9522 17.9884 11.489 17.1122 9.32486 15.7087C7.31139 14.4293 5.60431 12.7222 4.32486 10.7087C2.91651 8.53474 2.04007 6.05957 1.76653 3.48374C1.7457 3.2533 1.77309 3.02104 1.84695 2.80176C1.9208 2.58248 2.03951 2.38098 2.1955 2.21009C2.3515 2.0392 2.54137 1.90266 2.75302 1.80917C2.96468 1.71569 3.19348 1.66729 3.42486 1.66707H5.92486C6.32928 1.66309 6.72136 1.80631 7.028 2.07002C7.33464 2.33373 7.53493 2.69995 7.59153 3.10041C7.69705 3.90046 7.89274 4.68601 8.17486 5.44207C8.28698 5.74034 8.31125 6.0645 8.24478 6.37614C8.17832 6.68778 8.02392 6.97383 7.79986 7.20041L6.74153 8.25874C7.92783 10.345 9.65524 12.0724 11.7415 13.2587L12.7999 12.2004C13.0264 11.9764 13.3125 11.8219 13.6241 11.7555C13.9358 11.689 14.2599 11.7133 14.5582 11.8254C15.3143 12.1075 16.0998 12.3032 16.8999 12.4087C17.3047 12.4658 17.6744 12.6697 17.9386 12.9817C18.2029 13.2936 18.3433 13.6917 18.3332 14.1004Z"
                                                     stroke="#344054" stroke-width="1.5" stroke-linecap="round"
@@ -93,17 +94,19 @@
                         </ul>
                         @if (auth()->check() && $profile->can_send_message && auth()->id() != $profile->user_id)
                             <a wire:click="send_message" wire:ignore
-                                class="px-8 py-3 mb-3 cursor-pointer rounded-full text-head-color font-medium bg-gray-200 text-gray-500 inline-flex items-center gap-2 w-full justify-center">
-                                    <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                        <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155" />
-                                    </svg>                                  
+                               class="px-8 py-3 mb-3 cursor-pointer rounded-full text-head-color font-medium bg-gray-200 text-gray-500 inline-flex items-center gap-2 w-full justify-center">
+                                    <span><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                               stroke-width="1.5" stroke="currentColor" class="size-6">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                              d="M20.25 8.511c.884.284 1.5 1.128 1.5 2.097v4.286c0 1.136-.847 2.1-1.98 2.193-.34.027-.68.052-1.02.072v3.091l-3-3c-1.354 0-2.694-.055-4.02-.163a2.115 2.115 0 0 1-.825-.242m9.345-8.334a2.126 2.126 0 0 0-.476-.095 48.64 48.64 0 0 0-8.048 0c-1.131.094-1.976 1.057-1.976 2.192v4.286c0 .837.46 1.58 1.155 1.951m9.345-8.334V6.637c0-1.621-1.152-3.026-2.76-3.235A48.455 48.455 0 0 0 11.25 3c-2.115 0-4.198.137-6.24.402-1.608.209-2.76 1.614-2.76 3.235v6.226c0 1.621 1.152 3.026 2.76 3.235.577.075 1.157.14 1.74.194V21l4.155-4.155"/>
+                                    </svg>
                                     </span>
                                 {{ __('general.send-message') }}
                             </a>
                         @endif
-                        <a 
-   wire:click="download"
-   class="px-8 py-3 cursor-pointer rounded-full text-head-color font-medium bg-brand-blue text-white inline-flex items-center gap-2 w-full justify-center">
+                        <a
+                            wire:click="download"
+                            class="px-8 py-3 cursor-pointer rounded-full text-head-color font-medium bg-brand-blue text-white inline-flex items-center gap-2 w-full justify-center">
     <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                xmlns="http://www.w3.org/2000/svg">
         <path
@@ -114,8 +117,8 @@
             stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     </span>
-    {{ __('general.download-cv') }}
-</a>
+                            {{ __('general.download-cv') }}
+                        </a>
                         <div class="bg-primary-3 p-5 rounded-xl mt-8">
                             <div class="flex items-center justify-center gap-4">
                                 <div class="w-6/12 text-center">
@@ -187,43 +190,43 @@
                                 <div class="flex justify-start items-center space-x-2">
                                     @if($profile->social_facebook)
                                         <a href="{{ $profile->social_facebook }}"
-                                        class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
+                                           class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
                                             <span><x-fab-facebook-f class="size-5"/></span>
                                         </a>
                                     @endif
                                     @if($profile->social_instagram)
                                         <a href="{{ $profile->social_instagram }}"
-                                        class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
+                                           class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
                                             <span><x-fab-instagram class="size-5"/></span>
                                         </a>
                                     @endif
                                     @if($profile->social_x)
                                         <a href="{{ $profile->social_x }}"
-                                        class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
+                                           class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
                                             <span><x-fab-x-twitter class="size-5"/></span>
                                         </a>
                                     @endif
                                     @if($profile->social_linkedin)
                                         <a href="{{ $profile->social_instagram }}"
-                                        class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
+                                           class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
                                             <span><x-fab-linkedin-in class="size-5"/></span>
                                         </a>
                                     @endif
                                     @if($profile->social_pinterest)
                                         <a href="{{ $profile->social_pinterest }}"
-                                        class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
+                                           class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
                                             <span><x-fab-pinterest class="size-5"/></span>
                                         </a>
                                     @endif
                                     @if($profile->social_stackoverflow)
                                         <a href="{{ $profile->social_stackoverflow }}"
-                                        class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
+                                           class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
                                             <span><x-fab-stack-overflow class="size-5"/></span>
                                         </a>
                                     @endif
                                     @if($profile->social_whatsapp)
                                         <a href="https://wa.me/{{ $profile->social_whatsapp }}"
-                                        class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
+                                           class="w-10 h-10 rounded-full text-[#1d71b8] font-medium border-2 border-brand-blue inline-flex items-center justify-center hover:bg-brand-blue hover:text-white">
                                             <span><x-fab-whatsapp class="size-5"/></span>
                                         </a>
                                     @endif
@@ -272,7 +275,8 @@
                                             </svg>
                                         </span>                                                <h6
                                                 class="text-lg font-semibold mt-4 mb-2">{{ $education->educationType->name ?? '' }}</h6>
-                                            <p class="text-md font-bold">{{ $education->fieldOfStudy->name ?? '' }} - {{ $education->fieldOfStudyChild->name ?? '' }}</p>
+                                            <p class="text-md font-bold">{{ $education->fieldOfStudy->name ?? '' }}
+                                                - {{ $education->fieldOfStudyChild->name ?? '' }}</p>
                                             <p class="text-sm mt-2">{{ $education->school->name ?? '' }}</p>
                                             <p class="text-sm mt-2">
                                                 @if($education->start_date && Carbon::parse($education->start_date)->isValid())
@@ -309,8 +313,8 @@
                                         </span>
                                             <h6 class="text-lg font-semibold mt-4 mb-2">{{ $experience->position }}</h6>
                                             <p class="text-md mt-2">{{ $experience->company }}</p>
-                                            <p class="text-sm mt-2">{{ Carbon::parse($education->start_date)->format('Y') }}
-                                                - {{ $experience->is_current ? __('general.present') : Carbon::parse($education->end_date)->format('Y')}}</p>
+                                            <p class="text-sm mt-2">{{ Carbon::parse($experience->start_date)->format('Y') }}
+                                                - {{ $experience->is_current ? __('general.present') : Carbon::parse($experience->end_date)->format('Y')}}</p>
                                         </div>
                                     </div>
                                 @endforeach
@@ -325,10 +329,12 @@
                                     <div class="col-span-full lg:col-span-4">
                                         <div class="bg-white p-7 rounded-xl h-full">
                                         <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12"/>
                                               </svg>
-                                              
+
                                         </span>
                                             <h6 class="text-lg font-semibold mt-4 mb-2">{{ $certificate->title }}</h6>
                                             <p class="text-md mt-2">{{ $certificate->organization }}</p>
@@ -352,10 +358,12 @@
                                     <div class="col-span-full lg:col-span-4">
                                         <div class="bg-white p-7 rounded-xl h-full">
                                         <span>
-                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
-                                                <path stroke-linecap="round" stroke-linejoin="round" d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12" />
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                                 stroke-width="1.5" stroke="currentColor" class="size-6">
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                      d="M10.125 2.25h-4.5c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125v-9M10.125 2.25h.375a9 9 0 0 1 9 9v.375M10.125 2.25A3.375 3.375 0 0 1 13.5 5.625v1.5c0 .621.504 1.125 1.125 1.125h1.5a3.375 3.375 0 0 1 3.375 3.375M9 15l2.25 2.25L15 12"/>
                                               </svg>
-                                              
+
                                         </span>
                                             <h6 class="text-lg font-semibold mt-4 mb-2">{{ $course->title }}</h6>
                                             <p class="text-md mt-2">{{ $course->organization }}</p>
@@ -513,48 +521,49 @@
                             </div>
                         @endif
                         @if ($profile->show_ratings || auth()->id() == $profile->user_id)
-                        @foreach($profile->ratings()->orderByDesc('created_at')->get() as $rating)
-                            @if($loop->index == 0)
-                                <div class="py-4">
-                                    @endif
-                                    <div class="py-4 border-t">
-                                        <div class="flex gap-4">
-                                            <div class="shrink-0">
-                                                <img src="{{ $rating->user->profile->getThumbnailImage() }}" alt="images"
-                                                     class="size-16 rounded-full">
-                                            </div>
-                                            <div class="w-full">
-                                                <div
-                                                    class="w-full flex items-center justify-between gap-3 flex-wrap mb-3">
-                                                    <div>
-                                                        <h6 class="text-[18px] font-semibold mb-0">{{ $rating->user->profile->fullname }}</h6>
-                                                        <p class="text-primary-2 text-sm">{{ Carbon::parse($rating->created_at)->format('Y-m-d h:i') }}</p>
-                                                    </div>
-                                                    <div class="flex items-center gap-[2px] mb-3">
+                            @foreach($profile->ratings()->orderByDesc('created_at')->get() as $rating)
+                                @if($loop->index == 0)
+                                    <div class="py-4">
+                                        @endif
+                                        <div class="py-4 border-t">
+                                            <div class="flex gap-4">
+                                                <div class="shrink-0">
+                                                    <img src="{{ $rating->user->profile->getThumbnailImage() }}"
+                                                         alt="images"
+                                                         class="size-16 rounded-full">
+                                                </div>
+                                                <div class="w-full">
+                                                    <div
+                                                        class="w-full flex items-center justify-between gap-3 flex-wrap mb-3">
+                                                        <div>
+                                                            <h6 class="text-[18px] font-semibold mb-0">{{ $rating->user->profile->fullname }}</h6>
+                                                            <p class="text-primary-2 text-sm">{{ Carbon::parse($rating->created_at)->format('Y-m-d h:i') }}</p>
+                                                        </div>
+                                                        <div class="flex items-center gap-[2px] mb-3">
                                                         <span
                                                             class="{{ $rating->rating >= 1 ? 'text-warning' : 'text-secondary-1' }}"><i
                                                                 class="las la-star"></i></span>
-                                                        <span
-                                                            class="{{ $rating->rating >= 2 ? 'text-warning' : 'text-secondary-1' }}"><i
-                                                                class="las la-star"></i></span>
-                                                        <span
-                                                            class="{{ $rating->rating >= 3 ? 'text-warning' : 'text-secondary-1' }}"><i
-                                                                class="las la-star"></i></span>
-                                                        <span
-                                                            class="{{ $rating->rating >= 4 ? 'text-warning' : 'text-secondary-1' }}"><i
-                                                                class="las la-star"></i></span>
-                                                        <span
-                                                            class="{{ $rating->rating >= 5 ? 'text-warning' : 'text-secondary-1' }}"><i
-                                                                class="las la-star"></i></span>
+                                                            <span
+                                                                class="{{ $rating->rating >= 2 ? 'text-warning' : 'text-secondary-1' }}"><i
+                                                                    class="las la-star"></i></span>
+                                                            <span
+                                                                class="{{ $rating->rating >= 3 ? 'text-warning' : 'text-secondary-1' }}"><i
+                                                                    class="las la-star"></i></span>
+                                                            <span
+                                                                class="{{ $rating->rating >= 4 ? 'text-warning' : 'text-secondary-1' }}"><i
+                                                                    class="las la-star"></i></span>
+                                                            <span
+                                                                class="{{ $rating->rating >= 5 ? 'text-warning' : 'text-secondary-1' }}"><i
+                                                                    class="las la-star"></i></span>
+                                                        </div>
                                                     </div>
+                                                    <p>{{ $rating->comment }}</p>
                                                 </div>
-                                                <p>{{ $rating->comment }}</p>
                                             </div>
                                         </div>
+                                        @endforeach
                                     </div>
-                                    @endforeach
-                                </div>
-                            @endif
+                                @endif
                     </div>
                 </div>
             </div>
