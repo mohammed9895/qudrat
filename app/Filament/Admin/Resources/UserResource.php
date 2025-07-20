@@ -9,6 +9,7 @@ use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Hash;
 
 class UserResource extends Resource
 {
@@ -64,7 +65,8 @@ class UserResource extends Resource
                     ->required(fn (string $operation): bool => $operation === 'create')
                     ->maxLength(255),
                 Forms\Components\Select::make('roles')
-                    ->relationship('roles')
+                    ->preload()
+                    ->relationship('roles', 'name')
                     ->multiple()
                     ->label('general.role'),
                 Forms\Components\TextInput::make('preferred_language')

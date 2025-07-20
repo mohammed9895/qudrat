@@ -546,4 +546,22 @@ return [
     'logo' => 'Logo',
     'civil_id' => 'Civil ID',
     'password' => 'Password',
+
+    'message-resource' => [
+        'inbox' => 'Inbox',
+        'sender' => 'Sender',
+        'subject' => 'Subject',
+        'send_message' => 'Send Message',
+        'new_reply' => 'New Reply to :subject',
+        'content' => 'Message',
+        'created_at' => 'Sent At',
+        'reply' => 'Reply',
+        'no_messages' => 'No messages found.',
+        'receiver' => 'Recipient',
+        'view_conversation' => 'View Conversation',
+        'subject_prefix' => 'Subject: ',
+        'new_reply_notification' => 'New Reply to :subject',
+    ],
+
+    'new-message' => 'New Message',
 ];

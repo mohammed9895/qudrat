@@ -41,6 +41,13 @@ class User extends Authenticatable implements FilamentUser, HasAvatar
         'remember_token',
     ];
 
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            $user->assignRole('panel_user');
+        });
+    }
+
     public function canAccessPanel(Panel $panel): bool
     {
         return match ($panel->getId()) {

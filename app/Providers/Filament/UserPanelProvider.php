@@ -30,7 +30,6 @@ use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use JaOcero\FilaChat\FilaChatPlugin;
 use RalphJSmit\Filament\Onboard\FilamentOnboard;
 use RalphJSmit\Filament\Onboard\Http\Livewire\Wizard;
 use RalphJSmit\Filament\Onboard\Http\Middleware\OnboardMiddleware;
@@ -84,7 +83,7 @@ class UserPanelProvider extends PanelProvider
             ])
             ->viteTheme('resources/css/filament/user/theme.css')
             ->plugins([
-                FilaChatPlugin::make(),
+                //                FilaChatPlugin::make(),
                 FilamentOnboard::make()
                     ->addTrack(fn () => Track::make([
                         Step::make(name: fn () => 'Hello '.auth()->user()->name, identifier: 'Welcome to the onboarding process.')

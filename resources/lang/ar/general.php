@@ -558,4 +558,21 @@ return [
     'password' => 'كلمة المرور',
 
     'entity' => 'نقاطق التواصل',
+
+    'message-resource' => [
+        'inbox' => 'البريد الوارد',
+        'sender' => 'المرسل',
+        'subject' => 'الموضوع',
+        'send_message' => 'إرسال الرسالة',
+        'new_reply' => 'رد جديد على :subject',
+        'content' => 'الرسالة',
+        'created_at' => 'تاريخ الإرسال',
+        'reply' => 'رد',
+        'no_messages' => 'لا توجد رسائل.',
+        'receiver' => 'المستلم',
+        'view_conversation' => 'عرض المحادثة',
+        'subject_prefix' => 'الموضوع: ',
+        'new_reply_notification' => 'رد جديد على :subject',
+    ],
+    'new-message' => 'رسالة جديدة',
 ];
