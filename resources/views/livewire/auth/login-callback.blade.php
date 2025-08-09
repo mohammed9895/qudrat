@@ -6,7 +6,8 @@
             </svg>
             <p class="mt-3 text-gray-600">{{ __('general.loading-info') }}</p>
         </div>
-    @elseif ($error)
+        @endif
+    @if ($error)
         <div class="text-center text-red-600">
             <p>{{ $error }}</p>
         </div>
