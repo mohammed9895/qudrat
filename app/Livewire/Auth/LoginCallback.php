@@ -25,93 +25,93 @@ class LoginCallback extends Component
 //     $this->processLogin();
 // }
 
-//     public function processLogin()
-//     {
-//         try {
-//             $token = strtok(request()->cookie('AUTH_COOKIE'), '|');
+    public function processLogin()
+    {
+        try {
+            $token = strtok(request()->cookie('AUTH_COOKIE'), '|');
 
-//             if (! $token) {
-//                 $this->error = 'No token received.';
+            if (! $token) {
+                $this->error = 'No token received.';
 
-//                 return;
-//             }
+                return;
+            }
 
-//             $basicAuth = base64_encode('eJWTUserName:eP@ssw0rd@123abc');
+            $basicAuth = base64_encode('eJWTUserName:eP@ssw0rd@123abc');
 
-//             $principalResponse = Http::withHeaders([
-//                 'Content-Type' => 'application/json',
-//                 'Authorization' => 'Basic '.$basicAuth,
-//             ])->post('http://10.153.25.11/sso.token.api/api/Token/GetPrincipal', [
-//                 'Token' => $token,
-//             ]);
+            $principalResponse = Http::withHeaders([
+                'Content-Type' => 'application/json',
+                'Authorization' => 'Basic '.$basicAuth,
+            ])->post('http://10.153.25.11/sso.token.api/api/Token/GetPrincipal', [
+                'Token' => $token,
+            ]);
 
-//             if (! $principalResponse->successful()) {
-//                 $this->error = 'Failed to verify token.';
+            if (! $principalResponse->successful()) {
+                $this->error = 'Failed to verify token.';
 
-//                 return;
-//             }
+                return;
+            }
 
-//             $principal = $principalResponse->json();
-//             $userId = $principal['CurrentUserID'] ?? null;
+            $principal = $principalResponse->json();
+            $userId = $principal['CurrentUserID'] ?? null;
 
-//             if (! $userId) {
-//                 $this->error = 'Invalid principal response.';
+            if (! $userId) {
+                $this->error = 'Invalid principal response.';
 
-//                 return;
-//             }
+                return;
+            }
 
-//             $userResponse = Http::withBasicAuth('UMSPRDUSER', 'aU1OJdbhmGwZjoBj')
-//                 ->withOptions(['verify' => false])
-//                 ->get('http://10.153.25.11/UMS.API/api/User/GetLoggedUserInfo', [
-//                     'UserID' => $userId,
-//                     'CertificateType' => $principal['CertificateType'],
-//                 ]);
+            $userResponse = Http::withBasicAuth('UMSPRDUSER', 'aU1OJdbhmGwZjoBj')
+                ->withOptions(['verify' => false])
+                ->get('http://10.153.25.11/UMS.API/api/User/GetLoggedUserInfo', [
+                    'UserID' => $userId,
+                    'CertificateType' => $principal['CertificateType'],
+                ]);
 
-//             $userData = $userResponse->json()['Data'] ?? null;
+            $userData = $userResponse->json()['Data'] ?? null;
 
-//             if (! $userData || empty($userData['CivilID'])) {
-//                 $this->error = 'User info not found.';
+            if (! $userData || empty($userData['CivilID'])) {
+                $this->error = 'User info not found.';
 
-//                 return;
-//             }
+                return;
+            }
 
-//             $user = User::firstOrCreate(
-//                 ['civil_id' => $userData['CivilID']],
-//                 [
-//                     'name' => [
-//                         'ar' => $userData['ArabicUserFullName'],
-//                         'en' => $userData['EnglishUserFullName'],
-//                     ],
-//                     'email' => $userData['Contact']['Email'] ?? 'info@example.com',
-//                 ]
-//             );
+            $user = User::firstOrCreate(
+                ['civil_id' => $userData['CivilID']],
+                [
+                    'name' => [
+                        'ar' => $userData['ArabicUserFullName'],
+                        'en' => $userData['EnglishUserFullName'],
+                    ],
+                    'email' => $userData['Contact']['Email'] ?? 'info@example.com',
+                ]
+            );
 
-//             if (! $user->hasRole('panel_user')) {
-//                 $user->assignRole('panel_user');
-//             }
+            if (! $user->hasRole('panel_user')) {
+                $user->assignRole('panel_user');
+            }
 
-//             Auth::login($user);
-//             session()->regenerate();
+            Auth::login($user);
+            session()->regenerate();
 
-//             // ✅ Call QudratService only once
-//             $qudratService = new QudratService;
-//             $registrationData = $qudratService->getRegistrationByNationalId($user->civil_id);
+            // ✅ Call QudratService only once
+            $qudratService = new QudratService;
+            $registrationData = $qudratService->getRegistrationByNationalId($user->civil_id);
 
-//             // ✅ Pass both data sources to event
-//             event(new UserRegistered(
-//                 user: $user,
-//                 registrationData: $registrationData,
-//                 fallbackData: ! $registrationData ? $userData : null
-//             ));
+            // ✅ Pass both data sources to event
+            event(new UserRegistered(
+                user: $user,
+                registrationData: $registrationData,
+                fallbackData: ! $registrationData ? $userData : null
+            ));
 
-//             // ✅ Finally redirect
-//             redirect('/user')->with('success', 'Logged in successfully!');
-//         } catch (\Exception $e) {
-//             $this->error = 'Login failed: '.$e->getMessage();
-//         } finally {
-//             $this->loading = false;
-//         }
-//     }
+            // ✅ Finally redirect
+            redirect('/user')->with('success', 'Logged in successfully!');
+        } catch (\Exception $e) {
+            $this->error = 'Login failed: '.$e->getMessage();
+        } finally {
+            $this->loading = false;
+        }
+    }
 
     #[Layout('components.layouts.loading')]
     public function render()
