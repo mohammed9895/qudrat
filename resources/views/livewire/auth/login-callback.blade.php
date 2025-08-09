@@ -1,4 +1,4 @@
-<div wire:init="processLogin" class="flex justify-center items-center min-h-screen">
+<div  class="flex justify-center items-center min-h-screen">
     @if ($loading)
         <div class="text-center">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8 animate-spin h-8 w-8 text-blue-500 mx-auto">
