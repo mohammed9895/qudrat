@@ -17,7 +17,7 @@ class LoginCallback extends Component
     public $error = null;
 
     public function mount() {
-        $this->processLogin();
+        // $this->processLogin();
     }
 
     public function processLogin()
