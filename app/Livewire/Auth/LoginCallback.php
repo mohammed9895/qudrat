@@ -25,8 +25,6 @@ class LoginCallback extends Component
         try {
             $token = strtok(request()->cookie('AUTH_COOKIE'), '|');
 
-            dd(request()->cookie('AUTH_COOKIE'));
-
             if (! $token) {
                 $this->error = 'No token received.';
 
@@ -89,8 +87,6 @@ class LoginCallback extends Component
 
             Auth::login($user);
             session()->regenerate();
-
-            dd('here');
 
             // ✅ Call QudratService only once
             $qudratService = new QudratService;
