@@ -20,10 +20,10 @@ class LoginCallback extends Component
 //         // $this->processLogin();
 //     }
 
-//     public function booted()
-// {
-//     $this->processLogin();
-// }
+    public function booted()
+{
+    $this->processLogin();
+}
 
     public function processLogin()
     {
