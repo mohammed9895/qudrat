@@ -16,8 +16,10 @@ class LoginCallback extends Component
 
     public $error = null;
 
-    public function mount() {
-        // $this->processLogin();
+    public function mount()
+    {
+        // Run login process immediately when component is initialized
+        $this->processLogin();
     }
 
     public function processLogin()
