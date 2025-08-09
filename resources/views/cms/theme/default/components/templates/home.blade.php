@@ -311,7 +311,7 @@
         <div class="container">
             <div class="flex items-center justify-between gap-4 flex-wrap">
                 <div class="w-full lg:w-6/12">
-                    <div id="container-s"></div>
+                    <livewire:components.map-stats/>
                 </div>
                 <div class="w-full lg:w-5/12">
                     <h2 class="text-4xl sm:text-5xl font-semibold mb-3 leading-[100px]">{{ $page->data['map_title'] }}</h2>
