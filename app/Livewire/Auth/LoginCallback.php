@@ -16,14 +16,15 @@ class LoginCallback extends Component
 
     public $error = null;
 
-    public function mount() {
+    public function mount()
+    {
         // $this->processLogin();
     }
 
     public function booted()
-{
-    $this->processLogin();
-}
+    {
+        $this->processLogin();
+    }
 
     public function processLogin()
     {
