@@ -27,6 +27,8 @@ return [
         'international-talents' => 'المواهب العالمية',
         'international-talent-request' => 'طلب الانضمام للمواهب العالمية',
         'scale' => 'المقياس الوطني',
+        'feedback-survey' => ' شاركنا رأيك في استطلاع رأي المستخدمين',
+        'click-here' => 'اضغط هنا',
     ],
     'hero' => [
         'hero-search' => 'ابحث عن موهبه او قدرة او خبير ...',
@@ -177,7 +179,7 @@ return [
             'teacher' => 'معلم',
             'guardian' => 'ولي أمر',
             'expert' => 'خبير',
-            'other' => 'أخرى',
+            'employee' => 'موظف',
         ],
         'ratings' => [
             'weak' => 'سيئ',
