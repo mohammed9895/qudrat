@@ -12,7 +12,7 @@
     component="filament-cms::{{$theme}}.page"
     :layout="$layout">
 
-
+<script defer src="//unpkg.com/alpinejs" ></script>
     <!-- Banner -->
     <div class="bg-brand-blue/30 pt-24 md:pt-14 pb-5">
         <div class="container">
