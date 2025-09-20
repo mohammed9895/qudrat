@@ -317,4 +317,3 @@
 </style>
 
 <!-- If you don't already include Alpine, add this once (e.g., in your base layout) -->
-{{-- <script defer src="//unpkg.com/alpinejs" ></script> --}}
