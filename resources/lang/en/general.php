@@ -26,6 +26,8 @@ return [
         'login' => 'Login',
         'register' => 'Register',
         'scale' => 'National Scale',
+        'feedback-survey' => 'Share your feedback in our user survey',
+        'click-here' => 'Click Here',
     ],
     'hero' => [
         'hero-search' => 'Search for a talent, skill, or expert...',
@@ -171,7 +173,7 @@ return [
             'teacher' => 'Teacher',
             'guardian' => 'Guardian',
             'expert' => 'Expert',
-            'other' => 'Other',
+            'employee' => 'Employee',
         ],
         'ratings' => [
             'weak' => 'Poor',

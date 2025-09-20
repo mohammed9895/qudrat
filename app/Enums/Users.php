@@ -17,7 +17,7 @@ enum Users: int implements HasLabel
     case Teacher = 2;
     case Guardian = 3;
     case Expert = 4;
-    case Other = 5;
+    case Employee = 5;
 
     public function getLabel(): string
     {
@@ -26,7 +26,7 @@ enum Users: int implements HasLabel
             self::Teacher => __('general.feedback.user_types.teacher'),
             self::Guardian => __('general.feedback.user_types.guardian'),
             self::Expert => __('general.feedback.user_types.expert'),
-            self::Other => __('general.feedback.user_types.other'),
+            self::Employee => __('general.feedback.user_types.employee'),
         };
     }
 }

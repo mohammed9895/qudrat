@@ -1,5 +1,12 @@
 <!-- Header -->
 <nav class="nav_area">
+    <!-- Feedback Survey Bar -->
+    <div dir="rtl" class="bg-brand-blue text-white text-sm py-5 px-4 text-center">
+        <a href="/feedbacks" class="font-semibold hover:underline">
+            📢 {{ __('general.navigation.feedback-survey') }} <span
+                class="">{{ __('general.navigation.click-here') }}</span>
+        </a>
+    </div>
     <div class="px-10">
         <div class="flex flex-wrap items-center justify-between mx-auto p-4">
             <a href="/" class="flex items-center space-x-3">
