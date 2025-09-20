@@ -222,13 +222,15 @@ class InternationalTalentRequestResource extends Resource
                             ->label(__('general.download-cv'))
                             ->icon('heroicon-o-arrow-down-tray')
                             ->action(function (InternationalTalentRequest $record) {
-                                return response()->download(Storage::disk('nfs')->url($record->cv));
+                                $path = Storage::disk('nfs')->path($record->cv);
+                                    return response()->file($path);
                             }),
                         Actions\Action::make('download_portfolio')
                             ->label(__('general.download-portfolio'))
                             ->icon('heroicon-o-arrow-down-tray')
                             ->action(function (InternationalTalentRequest $record) {
-                                return response()->download(Storage::disk('nfs')->url($record->portfolio));
+                                    $path = Storage::disk('nfs')->path($record->portfolio);
+                                    return response()->file($path);
                             }),
                     ]),
                 ]),
