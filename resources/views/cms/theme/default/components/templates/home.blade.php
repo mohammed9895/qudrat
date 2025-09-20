@@ -295,7 +295,7 @@
                 </div>
                 <div class="w-full xl:w-6/12 relative">
                     <div
-                        class="w-[650px] h-[650px] absolute rounded-full border-dashed border-2 z-10 border-brand-green bg-brand-green/30 max-w-full sm:hidden">
+                        class="w-[650px] h-[650px] absolute rounded-full border-dashed border-2 z-10 border-brand-green bg-brand-green/30 max-w-full hidden md:block">
                     </div>
                     <img src="{{  Storage::disk('nfs')->url($page->data['features_image']) }}" alt="images"
                          class="relative w-[550px] z-30 mt-[50px] mr-[50px]">
