@@ -13,6 +13,7 @@ use Filament\Infolists\Infolist;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use Illuminate\Support\Facades\Storage;
 
 class InternationalTalentRequestResource extends Resource
 {
@@ -221,13 +222,13 @@ class InternationalTalentRequestResource extends Resource
                             ->label(__('general.download-cv'))
                             ->icon('heroicon-o-arrow-down-tray')
                             ->action(function (InternationalTalentRequest $record) {
-                                return response()->download(storage_path('app/public/'.$record->cv));
+                                return response()->download(Storage::disk('nfs')->url($record->cv));
                             }),
                         Actions\Action::make('download_portfolio')
                             ->label(__('general.download-portfolio'))
                             ->icon('heroicon-o-arrow-down-tray')
                             ->action(function (InternationalTalentRequest $record) {
-                                return response()->download(storage_path('app/public/'.$record->portfolio));
+                                return response()->download(Storage::disk('nfs')->url($record->portfolio));
                             }),
                     ]),
                 ]),
