@@ -16,6 +16,8 @@ use Illuminate\Notifications\Notifiable;
 use JaOcero\FilaChat\Traits\HasFilaChat;
 use Spatie\Permission\Traits\HasRoles;
 use Spatie\Translatable\HasTranslations;
+use Illuminate\Support\Facades\Storage;
+
 
 class User extends Authenticatable implements FilamentUser, HasAvatar
 {
