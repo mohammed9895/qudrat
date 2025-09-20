@@ -25,11 +25,11 @@
                 @foreach($links as $link)
                     <div class="p-5 rounded-xl shadow-default h-[400px] relative flex justify-start items-end"
                          style="background: url('{{ $link->getThumbnailImage() }}'); background-size: cover; background-repeat: no-repeat; background-position: center center;">
-                        <div class="absolute inset-0 bg-black/40 z-10 rounded-xl"></div>
+                        <div class="absolute inset-0 bg-black/10 z-10 rounded-xl"></div>
                         <div class="z-50 relative w-full md:w-3/4">
                             <a href=""
-                               class="inline-block text-2xl text-white font-medium mb-3 hover:text-primary-1">{{ $link->title }}</a>
-                            <p class="mb-4 text-white">{{ $link->description }}</p>
+                               class="inline-block text-2xl font-medium mb-3 text-black hover:text-primary-1">{{ $link->title }}</a>
+                            <p class="mb-4 text-gray-500">{{ $link->description }}</p>
                             <a href="{{ $link->link }}" target="_blank"
                                class="inline-block px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">{{ __('general.digital-library.view-now') }}</a>
                         </div>

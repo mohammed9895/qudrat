@@ -195,7 +195,7 @@
                                         <div class="swiper-wrapper">
                                             @foreach($work->images as $image)
                                                 <div class="swiper-slide">
-                                                    <img src="/uploads/{{ $image }}" alt="blog/1"
+                                                    <img src="{{ Storage::disk('nfs')->url($image) }}" alt="blog/1"
                                                          class="w-full h-full object-cover"/>
                                                 </div>
                                             @endforeach
@@ -210,7 +210,7 @@
                                     <div class="swiper-wrapper">
                                         @foreach($work->images as $image)
                                             <div class="swiper-slide overflow-hidden rounded-lg">
-                                                <img src="/uploads/{{ $image }}" alt="blog/1"
+                                                <img src="{{ Storage::disk('nfs')->url($image) }}" alt="blog/1"
                                                      class="w-full h-full object-cover"/>
                                             </div>
                                         @endforeach
@@ -225,7 +225,7 @@
                                 <h3 class="text-2xl font-semibold mb-3">{{ __('general.video') }}</h3>
                                 <div class="relative">
                                     <video controls class="rounded-lg">
-                                        <source src="/uploads/{{ $work->video }}">
+                                        <source src="{{ Storage::disk('nfs')->url($work->video) }}">
                                     </video>
                                 </div>
                             @endif
