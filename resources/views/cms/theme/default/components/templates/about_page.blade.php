@@ -18,6 +18,7 @@
 <x-dynamic-component
     component="filament-cms::{{$theme}}.page"
     :layout="$layout">
+    <script defer src="//unpkg.com/alpinejs" ></script>
     <!-- Banner -->
     <div class="bg-brand-blue/30 pt-[160px] pb-28">
         <div class="container">
