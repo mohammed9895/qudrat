@@ -58,7 +58,7 @@
                         <div class="flex items-center">
                             <p class="inline-flex items-center mr-3 text-sm text-gray-900  font-semibold"><img
                                     class="mr-2 w-6 h-6 rounded-full"
-                                    {{--                                    src="{{ $comment->user->profile->avatar ? '/uploads/' . $comment->user->profile->avatar : '/assets/images/unset.jpg' }}"--}}
+                                    {{--                                    src="{{ $comment->user->profile->avatar ?  Storage::disk('nfs')->url($comment->user->profile->avatar) : '/assets/images/unset.jpg' }}"--}}
                                     src="/assets/images/unset.jpg"
                                     alt="Michael Gough">{{ $comment->user->name }}</p>
                             <p class="text-sm text-gray-600">

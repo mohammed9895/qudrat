@@ -37,7 +37,7 @@
     <!-- Image -->
     <div class="mt-[-60px]">
         <div class="container">
-            <img src="uploads/{{ $page->data['page_image'] }}" alt="image" class="w-full rounded-md">
+            <img src="{{  Storage::disk('nfs')->url($page->data['page_image']) }}" alt="image" class="w-full rounded-md">
         </div>
     </div>
     <!-- /Image -->
@@ -50,7 +50,7 @@
         <div class="px-10">
             <div class="flex items-center justify-center 2xl:justify-cenetr gap-5 flex-wrap">
                 @foreach($page->data['sponsors_images'] as $sponsor)
-                    <img src="/uploads/{{ $sponsor }}" alt="images" width="150"
+                    <img src="{{  Storage::disk('nfs')->url($sponsor) }}" alt="images" width="150"
                          class="opacity-50 hover:opacity-100 transition"/>
                 @endforeach
             </div>
@@ -94,7 +94,7 @@
                                 <div class="flex gap-5 items-center">
                                     <div
                                         class="shrink-0 bg-gradient-to-t from-brand-blue/30 to-transparent w-24 h-24 rounded-full flex justify-center items-center">
-                                        <img src="/uploads/{{ $item['image'] }}" alt="images" class="w-14">
+                                        <img src="{{  Storage::disk('nfs')->url( $item['image']) }}" alt="images" class="w-14">
                                     </div>
                                     <div>
                                         <h5 class="text-2xl font-medium mb-3">{{ $item['title'] }}</h5>

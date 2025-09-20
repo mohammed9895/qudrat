@@ -21,7 +21,7 @@
                 <div class="bg-white border-[3px] border-white rounded-xl p-3 relative hover:bg-white transition-all">
                     <div class="w-full mb-4">
                         <div class="rounded-md w-full h-36"
-                             style="background: url('/uploads/{{ $work->cover }}'); background-size: cover; background-position: center center;"></div>
+                             style="background: url('{{ Storage::disk('nfs')->url($work->cover) }}'); background-size: cover; background-position: center center;"></div>
                     </div>
                     <h4 class="text-xl font-medium mb-2">{{ $work->title }}</h4>
 
@@ -41,7 +41,7 @@
                             @foreach($work->skills as $skill)
                                 <a href="{{ route('works.skill', $skill) }}"
                                    class="px-3 py-1 inline-flex border border-secondary-1 text-sm rounded-full cursor-pointer">{{ $skill->name }}</a>
-                                >
+                                
                             @endforeach
                         </div>
                     @endif

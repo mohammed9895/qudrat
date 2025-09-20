@@ -35,7 +35,7 @@ class Index extends Component
     public function download()
     {
         // Adjust this path based on where your files are stored (e.g., storage/app/public)
-        $filePath = '/uploads/'.$this->profile->cv;
+        $filePath = Storage::disk('nfs')->url($this->profile->cv);
 
         if (file_exists($filePath)) {
             return response()->download($filePath);
