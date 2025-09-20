@@ -14,7 +14,7 @@
 
 
     <!-- Hero -->
-    <div class="pt-24 px-6">
+    <div class="pt-6 px-6">
         <div
             class="bg-brand-blue/30 py-20 xl:py-[130px] rounded-[20px] relative overflow-hidden z-10 px-5 xl:px-0 hero-full">
             <div class="container">
@@ -60,7 +60,7 @@
                                         </div>
 
                                         <img src="{{ Storage::disk('nfs')->url($talent['image']) }}"
-                                             class="absolute bottom-0 z-50 h-[500px]"
+                                             class="absolute bottom-0 z-50 h-[500px] object-cover"
                                              alt="">
 
                                         <div

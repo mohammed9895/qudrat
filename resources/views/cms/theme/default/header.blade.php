@@ -13,7 +13,7 @@
         </a>
     </div>
 
-    <div class=" mx-auto px-4 sm:px-6 lg:px-10">
+    <div class="mx-auto px-4 sm:px-6 lg:px-10">
         <div class="flex items-center justify-between py-3 gap-3">
             <!-- Logo -->
             <a href="/" class="flex items-center gap-3 shrink-0">
@@ -316,3 +316,5 @@
     }
 </style>
 
+<!-- If you don't already include Alpine, add this once (e.g., in your base layout) -->
+<script defer src="//unpkg.com/alpinejs" ></script>
