@@ -108,7 +108,7 @@
                 <div class="w-full lg:w-6/12 relative">
                     <img src="{{  Storage::disk('nfs')->url($page->data['about_image']) }}" alt="images" class="">
                     <img src="{{ asset('assets/images/red-shape.svg') }}"
-                         class="w-20 absolute top-32 -right-10"
+                         class="w-20 absolute top-32 -right-10 hidden md:block"
                          alt="">
 
                     <img src="{{ asset('assets/images/yellow-shape.svg') }}"
