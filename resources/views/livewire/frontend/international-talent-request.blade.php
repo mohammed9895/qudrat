@@ -17,7 +17,7 @@
     <div class="container py-24">
         <form wire:submit="submit">
             {{ $this->form }}
-            <x-filament::button type="submit" class="mt-3">
+            <x-filament::button type="submit" class="mt-3 bg-primary-1" >
                 {{ __('general.submit') }}
             </x-filament::button>
         </form>
