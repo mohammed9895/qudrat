@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="py-24">
-        <div class="flex justify-center items-center">
+        <div class="flex justify-center items-center text-4xl font-medium">
             <h1>{{ __('general.soon') }}</h1>
         </div>
     </div>

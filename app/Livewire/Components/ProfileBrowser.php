@@ -84,8 +84,8 @@ class ProfileBrowser extends Component implements Forms\Contracts\HasForms
             Select::make('gender')
                 ->label(__('general.gender'))
                 ->options([
-                    0 => __('general.gender-types.male'),
-                    1 => __('general.gender-types.female'),
+                    "1" => __('general.gender-types.male'),
+                    "0" => __('general.gender-types.female'),
                 ])
                 ->live()
                 ->searchable(),
@@ -118,7 +118,7 @@ class ProfileBrowser extends Component implements Forms\Contracts\HasForms
             ->when($this->data['province_id'] ?? null, fn ($q, $v) => $q->where('province_id', $v))
             ->when($this->data['state_id'] ?? null, fn ($q, $v) => $q->where('state_id', $v))
             ->when($this->data['country_id'] ?? null, fn ($q, $v) => $q->where('country_id', $v))
-            ->when($this->data['gender'] ?? null, fn ($q, $v) => $q->where('gender', $v))
+            ->when(isset($this->data['gender']), fn ($q) => $q->where('gender', $this->data['gender']))
             ->when($this->data['educationType'] ?? null, fn ($q, $v) => $q->where('education_type_id', $v))
             ->when($this->data['experienceLevel'] ?? null, fn ($q, $v) => $q->where('experience_level_id', $v))
             ->when($this->categoryId, function ($query) {

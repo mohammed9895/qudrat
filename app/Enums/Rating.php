@@ -14,6 +14,7 @@ enum Rating: int implements HasColor, HasLabel
     case Good = 2;
     case VeryGood = 3;
     case Excellent = 4;
+    case Clarity = 5;
 
     public function getLabel(): string
     {
@@ -23,6 +24,7 @@ enum Rating: int implements HasColor, HasLabel
             self::Good => __('general.feedback.ratings.good'),
             self::VeryGood => __('general.feedback.ratings.very_good'),
             self::Excellent => __('general.feedback.ratings.excellent'),
+            self::Clarity => __('general.feedback.ratings.excellent'),
         };
     }
 
@@ -34,6 +36,7 @@ enum Rating: int implements HasColor, HasLabel
             self::Good => 'info',
             self::VeryGood => 'primary',
             self::Excellent => 'success',
+            self::Clarity => 'sucess'
         };
     }
 }

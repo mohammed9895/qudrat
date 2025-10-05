@@ -73,8 +73,8 @@ Route::get('/auth/login/callback', LoginCallback::class)->name('auth.login.callb
 Route::get('/otpki', [AuthController::class, 'handleQudratLogoutCallback'])->name('auth.logout.callback');
 
 Route::get('auth/test', function () {
-    $response = Http::get('https://qudrat-uat-pki.mol.gov.om/registration', [
-        'nationalId' => '4837853',
+    $response = Http::withoutVerifying()->get('https://qudrat-prd-pki.mol.gov.om/registration', [
+    'nationalId' => '4837853',
     ]);
 
     $xmlString = $response->body(); // Get the raw XML

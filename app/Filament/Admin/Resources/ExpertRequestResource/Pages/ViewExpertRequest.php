@@ -9,6 +9,9 @@ use Filament\Actions\Action;
 use Filament\Forms\Components\Textarea;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
+use App\Mail\ExpertRequestApproved;
+use App\Mail\ExpertRequestRejected;
+use Illuminate\Support\Facades\Mail;
 
 class ViewExpertRequest extends ViewRecord
 {
@@ -25,6 +28,11 @@ class ViewExpertRequest extends ViewRecord
                 ->action(function (array $data, ExpertRequest $record) {
                     $record->update(['status' => ExpertRequestStatus::Approved]);
                     $record->profile->update(['is_expert' => true]);
+
+                    Mail::to($record->profile->email)->send(new ExpertRequestApproved(
+                        name: $record->profile->fullname,
+                    ));
+
                     Notification::make()
                         ->title(__('general.request-approved'))
                         ->success()
@@ -42,6 +50,12 @@ class ViewExpertRequest extends ViewRecord
                 ])
                 ->action(function (array $data, ExpertRequest $record) {
                     $record->update(['status' => ExpertRequestStatus::Rejected, 'message' => $data['message']]);
+
+                    Mail::to($record->profile->email)->send(new ExpertRequestRejected(
+                        name: $record->profile->fullname,
+                        message: $data['message']
+                    ));
+
                     Notification::make()
                         ->title(__('general.request-rejected'))
                         ->success()

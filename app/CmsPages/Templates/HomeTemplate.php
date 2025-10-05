@@ -33,9 +33,11 @@ final class HomeTemplate implements CmsPageTemplate
             Forms\Components\Section::make('Sponsors Section')
                 ->schema([
                     Forms\Components\TextInput::make('sponsors_title'),
-                    Forms\Components\FileUpload::make('sponsors_images')
-                        ->image()
-                        ->multiple(),
+                    Forms\Components\Repeater::make('new_sponsor_images')
+                        ->schema([
+                            Forms\Components\TextInput::make('link'),
+                            Forms\Components\FileUpload::make('sponsor_image'),
+                        ]), 
                 ]),
             Forms\Components\Section::make('Talent Section')
                 ->schema([

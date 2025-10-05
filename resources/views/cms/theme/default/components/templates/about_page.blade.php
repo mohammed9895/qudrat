@@ -50,9 +50,11 @@
         </div>
         <div class="px-10">
             <div class="flex items-center justify-center 2xl:justify-cenetr gap-5 flex-wrap">
-                @foreach($page->data['sponsors_images'] as $sponsor)
-                    <img src="{{  Storage::disk('nfs')->url($sponsor) }}" alt="images" width="150"
+                 @foreach($page->data['new_sponsor_images'] as $sponsor)
+                 <a href="{{$sponsor['link']}}">
+                    <img src="{{  Storage::disk('nfs')->url($sponsor['sponsor_image']) }}" alt="images" width="150"
                          class="opacity-50 hover:opacity-100 transition"/>
+                </a>
                 @endforeach
             </div>
         </div>

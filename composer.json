@@ -21,6 +21,7 @@
         "firebase/php-jwt": "^6.11",
         "flowframe/laravel-trend": "^0.4.0",
         "guava/filament-icon-picker": "^2.0",
+        "halilcosdu/laravel-chatbot": "^1.2",
         "ibrahimbougaoua/radiobuttonimage": "^1.1",
         "jaocero/filachat": "dev-main",
         "khatabwedaa/blade-css-icons": "^1.4",

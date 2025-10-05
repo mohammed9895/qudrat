@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Livewire\Frontend\Contact;
+use App\Mail\ContactMessage;
+use Illuminate\Support\Facades\Mail;
 
 use Livewire\Component;
 
@@ -20,7 +22,7 @@ class Index extends Component
         'name' => 'required|string|max:255',
         'email' => 'required|email',
         'subject' => 'nullable|string|max:255',
-        'phone' => 'nullable|numeric|max:20',
+        'phone' => 'nullable|numeric',
         'message' => 'required|string',
     ];
 
@@ -28,8 +30,16 @@ class Index extends Component
     {
         $validated = $this->validate();
 
-        // You can send email here or save to database
-        // Example: Mail::to('admin@example.com')->send(new ContactMessage($validated));
+        Mail::to($this->email)->send(
+            new ContactMessage(
+                $this->name,
+                $this->email,
+                $this->phone,
+                $this->subject,
+                $this->message
+            )
+        );
+
 
         session()->flash('success', __('general.contact.thank-you'));
 
