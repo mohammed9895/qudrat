@@ -104,9 +104,11 @@
                                 {{ __('general.send-message') }}
                             </a>
                         @endif
-                        <a
-                            wire:click="download"
-                            class="px-8 py-3 cursor-pointer rounded-full text-head-color font-medium bg-brand-blue text-white inline-flex items-center gap-2 w-full justify-center">
+                        {{--                        @dd($profile->cv)--}}
+                        @if($profile->cv)
+                            <a
+                                wire:click="download"
+                                class="px-8 py-3 cursor-pointer rounded-full text-head-color font-medium bg-brand-blue text-white inline-flex items-center gap-2 w-full justify-center">
     <span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                xmlns="http://www.w3.org/2000/svg">
         <path
@@ -117,8 +119,9 @@
             stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
     </span>
-                            {{ __('general.download-cv') }}
-                        </a>
+                                {{ __('general.download-cv') }}
+                            </a>
+                        @endif
                         <div class="bg-primary-3 p-5 rounded-xl mt-8">
                             <div class="flex items-center justify-center gap-4">
                                 <div class="w-6/12 text-center">
@@ -520,8 +523,8 @@
                                 </form>
                             </div>
                         @endif
-                        @if ($profile->show_ratings || auth()->id() == $profile->user_id)
-                            @foreach($profile->ratings()->orderByDesc('created_at')->get() as $rating)
+                        @if ($profile->show_rating || auth()->id() == $profile->user_id)
+                            @foreach($profile->ratings()->where('status', 1)->orderByDesc('created_at')->get() as $rating)
                                 @if($loop->index == 0)
                                     <div class="py-4">
                                         @endif

@@ -63,7 +63,7 @@
                                         <p class="mb-4">{{ Str::limit(strip_tags($post->content), 300) }}</p>
                                         <a href="{{ route('media-center.post', [$post]) }}"
                                            class="inline-block px-8 py-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">
-                                            {{ __('general.view-resoucre') }}
+                                            {{ __('general.view-resource') }}
                                         </a>
                                     </div>
                                 </div>

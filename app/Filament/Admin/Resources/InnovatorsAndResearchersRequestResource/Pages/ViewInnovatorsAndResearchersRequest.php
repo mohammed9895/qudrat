@@ -1,21 +1,20 @@
 <?php
 
-namespace App\Filament\Admin\Resources\ExpertRequestResource\Pages;
+namespace App\Filament\Admin\Resources\InnovatorsAndResearchersRequestResource\Pages;
 
 use App\Enums\ExpertRequestStatus;
-use App\Filament\Admin\Resources\ExpertRequestResource;
-use App\Mail\ExpertRequestApproved;
-use App\Mail\ExpertRequestRejected;
+use App\Filament\Admin\Resources\InnovatorsAndResearchersRequestResource;
 use App\Models\ExpertRequest;
+use App\Models\InnovatorsAndResearchersRequest;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Textarea;
 use Filament\Notifications\Notification;
 use Filament\Resources\Pages\ViewRecord;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\DB;
 
-class ViewExpertRequest extends ViewRecord
+class ViewInnovatorsAndResearchersRequest extends ViewRecord
 {
-    protected static string $resource = ExpertRequestResource::class;
+    protected static string $resource = InnovatorsAndResearchersRequestResource::class;
 
     protected function getHeaderActions(): array
     {
@@ -25,13 +24,16 @@ class ViewExpertRequest extends ViewRecord
                 ->icon('heroicon-o-check')
                 ->color('success')
                 ->requiresConfirmation()
-                ->action(function (array $data, ExpertRequest $record) {
-                    $record->update(['status' => ExpertRequestStatus::Approved]);
-                    $record->profile->update(['is_expert' => true]);
+                ->action(function (array $data, InnovatorsAndResearchersRequest $record) {
+                    DB::transaction(function () use ($record) {
+                        $record->update(['status' => ExpertRequestStatus::Approved]);
+                        $record->profile->update(['is_expert' => true]);
 
-                    Mail::to($record->profile->email)->send(new ExpertRequestApproved(
-                        name: $record->profile->fullname,
-                    ));
+                        if ($record->category_id) {
+                            // attach without removing existing categories
+                            $record->profile->categories()->syncWithoutDetaching([$record->category_id]);
+                        }
+                    });
 
                     Notification::make()
                         ->title(__('general.request-approved'))
@@ -51,10 +53,10 @@ class ViewExpertRequest extends ViewRecord
                 ->action(function (array $data, ExpertRequest $record) {
                     $record->update(['status' => ExpertRequestStatus::Rejected, 'message' => $data['message']]);
 
-                    Mail::to($record->profile->email)->send(new ExpertRequestRejected(
-                        name: $record->profile->fullname,
-                        message: $data['message']
-                    ));
+                    //                    Mail::to($record->profile->email)->send(new ExpertRequestRejected(
+                    //                        name: $record->profile->fullname,
+                    //                        message: $data['message']
+                    //                    ));
 
                     Notification::make()
                         ->title(__('general.request-rejected'))

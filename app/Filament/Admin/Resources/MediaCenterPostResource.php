@@ -61,8 +61,7 @@ class MediaCenterPostResource extends Resource
                     ->label(__('general.slug'))
                     ->required()
                     ->maxLength(255)
-                    ->unique(MediaCenterPost::class, 'slug', ignoreRecord: true)
-                    ->disabled(),
+                    ->unique(MediaCenterPost::class, 'slug', ignoreRecord: true),
                 Forms\Components\Textarea::make('content')
                     ->label(__('general.content'))
                     ->required()

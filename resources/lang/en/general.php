@@ -1,6 +1,27 @@
 <?php
 
 return [
+
+    'recruitment_platform' => 'Recruitment Platform',
+    'recruitment_platforms' => 'Recruitment Platforms',
+
+    'profile_rating' => 'Profile Rating',
+    'profile_ratings' => 'Profile Ratings',
+
+    'innovators_and_researchers_request' => 'Innovator or Researcher Request',
+    'innovators_and_researchers_requests' => 'Innovators & Researchers Requests',
+
+    'request-submitted' => 'Request Submitted',
+    'request-submitted-successfully' => 'Your request has been submitted successfully, thank you!',
+
+    'request-innovators-and-researchers-profile' => [
+        'why' => 'Why do you want to request an innovators and researchers profile?',
+        'title' => 'Request Innovators and Researchers Profile',
+        'description' => 'If you are an innovator or researcher in your field and want to share your knowledge and skills with others, you can request an innovators and researchers profile. and we will review your request and get back to you as soon as possible.',
+        'success' => 'Request Submitted',
+    ],
+    'view-resource' => 'View',
+    'show-more' => 'Show More',
     'loading-info' => 'Loading your information',
     'search-result' => 'Search Results',
     'search-result-for' => 'Search Results For :query',
@@ -16,7 +37,7 @@ return [
         'international-talents' => 'International Talents',
         'international-talent-request' => 'Request to Join',
         'experts' => 'Experts',
-        'jobs' => 'Jobs',
+        'jobs' => 'Jobs Platform',
         'works' => 'Works',
         'researchers' => 'Researchers',
         'innovators' => 'Innovators',
@@ -105,7 +126,7 @@ return [
     'experience-level' => 'Experience Level',
     'view-profile' => 'View Profile',
     'experts' => 'Experts',
-    'jobs' => 'Jobs',
+    'jobs' => 'Jobs Platform',
     'departments' => 'Department',
     'date-of-post' => 'Date of Posting',
     'job-page-title' => ':job Jobs Available – Your Dream Job Awaits!',
@@ -239,7 +260,7 @@ return [
         'save-success-body' => 'Your education information has been saved.',
     ],
     'experiences' => [
-        'title' => 'Experiences',
+        'title' => 'Practical Experience',
         'company' => 'Company',
         'position' => 'Position',
         'start_date' => 'Start Date',
@@ -354,7 +375,7 @@ return [
 
     'user-dashboard' => [
         'navigation' => [
-            'profile' => 'Profile',
+            'profile' => 'Edit Profile',
             'cv_maker' => 'CV Maker',  // Add translation for CV Maker
         ],
     ],
@@ -416,7 +437,7 @@ return [
     'email' => 'Email',
     'phone' => 'Phone Number',
     'status' => 'Status',
-    'reason' => 'Reason for Request',
+    'reason' => 'Specialized Expertise',
     'download' => 'Download Attachments',
     'profile' => 'Profile Information',
     'details' => 'Request Details',

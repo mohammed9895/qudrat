@@ -4,6 +4,7 @@ namespace App\Livewire\Frontend\Profile;
 
 use App\Models\Profile;
 use Filament\Notifications\Notification;
+use Illuminate\Support\Facades\Storage;
 use JaOcero\FilaChat\Services\ChatListService;
 use Livewire\Component;
 use WireUi\Breadcrumbs\Trail;
@@ -57,7 +58,7 @@ class Index extends Component
         ], [
             'rating' => $this->rating,
             'comment' => $this->comment,
-            'status' => 1,
+            'status' => 0,
         ]);
 
         Notification::make()

@@ -1,6 +1,38 @@
 <?php
 
 return [
+
+    'recruitment_platform' => 'منصة توظيف',
+    'recruitment_platforms' => 'منصات التوظيف',
+
+    'profile_rating' => 'تقييم الملف الشخصي',
+    'profile_ratings' => 'تقييمات الملفات الشخصية',
+
+    'innovators_and_researchers_request' => 'طلب مبتكر أو باحث',
+    'innovators_and_researchers_requests' => 'طلبات المبتكرين والباحثين',
+
+    'feedback-survey-title' => 'استطلاع رأي المستخدمين',
+    'user_type' => 'نوع المستخدم',
+    'general_impression' => 'الانطباع العام',
+    'ease' => 'سهولة الاستخدام',
+    'speed' => 'السرعة',
+    'meet_your_needs' => 'تلبية احتياجاتك',
+    'clarity' => 'وضوح المعلومات',
+    'phone_number' => 'رقم الهاتف',
+    'edit' => 'تعديل',
+    'delete' => 'حذف',
+
+    'request-submitted' => 'تم إرسال الطلب',
+    'request-submitted-successfully' => 'تم إرسال طلبك بنجاح، شكرًا لك!',
+    'request-innovators-and-researchers-profile' => [
+        'title' => 'طلب ملف مبتكر/باحث',
+        'why' => 'لماذا تريد أن تصبح مبتكرًا/باحثًا؟',
+        'attachments' => 'المرفقات',
+        'submit' => 'إرسال الطلب',
+        'success-message' => 'تم إرسال طلبك بنجاح. سنقوم بمراجعته والاتصال بك قريبًا.',
+    ],
+    'view-resource' => 'عرض ',
+    'show-more' => 'عرض المزيد',
     'loading-info' => 'جاري جلب معلوماتك...',
     'search-result' => 'نتائج البحث',
     'search-result-for' => 'نتائج البحث عن :query',
@@ -15,7 +47,7 @@ return [
         'oman-scientists' => 'علماء عمان',
         'profiles' => 'الملفات الشخصية',
         'experts' => 'الخبراء',
-        'jobs' => 'الوظائف',
+        'jobs' => 'منصات الوظائف',
         'works' => 'الأعمال',
         'researchers' => 'الباحثون',
         'innovators' => 'المبتكرون',
@@ -45,7 +77,7 @@ return [
         'social-media' => 'تواصل اجتماعي',
         'copy-right' => 'جميع الحقوق محفوظة، وزارة العمل © ٢٠٢٥',
         'useful-link' => [
-            'browse-jobs' => 'تصفح الوظائف',
+            'browse-jobs' => 'منصات الوظائف',
             'browse-categories' => 'تصفح التصنيفات',
             'browse-profiles' => 'تصفح الملفات الشخصية',
             'media-center' => 'المركز الإعلامي',
@@ -106,7 +138,7 @@ return [
     'experience-level' => 'الخبرة',
     'view-profile' => 'زيارة الملف الشخصي',
     'experts' => 'الخبراء',
-    'jobs' => 'الوظائف',
+    'jobs' => 'منصات الوظائف',
     'departments' => 'القسم',
     'date-of-post' => 'تاريخ النشر',
     'job-page-title' => ':job وظيفة مطروحة، وظيفة احلامك في انتظارك',
@@ -245,7 +277,7 @@ return [
         'save-success-body' => 'تم حفظ معلومات التعليم الخاصة بك.',
     ],
     'experiences' => [
-        'title' => 'الخبرات',
+        'title' => 'الخبرات العملية',
         'company' => 'مؤسسة',
         'position' => 'المسمى الوظيفي',
         'start_date' => 'تاريخ البدء',
@@ -360,7 +392,7 @@ return [
 
     'user-dashboard' => [
         'navigation' => [
-            'profile' => 'الملف الشخصي',
+            'profile' => 'تعديل الملف الشخصي',
             'cv_maker' => 'منشئ السيرة الذاتية',  // Arabic translation for CV Maker
         ],
     ],
@@ -423,7 +455,7 @@ return [
     'email' => 'البريد الإلكتروني',
     'phone' => 'رقم الهاتف',
     'status' => 'الحالة',
-    'reason' => 'سبب الطلب',
+    'reason' => 'الخبرات التخصيصة',
     'download' => 'تحميل المرفقات',
     'profile' => 'معلومات الملف الشخصي',
     'details' => 'تفاصيل الطلب',

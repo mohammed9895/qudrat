@@ -37,7 +37,7 @@ class Profile extends Model implements Viewable
     public function getAvatarUrlAttribute()
     {
         return $this->avatar
-            ? Storage::disk('nfs')->url($this->avatar) 
+            ? Storage::disk('nfs')->url($this->avatar)
             : asset('assets/images/unset.jpg');
     }
 
@@ -364,5 +364,10 @@ class Profile extends Model implements Viewable
     public function expertRequests(): HasMany
     {
         return $this->hasMany(ExpertRequest::class);
+    }
+
+    public function innovatorsAndResearchersRequests(): HasMany
+    {
+        return $this->hasMany(InnovatorsAndResearchersRequest::class);
     }
 }

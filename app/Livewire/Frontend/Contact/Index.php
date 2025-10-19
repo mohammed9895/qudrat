@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Livewire\Frontend\Contact;
+
 use App\Mail\ContactMessage;
 use Illuminate\Support\Facades\Mail;
-
 use Livewire\Component;
 
 class Index extends Component
@@ -39,7 +39,6 @@ class Index extends Component
                 $this->message
             )
         );
-
 
         session()->flash('success', __('general.contact.thank-you'));
 

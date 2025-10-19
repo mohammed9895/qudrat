@@ -7,7 +7,7 @@
         <div class="flex justify-between gap-5 sm:gap-6 flex-wrap pb-20">
             <div class="w-full sm:w-5/12 xl:w-4/12 2xl:w-3/12">
                 <img src="{{ asset('assets/images/white-logo.svg')}}" alt="images" class="mb-7 w-20">
-                <p class="text-white mb-14">{{ __('general.footer.about-text') }}</p>
+                <p class="text-white mb-14 text-justify">{{ __('general.footer.about-text') }}</p>
                 <h6 class="text-white text-base mb-2">{{ __('general.footer.social-media') }}</h6>
                 <ul class="flex items-center gap-x-3">
                     <li>
@@ -42,22 +42,6 @@
             </div>
             <div class="w-full sm:w-5/12 xl:w-2/12">
                 <div class="mb-7">
-                    <h6 class="text-white text-xl font-semibold mb-2">{{ __('general.footer.categories') }}</h6>
-                    <svg width="44" height="2" viewBox="0 0 44 2" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M0 1H43.6904" stroke="#3CC7BC" stroke-width="2"/>
-                    </svg>
-                </div>
-                <ul class="flex flex-col gap-4">
-                    @foreach($categories as $category)
-                        <li>
-                            <a href="{{ route('social-window.category', $category) }}"
-                               class="text-[#fff] hover:text-primary-1">{{ $category->name }}</a>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-            <div class="w-full sm:w-5/12 xl:w-2/12">
-                <div class="mb-7">
                     <h6 class="text-white text-xl font-semibold mb-2">{{ __('general.footer.for-user') }}</h6>
                     <svg width="44" height="2" viewBox="0 0 44 2" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M0 1H43.6904" stroke="#3CC7BC" stroke-width="2"/>
@@ -66,7 +50,7 @@
                 <ul class="flex flex-col gap-4">
                     <li>
                         <a href="{{ route('jobs.index') }}"
-                           class="text-[#fff] hover:text-primary-1">{{ __('general.footer.useful-link.browse-jobs') }}</a>
+                           class="text-[#fff] hover:text-primary-1">{{ __('general.jobs') }}</a>
                     </li>
                     <li>
                         <a href="{{ route('social-window.index') }}"
