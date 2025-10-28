@@ -58,12 +58,9 @@ return [
         ],
         'nfs' => [
             'driver' => 'local',
-            // On local/staging this falls back to storage/app/public/uploads
-            // On production override NFS_ROOT in .env to /mnt/laravel_uploads
-            'root' => env('NFS_ROOT', storage_path('app/public/uploads')),
-            'url' => env('NFS_URL', env('APP_URL').'/uploads'),
+            'root' => '/mnt/laravel_uploads',
+            'url' => env('APP_URL').'/uploads',
             'visibility' => 'public',
-            'throw' => false,
         ],
 
     ],
