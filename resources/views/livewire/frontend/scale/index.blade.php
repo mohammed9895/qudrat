@@ -14,8 +14,14 @@
         </div>
     </div>
     <div class="py-24">
-        <div class="flex justify-center items-center text-4xl font-medium">
-            <h1>{{ __('general.soon') }}</h1>
+        <div class="container max-w-4xl">
+            <div class="text-center space-y-6 leading-relaxed text-lg">
+                <h1 class="text-3xl font-semibold mb-6">{{ __('general.navigation.scale') }}</h1>
+
+                <p class="text-gray-800 dark:text-gray-200">
+                    {{ __('general.scale.description') }}
+                </p>
+            </div>
         </div>
     </div>
 </div>

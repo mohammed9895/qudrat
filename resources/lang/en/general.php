@@ -7,6 +7,10 @@ return [
     'recruitment_platform' => 'Recruitment Platform',
     'recruitment_platforms' => 'Recruitment Platforms',
 
+    'scale' => [
+        'description' => 'The National Assessment for Identifying Talents and Exceptional Abilities represents a strategic instrument that enables the identification of individuals with outstanding skills and exceptional capabilities. It plays a pivotal role in enhancing the quality of education, inspiring students, and empowering employees to further develop their competencies and achieve their full potential. The assessment contributes to fostering innovation and continuous development across various sectors, supporting sustainable growth in alignment with the aspirations of Oman Vision 2040.',
+    ],
+
     'profile_rating' => 'Profile Rating',
     'profile_ratings' => 'Profile Ratings',
 

@@ -24,7 +24,7 @@
     href="{{ route('feedbacks.index') }}"
     class="fixed bottom-4 left-4 inline-flex items-center justify-center text-sm font-medium border rounded-full bg-brand-blue text-white hover:bg-brand-green m-0 cursor-pointer  px-3 py-2 normal-case leading-5 hover:text-white z-[10000]"
     type="button" aria-haspopup="dialog" aria-expanded="false" data-state="closed">
-    <span>📢 شاركنا رأيك في استطلاع رأي المستخدمين</span>
+    <span>📢 {{ __('general.navigation.feedback-survey') }}</span>
 </a>
 <!-- Footer -->
 <footer class="bg-brand-blue pt-24">
