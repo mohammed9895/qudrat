@@ -76,10 +76,12 @@
                 @foreach($page->data['recommendation_items'] as $item)
                     <div class="col-span-full lg:col-span-6 xl:col-span-3">
                         <div class="bg-white p-5 rounded-xl shadow-default">
-                            <img src="assets/images/blog_1.png" alt="images" class="w-full mb-4">
+                            <img src="{{  Storage::disk('nfs')->url($item['image']) }}" alt="images" class="w-full mb-4">
                             <a href=""
                                class="inline-block text-2xl font-medium mb-3 hover:text-primary-1">{{ $item['title'] }}</a>
-                            {!!  substr($item['content'], 0 ,100)  !!}
+                           <div>
+                             {!!  $item['content']  !!}
+                           </div>
                             <a href="{{ $item['link'] }}"
                                class="inline-block px-8 py-3 mt-3 rounded-full text-head-color font-medium bg-primary-1 text-white inline-flex items-center gap-2">{{ __('general.future-skills.know-more') }}</a>
                         </div>
