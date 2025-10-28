@@ -2,7 +2,24 @@
     $categories = App\Models\Category::latest()->limit(5)->get();
 @endphp
 
+<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/21.1.3/css/dx.common.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/21.1.3/css/dx.light.css"/>
+<script src="https://cdn3.devexpress.com/jslib/21.1.3/js/dx.all.js"></script>
 
+
+<script>
+    window.embeddedChatbotConfig = {
+        chatbotId: "5lv7SA33vTh2q_0yEykf9",
+        domain: "www.chatbase.co"
+    }
+</script>
+
+<script
+    src="https://www.chatbase.co/embed.min.js"
+    chatbotId="5lv7SA33vTh2q_0yEykf9"
+    domain="www.chatbase.co"
+    defer>
+</script>
 <a
     href="{{ route('feedbacks.index') }}"
     class="fixed bottom-4 left-4 inline-flex items-center justify-center text-sm font-medium border rounded-full bg-brand-blue text-white hover:bg-brand-green m-0 cursor-pointer  px-3 py-2 normal-case leading-5 hover:text-white z-[10000]"

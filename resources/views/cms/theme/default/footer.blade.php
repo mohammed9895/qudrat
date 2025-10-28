@@ -13,12 +13,18 @@
             domain: "www.chatbase.co"
         }
     </script>
+
     <script
         src="https://www.chatbase.co/embed.min.js"
         chatbotId="5lv7SA33vTh2q_0yEykf9"
         domain="www.chatbase.co"
         defer>
     </script>
+
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/21.1.3/css/dx.common.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/21.1.3/css/dx.light.css"/>
+    <script src="https://cdn3.devexpress.com/jslib/21.1.3/js/dx.all.js"></script>
+
 
     <a
         href="{{ route('feedbacks.index') }}"
