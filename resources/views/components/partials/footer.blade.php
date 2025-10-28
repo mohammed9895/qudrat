@@ -1,7 +1,15 @@
 @php
     $categories = App\Models\Category::latest()->limit(5)->get();
 @endphp
-    <!-- Footer -->
+
+
+<a
+    href="{{ route('feedbacks.index') }}"
+    class="fixed bottom-4 left-4 inline-flex items-center justify-center text-sm font-medium border rounded-full bg-brand-blue text-white hover:bg-brand-green m-0 cursor-pointer  px-3 py-2 normal-case leading-5 hover:text-white z-[10000]"
+    type="button" aria-haspopup="dialog" aria-expanded="false" data-state="closed">
+    <span>📢 شاركنا رأيك في استطلاع رأي المستخدمين</span>
+</a>
+<!-- Footer -->
 <footer class="bg-brand-blue pt-24">
     <div class="container">
         <div class="flex justify-between gap-5 sm:gap-6 flex-wrap pb-20">
@@ -11,17 +19,12 @@
                 <h6 class="text-white text-base mb-2">{{ __('general.footer.social-media') }}</h6>
                 <ul class="flex items-center gap-x-3">
                     <li>
-                        <a href="https://www.facebook.com/"
-                           class="w-9 h-9 flex items-center justify-center rounded-full text-white bg-white bg-opacity-10 hover:bg-primary-1"><i
-                                class="ri-facebook-fill"></i></a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com/"
+                        <a href="https://www.youtube.com/user/Omanlabour"
                            class="w-9 h-9 flex items-center justify-center rounded-full text-white bg-white bg-opacity-10 hover:bg-primary-1"><i
                                 class="lab la-youtube"></i></a>
                     </li>
                     <li>
-                        <a href="https://www.facebook.com/"
+                        <a href="https://x.com/labour_oman"
                            class="w-9 h-9 flex items-center justify-center rounded-full text-white bg-white bg-opacity-10 hover:bg-primary-1">
                                 <span>
                                     <svg width="16" height="14" viewBox="0 0 16 14" fill="none"
@@ -34,9 +37,10 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.facebook.com/"
-                           class="w-9 h-9 flex items-center justify-center rounded-full text-white bg-white bg-opacity-10 hover:bg-primary-1"><i
-                                class="las la-basketball-ball"></i></a>
+                        <a href="https://www.instagram.com/labour_oman/"
+                           class="w-9 h-9 flex items-center justify-center rounded-full text-white bg-white bg-opacity-10 hover:bg-primary-1">
+                            @svg('fab-instagram', 'w-5 h-5 text-white')
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -52,10 +56,10 @@
                         <a href="{{ route('jobs.index') }}"
                            class="text-[#fff] hover:text-primary-1">{{ __('general.jobs') }}</a>
                     </li>
-                    <li>
-                        <a href="{{ route('social-window.index') }}"
-                           class="text-[#fff] hover:text-primary-1">{{ __('general.footer.useful-link.browse-categories') }}</a>
-                    </li>
+                    {{--                    <li>--}}
+                    {{--                        <a href="{{ route('social-window.index') }}"--}}
+                    {{--                           class="text-[#fff] hover:text-primary-1">{{ __('general.footer.useful-link.browse-categories') }}</a>--}}
+                    {{--                    </li>--}}
                     <li>
                         <a href="{{ route('social-window.index') }}"
                            class="text-[#fff] hover:text-primary-1">{{ __('general.footer.useful-link.browse-profiles') }}</a>
@@ -79,24 +83,32 @@
                 </div>
                 <ul class="flex flex-col gap-4">
                     <li>
-                        <a href="{{ route('filament.entity.resources.job-applications.create') }}"
-                           class="text-[#fff] hover:text-primary-1">{{ __('general.footer.focal-point.add-jobs') }}</a>
+                        <a href="https://mol.gov.om/WebLinks"
+                           target="_blank"
+                           class="text-[#fff] hover:text-primary-1">
+                            {{ __('general.footer.focal-point.site-policies') }}
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ route('social-window.index') }}"
-                           class="text-[#fff] hover:text-primary-1">{{ __('general.footer.focal-point.browse-categories') }}</a>
+                        <a href="https://mol.gov.om/WebLinks"
+                           target="_blank"
+                           class="text-[#fff] hover:text-primary-1">
+                            {{ __('general.footer.focal-point.privacy') }}
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ route('social-window.index') }}"
-                           class="text-[#fff] hover:text-primary-1">{{ __('general.footer.focal-point.browse-profiles') }}</a>
+                        <a href="https://mol.gov.om/WebLinks"
+                           target="_blank"
+                           class="text-[#fff] hover:text-primary-1">
+                            {{ __('general.footer.focal-point.terms') }}
+                        </a>
                     </li>
                     <li>
-                        <a href="{{ route('media-center.index') }}"
-                           class="text-[#fff] hover:text-primary-1">{{ __('general.footer.focal-point.media-center') }}</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('social-window.index') }}"
-                           class="text-[#fff] hover:text-primary-1">{{ __('general.footer.focal-point.social-window') }}</a>
+                        <a href="https://mol.gov.om/WebLinks"
+                           target="_blank"
+                           class="text-[#fff] hover:text-primary-1">
+                            {{ __('general.footer.focal-point.accessibility') }}
+                        </a>
                     </li>
                 </ul>
             </div>

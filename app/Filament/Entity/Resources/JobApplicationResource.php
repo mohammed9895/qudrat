@@ -3,7 +3,6 @@
 namespace App\Filament\Entity\Resources;
 
 use App\Filament\Entity\Resources\JobApplicationResource\Pages;
-use App\Filament\Entity\Resources\JobApplicationResource\RelationManagers;
 use App\Models\JobApplication;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -11,13 +10,14 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class JobApplicationResource extends Resource
 {
     protected static ?string $model = JobApplication::class;
 
     protected static ?string $navigationIcon = 'hugeicons-permanent-job';
+
+    protected static bool $shouldRegisterNavigation = false;
 
     public static function form(Form $form): Form
     {
@@ -43,7 +43,7 @@ class JobApplicationResource extends Resource
                     ->required()
                     ->relationship('province', 'name'),
                 Forms\Components\TextInput::make('salary')
-                    ->prefix('OMR',)
+                    ->prefix('OMR')
                     ->required()
                     ->maxLength(255),
                 Forms\Components\Select::make('employment_type_id')

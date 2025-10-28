@@ -2,12 +2,12 @@
 <nav x-data="{ open:false, dd:{social:false, intl:false, oman:false} }"
      class="nav_area w-full bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/75 sticky top-0 z-50 border-b border-gray-100">
     <!-- Feedback Survey Bar -->
-    <div dir="rtl" class="bg-brand-blue text-white text-sm py-3 px-4 text-center">
-        <a href="/feedbacks" class="font-semibold hover:underline">
-            📢 {{ __('general.navigation.feedback-survey') }}
-            <span>{{ __('general.navigation.click-here') }}</span>
-        </a>
-    </div>
+    {{--    <div dir="rtl" class="bg-brand-blue text-white text-sm py-3 px-4 text-center">--}}
+    {{--        <a href="/feedbacks" class="font-semibold hover:underline">--}}
+    {{--            📢 {{ __('general.navigation.feedback-survey') }}--}}
+    {{--            <span>{{ __('general.navigation.click-here') }}</span>--}}
+    {{--        </a>--}}
+    {{--    </div>--}}
 
     <div class="mx-auto px-4 sm:px-6 lg:px-10">
         <div class="flex items-center justify-between py-3 gap-3">

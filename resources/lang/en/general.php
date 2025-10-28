@@ -2,6 +2,8 @@
 
 return [
 
+    'hello' => 'Hello!',
+    'logout' => 'Logout',
     'recruitment_platform' => 'Recruitment Platform',
     'recruitment_platforms' => 'Recruitment Platforms',
 
@@ -61,7 +63,6 @@ return [
         'about-text' => 'Qudrat is a national integrated system for building national capacities at all stages (the National System for Capacity Building and Talent Management), and one of the programs of the Tenth Five-Year Plan. It aims to coordinate between multiple entities responsible for national capacity programs across all government and private sectors at all stages, forming a unified national system that integrates all current and future national programs. This ensures data integrity and prevents loss over many years, providing a comprehensive record of capacities and talent management to support business development in the future. Capacity building is the process through which individuals and organizations acquire, improve, and retain the skills and knowledge necessary to perform their roles efficiently.',
         'categories' => 'Categories',
         'for-user' => 'Important Links',
-        'for-employer' => 'Contact Points',
         'social-media' => 'Social Media',
         'copy-right' => 'All rights reserved © 2025 Ministry of Labor',
         'useful-link' => [
@@ -71,13 +72,14 @@ return [
             'media-center' => 'Media Center',
             'social-window' => 'Social Window',
         ],
+        'for-employer' => 'Site Policies',
         'focal-point' => [
-            'add-jobs' => 'Add Job',
-            'browse-categories' => 'Browse Categories',
-            'browse-profiles' => 'Browse Profiles',
-            'media-center' => 'Media Center',
-            'social-window' => 'Social Window',
+            'site-policies' => 'Site Policies',
+            'privacy' => 'Privacy',
+            'terms' => 'Terms',
+            'accessibility' => 'Accessibility',
         ],
+
     ],
 
     'about-page' => [

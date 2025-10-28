@@ -7,12 +7,12 @@
 <nav x-data="{ open:false, dd:{social:false, intl:false, oman:false} }"
      class="nav_area w-full bg-white/90 backdrop-blur supports-[backdrop-filter]:bg-white/75 sticky top-0 z-50 border-b border-gray-100">
     <!-- Feedback Survey Bar -->
-    <div dir="rtl" class="bg-brand-blue text-white text-sm py-3 px-4 text-center">
-        <a href="/feedbacks" class="font-semibold hover:underline">
-            📢 {{ __('general.navigation.feedback-survey') }}
-            <span>{{ __('general.navigation.click-here') }}</span>
-        </a>
-    </div>
+    {{--    <div dir="rtl" class="bg-brand-blue text-white text-sm py-3 px-4 text-center">--}}
+    {{--        <a href="/feedbacks" class="font-semibold hover:underline">--}}
+    {{--            📢 {{ __('general.navigation.feedback-survey') }}--}}
+    {{--            <span>{{ __('general.navigation.click-here') }}</span>--}}
+    {{--        </a>--}}
+    {{--    </div>--}}
 
     <div class="mx-auto px-4 sm:px-6 lg:px-10">
         <div class="flex items-center justify-between py-3 gap-3">
@@ -178,9 +178,10 @@
                                      alt="user photo">
                             </button>
                             <div x-cloak x-show="userOpen" @click.outside="userOpen=false" x-transition
-                                 class="absolute right-0 mt-2 w-56 rounded-lg bg-white shadow border border-gray-100">
+                                 class="absolute right-0 rtl:right-auto rtl:left-0 mt-2 w-56 rounded-lg bg-white shadow border border-gray-100">
                                 <div class="px-4 py-3">
-                                    <div class="text-sm font-medium text-gray-900">{{ auth()->user()->name }}</div>
+                                    <div class="text-sm font-medium text-gray-900">{{ __('general.hello') }}
+                                        , {{ auth()->user()->name }}</div>
                                     <div class="text-xs text-gray-500 truncate">{{ auth()->user()->email }}</div>
                                 </div>
                                 <div class="py-2">

@@ -65,7 +65,7 @@
                                 </label>
                                 <input type="text" id="phone" wire:model.defer="phone"
                                        class="bg-white bg-opacity-50 w-full px-6 py-4 border border-gray-1 rounded-lg">
-                                        @error('phone') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+                                @error('phone') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="col-span-full">
@@ -104,9 +104,10 @@
     <!-- Map -->
     <div class="mb-[-80px]">
         <div class="mapswrapper">
-            <iframe width="100%" height="550" loading="lazy" allowfullscreen
-                    src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8&q=New%20York&zoom=10&maptype=roadmap"></iframe>
-            <a href="https://www.lawod.com/squad-busters-tier-list/">Squad Busters Tier List</a>
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3656.4403372301663!2d58.32001628629816!3d23.588535824069957!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e8e008874aa9d79%3A0x88261404a2eddc16!2sMinistry%20of%20Labour%20-%20Muscat!5e0!3m2!1sen!2som!4v1761608650870!5m2!1sen!2som"
+                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
             <style>.mapswrapper {
                     background: #fff;
                     position: relative

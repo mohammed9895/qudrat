@@ -7,6 +7,7 @@ use App\Models\Country;
 use App\Models\Profile;
 use App\Models\Province;
 use App\Models\State;
+use Filament\Actions\Action;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\MarkdownEditor;
@@ -51,6 +52,7 @@ class UserPanelProvider extends PanelProvider
                 'gray' => Color::Slate,
             ])
             ->brandLogo(asset('assets/images/logo.svg'))
+            ->homeUrl('/')
             ->discoverResources(in: app_path('Filament/User/Resources'), for: 'App\\Filament\\User\\Resources')
             ->discoverPages(in: app_path('Filament/User/Pages'), for: 'App\\Filament\\User\\Pages')
             ->discoverClusters(in: app_path('Filament/User/Clusters'), for: 'App\\Filament\\User\\Clusters')
@@ -79,7 +81,7 @@ class UserPanelProvider extends PanelProvider
                 OnboardMiddleware::class,
             ])
             ->userMenuItems([
-                'logout' => MenuItem::make()->url(env('PKI_LOGOUT_URL'))->label('Log out'),
+                'logout' => MenuItem::make()->url(env('PKI_LOGOUT_URL'))->label(__('general.logout')),
             ])
             ->viteTheme('resources/css/filament/user/theme.css')
             ->plugins([
@@ -166,6 +168,13 @@ class UserPanelProvider extends PanelProvider
                             }),
                     ])->completeBeforeAccess())
                     ->addTrack(fn () => Track::make([
+                        Step::make(name: fn () => __('general.hello').auth()->user()->name, identifier: 'greeting')
+                            ->icon('hugeicons-waving-hand-01')
+                            ->performStepAction(function (Action $action) {
+                                return $action
+                                    ->url('#')
+                                    ->label(__('general.logout'));
+                            }),
                         Step::make(name: __('general.steps.add_education'), identifier: 'widget::add-educations')
                             ->description(__('general.steps.add_education_description'))
                             ->icon('hugeicons-graduation-scroll')

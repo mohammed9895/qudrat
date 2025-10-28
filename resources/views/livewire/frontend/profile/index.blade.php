@@ -92,6 +92,7 @@
                                 </li>
                             @endif
                         </ul>
+                        {{--                        @dd($profile->can_send_message)--}}
                         @if (auth()->check() && $profile->can_send_message && auth()->id() != $profile->user_id)
                             <a wire:click="send_message" wire:ignore
                                class="px-8 py-3 mb-3 cursor-pointer rounded-full text-head-color font-medium bg-gray-200 text-gray-500 inline-flex items-center gap-2 w-full justify-center">

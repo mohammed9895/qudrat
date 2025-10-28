@@ -5,8 +5,10 @@ namespace App\Livewire\Frontend\Profile;
 use App\Models\Profile;
 use Filament\Notifications\Notification;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use JaOcero\FilaChat\Services\ChatListService;
 use Livewire\Component;
+use Symfony\Component\HttpFoundation\Response;
 use WireUi\Breadcrumbs\Trail;
 
 class Index extends Component
@@ -33,16 +35,41 @@ class Index extends Component
             ->push($this->profile->fullname, route('profile.index', $this->profile));
     }
 
-    public function download()
+    public function download(): Response
     {
-        // Adjust this path based on where your files are stored (e.g., storage/app/public)
-        $filePath = Storage::disk('nfs')->url($this->profile->cv);
+        $cv = $this->profile->cv; // e.g. "cvs/1234.pdf" or "public/cvs/1234.pdf" or full path or URL
 
-        if (file_exists($filePath)) {
-            return response()->download($filePath);
-        } else {
-            session()->flash('error', 'File not found.');
+        // 1) If it's a URL, just redirect to it
+        if (Str::startsWith($cv, ['http://', 'https://'])) {
+            return redirect()->away($cv);
         }
+
+        // 2) Try NFS disk (if you stored it there)
+        if (Storage::disk('nfs')->exists($cv)) {
+            // Laravel 9+ supports ->download() directly on the disk
+            return Storage::disk('nfs')->download($cv);
+        }
+
+        // 3) Try 'public' disk (common case: storage/app/public/...)
+        if (Storage::disk('public')->exists($cv)) {
+            return Storage::disk('public')->download($cv);
+        }
+
+        // 4) Fallback: treat it as a relative path inside storage/app
+        //    (common bug: forgetting the "app/" prefix)
+        $absolute = storage_path('app/'.ltrim($cv, '/'));
+        if (is_file($absolute)) {
+            return response()->download($absolute);
+        }
+
+        // 5) If the value was already an absolute path, try it as-is
+        if (Str::startsWith($cv, ['/', '\\']) || preg_match('/^[A-Za-z]:\\\\/', $cv)) {
+            if (is_file($cv)) {
+                return response()->download($cv);
+            }
+        }
+
+        abort(404, 'File not found');
     }
 
     public function rate()

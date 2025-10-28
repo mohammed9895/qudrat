@@ -71,7 +71,7 @@ class BasicInformation extends Page
                                 return $query->orderBy('id', 'asc');
                             }),
                         RichEditor::make('bio')->label(__('general.basic-information.bio'))->label(__('general.basic-information.bio')),
-                        TextInput::make('username')->prefix(env('APP_URL'))->unique(table: ProfileModel::class, ignorable: $this->profile)->label(__('general.basic-information.username')),
+                        //                        TextInput::make('username')->prefix(env('APP_URL'))->unique(table: ProfileModel::class, ignorable: $this->profile)->label(__('general.basic-information.username')),
                         TextInput::make('email')->label(__('general.basic-information.email')),
                         TextInput::make('phone')->label(__('general.basic-information.phone')),
                         Select::make('gender')
