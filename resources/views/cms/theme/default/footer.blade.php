@@ -84,8 +84,10 @@
                         {{--                               class="text-[#fff] hover:text-primary-1">{{ __('general.footer.useful-link.browse-categories') }}</a>--}}
                         {{--                        </li>--}}
                         <li>
-                            <a href="{{ route('social-window.index') }}"
-                               class="text-[#fff] hover:text-primary-1">{{ __('general.footer.useful-link.browse-profiles') }}</a>
+                            <a href="/entity"
+                               class="text-[#fff] hover:text-primary-1">
+                                {{ __('general.footer.useful-link.social-window-portal') }}
+                            </a>
                         </li>
                         <li>
                             <a href="{{ route('media-center.index') }}"
@@ -106,31 +108,27 @@
                     </div>
                     <ul class="flex flex-col gap-4">
                         <li>
-                            <a href="https://mol.gov.om/WebLinks"
-                               target="_blank"
-                               class="text-[#fff] hover:text-primary-1">
-                                {{ __('general.footer.focal-point.site-policies') }}
-                            </a>
-                        </li>
-                        <li>
-                            <a href="https://mol.gov.om/WebLinks"
-                               target="_blank"
+                            <a href="/privacy"
                                class="text-[#fff] hover:text-primary-1">
                                 {{ __('general.footer.focal-point.privacy') }}
                             </a>
                         </li>
                         <li>
-                            <a href="https://mol.gov.om/WebLinks"
-                               target="_blank"
+                            <a href="/accessibility"
+                               class="text-[#fff] hover:text-primary-1">
+                                {{ __('general.footer.focal-point.accessibility') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/terms"
                                class="text-[#fff] hover:text-primary-1">
                                 {{ __('general.footer.focal-point.terms') }}
                             </a>
                         </li>
                         <li>
-                            <a href="https://mol.gov.om/WebLinks"
-                               target="_blank"
+                            <a href="/emerging-tech"
                                class="text-[#fff] hover:text-primary-1">
-                                {{ __('general.footer.focal-point.accessibility') }}
+                                {{ __('general.footer.focal-point.emerging-tech') }}
                             </a>
                         </li>
                     </ul>

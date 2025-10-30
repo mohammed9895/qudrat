@@ -256,7 +256,8 @@
                             <h4 class="text-[28px] font-semibold mb-3">{{ __('general.educational-background') }}</h4>
                             <div class="grid grid-cols-12 gap-4">
                                 @foreach($profile->educations as $education)
-                                    <div class="col-span-full lg:col-span-4">
+                                    <div
+                                        class="col-span-full lg:col-span-4 {{ $education->is_visible ? '' : 'hidden' }}">
                                         <div class="bg-white p-7 rounded-xl h-full">
                                         <span>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -301,7 +302,8 @@
                             <h4 class="text-[28px] font-semibold mb-3">{{ __('general.work-experience') }}</h4>
                             <div class="grid grid-cols-12 gap-4">
                                 @foreach($profile->experiences as $experience)
-                                    <div class="col-span-full lg:col-span-6">
+                                    <div
+                                        class="col-span-full lg:col-span-6 {{ $experience->is_visible ? '' : 'hidden' }}">
                                         <div class="bg-white p-7 rounded-xl h-full">
                                         <span>
                                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -330,7 +332,8 @@
                             <h4 class="text-[28px] font-semibold mb-3">{{ __('general.certification-list') }}</h4>
                             <div class="grid grid-cols-12 gap-4">
                                 @foreach($profile->certificates as $certificate)
-                                    <div class="col-span-full lg:col-span-4">
+                                    <div
+                                        class="col-span-full lg:col-span-4 {{ $certificate->is_visible ? '' : 'hidden' }}">
                                         <div class="bg-white p-7 rounded-xl h-full">
                                         <span>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -359,7 +362,8 @@
                             <h4 class="text-[28px] font-semibold mb-3">{{ __('general.courses.title') }}</h4>
                             <div class="grid grid-cols-12 gap-4">
                                 @foreach($profile->courses as $course)
-                                    <div class="col-span-full lg:col-span-4">
+                                    <div
+                                        class="col-span-full lg:col-span-4 {{ $course->is_visible ? '' : 'hidden' }}">
                                         <div class="bg-white p-7 rounded-xl h-full">
                                         <span>
                                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -374,8 +378,7 @@
                                             @if($course->course_file)
                                                 <a href="{{ Storage::disk('nfs')->url($course->course_file) }}"
                                                    class="text-primary-2 flex items-center space-x-2"
-                                                   target="_blank">@svg('hugeicons-file-01', 'size-5 mr-1')View
-                                                    Certificate</a>
+                                                   target="_blank">@svg('hugeicons-file-01', 'size-5 mr-1') {{ __('general.view-certificate') }}</a>
                                             @endif
                                         </div>
                                     </div>

@@ -24,8 +24,10 @@
             <form wire:submit="create">
                 {{ $this->form }}
 
-                <button type="submit">
-                    Submit
+                <button type="submit"
+                        style="background: #1d71b8 !important;"
+                        class="fi-btn relative grid-flow-col items-center justify-center font-semibold outline-none transition duration-75 focus-visible:ring-2 rounded-lg  fi-size-md fi-btn-size-md gap-1.5 px-3 py-2 text-sm inline-grid shadow-sm  text-white mt-3">
+                    {{ __('general.send') }}
                 </button>
             </form>
 

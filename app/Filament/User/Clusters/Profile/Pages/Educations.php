@@ -91,6 +91,8 @@ class Educations extends Page
                             ->deletable(true) // Disable default delete button
                             ->orderColumn('sort')
                             ->schema([
+                                Toggle::make('is_visible')
+                                    ->label(__('general.is_visible')),  // Use translated label
                                 Hidden::make('addable_id'), // No need for hydration hacks
                                 Select::make('school_id')
                                     ->searchable()

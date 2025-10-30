@@ -24,14 +24,14 @@ class Category extends Component
     public function breadcrumbs(Trail $trail): Trail
     {
         return $trail
-            ->push('Digital Library', route('digital-library.index'))
+            ->push(__('general.digital-library.main-title'), route('digital-library.index'))
             ->push($this->category->name, route('digital-library.category', $this->category));
     }
 
     #[Computed]
     public function posts()
     {
-        return $this->category->posts()
+        return $this->category->digitalLibraryposts()
             ->where('status', Status::Active)
             ->where('title', 'like', "%{$this->search}%")
             ->paginate(10);

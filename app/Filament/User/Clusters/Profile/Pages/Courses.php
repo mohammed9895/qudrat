@@ -10,6 +10,7 @@ use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
@@ -61,6 +62,8 @@ class Courses extends Page
                             ->reorderable()
                             ->orderColumn('sort')
                             ->schema([
+                                Toggle::make('is_visible')
+                                    ->label(__('general.is_visible')),  // Use translated label
                                 Select::make('title')
                                     ->searchable()
                                     ->getSearchResultsUsing(function ($query) {
@@ -147,13 +150,13 @@ class Courses extends Page
                                 FileUpload::make('certificate_file')
                                     ->maxSize(3072)
                                     ->acceptedFileTypes([
-                                                                        'application/pdf',
-                                                                        'image/jpeg',
-                                                                        'image/png',
-                                                                        'image/webp',
-                                                                        'image/gif',
-                                                                        'image/svg+xml',
-                                                                    ])
+                                        'application/pdf',
+                                        'image/jpeg',
+                                        'image/png',
+                                        'image/webp',
+                                        'image/gif',
+                                        'image/svg+xml',
+                                    ])
                                     ->label(__('general.courses.certificate_file')),  // Use translated label
                                 MarkdownEditor::make('description')
                                     ->label(__('general.courses.description')),  // Use translated label

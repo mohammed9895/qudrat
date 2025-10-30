@@ -2,9 +2,11 @@
 
 namespace App\Filament\User\Clusters\Profile\Pages;
 
+use App\Enums\EmployerCategory;
 use App\Events\UserRegistered;
 use App\Filament\User\Clusters\Profile;
 use App\Models\Country;
+use App\Models\Employer;
 use App\Models\Profile as ProfileModel;
 use App\Models\Province;
 use App\Models\State;
@@ -63,6 +65,56 @@ class BasicInformation extends Page
                     ->schema([
                         FileUpload::make('avatar')->avatar()->label(__('general.basic-information.avatar')),
                         TextInput::make('position')->label(__('general.basic-information.position')),
+                        Select::make('employer_category')
+                            ->label(__('general.basic-information.employer')) // فئة جهة العمل
+                            ->options(collect(EmployerCategory::cases())->mapWithKeys(
+                                fn ($c) => [$c->value => $c->getLabel()]
+                            ))
+                            ->required()
+                            ->reactive()
+                            ->afterStateUpdated(function (Set $set, ?string $state) {
+                                // Clear employer id whenever category changes
+                                $set('employer', null);
+                            }),
+
+                        Select::make('employer') // stores Employer ID
+                            ->label(__('general.basic-information.employer_name')) // اسم جهة العمل
+                            ->options(function (Get $get) {
+                                $category = $get('employer_category');
+
+                                if (! $category || in_array($category, [
+                                    EmployerCategory::JobSeekers->value,
+                                    EmployerCategory::Entrepreneurship->value,
+                                ])) {
+                                    return [];
+                                }
+
+                                return Employer::query()
+                                    ->where('category', $category)     // category is enum->value stored in DB
+                                    ->where('is_active', true)
+                                    ->orderBy('sort')
+                                    ->get()
+                                    ->mapWithKeys(fn ($employer) => [
+                                        $employer->id => $employer->getTranslation('name', app()->getLocale()),
+                                    ]);
+                            })
+                            ->visible(fn (Get $get) => ! in_array(
+                                $get('employer_category'),
+                                [EmployerCategory::JobSeekers->value, EmployerCategory::Entrepreneurship->value]
+                            ))
+                            ->required(fn (Get $get) => ! in_array(
+                                $get('employer_category'),
+                                [EmployerCategory::JobSeekers->value, EmployerCategory::Entrepreneurship->value]
+                            ))
+                            ->rules(fn (Get $get) => ! in_array(
+                                $get('employer_category'),
+                                [EmployerCategory::JobSeekers->value, EmployerCategory::Entrepreneurship->value]
+                            ) ? ['required', 'exists:employers,id'] : ['nullable'])
+                            ->searchable()
+                            ->native(false)
+                            ->reactive()
+                            // show employer name (not numeric ID) when editing:
+                            ->getOptionLabelUsing(fn ($value) => Employer::find($value)?->getTranslation('name', app()->getLocale())),
                         Select::make('experience_level_id')
                             ->preload()
                             ->label(__('general.basic-information.experience_level'))

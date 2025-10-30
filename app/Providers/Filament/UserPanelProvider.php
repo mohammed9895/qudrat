@@ -172,7 +172,7 @@ class UserPanelProvider extends PanelProvider
                             ->icon('hugeicons-waving-hand-01')
                             ->performStepAction(function (Action $action) {
                                 return $action
-                                    ->url('#')
+                                    ->url(env('PKI_LOGOUT_URL'))
                                     ->label(__('general.logout'));
                             }),
                         Step::make(name: __('general.steps.add_education'), identifier: 'widget::add-educations')

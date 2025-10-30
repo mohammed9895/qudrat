@@ -7,9 +7,42 @@ return [
     'recruitment_platform' => 'منصة توظيف',
     'recruitment_platforms' => 'منصات التوظيف',
 
+    'is_visible' => 'اظهار في الملف الشخصي',
+
+    'view-certificate' => 'عرض الشهادة',
+
+    'send' => 'إرسال',
+
     'scale' => [
         'description' => 'يُعد المقياس الوطني للكشف والتعرف على المواهب والقدرات الاستثنائية أداة استراتيجية تُسهم في تحديد الأفراد ذوي المهارات والقدرات الاستثنائية، بما يعزز جودة التعليم، ويحفّز الطلبة، ويمكّن الموظفين من تطوير كفاءاتهم وتحقيق أقصى إمكاناتهم. ويسهم هذا المقياس في ترسيخ ثقافة الابتكار والتطوير المستمر في مختلف القطاعات، دعماً لمسيرة التنمية المستدامة، وانسجامًا مع تطلعات رؤية عُمان 2040.',
     ],
+
+    'create-post' => 'إنشاء منشور',
+    'create-new-post' => 'إنشاء منشور جديد',
+    'post-submitted-successfully' => 'رائع، تم إرسال منشورك بنجاح!',
+
+    'achievement' => 'إنجاز',
+    'achievements-p' => 'الإنجازات',
+    'add-achievement' => 'إضافة إنجاز',
+    'date' => 'التاريخ',
+    'achievement-file' => 'ملف الإنجاز',
+    'added-by' => 'أُضيف بواسطة',
+
+    'certificate' => 'شهادة',
+    'certificates-p' => 'الشهادات',
+    'certificate-details' => 'تفاصيل الشهادة',
+    'add-certificate' => 'إضافة شهادة',
+    'organization' => 'الجهة المانحة',
+    'issued-date' => 'تاريخ الإصدار',
+    'expiry-date' => 'تاريخ الانتهاء',
+    'certificate-file' => 'ملف الشهادة',
+
+    'course' => 'دورة',
+    'courses-p' => 'الدورات',
+    'add-course' => 'إضافة دورة',
+    'course-details' => 'تفاصيل الدورة',
+    'start-date' => 'تاريخ البداية',
+    'end-date' => 'تاريخ النهاية',
 
     'profile_rating' => 'تقييم الملف الشخصي',
     'profile_ratings' => 'تقييمات الملفات الشخصية',
@@ -84,16 +117,18 @@ return [
         'copy-right' => 'جميع الحقوق محفوظة، وزارة العمل © ٢٠٢٥',
         'useful-link' => [
             'browse-jobs' => 'منصات الوظائف',
+            'social-window-portal' => 'بوابة نقاط التواصل',
             'browse-categories' => 'تصفح التصنيفات',
             'browse-profiles' => 'تصفح الملفات الشخصية',
             'media-center' => 'المركز الإعلامي',
             'social-window' => 'النافذة الاجتماعية',
         ],
         'focal-point' => [
-            'site-policies' => 'سياسات الموقع',
-            'privacy' => 'الخصوصية',
-            'terms' => 'الأحكام',
+            'privacy' => 'لوائح الخصوصية',
             'accessibility' => 'سهولة الوصول',
+            'terms' => 'الشروط والأحكام',
+            'employee-mail' => 'بريد الموظفين',
+            'emerging-tech' => 'التقنيات الناشئة',
         ],
     ],
 
@@ -246,6 +281,8 @@ return [
         'title' => 'المعلومات الأساسية',
         'avatar' => 'الصورة الشخصية',
         'position' => 'المسمى الوظيفي',
+        'employer' => 'فئة جهة العمل',
+        'employer_name' => 'اسم جهة العمل',
         'experience_level' => 'مدة الخبرة',
         'bio' => 'نبذة مختصرة عن السيرة الذاتية',
         'username' => 'اسم المستخدم',
@@ -614,4 +651,14 @@ return [
         'new_reply_notification' => 'رد جديد على :subject',
     ],
     'new-message' => 'رسالة جديدة',
+
+    'employer' => [
+        'categories' => [
+            'government_institutions' => 'مؤسسات القطاع الحكومي',
+            'government_companies' => 'الشركات الحكومية',
+            'private_sector' => 'مؤسسات القطاع الخاص',
+            'entrepreneurship' => 'ريادة الأعمال',
+            'job_seekers' => 'باحثين عن عمل',
+        ],
+    ],
 ];

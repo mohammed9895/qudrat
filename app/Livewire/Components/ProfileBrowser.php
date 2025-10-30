@@ -2,10 +2,12 @@
 
 namespace App\Livewire\Components;
 
+use App\Enums\EmployerCategory;
 use App\Enums\Status;
 use App\Models\Category;
 use App\Models\Country;
 use App\Models\EducationType;
+use App\Models\Employer;
 use App\Models\ExperienceLevel;
 use App\Models\Profile;
 use App\Models\Province;
@@ -13,9 +15,12 @@ use App\Models\State;
 use Filament\Forms;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
 use Livewire\WithPagination;
+use Throwable;
 
 class ProfileBrowser extends Component implements Forms\Contracts\HasForms
 {
@@ -74,6 +79,65 @@ class ProfileBrowser extends Component implements Forms\Contracts\HasForms
                 ->options(Category::whereHas('profiles')->pluck('name', 'id'))
                 ->searchable(),
 
+            Select::make('employer_category')
+                ->label(__('general.basic-information.employer'))
+                ->options(collect(EmployerCategory::cases())->mapWithKeys(
+                    fn ($c) => [$c->value => $c->getLabel()]
+                ))
+                ->searchable()
+                ->native(false)
+                ->reactive()
+                ->live()
+                ->afterStateUpdated(function (Set $set, ?string $state) {
+                    // Always clear employer when category changes
+                    $set('employer', null);
+
+                    // Reset pagination so you see the new results
+                    try {
+                        $this->resetPage();
+                    } catch (Throwable $e) {
+                    }
+                }),
+
+            // Employer (ID) – only for categories that require it
+            Select::make('employer')
+                ->label(__('general.basic-information.employer_name'))
+                ->options(function (Get $get) {
+                    $category = $get('employer_category');
+
+                    // No employer list for Job Seekers / Entrepreneurship
+                    if (! $category || in_array($category, [
+                        EmployerCategory::JobSeekers->value,
+                        EmployerCategory::Entrepreneurship->value,
+                    ])) {
+                        return [];
+                    }
+
+                    return Employer::query()
+                        ->where('category', $category)
+                        ->where('is_active', true)
+                        ->orderBy('sort')
+                        ->get()
+                        ->mapWithKeys(fn ($e) => [
+                            $e->id => $e->getTranslation('name', app()->getLocale()),
+                        ]);
+                })
+                ->visible(fn (Get $get) => ! in_array(
+                    $get('employer_category'),
+                    [EmployerCategory::JobSeekers->value, EmployerCategory::Entrepreneurship->value]
+                ))
+                ->searchable()
+                ->native(false)
+                ->reactive()
+                ->getOptionLabelUsing(fn ($value) => Employer::find($value)?->getTranslation('name', app()->getLocale())
+                )
+                ->afterStateUpdated(function () {
+                    try {
+                        $this->resetPage();
+                    } catch (Throwable $e) {
+                    }
+                }),
+
             Select::make('country_id')
                 ->label(__('general.country'))
                 ->options(Country::pluck('name', 'id'))
@@ -84,8 +148,8 @@ class ProfileBrowser extends Component implements Forms\Contracts\HasForms
             Select::make('gender')
                 ->label(__('general.gender'))
                 ->options([
-                    "1" => __('general.gender-types.male'),
-                    "0" => __('general.gender-types.female'),
+                    '1' => __('general.gender-types.male'),
+                    '0' => __('general.gender-types.female'),
                 ])
                 ->live()
                 ->searchable(),
@@ -126,6 +190,28 @@ class ProfileBrowser extends Component implements Forms\Contracts\HasForms
             }, function ($query) {
                 $query->when($this->data['category'] ?? null, fn ($q, $val) => $q->whereHas('categories', fn ($q2) => $q2->where('category_id', $val))
                 );
+            })
+            ->when($this->data['employer_category'] ?? null, function ($q, $cat) {
+                // Always constrain by employer_category first
+                $q->where('employer_category', $cat);
+
+                // If Job Seekers or Entrepreneurship, ignore employer completely
+                if (in_array($cat, [
+                    EmployerCategory::JobSeekers->value,
+                    EmployerCategory::Entrepreneurship->value,
+                ])) {
+                    // Do NOT apply any condition on employer
+                    return;
+                }
+
+                // For all other categories, also filter by employer if selected
+                if (! empty($this->data['employer'])) {
+                    $q->where('employer', $this->data['employer']);
+                }
+            })
+// Fallback: if employer selected but no category chosen, still filter by employer
+            ->when(($this->data['employer'] ?? null) && empty($this->data['employer_category']), function ($q) {
+                $q->where('employer', $this->data['employer']);
             })
             ->paginate($this->perPage);
     }

@@ -9,6 +9,7 @@ use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
@@ -59,6 +60,8 @@ class Certificates extends Page
                             ->reorderable()
                             ->orderColumn('sort')
                             ->schema([
+                                Toggle::make('is_visible')
+                                    ->label(__('general.is_visible')),  // Use translated label
                                 Select::make('title')
                                     ->searchable()
                                     ->getSearchResultsUsing(function ($query) {

@@ -20,10 +20,7 @@
     <!-- Card & Siderbar -->
     <div class="pt-24 pb-12">
         <div class="container">
-            <div class="text-center mb-9">
-                <h2 class="text-4xl sm:text-5xl font-semibold mb-3">Featured Resources</h2>
-                <p>The best featured Popular e-books, articles, and videos</p>
-            </div>
+            
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
                 @foreach($this->posts as $post)
                     <div class="">

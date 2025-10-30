@@ -7,6 +7,43 @@ return [
     'recruitment_platform' => 'Recruitment Platform',
     'recruitment_platforms' => 'Recruitment Platforms',
 
+    'is_visible' => 'Is Visible',
+
+    'view-certificate' => 'View Certificate',
+
+    'send' => 'Send',
+
+    'create-post' => 'Create Post',
+    'create-new-post' => 'Create New Post',
+
+    'created-at' => 'Created At',
+    'updated-at' => 'Updated At',
+    'post-submitted-successfully' => 'Great, your post was submitted successfully!',
+
+    'achievement' => 'Achievement',
+    'achievements-p' => 'Achievements',
+    'add-achievement' => 'Add Achievement',
+    'date' => 'Date',
+    'achievement-file' => 'Achievement File',
+    'added-by' => 'Added By',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+
+    'certificate' => 'Certificate',
+    'certificates-p' => 'Certificates',
+    'certificate-details' => 'Certificate Details',
+    'organization' => 'Organization',
+    'issued-date' => 'Issued Date',
+    'expiry-date' => 'Expiry Date',
+    'certificate-file' => 'Certificate File',
+
+    'course' => 'Course',
+    'courses-p' => 'Courses',
+    'add-course' => 'Add Course',
+    'course-details' => 'Course Details',
+    'start-date' => 'Start Date',
+    'end-date' => 'End Date',
+
     'scale' => [
         'description' => 'The National Assessment for Identifying Talents and Exceptional Abilities represents a strategic instrument that enables the identification of individuals with outstanding skills and exceptional capabilities. It plays a pivotal role in enhancing the quality of education, inspiring students, and empowering employees to further develop their competencies and achieve their full potential. The assessment contributes to fostering innovation and continuous development across various sectors, supporting sustainable growth in alignment with the aspirations of Oman Vision 2040.',
     ],
@@ -71,6 +108,7 @@ return [
         'copy-right' => 'All rights reserved © 2025 Ministry of Labor',
         'useful-link' => [
             'browse-jobs' => 'Browse Jobs',
+            'social-window-portal' => 'Social Window Portal',
             'browse-categories' => 'Browse Categories',
             'browse-profiles' => 'Browse Profiles',
             'media-center' => 'Media Center',
@@ -78,10 +116,11 @@ return [
         ],
         'for-employer' => 'Site Policies',
         'focal-point' => [
-            'site-policies' => 'Site Policies',
-            'privacy' => 'Privacy',
-            'terms' => 'Terms',
+            'privacy' => 'Privacy Policy',
             'accessibility' => 'Accessibility',
+            'terms' => 'Terms & Conditions',
+            'employee-mail' => 'Employee Mail',
+            'emerging-tech' => 'Emerging Technologies',
         ],
 
     ],
@@ -230,6 +269,8 @@ return [
         'title' => 'Basic Information',
         'avatar' => 'Avatar',
         'position' => 'Position',
+        'employer' => 'Employer Category',
+        'employer_name' => 'Employer',
         'experience_level' => 'Experience Level',
         'bio' => 'Bio',
         'username' => 'Username',
@@ -593,4 +634,14 @@ return [
     ],
 
     'new-message' => 'New Message',
+
+    'employer' => [
+        'categories' => [
+            'government_institutions' => 'Government Sector Institutions',
+            'government_companies' => 'Government Companies',
+            'private_sector' => 'Private Sector Institutions',
+            'entrepreneurship' => 'Entrepreneurship',
+            'job_seekers' => 'Job Seekers',
+        ],
+    ],
 ];

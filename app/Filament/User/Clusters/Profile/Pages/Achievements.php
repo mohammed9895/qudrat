@@ -10,6 +10,7 @@ use Filament\Forms\Components\MarkdownEditor;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
@@ -59,6 +60,8 @@ class Achievements extends Page
                             ->reorderable()
                             ->orderColumn('sort')
                             ->schema([
+                                Toggle::make('is_visible')
+                                    ->label(__('general.is_visible')),  // Use translated label
                                 TextInput::make('title')
                                     ->label(__('general.achievements.achievement_title')),  // Use translated label
                                 MarkdownEditor::make('description')

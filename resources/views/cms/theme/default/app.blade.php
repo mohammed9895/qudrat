@@ -114,6 +114,19 @@
     });
 </script>
 
+<script>
+    var swiper = new Swiper(".logos_slider", {
+        slidesPerView: 2,
+        spaceBetween: 30,
+        freeMode: true,
+        infinity: true,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+        },
+    });
+</script>
+
 @stack('beforeCoreScripts')
 @stack('scripts')
 </body>

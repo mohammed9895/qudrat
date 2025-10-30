@@ -29,73 +29,97 @@ class CreatePost extends Page implements HasForms, HasTable
 
     public array $data = [];
 
-    public function mount()
+    public static function getNavigationLabel(): string
+    {
+        return __('general.create-post');  // Use translated label for CV Maker
+    }
+
+    public function getTitle(): string
+    {
+        return __('general.create-post');  // Use translated label for CV Maker
+    }
+
+    public function mount(): void
     {
         $this->form->fill();
     }
 
     public function form(Form $form): Form
     {
-        return $form->schema([
-            Section::make('')
-                ->schema([
-                    TextInput::make('title')
-                        ->live(onBlur: true)
-                        ->required()
-                        ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
-                        ->maxLength(255),
-                    TextInput::make('slug')->unique(MediaCenterPost::class, 'slug')->live()
-                        ->afterStateUpdated(function (HasForms $livewire, TextInput $component) {
-                            $livewire->validateOnly($component->getStatePath());
-                        }),
-                    RichEditor::make('content')
-                        ->required()
-                        ->columnSpanFull(),
-                    FileUpload::make('image'),
-                ]),
-        ])
+        return $form
+            ->schema([
+                Section::make(__('general.create-new-post'))
+                    ->schema([
+                        TextInput::make('title')
+                            ->label(__('general.title'))
+                            ->live(onBlur: true)
+                            ->required()
+                            ->afterStateUpdated(fn (Set $set, ?string $state) => $set('slug', Str::slug($state)))
+                            ->maxLength(255),
+
+                        TextInput::make('slug')
+                            ->label(__('general.slug'))
+                            ->unique(MediaCenterPost::class, 'slug')
+                            ->required()
+                            ->live()
+                            ->afterStateUpdated(function (HasForms $livewire, TextInput $component) {
+                                $livewire->validateOnly($component->getStatePath());
+                            }),
+
+                        RichEditor::make('content')
+                            ->label(__('general.content'))
+                            ->required()
+                            ->columnSpanFull(),
+
+                        FileUpload::make('image')
+                            ->label(__('general.image')),
+                    ]),
+            ])
             ->statePath('data');
     }
 
     public function submit()
     {
-
-        $this->data['user_id'] = 1;
+        $this->data['user_id'] = auth()->id();
 
         MediaCenterPost::create($this->data);
 
         $this->reset();
 
         return Notification::make('success')
-            ->title('Success')
-            ->body('Grate, your post submitted successfully')
+            ->title(__('general.success'))
+            ->body(__('general.post-submitted-successfully'))
             ->success()
             ->send();
-
     }
 
     public function table(Table $table): Table
     {
-
         return $table
             ->query(MediaCenterPost::where('user_id', auth()->id()))
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')
-                    ->numeric()
+                    ->label(__('general.user'))
                     ->sortable(),
                 Tables\Columns\TextColumn::make('title')
+                    ->label(__('general.title'))
                     ->searchable(),
                 Tables\Columns\TextColumn::make('slug')
+                    ->label(__('general.slug'))
                     ->searchable(),
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')
+                    ->label(__('general.image')),
                 Tables\Columns\TextColumn::make('status')
+                    ->label(__('general.status'))
                     ->badge()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('general.created-at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('general.updated-at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

@@ -87,12 +87,20 @@
         </div>
         <div class="px-10">
             <div class="flex items-center justify-center 2xl:justify-cenetr gap-5 flex-wrap">
-                @foreach($page->data['new_sponsor_images'] as $sponsor)
-                    <a href="{{$sponsor['link']}}">
-                        <img src="{{  Storage::disk('nfs')->url($sponsor['sponsor_image']) }}" alt="images" width="150"
-                             class="opacity-50 hover:opacity-100 transition"/>
-                    </a>
-                @endforeach
+                <div class="logos_slider swiper pt-5 pb-14">
+                    <div class="swiper-wrapper">
+                        @foreach($page->data['new_sponsor_images'] as $sponsor)
+                            <div class="swiper-slide">
+                                <a href="{{$sponsor['link']}}">
+                                    <img src="{{  Storage::disk('nfs')->url($sponsor['sponsor_image']) }}" alt="images"
+                                         width="150"
+                                         class="opacity-50 hover:opacity-100 transition"/>
+                                </a>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
@@ -343,7 +351,7 @@
 
 
     <!-- Faq -->
-    <div class="py-12" x-data="{ visible: 5 }"> <!-- Show first 5 items -->
+    <div class="py-12" x-data="{ visible: 5, total: {{ count($page->data['faq']) }} }">
         <div class="container">
             <div class="flex justify-center mb-9">
                 <div class="lg:w-6/12">
@@ -353,6 +361,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="flex justify-center">
                 <div class="xl:w-8/12">
                     <div id="accordion-flush" data-accordion="collapse"
@@ -360,41 +369,35 @@
                          data-inactive-classes="text-b-color">
 
                         @foreach($page->data['faq'] as $faq)
-                            <template x-if="{{ $loop->index }} < visible">
-                                <div>
-                                    <h2 id="accordion-flush-heading-{{ $loop->index }}">
-                                        <button type="button"
-                                                class="flex items-center justify-between w-full p-5 font-medium text-gray-500 border-b border-gray-200 gap-3"
-                                                data-accordion-target="#accordion-flush-body-{{ $loop->index }}"
-                                                aria-expanded="false"
-                                                aria-controls="accordion-flush-body-{{ $loop->index }}">
-                                            <span>{{ $faq['question'] }}</span>
-                                            <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0"
-                                                 xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                                                <path stroke="currentColor" stroke-linecap="round"
-                                                      stroke-linejoin="round"
-                                                      stroke-width="2" d="M9 5 5 1 1 5"/>
-                                            </svg>
-                                        </button>
-                                    </h2>
-                                    <div id="accordion-flush-body-{{ $loop->index }}" class="hidden"
-                                         aria-labelledby="accordion-flush-heading-{{ $loop->index }}">
-                                        <div class="p-5 bg-white border-b border-gray-200">
-                                            <p class="text-b-color">
-                                                {{ $faq['answer'] }}
-                                            </p>
-                                        </div>
+                            <div x-show="{{ $loop->index }} < visible" x-cloak>
+                                <h2 id="accordion-flush-heading-{{ $loop->index }}">
+                                    <button type="button"
+                                            class="flex items-center justify-between w-full p-5 font-medium text-gray-500 border-b border-gray-200 gap-3"
+                                            data-accordion-target="#accordion-flush-body-{{ $loop->index }}"
+                                            aria-expanded="false"
+                                            aria-controls="accordion-flush-body-{{ $loop->index }}">
+                                        <span>{{ $faq['question'] }}</span>
+                                        <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0"
+                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                                  stroke-width="2" d="M9 5 5 1 1 5"/>
+                                        </svg>
+                                    </button>
+                                </h2>
+                                <div id="accordion-flush-body-{{ $loop->index }}" class="hidden"
+                                     aria-labelledby="accordion-flush-heading-{{ $loop->index }}">
+                                    <div class="p-5 bg-white border-b border-gray-200">
+                                        <p class="text-b-color">{{ $faq['answer'] }}</p>
                                     </div>
                                 </div>
-                            </template>
+                            </div>
                         @endforeach
-
                     </div>
 
                     <!-- Show More Button -->
-                    <div class="text-center mt-6" x-show="visible < {{ count($page->data['faq']) }}">
+                    <div class="text-center mt-6" x-show="visible < total" x-cloak>
                         <button
-                            @click="visible += 5"
+                            @click="visible = Math.min(visible + 5, total)"
                             class="px-6 py-2 bg-primary-1 text-white rounded-full hover:bg-brand-blue transition-all">
                             {{ __('general.show-more') ?? 'Show More' }}
                         </button>

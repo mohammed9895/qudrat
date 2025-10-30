@@ -4,6 +4,7 @@ namespace App\Filament\Admin\Resources;
 
 use App\Enums\Status;
 use App\Filament\Admin\Resources\ProfileResource\Pages;
+use App\Models\Employer;
 use App\Models\Profile;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -171,6 +172,26 @@ class ProfileResource extends Resource
                     ->label(__('general.fullname')),
                 TextEntry::make('username')
                     ->label(__('general.username')),
+                TextEntry::make('employer')
+                    ->label(__('general.basic-information.employer_name'))
+                    ->formatStateUsing(function ($state) {
+                        return Employer::where('id', $state)->first()?->name;
+                    })
+                    ->visible(fn ($record) => $record->employer_category != 'job_seekers' || $record->employer_category != 'entrepreneurship')
+                    ->badge(),
+                TextEntry::make('employer_category')
+                    ->label(__('general.basic-information.employer'))
+                    ->formatStateUsing(function ($state) {
+                        return match ($state) {
+                            'government_institutions' => __('general.employer.categories.government_institutions'),
+                            'government_companies' => __('general.employer.categories.government_companies'),
+                            'private_sector' => __('general.employer.categories.private_sector'),
+                            'entrepreneurship' => __('general.employer.categories.entrepreneurship'),
+                            'job_seekers' => __('general.employer.categories.job_seekers'),
+                            default => $state,
+                        };
+                    })
+                    ->badge(),
                 TextEntry::make('email')
                     ->label(__('general.email')),
                 TextEntry::make('phone')

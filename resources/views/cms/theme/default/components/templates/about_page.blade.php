@@ -18,7 +18,7 @@
 <x-dynamic-component
     component="filament-cms::{{$theme}}.page"
     :layout="$layout">
-    <script defer src="//unpkg.com/alpinejs" ></script>
+    <script defer src="//unpkg.com/alpinejs"></script>
     <!-- Banner -->
     <div class="bg-brand-blue/30 pt-[160px] pb-28">
         <div class="container">
@@ -38,7 +38,8 @@
     <!-- Image -->
     <div class="mt-[-60px]">
         <div class="container">
-            <img src="{{  Storage::disk('nfs')->url($page->data['page_image']) }}" alt="image" class="w-full rounded-md">
+            <img src="{{  Storage::disk('nfs')->url($page->data['page_image']) }}" alt="image"
+                 class="w-full rounded-md">
         </div>
     </div>
     <!-- /Image -->
@@ -50,11 +51,11 @@
         </div>
         <div class="px-10">
             <div class="flex items-center justify-center 2xl:justify-cenetr gap-5 flex-wrap">
-                 @foreach($page->data['new_sponsor_images'] as $sponsor)
-                 <a href="{{$sponsor['link']}}">
-                    <img src="{{  Storage::disk('nfs')->url($sponsor['sponsor_image']) }}" alt="images" width="150"
-                         class="opacity-50 hover:opacity-100 transition"/>
-                </a>
+                @foreach($page->data['new_sponsor_images'] as $sponsor)
+                    <a href="{{$sponsor['link']}}">
+                        <img src="{{  Storage::disk('nfs')->url($sponsor['sponsor_image']) }}" alt="images" width="150"
+                             class="opacity-50 hover:opacity-100 transition"/>
+                    </a>
                 @endforeach
             </div>
         </div>
@@ -97,7 +98,8 @@
                                 <div class="flex gap-5 items-center">
                                     <div
                                         class="shrink-0 bg-gradient-to-t from-brand-blue/30 to-transparent w-24 h-24 rounded-full flex justify-center items-center">
-                                        <img src="{{  Storage::disk('nfs')->url( $item['image']) }}" alt="images" class="w-14">
+                                        <img src="{{  Storage::disk('nfs')->url( $item['image']) }}" alt="images"
+                                             class="w-14">
                                     </div>
                                     <div>
                                         <h5 class="text-2xl font-medium mb-3">{{ $item['title'] }}</h5>

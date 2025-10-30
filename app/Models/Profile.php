@@ -370,4 +370,9 @@ class Profile extends Model implements Viewable
     {
         return $this->hasMany(InnovatorsAndResearchersRequest::class);
     }
+
+    public function employerRef(): BelongsTo
+    {
+        return $this->belongsTo(Employer::class);
+    }
 }

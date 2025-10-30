@@ -3,8 +3,8 @@
 namespace App\Filament\Entity\Resources;
 
 use App\Filament\Entity\Resources\AchievementResource\Pages;
-use App\Filament\Entity\Resources\AchievementResource\RelationManagers;
 use App\Models\Achievement;
+use App\Models\Profile;
 use Filament\Forms;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\FileUpload;
@@ -16,7 +16,6 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AchievementResource extends Resource
 {
@@ -24,23 +23,48 @@ class AchievementResource extends Resource
 
     protected static ?string $navigationIcon = 'hugeicons-checkmark-square-03';
 
+    public static function getNavigationLabel(): string
+    {
+        return __('general.add-achievement');
+    }
+
+    public static function getPluralLabel(): ?string
+    {
+        return __('general.achievements-p');
+    }
+
+    public static function getModelLabel(): string
+    {
+        return __('general.achievement');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                Forms\Components\Section::make()
-                ->schema([
-                    Select::make('profile_id')
-                        ->searchable()
-                        ->options(\App\Models\Profile::pluck('fullname', 'id')->toArray())
-                        ->required(),
-                    TextInput::make('title'),
-                    MarkdownEditor::make('description'),
-                    DatePicker::make('date')
-                        ->maxDate(now()->format('Y-m-d'))
-                        ->native(false),
-                    FileUpload::make('achievement_file'),
-                ])
+                Forms\Components\Section::make(__('general.add-achievement'))
+                    ->schema([
+                        Select::make('profile_id')
+                            ->label(__('general.profile'))
+                            ->searchable()
+                            ->options(Profile::pluck('fullname', 'id')->toArray())
+                            ->required(),
+
+                        TextInput::make('title')
+                            ->label(__('general.title'))
+                            ->required(),
+
+                        MarkdownEditor::make('description')
+                            ->label(__('general.description')),
+
+                        DatePicker::make('date')
+                            ->label(__('general.date'))
+                            ->maxDate(now()->format('Y-m-d'))
+                            ->native(false),
+
+                        FileUpload::make('achievement_file')
+                            ->label(__('general.achievement-file')),
+                    ]),
             ]);
     }
 
@@ -53,47 +77,49 @@ class AchievementResource extends Resource
             })
             ->columns([
                 Tables\Columns\TextColumn::make('profile.fullname')
-                    ->numeric()
+                    ->label(__('general.profile'))
                     ->sortable(),
+
                 Tables\Columns\TextColumn::make('title')
+                    ->label(__('general.title'))
                     ->searchable(),
+
                 Tables\Columns\TextColumn::make('date')
+                    ->label(__('general.date'))
                     ->date()
                     ->sortable(),
+
                 Tables\Columns\TextColumn::make('addable.name')
-                    ->numeric()
+                    ->label(__('general.added-by'))
                     ->sortable(),
-                Tables\Columns\TextColumn::make('deleted_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label(__('general.created-at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
+
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label(__('general.updated-at'))
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-            ])
-            ->filters([
-                //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->label(__('general.edit')),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                    Tables\Actions\DeleteBulkAction::make()
+                        ->label(__('general.delete')),
                 ]),
             ]);
     }
 
     public static function getRelations(): array
     {
-        return [
-            //
-        ];
+        return [];
     }
 
     public static function getPages(): array
