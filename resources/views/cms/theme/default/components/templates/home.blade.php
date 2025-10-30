@@ -88,7 +88,7 @@
         <div class="px-10">
             <div class="flex items-center justify-center 2xl:justify-cenetr gap-5 flex-wrap">
                 <div class="logos_slider swiper pt-5 pb-14">
-                    <div class="swiper-wrapper">
+                    <div class="swiper-wrapper flex  justify-between item-center">
                         @foreach($page->data['new_sponsor_images'] as $sponsor)
                             <div class="swiper-slide">
                                 <a href="{{$sponsor['link']}}">
