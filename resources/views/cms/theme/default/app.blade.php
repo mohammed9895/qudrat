@@ -116,7 +116,7 @@
 
 <script>
     var swiper = new Swiper(".logos_slider", {
-        slidesPerView: 20,
+        slidesPerView: 15,
         spaceBetween: 30,
         freeMode: true,
         infinity: true,
