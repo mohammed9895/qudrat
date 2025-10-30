@@ -95,8 +95,8 @@
     <!-- Chart -->
     <section class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <header class="mb-8 text-center">
-            <h1 class="text-3xl sm:text-4xl font-semibold">Core skills of 2025</h1>
-            <p class="mt-2 text-gray-600">Share of employees surveyed (%) — IT & organizational skills</p>
+            <h1 class="text-3xl sm:text-4xl font-semibold">{{ $page->data['chart_main_title'] }}</h1>
+            <p class="mt-2 text-gray-600">{{ $page->data['chart_main_description'] }}</p>
         </header>
 
         {{--    <div class="bg-white rounded-2xl shadow-sm ring-1 ring-black/5 p-4 sm:p-6">--}}
