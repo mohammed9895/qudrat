@@ -45,6 +45,7 @@ class EntityPanelProvider extends PanelProvider
                 'gray' => Color::Slate,
             ])
             ->brandLogo(asset('assets/images/logo.svg'))
+             ->homeUrl('/')
             ->discoverResources(in: app_path('Filament/Entity/Resources'), for: 'App\\Filament\\Entity\\Resources')
             ->discoverPages(in: app_path('Filament/Entity/Pages'), for: 'App\\Filament\\Entity\\Pages')
             ->pages([
@@ -53,7 +54,7 @@ class EntityPanelProvider extends PanelProvider
             ->discoverWidgets(in: app_path('Filament/Entity/Widgets'), for: 'App\\Filament\\Entity\\Widgets')
             ->widgets([
                 Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+            
             ])
             ->middleware([
                 EncryptCookies::class,

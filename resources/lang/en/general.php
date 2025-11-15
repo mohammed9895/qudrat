@@ -44,6 +44,38 @@ return [
     'start-date' => 'Start Date',
     'end-date' => 'End Date',
 
+
+    'team' => [
+          'title' => 'Qudrat Platform Development Team',
+    'subtitle' => 'The team behind the National System for Capacity Building and Talent Management.',
+
+    'members' => [
+        'zamzam' => [
+            'name' => 'Dr. Zamzam Al Lamkiyah',
+            'role' => 'Overall Supervisor of Qudrat Platform Development – Director of the National System for Capacity Building and Talent Management',
+        ],
+        'sawsan' => [
+            'name' => 'Sawsan Al Housniyah',
+            'role' => 'Technical Supervisor',
+        ],
+        'maryam' => [
+            'name' => 'Maryam Al Hinaai',
+            'role' => 'Administrative Supervisor',
+        ],
+        'hasnaa' => [
+            'name' => 'H.H. Hasnaa Al Said',
+            'role' => 'Content Translation',
+        ],
+        'ahmad' => [
+            'name' => 'Ahmed Al Busaidi',
+            'role' => 'Content Language Reviewing',
+        ],
+        'mohammed' => [
+            'name' => 'Mohammed Al Meshaykhi',
+            'role' => 'Platform Programming & Development',
+        ],
+    ],
+],
     'scale' => [
         'description' => 'The National Assessment for Identifying Talents and Exceptional Abilities represents a strategic instrument that enables the identification of individuals with outstanding skills and exceptional capabilities. It plays a pivotal role in enhancing the quality of education, inspiring students, and empowering employees to further develop their competencies and achieve their full potential. The assessment contributes to fostering innovation and continuous development across various sectors, supporting sustainable growth in alignment with the aspirations of Oman Vision 2040.',
     ],

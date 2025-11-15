@@ -80,31 +80,6 @@
     <!-- /Hero -->
 
 
-    <!-- Logo -->
-    <div class="pt-24 pb-12">
-        <div class="text-center">
-            <h5 class="font-semibold text-xl mb-5">{{ $page->data['sponsors_title'] }}</h5>
-        </div>
-        <div class="px-10">
-            <div class="flex items-center justify-center 2xl:justify-cenetr gap-5 flex-wrap">
-                <div class="logos_slider swiper pt-5 pb-14">
-                    <div class="swiper-wrapper flex  justify-between item-center">
-                        @foreach($page->data['new_sponsor_images'] as $sponsor)
-                            <div class="swiper-slide">
-                                <a href="{{$sponsor['link']}}">
-                                    <img src="{{  Storage::disk('nfs')->url($sponsor['sponsor_image']) }}" alt="images"
-                                         width="150"
-                                         class="opacity-50 hover:opacity-100 transition"/>
-                                </a>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- /Logo -->
 
 
     <livewire:frontend.home.profiles :title="$page->data['talent_title']"

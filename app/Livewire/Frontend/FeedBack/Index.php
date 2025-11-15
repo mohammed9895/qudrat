@@ -62,8 +62,7 @@ class Index extends Component implements HasForms
                     TextInput::make('phone_number')
                         ->label(__('general.feedback.phone_number'))
                         ->tel()
-                        ->prefix('+968')
-                        ->required(),
+                        ->prefix('+968'),
                 ]),
             ])
             ->statePath('data');

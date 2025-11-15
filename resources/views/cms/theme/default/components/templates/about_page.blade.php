@@ -44,23 +44,6 @@
     </div>
     <!-- /Image -->
 
-    <!-- Logo -->
-    <div class="pt-24 pb-12">
-        <div class="text-center">
-            <h5 class="font-semibold text-xl mb-5">{{ $page->data['sponsors_title'] }}</h5>
-        </div>
-        <div class="px-10">
-            <div class="flex items-center justify-center 2xl:justify-cenetr gap-5 flex-wrap">
-                @foreach($page->data['new_sponsor_images'] as $sponsor)
-                    <a href="{{$sponsor['link']}}">
-                        <img src="{{  Storage::disk('nfs')->url($sponsor['sponsor_image']) }}" alt="images" width="150"
-                             class="opacity-50 hover:opacity-100 transition"/>
-                    </a>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <!-- /Logo -->
 
     <!-- Tab -->
     <div class="py-12">
@@ -141,6 +124,112 @@
         </div>
     </div>
     <!-- /Counter -->
+
+
+
+    <section class="py-16">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-2">
+            {{ __('general.team.title') }}
+        </h2>
+
+        <p class="text-center text-gray-600 mb-10">
+            {{ __('general.team.subtitle') }}
+        </p>
+
+        <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {{-- د. زمزم اللمكية --}}
+            <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
+                <img
+                    src="{{ asset('images/team/default-avatar.png') }}"
+                    alt="{{ __('general.team.members.zamzam.name') }}"
+                    class="w-24 h-24 rounded-full object-cover mb-4"
+                >
+                <h3 class="text-lg font-semibold mb-1">
+                    {{ __('general.team.members.zamzam.name') }}
+                </h3>
+                <p class="text-sm text-gray-700">
+                    {{ __('general.team.members.zamzam.role') }}
+                </p>
+            </div>
+
+            {{-- سوسن الحوسنية --}}
+            <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
+                <img
+                    src="{{ asset('images/team/default-avatar.png') }}"
+                    alt="{{ __('general.team.members.sawsan.name') }}"
+                    class="w-24 h-24 rounded-full object-cover mb-4"
+                >
+                <h3 class="text-lg font-semibold mb-1">
+                    {{ __('general.team.members.sawsan.name') }}
+                </h3>
+                <p class="text-sm text-gray-700">
+                    {{ __('general.team.members.sawsan.role') }}
+                </p>
+            </div>
+
+            {{-- مريم الهنائية --}}
+            <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
+                <img
+                    src="{{ asset('images/team/default-avatar.png') }}"
+                    alt="{{ __('general.team.members.maryam.name') }}"
+                    class="w-24 h-24 rounded-full object-cover mb-4"
+                >
+                <h3 class="text-lg font-semibold mb-1">
+                    {{ __('general.team.members.maryam.name') }}
+                </h3>
+                <p class="text-sm text-gray-700">
+                    {{ __('general.team.members.maryam.role') }}
+                </p>
+            </div>
+
+            {{-- جناب السمو حسناء آل سعيد --}}
+            <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
+                <img
+                    src="{{ asset('images/team/default-avatar.png') }}"
+                    alt="{{ __('general.team.members.hasnaa.name') }}"
+                    class="w-24 h-24 rounded-full object-cover mb-4"
+                >
+                <h3 class="text-lg font-semibold mb-1">
+                    {{ __('general.team.members.hasnaa.name') }}
+                </h3>
+                <p class="text-sm text-gray-700">
+                    {{ __('general.team.members.hasnaa.role') }}
+                </p>
+            </div>
+
+            {{-- أحمد البوسعيدي --}}
+            <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
+                <img
+                    src="{{ asset('images/team/default-avatar.png') }}"
+                    alt="{{ __('general.team.members.ahmad.name') }}"
+                    class="w-24 h-24 rounded-full object-cover mb-4"
+                >
+                <h3 class="text-lg font-semibold mb-1">
+                    {{ __('general.team.members.ahmad.name') }}
+                </h3>
+                <p class="text-sm text-gray-700">
+                    {{ __('general.team.members.ahmad.role') }}
+                </p>
+            </div>
+
+            {{-- محمد المشايخي --}}
+            <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
+                <img
+                    src="{{ asset('images/team/default-avatar.png') }}"
+                    alt="{{ __('general.team.members.mohammed.name') }}"
+                    class="w-24 h-24 rounded-full object-cover mb-4"
+                >
+                <h3 class="text-lg font-semibold mb-1">
+                    {{ __('general.team.members.mohammed.name') }}
+                </h3>
+                <p class="text-sm text-gray-700">
+                    {{ __('general.team.members.mohammed.role') }}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
 
     {{--    <!-- Platform -->--}}
     {{--    <div class="py-12">--}}

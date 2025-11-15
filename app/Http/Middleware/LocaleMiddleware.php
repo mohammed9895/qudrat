@@ -11,13 +11,19 @@ class LocaleMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param  Closure(Request): (Response)  $next
+     * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (session()->has('lang')) {
-            app()->setLocale(session('lang'));
+        // Default to Arabic if no language is set in session
+        $locale = session('lang', 'ar');
+
+        // Make sure only supported locales are allowed
+        if (! in_array($locale, ['ar', 'en'])) {
+            $locale = 'ar';
         }
+
+        app()->setLocale($locale);
 
         return $next($request);
     }
