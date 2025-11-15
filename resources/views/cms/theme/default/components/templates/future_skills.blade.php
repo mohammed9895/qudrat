@@ -131,7 +131,7 @@
 
         <div class="">
             <img
-                src="{{ app()->getLocale() == 'ar' ? asset('assets/images/chart-ar.JPG') : asset('assets/images/chart-en.JPG') }}"
+                src="{{ app()->getLocale() == 'ar' ? asset('assets/images/chart-ar.png') : asset('assets/images/chart-en.png') }}"
                 class="w-full">
         </div>
     </section>
