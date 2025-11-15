@@ -60,6 +60,7 @@ class AchievementResource extends Resource
                         DatePicker::make('date')
                             ->label(__('general.date'))
                             ->maxDate(now()->format('Y-m-d'))
+                             ->required()
                             ->native(false),
 
                         FileUpload::make('achievement_file')
