@@ -141,7 +141,7 @@
             {{-- د. زمزم اللمكية --}}
             <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
                 <img
-                    src="{{ asset('images/team/default-avatar.png') }}"
+                    src="{{ asset('assets/images/default-avatar.png') }}"
                     alt="{{ __('general.team.members.zamzam.name') }}"
                     class="w-24 h-24 rounded-full object-cover mb-4"
                 >
@@ -156,7 +156,7 @@
             {{-- سوسن الحوسنية --}}
             <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
                 <img
-                    src="{{ asset('images/team/default-avatar.png') }}"
+                    src="{{ asset('assets/images/default-avatar.png') }}"
                     alt="{{ __('general.team.members.sawsan.name') }}"
                     class="w-24 h-24 rounded-full object-cover mb-4"
                 >
@@ -171,7 +171,7 @@
             {{-- مريم الهنائية --}}
             <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
                 <img
-                    src="{{ asset('images/team/default-avatar.png') }}"
+                    src="{{ asset('assets/images/default-avatar.png') }}"
                     alt="{{ __('general.team.members.maryam.name') }}"
                     class="w-24 h-24 rounded-full object-cover mb-4"
                 >
@@ -186,7 +186,7 @@
             {{-- جناب السمو حسناء آل سعيد --}}
             <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
                 <img
-                    src="{{ asset('images/team/default-avatar.png') }}"
+                    src="{{ asset('assets/images/default-avatar.png') }}"
                     alt="{{ __('general.team.members.hasnaa.name') }}"
                     class="w-24 h-24 rounded-full object-cover mb-4"
                 >
@@ -201,7 +201,7 @@
             {{-- أحمد البوسعيدي --}}
             <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
                 <img
-                    src="{{ asset('images/team/default-avatar.png') }}"
+                    src="{{ asset('assets/images/default-avatar.png') }}"
                     alt="{{ __('general.team.members.ahmad.name') }}"
                     class="w-24 h-24 rounded-full object-cover mb-4"
                 >
@@ -216,7 +216,7 @@
             {{-- محمد المشايخي --}}
             <div class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center">
                 <img
-                    src="{{ asset('images/team/default-avatar.png') }}"
+                    src="{{ asset('assets/images/default-avatar.png') }}"
                     alt="{{ __('general.team.members.mohammed.name') }}"
                     class="w-24 h-24 rounded-full object-cover mb-4"
                 >
