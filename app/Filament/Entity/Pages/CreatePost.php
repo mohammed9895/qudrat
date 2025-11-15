@@ -27,6 +27,10 @@ class CreatePost extends Page implements HasForms, HasTable
 
     protected static string $view = 'filament.entity.pages.create-post';
 
+    protected static bool $shouldRegisterNavigation = false;
+
+
+
     public array $data = [];
 
     public static function getNavigationLabel(): string
